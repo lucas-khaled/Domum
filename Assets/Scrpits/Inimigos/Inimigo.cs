@@ -6,14 +6,15 @@ using UnityEngine.AI;
 
 public class Inimigo : MonoBehaviour
 {
-
+    [Header("Referências")]
     public Image LifeBar;
     public Animator anim;
     public NavMeshAgent NavMesh;
     public Transform posicaoInicial;
 
     //Criar Array de Itens para ele dropar
-
+    [Header("Valores")]
+    public bool hostil;
     [SerializeField]
     private int maxVida;
     [SerializeField]
@@ -27,7 +28,7 @@ public class Inimigo : MonoBehaviour
     {
         get { return vida; }
 
-        set
+        private set
         {
             vida = Mathf.Clamp(value, 0, maxVida);
         }
@@ -43,7 +44,7 @@ public class Inimigo : MonoBehaviour
 
     }
 
-    void ReceberDano(int danoRecebido)
+    public void ReceberDano(int danoRecebido)
     {
 
     }
@@ -65,7 +66,7 @@ public class Inimigo : MonoBehaviour
 
     void OnTriggerStay(Collider collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player" && hostil)
         {
             Movimentar(collider.transform.position);
         }

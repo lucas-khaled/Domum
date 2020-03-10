@@ -2,24 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO }
+
 public class Player : MonoBehaviour
 {
-         
-    public int danoMedio;
-    public const int MAXLEVEL = 100;
-    
+    public EstadoPlayer estadoPlayer
+    {
+        get { return estadoPlayer; }
+
+        private set
+        {
+            estadoPlayer = value;
+            if (value == EstadoPlayer.NORMAL)
+            {
+                InvokeRepeating("ProcuraInimigo", 0f, 0.2f);
+            }
+        }
+    }
+
+    [Header("Referências")]
+    public Transform posicaoHit;
+
+
     //Adicionar Interagível
 
-    public Player player;
+    public static Player player;
 
+    [Header("Valores")]
+    public int danoMedio;
+    public const int MAXLEVEL = 100;
     [SerializeField]
     private float velocidade = 2;
     [SerializeField]
     private int maxColetavel;
+    [SerializeField]
+    private float raioPercepcao;
 
     private int level;
     private int vida;
-    private bool emCombate = false;
+
 
     public int qtnCristais
     {
@@ -55,17 +76,23 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        estadoPlayer = EstadoPlayer.NORMAL;
         player = this;
     }
 
     protected virtual void Update()
     {
         Movimento();
+
+        if (Input.GetMouseButtonDown(0) && estadoPlayer == EstadoPlayer.COMBATE)
+        {
+            StartCoroutine(Atacar());
+        }
     }
 
     void Movimento()
     {
-        if (!emCombate)
+        if (estadoPlayer != EstadoPlayer.ATACANDO)
         {
             transform.Translate(Vector3.right * velocidade * Input.GetAxis("Horizontal") * Time.deltaTime);
             transform.Translate(Vector3.forward * velocidade * Input.GetAxis("Vertical") * Time.deltaTime);
@@ -92,14 +119,24 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ReceberDano(int danoRecebido)
+    #region COMBATE
+    private IEnumerator Atacar()
     {
+        estadoPlayer = EstadoPlayer.ATACANDO;
 
+        // tocar animação de ataque
+
+        Collider[] hit = Physics.OverlapSphere(posicaoHit.position, 10, LayerMask.GetMask("Inimigo"));
+        hit[0].gameObject.GetComponent<Inimigo>().ReceberDano(danoMedio);
+
+        yield return new WaitForSeconds(0.5f);
+
+        estadoPlayer = EstadoPlayer.COMBATE;
     }
 
-    public void Curar(int cura)
+    private float CalculaDano()
     {
-
+        return danoMedio + Random.Range(-5, 5);
     }
 
     private void Morrer()
@@ -107,9 +144,35 @@ public class Player : MonoBehaviour
 
     }
 
-    private IEnumerator Atacar()
+    public void ReceberDano(int danoRecebido)
     {
-        yield return null;
+
+    }
+
+    private void ProcuraInimigo()
+    {
+        Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioPercepcao, LayerMask.GetMask("Inimigo"));
+
+        if (hit != null)
+        {
+            foreach (Collider inimigo in hit)
+            {
+                if (inimigo.GetComponent<Inimigo>().hostil)
+                {
+                    estadoPlayer = EstadoPlayer.COMBATE;
+                    CancelInvoke("ProcuraInimigo");
+                    return;
+                }
+            }
+        }
+        
+    }
+
+    #endregion
+
+    public void Curar(int cura)
+    {
+
     }
 
     private void Interagir()
@@ -117,5 +180,11 @@ public class Player : MonoBehaviour
 
     }
 
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, raioPercepcao);
+    }
 
 }
