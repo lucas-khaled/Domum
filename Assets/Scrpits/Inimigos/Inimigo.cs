@@ -25,7 +25,12 @@ public class Inimigo : MonoBehaviour
     private float distanciaAtaque;
     [SerializeField]
     private int vida;
+    [SerializeField]
+    private float velocidadeAtaque;
+    [SerializeField]
+    private float ataqueCooldown;
 
+    float distancia;
 
     public int Vida
     {
@@ -44,7 +49,13 @@ public class Inimigo : MonoBehaviour
 
     void Atacar()
     {
+        if (ataqueCooldown <= 0)
+        {
+            Debug.Log("Ataque do inimigo");
+            ataqueCooldown = velocidadeAtaque;
+        }
 
+        ataqueCooldown--;
     }
 
     public void ReceberDano(int danoRecebido)
@@ -72,7 +83,15 @@ public class Inimigo : MonoBehaviour
         if (collider.gameObject.tag == "Player" && hostil)
         {
             Movimentar(collider.transform.position);
+
+            distancia = Vector3.Distance(collider.transform.position, NavMesh.transform.position);
+
+            if (distancia <= distanciaAtaque)
+            {
+                Atacar();
+            }
         }
+
     }
     void OnTriggerExit(Collider collider)
     {
