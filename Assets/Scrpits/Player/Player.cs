@@ -6,13 +6,15 @@ public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO }
 
 public class Player : MonoBehaviour
 {
+    private EstadoPlayer estado_player;
+
     public EstadoPlayer estadoPlayer
     {
-        get { return estadoPlayer; }
+        get { return estado_player; }
 
         private set
         {
-            estadoPlayer = value;
+            estado_player = value;
             if (value == EstadoPlayer.NORMAL)
             {
                 InvokeRepeating("ProcuraInimigo", 0f, 0.2f);
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
     [Header("Valores")]
     public int danoMedio;
     public const int MAXLEVEL = 100;
+    public int maxVida;
     [SerializeField]
     private float velocidade = 2;
     [SerializeField]
@@ -39,10 +42,9 @@ public class Player : MonoBehaviour
     private float raioPercepcao;
 
     private int level;
-    private int vida;
+    private int vida, qtnCristais, dinheiro, experiencia;
 
-
-    public int qtnCristais
+    public int QtnCristais
     {
         get { return qtnCristais; }
 
@@ -52,7 +54,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public int dinheiro
+    public int Dinheiro
     {
         get { return dinheiro; }
 
@@ -62,7 +64,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public int experiencia
+    public int Experiencia
     {
         get { return experiencia; }
         set
@@ -126,6 +128,8 @@ public class Player : MonoBehaviour
 
         // tocar animação de ataque
 
+        Debug.Log("Ataque");
+
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, 10, LayerMask.GetMask("Inimigo"));
         hit[0].gameObject.GetComponent<Inimigo>().ReceberDano(danoMedio);
 
@@ -146,13 +150,31 @@ public class Player : MonoBehaviour
 
     public void ReceberDano(int danoRecebido)
     {
+        vida = Mathf.Clamp(vida - danoRecebido, 0, maxVida);
 
+        string nomeAnim = "Dano";
+
+        if (vida <= 0)
+        {
+            nomeAnim = "Morte";
+            Morrer();
+        }
+
+        StartCoroutine(Dano(nomeAnim));
+        
+    }
+
+    private IEnumerator Dano(string animationName)
+    {
+        estadoPlayer = EstadoPlayer.DANO;
+        //tocar animação
+        yield return new WaitForSeconds(0.2f);
+        estadoPlayer = EstadoPlayer.COMBATE;
     }
 
     private void ProcuraInimigo()
     {
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioPercepcao, LayerMask.GetMask("Inimigo"));
-
         if (hit != null)
         {
             foreach (Collider inimigo in hit)
@@ -165,7 +187,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
     #endregion
@@ -179,8 +201,6 @@ public class Player : MonoBehaviour
     {
 
     }
-
-
 
     private void OnDrawGizmos()
     {

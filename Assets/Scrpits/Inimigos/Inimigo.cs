@@ -23,8 +23,11 @@ public class Inimigo : MonoBehaviour
     private float velocidade;
     [SerializeField]
     private float distanciaAtaque;
+    [SerializeField]
+    private int vida;
 
-    public int vida
+
+    public int Vida
     {
         get { return vida; }
 
@@ -36,7 +39,7 @@ public class Inimigo : MonoBehaviour
 
     private void Start()
     {
-        vida = maxVida;
+        Vida = maxVida;
     }
 
     void Atacar()

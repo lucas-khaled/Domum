@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 433577530}
   - component: {fileID: 433577532}
   - component: {fileID: 433577531}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Inimigos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,12 +164,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 433577529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64989e5c1cb0704db0b280554e77d89, type: 3}
+  m_Script: {fileID: 11500000, guid: ab4569bde30ea7b4b8278bf94c46cd87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1480668805}
+  LifeBar: {fileID: 0}
+  anim: {fileID: 0}
   NavMesh: {fileID: 1540033329}
-  posicaoInicial: {fileID: 815979646}
+  posicaoInicial: {fileID: 1540033327}
+  hostil: 1
+  maxVida: 100
+  danoMedio: 10
+  velocidade: 5
+  distanciaAtaque: 30
+  vida: 0
 --- !u!135 &433577532
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -183,6 +190,36 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &589243287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 589243288}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &589243288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589243287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.098, y: 1.028, z: 1.361}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1480668805}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 815979646}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,11 +640,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beb663fbd77bd5b42b33058be38a2bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocidade: 5
-  Pulo: 2
-  Piso:
-    serializedVersion: 2
-    m_Bits: 0
+  posicaoHit: {fileID: 589243288}
+  danoMedio: 20
+  maxVida: 0
+  velocidade: 2
+  maxColetavel: 3
+  raioPercepcao: 30
 --- !u!54 &1480668807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -703,7 +741,7 @@ GameObject:
   - component: {fileID: 1540033325}
   - component: {fileID: 1540033324}
   - component: {fileID: 1540033323}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
