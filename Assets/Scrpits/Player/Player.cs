@@ -138,10 +138,13 @@ public class Player : MonoBehaviour
         estadoPlayer = EstadoPlayer.COMBATE;
     }
 
-    private float CalculaDano()
+    /* private float CalculaDano()
     {
         return danoMedio + Random.Range(-5, 5);
-    }
+    } */
+    // Passei essa parte do calcula dano para o script de ArmaPlayer, não faz sentido o player calcular o dano que
+    // vai ser passado no inimigo pelo script ArmaPlayer.
+    // mantive comentado só pra você saber o que aconteceu.
 
     private void Morrer()
     {

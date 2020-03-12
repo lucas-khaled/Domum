@@ -47,22 +47,33 @@ public class Inimigo : MonoBehaviour
         Vida = maxVida;
     }
 
-    void Atacar()
+    IEnumerator Atacar()
     {
         if (ataqueCooldown <= 0)
         {
             Debug.Log("Ataque do inimigo");
             ataqueCooldown = velocidadeAtaque;
         }
-
-        ataqueCooldown--;
+        yield return new WaitForSeconds(0.5f);
+        ataqueCooldown -= Time.deltaTime * 1;
     }
 
     public void ReceberDano(int danoRecebido)
     {
-
+        vida = Mathf.Clamp(vida - danoRecebido, 0, maxVida);
+        
+        if (vida <= 0)
+        {
+            //Animação de morte
+            Morrer();
+        }
+        else
+        {
+            //Animação de dano  
+        }
+        
     }
-
+    
     void Morrer()
     {
 
@@ -88,7 +99,7 @@ public class Inimigo : MonoBehaviour
 
             if (distancia <= distanciaAtaque)
             {
-                Atacar();
+                StartCoroutine(Atacar());
             }
         }
 
@@ -98,6 +109,7 @@ public class Inimigo : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             Movimentar(posicaoInicial.position);
+            ataqueCooldown = 0;
         }
     }
 }
