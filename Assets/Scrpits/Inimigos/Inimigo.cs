@@ -30,7 +30,7 @@ public class Inimigo : MonoBehaviour
     [SerializeField]
     private float ataqueCooldown;
 
-    float distancia;
+    bool podeAtacar = false;
 
     public int Vida
     {
@@ -50,17 +50,24 @@ public class Inimigo : MonoBehaviour
     IEnumerator Atacar()
     {
         if (ataqueCooldown <= 0)
-        {
-            Debug.Log("Ataque do inimigo");
+        {          
+            Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
+
+            if (hit.Length > 0)
+            {
+                Debug.Log("Ataque do inimigo");
+                hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
+            }
             ataqueCooldown = velocidadeAtaque;
+            yield return new WaitForSeconds(0.5f);
         }
-        yield return new WaitForSeconds(0.5f);
+        
         ataqueCooldown -= Time.deltaTime * 1;
     }
 
     public void ReceberDano(int danoRecebido)
     {
-        vida = Mathf.Clamp(vida - danoRecebido, 0, maxVida);
+        Vida -= danoRecebido;
         
         if (vida <= 0)
         {
@@ -76,7 +83,8 @@ public class Inimigo : MonoBehaviour
     
     void Morrer()
     {
-
+        Destroy(this.gameObject);
+        Debug.Log("Morri");
     }
 
     void DroparLoot()
@@ -84,23 +92,39 @@ public class Inimigo : MonoBehaviour
 
     }
 
-    void Movimentar(Vector3 destino)
+    void Movimentar(Vector3 destino, bool move = true)
     {
+        if (!move)
+        {
+            NavMesh.isStopped = true;
+            return;
+        }
+
+        NavMesh.isStopped = false;
         NavMesh.SetDestination(destino);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        podeAtacar = true;
     }
 
     void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.tag == "Player" && hostil)
         {
-            Movimentar(collider.transform.position);
+            bool mover = true;
 
-            distancia = Vector3.Distance(collider.transform.position, NavMesh.transform.position);
+            float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
 
             if (distancia <= distanciaAtaque)
             {
-                StartCoroutine(Atacar());
+                mover = false;
+                StartCoroutine(Atacar());        
             }
+            
+
+            Movimentar(collider.transform.position, mover);
         }
 
     }
@@ -111,5 +135,11 @@ public class Inimigo : MonoBehaviour
             Movimentar(posicaoInicial.position);
             ataqueCooldown = 0;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(gameObject.transform.position, distanciaAtaque);
     }
 }

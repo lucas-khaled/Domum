@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
     {
         estadoPlayer = EstadoPlayer.NORMAL;
         player = this;
+        vida = maxVida;
     }
 
     protected virtual void Update()
@@ -128,20 +129,25 @@ public class Player : MonoBehaviour
 
         // tocar animação de ataque
 
-        Debug.Log("Ataque");
+       
+        Collider[] hit = Physics.OverlapSphere(posicaoHit.position, 2, LayerMask.GetMask("Inimigo"));
 
-        Collider[] hit = Physics.OverlapSphere(posicaoHit.position, 10, LayerMask.GetMask("Inimigo"));
-        hit[0].gameObject.GetComponent<Inimigo>().ReceberDano(danoMedio);
+        if (hit.Length > 0)
+        {
+            int danin = CalculaDano();
+            Debug.Log("Ataque: " + danin);
+            hit[0].gameObject.GetComponent<Inimigo>().ReceberDano(danin);
+        }
 
         yield return new WaitForSeconds(0.5f);
 
         estadoPlayer = EstadoPlayer.COMBATE;
     }
 
-    /* private float CalculaDano()
+     private int CalculaDano()
     {
         return danoMedio + Random.Range(-5, 5);
-    } */
+    } 
     // Passei essa parte do calcula dano para o script de ArmaPlayer, não faz sentido o player calcular o dano que
     // vai ser passado no inimigo pelo script ArmaPlayer.
     // mantive comentado só pra você saber o que aconteceu.
@@ -182,12 +188,16 @@ public class Player : MonoBehaviour
         {
             foreach (Collider inimigo in hit)
             {
-                if (inimigo.GetComponent<Inimigo>().hostil)
+                try
                 {
-                    estadoPlayer = EstadoPlayer.COMBATE;
-                    CancelInvoke("ProcuraInimigo");
-                    return;
+                    if (inimigo.GetComponent<Inimigo>().hostil)
+                    {
+                        estadoPlayer = EstadoPlayer.COMBATE;
+                        CancelInvoke("ProcuraInimigo");
+                        return;
+                    }
                 }
+                catch { }
             }
         }
 
@@ -208,6 +218,9 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, raioPercepcao);
+
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, 2);
     }
 
 }
