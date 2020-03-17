@@ -132,8 +132,9 @@ GameObject:
   - component: {fileID: 433577530}
   - component: {fileID: 433577532}
   - component: {fileID: 433577531}
+  - component: {fileID: 433577533}
   m_Layer: 8
-  m_Name: Inimigos
+  m_Name: Inimigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,13 +170,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifeBar: {fileID: 0}
   anim: {fileID: 0}
-  NavMesh: {fileID: 1540033329}
+  NavMesh: {fileID: 433577533}
   posicaoInicial: {fileID: 815979646}
   hostil: 1
   maxVida: 100
   danoMedio: 10
   velocidade: 5
-  distanciaAtaque: 2.5
+  distanciaAtaque: 3
   vida: 0
   velocidadeAtaque: 2
   ataqueCooldown: 1
@@ -192,6 +193,28 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &433577533
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433577529}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.42
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.78
+  m_BaseOffset: -0.26
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &589243287
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 815979646}
   m_Layer: 8
-  m_Name: GameObject
+  m_Name: PosicaoInicial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,6 +584,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 767113990298981550, guid: 66337775a6dc4724e93183d46e69da40,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4394967624901338813, guid: 66337775a6dc4724e93183d46e69da40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -644,10 +672,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posicaoHit: {fileID: 589243288}
   danoMedio: 20
-  maxVida: 0
+  maxVida: 100
   velocidade: 2
   maxColetavel: 3
-  raioPercepcao: 30
+  raioPercepcao: 10
 --- !u!54 &1480668807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -738,7 +766,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1540033327}
-  - component: {fileID: 1540033329}
   - component: {fileID: 1540033326}
   - component: {fileID: 1540033325}
   - component: {fileID: 1540033324}
@@ -840,28 +867,6 @@ Transform:
   m_Father: {fileID: 433577530}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &1540033329
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540033322}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.2
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &2102830630
 GameObject:
   m_ObjectHideFlags: 0
