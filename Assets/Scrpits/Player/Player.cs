@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO }
+public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL }
 
 public class Player : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     {
         get { return estado_player; }
 
-        private set
+        protected set
         {
             estado_player = value;
             if (value == EstadoPlayer.NORMAL)
@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
 
     }
 
-    public void ReceberDano(int danoRecebido)
+    public virtual void ReceberDano(int danoRecebido)
     {
         vida = Mathf.Clamp(vida - danoRecebido, 0, maxVida);
 
