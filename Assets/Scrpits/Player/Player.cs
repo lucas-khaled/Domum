@@ -6,29 +6,13 @@ public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL }
 
 public class Player : MonoBehaviour
 {
+
     private EstadoPlayer estado_player;
-
-    public EstadoPlayer estadoPlayer
-    {
-        get { return estado_player; }
-
-        protected set
-        {
-            estado_player = value;
-            if (value == EstadoPlayer.NORMAL)
-            {
-                InvokeRepeating("ProcuraInimigo", 0f, 0.2f);
-            }
-        }
-    }
 
     [Header("Referências")]
     public Transform posicaoHit;
 
-
     //Adicionar Interagível
-
-    public static Player player;
 
     [Header("Valores")]
     public int danoMedio;
@@ -43,6 +27,21 @@ public class Player : MonoBehaviour
 
     private int level;
     private int vida, qtnCristais, dinheiro, experiencia;
+
+    #region GETTERS & SETTERS
+    public EstadoPlayer estadoPlayer
+    {
+        get { return estado_player; }
+
+        protected set
+        {
+            estado_player = value;
+            if (value == EstadoPlayer.NORMAL)
+            {
+                InvokeRepeating("ProcuraInimigo", 0f, 0.2f);
+            }
+        }
+    }
 
     public int QtnCristais
     {
@@ -75,52 +74,18 @@ public class Player : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    void Start()
+    #region PreSettings
+    public static Player player;
+    void Awake()
     {
+        EventsController.onMorteInimigoCallback += OnMorteInimigo;
         estadoPlayer = EstadoPlayer.NORMAL;
         player = this;
         vida = maxVida;
     }
-
-    protected virtual void Update()
-    {
-        Movimento();
-
-        if (Input.GetMouseButtonDown(0) && estadoPlayer == EstadoPlayer.COMBATE)
-        {
-            StartCoroutine(Atacar());
-        }
-    }
-
-    void Movimento()
-    {
-        if (estadoPlayer != EstadoPlayer.ATACANDO)
-        {
-            transform.Translate(Vector3.right * velocidade * Input.GetAxis("Horizontal") * Time.deltaTime);
-            transform.Translate(Vector3.forward * velocidade * Input.GetAxis("Vertical") * Time.deltaTime);
-
-            if (Input.GetKey(KeyCode.W))
-            {
-                transform.Translate(Vector3.forward * velocidade * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.Translate(-Vector3.forward * velocidade * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(-Vector3.right * velocidade * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(Vector3.right * velocidade * Time.deltaTime);
-            }
-        }
-    }
+    #endregion
 
     #region COMBATE
     private IEnumerator Atacar()
@@ -181,7 +146,7 @@ public class Player : MonoBehaviour
         estadoPlayer = EstadoPlayer.COMBATE;
     }
 
-    private void ProcuraInimigo()
+    private bool ProcuraInimigo()
     {
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioPercepcao, LayerMask.GetMask("Inimigo"));
         if (hit != null)
@@ -193,17 +158,71 @@ public class Player : MonoBehaviour
                     if (inimigo.GetComponent<Inimigo>().hostil)
                     {
                         estadoPlayer = EstadoPlayer.COMBATE;
+                        Debug.Log("bInGo");
                         CancelInvoke("ProcuraInimigo");
-                        return;
+                        return true;
                     }
                 }
                 catch { }
-            }
+            }         
         }
+
+        return false;
 
     }
 
+    private IEnumerator ProcuraInimigoMorte()
+    {
+        yield return new WaitForSeconds(1);
+
+        Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioPercepcao, LayerMask.GetMask("Inimigo"));
+        if (hit != null)
+        {
+            estadoPlayer = EstadoPlayer.NORMAL;
+        }
+
+    }
     #endregion
+
+    protected virtual void Update()
+    {
+        Movimento();
+
+        if (Input.GetMouseButtonDown(0) && estadoPlayer == EstadoPlayer.COMBATE)
+        {
+            StartCoroutine(Atacar());
+        }
+    }
+
+    void Movimento()
+    {
+        if (estadoPlayer != EstadoPlayer.ATACANDO)
+        {
+            transform.Translate(Vector3.right * velocidade * Input.GetAxis("Horizontal") * Time.deltaTime);
+            transform.Translate(Vector3.forward * velocidade * Input.GetAxis("Vertical") * Time.deltaTime);
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector3.forward * velocidade * Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.Translate(-Vector3.forward * velocidade * Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(-Vector3.right * velocidade * Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.right * velocidade * Time.deltaTime);
+            }
+        }
+    }
+
 
     public void Curar(int cura)
     {
@@ -214,6 +233,13 @@ public class Player : MonoBehaviour
     {
 
     }
+
+    void OnMorteInimigo(int xp)
+    {
+        Experiencia += xp;
+        StartCoroutine(ProcuraInimigoMorte());
+    }
+
 
     private void OnDrawGizmos()
     {

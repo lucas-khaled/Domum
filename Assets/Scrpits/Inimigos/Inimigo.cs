@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
+
+
 public class Inimigo : MonoBehaviour
 {
+
     [Header("Referências")]
     public Image LifeBar;
     public Animator anim;
@@ -29,6 +32,8 @@ public class Inimigo : MonoBehaviour
     private float velocidadeAtaque;
     [SerializeField]
     private float ataqueCooldown;
+    [SerializeField]
+    private int experienciaMorte;
 
     bool podeAtacar = false;
 
@@ -84,6 +89,10 @@ public class Inimigo : MonoBehaviour
     void Morrer()
     {
         Destroy(this.gameObject);
+        if (EventsController.onMorteInimigoCallback != null)
+        {
+            EventsController.onMorteInimigoCallback.Invoke(experienciaMorte);
+        }
         Debug.Log("Morri");
     }
 
