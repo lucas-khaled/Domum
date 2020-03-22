@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL }
 
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
 
     [Header("Referências")]
     public Transform posicaoHit;
+    public GameObject CBTprefab;
 
     //Adicionar Interagível
 
@@ -125,7 +127,7 @@ public class Player : MonoBehaviour
     public virtual void ReceberDano(int danoRecebido)
     {
         vida = Mathf.Clamp(vida - danoRecebido, 0, maxVida);
-
+        InitCBT(danoRecebido.ToString());
         string nomeAnim = "Dano";
 
         if (vida <= 0)
@@ -136,6 +138,22 @@ public class Player : MonoBehaviour
 
         StartCoroutine(Dano(nomeAnim));
         
+    }
+
+    void InitCBT(string text)
+    {
+        
+        GameObject temp = Instantiate(CBTprefab) as GameObject;
+        
+        RectTransform tempRect = temp.GetComponent<RectTransform>();
+        temp.transform.SetParent(transform.Find("Hit_life"));
+        tempRect.transform.localPosition = CBTprefab.transform.localPosition;
+        tempRect.transform.localScale = CBTprefab.transform.localScale;
+        tempRect.transform.localRotation = CBTprefab.transform.localRotation;
+        temp.GetComponent<Animator>().SetTrigger("Hit");
+        temp.GetComponent<Text>().text = text;
+        
+        Destroy(temp.gameObject,2);
     }
 
     private IEnumerator Dano(string animationName)

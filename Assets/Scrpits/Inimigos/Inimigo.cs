@@ -14,6 +14,7 @@ public class Inimigo : MonoBehaviour
     public Animator anim;
     public NavMeshAgent NavMesh;
     public Transform posicaoInicial;
+    public GameObject CBTprefab;
 
     //Criar Array de Itens para ele dropar
     [Header("Valores")]
@@ -73,6 +74,8 @@ public class Inimigo : MonoBehaviour
     public void ReceberDano(int danoRecebido)
     {
         Vida -= danoRecebido;
+        InitCBT(danoRecebido.ToString());
+        
         
         if (vida <= 0)
         {
@@ -86,6 +89,21 @@ public class Inimigo : MonoBehaviour
         
     }
     
+    void InitCBT(string text)
+    {
+        
+        GameObject temp = Instantiate(CBTprefab) as GameObject;
+        
+        RectTransform tempRect = temp.GetComponent<RectTransform>();
+        temp.transform.SetParent(transform.Find("Hit_life"));
+        tempRect.transform.localPosition = CBTprefab.transform.localPosition;
+        tempRect.transform.localScale = CBTprefab.transform.localScale;
+        tempRect.transform.localRotation = CBTprefab.transform.localRotation;
+        temp.GetComponent<Animator>().SetTrigger("Hit");
+        temp.GetComponent<Text>().text = text;
+        
+        Destroy(temp.gameObject,2);
+    }
     void Morrer()
     {
         Destroy(this.gameObject);
