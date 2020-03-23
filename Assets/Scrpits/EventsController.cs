@@ -7,3 +7,4 @@ public static class EventsController
     public delegate void OnMorteInimigo(int xp);
     public static OnMorteInimigo onMorteInimigoCallback;
 }
+

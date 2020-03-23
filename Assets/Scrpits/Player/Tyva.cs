@@ -12,11 +12,11 @@ public class Tyva : Player
     private float velocidadeDash;
     [SerializeField]
     private float tempoDash;
-    Rigidbody player;
+    Rigidbody rb;
 
     private void Start()
     {
-        player = this.GetComponent<Rigidbody>();
+        rb = this.GetComponent<Rigidbody>();
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
     }
@@ -35,23 +35,18 @@ public class Tyva : Player
             else
             {
                 tempoDash -= Time.deltaTime;
-                player.velocity = Vector3.zero;
+                rb.velocity = Vector3.zero;
             }
         }
         tempoDash -= Time.deltaTime;
     }
     void Dash(Vector3 movimento)
     {
-        player.AddForce(transform.forward * velocidadeDash, ForceMode.VelocityChange);
+        rb.AddForce(transform.forward * velocidadeDash, ForceMode.VelocityChange);
 
-        player.velocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
     }
     private IEnumerator LancarFaca(Transform target)
-    {
-        yield return null;
-    }
- 
-    private IEnumerator DarDash()
     {
         yield return null;
     }

@@ -26,7 +26,7 @@ public class Inimigo : MonoBehaviour
     [SerializeField]
     private float velocidade;
     [SerializeField]
-    private float distanciaAtaque;
+    protected float distanciaAtaque;
     [SerializeField]
     private int vida;
     [SerializeField]
@@ -35,8 +35,6 @@ public class Inimigo : MonoBehaviour
     private float ataqueCooldown;
     [SerializeField]
     private int experienciaMorte;
-
-    bool podeAtacar = false;
 
     public int Vida
     {
@@ -53,7 +51,7 @@ public class Inimigo : MonoBehaviour
         Vida = maxVida;
     }
 
-    IEnumerator Atacar()
+    protected virtual IEnumerator Atacar()
     {
         if (ataqueCooldown <= 0)
         {          
@@ -71,7 +69,7 @@ public class Inimigo : MonoBehaviour
         ataqueCooldown -= Time.deltaTime * 1;
     }
 
-    public void ReceberDano(int danoRecebido)
+    public virtual void ReceberDano(int danoRecebido)
     {
         Vida -= danoRecebido;
         InitCBT(danoRecebido.ToString());
@@ -119,7 +117,7 @@ public class Inimigo : MonoBehaviour
 
     }
 
-    void Movimentar(Vector3 destino, bool move = true)
+    protected void Movimentar(Vector3 destino, bool move = true)
     {
         if (!move)
         {
@@ -131,12 +129,7 @@ public class Inimigo : MonoBehaviour
         NavMesh.SetDestination(destino);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        podeAtacar = true;
-    }
-
-    void OnTriggerStay(Collider collider)
+    protected virtual void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.tag == "Player" && hostil)
         {
