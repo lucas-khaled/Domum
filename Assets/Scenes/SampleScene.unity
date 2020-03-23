@@ -148,6 +148,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 767113990298981550, guid: 66337775a6dc4724e93183d46e69da40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4394967624901338813, guid: 66337775a6dc4724e93183d46e69da40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -223,7 +228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &433577530
 Transform:
   m_ObjectHideFlags: 0
@@ -257,7 +262,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   NavMesh: {fileID: 433577533}
   posicaoInicial: {fileID: 815979646}
-  CBTprefab: {fileID: 5335105434827641414, guid: 2e9c8f6966a383440bb7fc6616984ddd,
+  CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   hostil: 1
   maxVida: 100
@@ -1152,7 +1157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1086877882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1169,7 +1174,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   NavMesh: {fileID: 1086877883}
   posicaoInicial: {fileID: 690436807}
-  CBTprefab: {fileID: 5335105434827641414, guid: 2e9c8f6966a383440bb7fc6616984ddd,
+  CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   hostil: 1
   maxVida: 100
@@ -1701,7 +1706,7 @@ PrefabInstance:
     - target: {fileID: 767113990298981550, guid: 66337775a6dc4724e93183d46e69da40,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4394967624901338813, guid: 66337775a6dc4724e93183d46e69da40,
         type: 3}
@@ -1785,7 +1790,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posicaoHit: {fileID: 589243288}
-  CBTprefab: {fileID: 0}
+  CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
+    type: 3}
   danoMedio: 20
   maxVida: 300
   velocidade: 2
@@ -1794,6 +1800,9 @@ MonoBehaviour:
   escudo: {fileID: 1242884740}
   tempoEscudo: 3
   tempoRecargaEscudo: 1.5
+  valorDanoArea: 20
+  raioDanoArea: 2
+  coolDownDanoArea: 15
 --- !u!54 &1480668807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2004,7 +2013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posicaoHit: {fileID: 1089614533}
-  CBTprefab: {fileID: 5335105434827641414, guid: 2e9c8f6966a383440bb7fc6616984ddd,
+  CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   danoMedio: 20
   maxVida: 200

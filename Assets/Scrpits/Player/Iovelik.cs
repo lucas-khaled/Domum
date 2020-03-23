@@ -8,6 +8,14 @@ public class Iovelik : Player
     public GameObject escudo;
     public float tempoEscudo = 3;
     public float tempoRecargaEscudo = 1.5f;
+    [SerializeField]
+    private float valorDanoArea;
+    [SerializeField]
+    private float raioDanoArea;
+    [SerializeField]
+    private int coolDownDanoArea;
+    private float esperaDanoArea = 0;
+    private float distancia;
 
     private float recarregaEscudo;   
     public float RecarregaEscudo
@@ -36,12 +44,19 @@ public class Iovelik : Player
 
     private void Start()
     {
+        QtnCristais = 3;
         RecarregaEscudo = tempoEscudo;
     }
 
     protected override void Update()
     {
         base.Update();
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            StartCoroutine(danoArea());
+        }
+        esperaDanoArea -= Time.deltaTime;
 
         if (Input.GetKey(KeyCode.LeftShift) && escudoCarregado && recarregaEscudo > 0)
         {
@@ -73,5 +88,23 @@ public class Iovelik : Player
 
         RecarregaEscudo = ativo ? RecarregaEscudo - Time.deltaTime : RecarregaEscudo + tempoRecargaEscudo * Time.deltaTime;
         estadoPlayer = ativo ? EstadoPlayer.RECARREGAVEL : EstadoPlayer.COMBATE;
+    }
+
+    private IEnumerator danoArea()
+    {
+        estadoPlayer = EstadoPlayer.ATACANDO;
+        if (esperaDanoArea < 0 && QtnCristais > 0)
+        {
+            Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioDanoArea, LayerMask.GetMask("Inimigo"));
+            foreach (Collider inimigoArea in hit)
+            {
+                distancia = Vector3.Distance(inimigoArea.gameObject.transform.position, this.gameObject.transform.position);
+                inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));
+                esperaDanoArea = coolDownDanoArea;
+                QtnCristais--;
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        estadoPlayer = EstadoPlayer.COMBATE;
     }
 }

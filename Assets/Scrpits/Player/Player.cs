@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
         estadoPlayer = EstadoPlayer.COMBATE;
     }
 
-     private int CalculaDano()
+    public int CalculaDano()
     {
         return danoMedio + Random.Range(-5, 5);
     } 
