@@ -43,6 +43,7 @@ public class Inimigo : MonoBehaviour
         private set
         {
             vida = Mathf.Clamp(value, 0, maxVida);
+            LifeBar.fillAmount = ((float)vida / maxVida) ;
         }
     }
 
@@ -67,6 +68,7 @@ public class Inimigo : MonoBehaviour
     public virtual void ReceberDano(int danoRecebido)
     {
         Vida -= danoRecebido;
+       
         InitCBT(danoRecebido.ToString());
         
         
