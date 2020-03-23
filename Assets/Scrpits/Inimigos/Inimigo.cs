@@ -32,7 +32,7 @@ public class Inimigo : MonoBehaviour
     [SerializeField]
     private float velocidadeAtaque;
     [SerializeField]
-    private float ataqueCooldown;
+    protected float ataqueCooldown;
     [SerializeField]
     private int experienciaMorte;
 
@@ -52,21 +52,16 @@ public class Inimigo : MonoBehaviour
     }
 
     protected virtual IEnumerator Atacar()
-    {
-        if (ataqueCooldown <= 0)
-        {          
-            Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
+    {    
+        Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
 
-            if (hit.Length > 0)
-            {
-                Debug.Log("Ataque do inimigo");
-                hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
-            }
-            ataqueCooldown = velocidadeAtaque;
-            yield return new WaitForSeconds(0.5f);
+        if (hit.Length > 0)
+        {
+            Debug.Log("Ataque do inimigo");
+            hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
         }
-        
-        ataqueCooldown -= Time.deltaTime * 1;
+        ataqueCooldown = velocidadeAtaque;
+        yield return new WaitForSeconds(0.5f);              
     }
 
     public virtual void ReceberDano(int danoRecebido)
@@ -140,10 +135,11 @@ public class Inimigo : MonoBehaviour
             if (distancia <= distanciaAtaque)
             {
                 mover = false;
-                StartCoroutine(Atacar());        
+                if(ataqueCooldown<=0)
+                  StartCoroutine(Atacar());        
             }
-            
 
+            ataqueCooldown -= Time.deltaTime * 1;
             Movimentar(collider.transform.position, mover);
         }
 

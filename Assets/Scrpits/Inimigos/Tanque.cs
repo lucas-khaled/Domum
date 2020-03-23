@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tanque : Inimigo
 {
     [SerializeField]
-    private float cooldownGeral = 1;
+    private float cooldownGeral = 1.5f;
     public GameObject escudo;
 
     private bool choose = true;
