@@ -30,7 +30,7 @@ public class Inimigo : MonoBehaviour
     [SerializeField]
     private int vida;
     [SerializeField]
-    private float velocidadeAtaque;
+    protected float velocidadeAtaque;
     [SerializeField]
     protected float ataqueCooldown;
     [SerializeField]
