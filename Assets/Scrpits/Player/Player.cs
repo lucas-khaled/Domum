@@ -40,8 +40,9 @@ public class Player : MonoBehaviour
             estado_player = value;
             if (value == EstadoPlayer.NORMAL)
             {
-                InvokeRepeating("ProcuraInimigo", 0f, 0.2f);
+                InvokeRepeating("ProcuraInimigo", 0f, 0.2f); 
             }
+            EventsController.onPlayerStateChanged.Invoke(estado_player);
         }
     }
 
@@ -83,9 +84,13 @@ public class Player : MonoBehaviour
     void Awake()
     {
         EventsController.onMorteInimigoCallback += OnMorteInimigo;
-        estadoPlayer = EstadoPlayer.NORMAL;
         player = this;
         vida = maxVida;
+    }
+
+    private void Start()
+    {
+        estadoPlayer = EstadoPlayer.NORMAL;
     }
     #endregion
 
@@ -167,12 +172,10 @@ public class Player : MonoBehaviour
     private bool ProcuraInimigo()
     {
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioPercepcao, LayerMask.GetMask("Inimigo"));
-        if (hit != null)
+        if (hit.Length > 0)
         {
             foreach (Collider inimigo in hit)
-            {
-                try
-                {
+            {             
                     if (inimigo.GetComponent<Inimigo>().hostil)
                     {
                         estadoPlayer = EstadoPlayer.COMBATE;
@@ -180,8 +183,6 @@ public class Player : MonoBehaviour
                         CancelInvoke("ProcuraInimigo");
                         return true;
                     }
-                }
-                catch { }
             }         
         }
 
@@ -209,6 +210,11 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && estadoPlayer == EstadoPlayer.COMBATE)
         {
             StartCoroutine(Atacar());
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Interagir();
         }
     }
 
@@ -249,7 +255,9 @@ public class Player : MonoBehaviour
 
     private void Interagir()
     {
-
+        if (InteracaoController.instance.interagivelAtual != null)
+            InteracaoController.instance.interagivelAtual.Interact();
+        
     }
 
     void OnMorteInimigo(int xp)
@@ -259,7 +267,7 @@ public class Player : MonoBehaviour
     }
 
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, raioPercepcao);
 
