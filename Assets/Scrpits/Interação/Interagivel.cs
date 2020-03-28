@@ -11,7 +11,7 @@ public class Interagivel : MonoBehaviour
         worldCanvas.SetActive(false);
     }
 
-    public void SwitchCanvas(bool isActual)
+    public void SwitchImagemInteracao(bool isActual)
     {
         worldCanvas.SetActive(isActual);
     }

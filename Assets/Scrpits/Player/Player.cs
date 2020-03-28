@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL }
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IVulnerable
 {
 
     private EstadoPlayer estado_player;
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     private float raioPercepcao;
 
     private int level;
-    private int vida, qtnCristais, dinheiro, experiencia;
+    private int vida, qtnColetavel, dinheiro, experiencia;
 
     #region GETTERS & SETTERS
     public EstadoPlayer estadoPlayer
@@ -46,13 +46,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    public int QtnCristais
+    public int QntColetavel
     {
-        get { return qtnCristais; }
+        get { return qtnColetavel; }
 
         set
         {
-            qtnCristais = Mathf.Clamp(value, 0, maxColetavel);
+            qtnColetavel = Mathf.Clamp(value, 0, maxColetavel);
         }
     }
 
@@ -169,24 +169,24 @@ public class Player : MonoBehaviour
         estadoPlayer = EstadoPlayer.COMBATE;
     }
 
-    private bool ProcuraInimigo()
+    protected Vector3 ProcuraInimigo()
     {
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioPercepcao, LayerMask.GetMask("Inimigo"));
         if (hit.Length > 0)
         {
             foreach (Collider inimigo in hit)
             {             
-                    if (inimigo.GetComponent<Inimigo>().hostil)
+                    if (inimigo.GetComponent<Inimigo>().hostil && inimigo.gameObject.activeSelf)
                     {
                         estadoPlayer = EstadoPlayer.COMBATE;
                         Debug.Log("bInGo");
                         CancelInvoke("ProcuraInimigo");
-                        return true;
+                        return inimigo.transform.position;
                     }
             }         
         }
 
-        return false;
+        return Vector3.zero;
 
     }
 

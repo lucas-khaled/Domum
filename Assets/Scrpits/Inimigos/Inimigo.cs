@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 
 
-public class Inimigo : MonoBehaviour
+public class Inimigo : MonoBehaviour, IVulnerable
 {
 
     [Header("Referências")]

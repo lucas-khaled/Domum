@@ -25,12 +25,19 @@ public class InteracaoController : MonoBehaviour
         if (estadoPlayer == EstadoPlayer.NORMAL)
             InvokeRepeating("InteragivelMaisProximo", 0, 0.1f);
         else
+        {
             CancelInvoke("InteragivelMaisProximo");
+            if (interagivelAtual != null)
+            {
+                interagivelAtual.SwitchImagemInteracao(false);
+            }
+        }
     }
 
     private void Start()
     {
-        InvokeRepeating("InteragivelMaisProximo", 0, 0.1f);
+        if (Player.player.estadoPlayer == EstadoPlayer.NORMAL)
+            InvokeRepeating("InteragivelMaisProximo", 0, 0.1f);
     }
 
     private void InteragivelMaisProximo()
@@ -44,17 +51,17 @@ public class InteracaoController : MonoBehaviour
                 return;
 
             if (interagivelAtual != null)
-                interagivelAtual.SwitchCanvas(false);
+                interagivelAtual.SwitchImagemInteracao(false);
 
             interagivelAtual = atual;
-            interagivelAtual.SwitchCanvas(true);
+            interagivelAtual.SwitchImagemInteracao(true);
         }
 
         else
         {
             if (interagivelAtual != null)
             {
-                interagivelAtual.SwitchCanvas(false);
+                interagivelAtual.SwitchImagemInteracao(false);
                 interagivelAtual = null;
             }
         }
