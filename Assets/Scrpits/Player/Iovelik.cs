@@ -42,8 +42,10 @@ public class Iovelik : Player
 
     private bool escudoCarregado = true;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         QntColetavel = 3;
         RecarregaEscudo = tempoEscudo;
     }

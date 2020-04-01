@@ -17,22 +17,33 @@ public class Tyva : Player
     private float tempoDash;
     [SerializeField]
     private float timeFaca;
-
-
-
+    [SerializeField]
+    private Transform pointerPosition;
 
     Rigidbody rb;
-
     private float contadorFaca;
 
-    private void Start()
+    #region PreSettings
+
+    protected override void Start()
     {
+        base.Start();
         //só para teste, deletar depois
         QntColetavel = 3;
         rb = this.GetComponent<Rigidbody>();
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
     }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        EventsController.onTyvaMira += MirarFaca;
+    }
+    #endregion
+
+
     protected override void Update()
     {
         base.Update();
@@ -56,6 +67,11 @@ public class Tyva : Player
                 rb.velocity = Vector3.zero;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl) && contadorFaca > timeFaca && QntColetavel > 0)
+            EventsController.onTyvaMira.Invoke(true);
+        if (Input.GetKeyUp(KeyCode.LeftControl) && contadorFaca > timeFaca && QntColetavel > 0)
+            EventsController.onTyvaMira.Invoke(false);
 
         contadorFaca += Time.deltaTime;
         tempoDash -= Time.deltaTime;
@@ -91,8 +107,9 @@ public class Tyva : Player
         facaInstanciada.transform.LookAt(target);
     }
 
-    private void MirarFaca()
+    private void MirarFaca(bool ligado)
     {
-
+        if (!ligado)
+            LancarFaca(pointerPosition.position);
     }
 }

@@ -10,7 +10,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
 {
 
     [Header("Referências")]
-    public Image LifeBar;
+    public Image lifeBar;
     public Animator anim;
     public NavMeshAgent NavMesh;
     public Transform posicaoInicial;
@@ -36,6 +36,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
     [SerializeField]
     private int experienciaMorte;
 
+    private Transform hitCanvas;
+
     public int Vida
     {
         get { return vida; }
@@ -43,24 +45,43 @@ public class Inimigo : MonoBehaviour, IVulnerable
         private set
         {
             vida = Mathf.Clamp(value, 0, maxVida);
-            LifeBar.fillAmount = ((float)vida / maxVida) ;
+            UIController.uiController.LifeBar(lifeBar,((float)vida / maxVida));
+        }
+    }
+
+    private void Awake()
+    {
+        // checa se há um canvas como filho, se não houver, cria um filho worldSpace Canvas e o nomea adequadamente.
+        if(transform.GetComponentInChildren<Canvas>() == null)
+        {
+            GameObject hitLife = new GameObject();
+            hitLife.transform.SetParent(this.transform);
+            hitLife.transform.position = new Vector3(0, 1, 0);
+            hitLife.name = "Hit_Life";
+            hitLife.AddComponent<Canvas>().renderMode = RenderMode.WorldSpace;
         }
     }
 
     private void Start()
     {
         Vida = maxVida;
+        hitCanvas = transform.Find("Hit_life");
     }
 
+    //realiza o ataque do inimigo
     protected virtual IEnumerator Atacar()
     {    
+
         Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
 
+        // é checado se o ataque atingiu o player e lhe dá o dano
         if (hit.Length > 0)
         {
             Debug.Log("Ataque do inimigo");
             hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
         }
+
+        //reseta o cooldown(espera) do ataque e espera para tocar a animação
         ataqueCooldown = velocidadeAtaque;
         yield return new WaitForSeconds(0.5f);              
     }
@@ -68,8 +89,9 @@ public class Inimigo : MonoBehaviour, IVulnerable
     public virtual void ReceberDano(int danoRecebido)
     {
         Vida -= danoRecebido;
-       
-        InitCBT(danoRecebido.ToString());
+        
+        //chama metodo do UIController para exibir o dano no worldCanvas
+        UIController.uiController.InitCBT(danoRecebido.ToString(), CBTprefab, hitCanvas);
         
         
         if (vida <= 0)
@@ -83,25 +105,12 @@ public class Inimigo : MonoBehaviour, IVulnerable
         }
         
     }
-    
-    void InitCBT(string text)
-    {
-        
-        GameObject temp = Instantiate(CBTprefab) as GameObject;
-        
-        RectTransform tempRect = temp.GetComponent<RectTransform>();
-        temp.transform.SetParent(transform.Find("Hit_life"));
-        tempRect.transform.localPosition = CBTprefab.transform.localPosition;
-        tempRect.transform.localScale = CBTprefab.transform.localScale;
-        tempRect.transform.localRotation = CBTprefab.transform.localRotation;
-        temp.GetComponent<Animator>().SetTrigger("Hit");
-        temp.GetComponent<Text>().text = text;
-        
-        Destroy(temp.gameObject,2);
-    }
+   
     void Morrer()
     {
         Destroy(this.gameObject);
+
+        //AQUI O DELEGATE DE MORTE DO INIGO É CHAMADO E TODOS OS MÉTODOS INSCRITOS NESTE DELEGATE SERÃO CHAMADOS
         if (EventsController.onMorteInimigoCallback != null)
         {
             EventsController.onMorteInimigoCallback.Invoke(experienciaMorte);

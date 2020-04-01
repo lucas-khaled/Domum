@@ -15,6 +15,7 @@ public class CameraFollow : MonoBehaviour
     private float rotY = 0.0f; 
     private float rotX = 0.0f;
 
+
     void Start()
     {
         Vector3 rot = transform.localRotation.eulerAngles; // Não entendi a parada do angulo euler
@@ -29,18 +30,17 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        // Olhar imagem dos inputs
-        float inputX = Input.GetAxis("RightStickHorizontal"); // Pega um input criado por mim
-        float inputZ = Input.GetAxis("RightStickVertical"); // Pega um input criado por mim
+       // Olhar imagem dos inputs
+       float inputX = Input.GetAxis("RightStickHorizontal"); // Pega um input criado por mim
+       float inputZ = Input.GetAxis("RightStickVertical"); // Pega um input criado por mim
 
-        rotY += inputX + Input.GetAxis("Mouse X") * inputSensitivity * Time.deltaTime; //Lincado ao euler que não entendi
-        rotX += inputZ + Input.GetAxis("Mouse Y") * inputSensitivity * Time.deltaTime; //Lincado ao euler que não entendi
+       rotY += inputX + Input.GetAxis("Mouse X") * inputSensitivity * Time.deltaTime; //Lincado ao euler que não entendi
+       rotX += inputZ + Input.GetAxis("Mouse Y") * inputSensitivity * Time.deltaTime; //Lincado ao euler que não entendi
 
-        rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle); // o clampAngle é o ângulo que limita o jogador ficar dando 360º no player
+       rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle); // o clampAngle é o ângulo que limita o jogador ficar dando 360º no player
 
-        Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f); //Lincado ao euler que não entendi
-        transform.rotation = localRotation; // muda a rotação
-
+       Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f); //Lincado ao euler que não entendi
+       transform.rotation = localRotation; // muda a rotação
     }
 
     void LateUpdate()
@@ -50,10 +50,9 @@ public class CameraFollow : MonoBehaviour
 
     void CameraUpdater()
     {
-        Transform target = cameraFollowObject.transform; 
+         Transform target = cameraFollowObject.transform;
 
-        float step = cameraMoveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+         float step = cameraMoveSpeed * Time.deltaTime;
+         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
-
 }

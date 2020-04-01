@@ -30,6 +30,8 @@ public class Player : MonoBehaviour, IVulnerable
     private int level;
     private int vida, qtnColetavel, dinheiro, experiencia;
 
+    private Transform hitCanvas;
+
     #region GETTERS & SETTERS
     public EstadoPlayer estadoPlayer
     {
@@ -81,16 +83,17 @@ public class Player : MonoBehaviour, IVulnerable
 
     #region PreSettings
     public static Player player;
-    void Awake()
+    protected virtual void Awake()
     {
         EventsController.onMorteInimigoCallback += OnMorteInimigo;
         player = this;
         vida = maxVida;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         estadoPlayer = EstadoPlayer.NORMAL;
+        hitCanvas = transform.Find("Hit_life");
     }
     #endregion
 
@@ -132,7 +135,7 @@ public class Player : MonoBehaviour, IVulnerable
     public virtual void ReceberDano(int danoRecebido)
     {
         vida = Mathf.Clamp(vida - danoRecebido, 0, maxVida);
-        InitCBT(danoRecebido.ToString());
+        UIController.uiController.InitCBT(danoRecebido.ToString(), CBTprefab, hitCanvas);
         string nomeAnim = "Dano";
 
         if (vida <= 0)
@@ -143,22 +146,6 @@ public class Player : MonoBehaviour, IVulnerable
 
         StartCoroutine(Dano(nomeAnim));
         
-    }
-
-    void InitCBT(string text)
-    {
-        
-        GameObject temp = Instantiate(CBTprefab) as GameObject;
-        
-        RectTransform tempRect = temp.GetComponent<RectTransform>();
-        temp.transform.SetParent(transform.Find("Hit_life"));
-        tempRect.transform.localPosition = CBTprefab.transform.localPosition;
-        tempRect.transform.localScale = CBTprefab.transform.localScale;
-        tempRect.transform.localRotation = CBTprefab.transform.localRotation;
-        temp.GetComponent<Animator>().SetTrigger("Hit");
-        temp.GetComponent<Text>().text = text;
-        
-        Destroy(temp.gameObject,2);
     }
 
     private IEnumerator Dano(string animationName)
@@ -179,7 +166,6 @@ public class Player : MonoBehaviour, IVulnerable
                     if (inimigo.GetComponent<Inimigo>().hostil && inimigo.gameObject.activeSelf)
                     {
                         estadoPlayer = EstadoPlayer.COMBATE;
-                        Debug.Log("bInGo");
                         CancelInvoke("ProcuraInimigo");
                         return inimigo.transform.position;
                     }
@@ -222,10 +208,12 @@ public class Player : MonoBehaviour, IVulnerable
     {
         if (estadoPlayer != EstadoPlayer.ATACANDO)
         {
+
+
             transform.Translate(Vector3.right * velocidade * Input.GetAxis("Horizontal") * Time.deltaTime);
             transform.Translate(Vector3.forward * velocidade * Input.GetAxis("Vertical") * Time.deltaTime);
 
-            if (Input.GetKey(KeyCode.W))
+            /*if (Input.GetKey(KeyCode.W))
             {
                 transform.Translate(Vector3.forward * velocidade * Time.deltaTime);
             }
@@ -243,7 +231,7 @@ public class Player : MonoBehaviour, IVulnerable
             if (Input.GetKey(KeyCode.D))
             {
                 transform.Translate(Vector3.right * velocidade * Time.deltaTime);
-            }
+            }*/
         }
     }
 
@@ -256,8 +244,7 @@ public class Player : MonoBehaviour, IVulnerable
     private void Interagir()
     {
         if (InteracaoController.instance.interagivelAtual != null)
-            InteracaoController.instance.interagivelAtual.Interact();
-        
+            InteracaoController.instance.interagivelAtual.Interact();     
     }
 
     void OnMorteInimigo(int xp)

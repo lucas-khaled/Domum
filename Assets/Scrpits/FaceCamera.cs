@@ -8,7 +8,7 @@ public class FaceCamera : MonoBehaviour
 
     private void Start()
     {
-        cameraPosition = FindObjectOfType<Camera>().transform;
+        cameraPosition = CameraController.cameraInstance.transform;
     }
 
     private void FixedUpdate()

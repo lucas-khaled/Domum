@@ -21,7 +21,6 @@ public class InteracaoController : MonoBehaviour
 
     private void onPlayerStateChanged(EstadoPlayer estadoPlayer)
     {
-        Debug.Log("Carai");
         if (estadoPlayer == EstadoPlayer.NORMAL)
             InvokeRepeating("InteragivelMaisProximo", 0, 0.1f);
         else
