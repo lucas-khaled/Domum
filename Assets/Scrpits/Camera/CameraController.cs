@@ -6,21 +6,56 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    public Transform posicaoMira;
+    public float Sensibilidade_cam = 1;
+    public Transform Target, Player;
+    float mouseX, mouseY;
+
     public Camera cam;
+
+    /*public Transform posicaoMira;
+    
     public Transform posicaoInicial;
+    */
+
+    void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void LateUpdate()
+    {
+        CamControl();
+    }
+
+    void CamControl()
+    {
+        mouseX += Input.GetAxis("Mouse X") * Sensibilidade_cam;
+        mouseY -= Input.GetAxis("Mouse Y") * Sensibilidade_cam;
+        mouseY = Mathf.Clamp(mouseY, -35, 60);
+
+        transform.LookAt(Target);
+        if (Input.GetKey(KeyCode.LeftAlt))
+        {
+            Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+        }
+        else { 
+        Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+        Player.rotation = Quaternion.Euler(0, mouseX, 0);
+        }
+    }
 
     #region SINGLETON
     public static CameraController cameraInstance;
 
 
-    private void Awake()
-    {
-        cameraInstance = this;
-        cam = GetComponent<Camera>();
+     private void Awake()
+     {
+         cameraInstance = this;
+         cam = GetComponent<Camera>();
 
-        //EventsController.onTyvaMira += ChangeCameraPosition;
-    }
+         //EventsController.onTyvaMira += ChangeCameraPosition;
+     }
     #endregion
 
     /*void ChangeCameraPosition(bool ligado)
@@ -54,4 +89,5 @@ public class CameraController : MonoBehaviour
         camFollow.IsChanging(false);
         Debug.Log("Cheguei");
     }*/
+
 }
