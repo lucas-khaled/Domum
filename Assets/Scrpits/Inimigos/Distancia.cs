@@ -9,21 +9,32 @@ public class Distancia : Inimigo
     public Transform pontoTiro;
     protected override IEnumerator Atacar()
     {
-        //tocar animação de mirar
+        Coroutine mira = StartCoroutine(Mirar());
         Transform transform = this.gameObject.transform;
-        transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
+        transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z);
         GameObject gameObject = Instantiate(imagemAlerta, transform);
 
         yield return new WaitForSeconds(0.2f);
 
         Destroy(gameObject);
-
+        StopCoroutine(mira);
         Instantiate(bala, pontoTiro);
         //tocar animação de tiro
+        
 
         yield return new WaitForSeconds(0.5f);
 
         ataqueCooldown = velocidadeAtaque;
 
+    }
+
+    IEnumerator Mirar()
+    {
+        //tocar animação de mirar
+
+        while (true)
+        {
+            this.transform.LookAt(Player.player.transform);
+        }
     }
 }

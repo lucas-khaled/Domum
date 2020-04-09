@@ -7,7 +7,9 @@ public class CameraController : MonoBehaviour
 {
 
     public float Sensibilidade_cam = 1;
-    public Transform Target, Player;
+    public Transform Target;
+
+    Transform player;
     float mouseX, mouseY, controleX, controleY;
     
 
@@ -20,6 +22,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        player = Player.player.transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -34,51 +37,47 @@ public class CameraController : MonoBehaviour
         string[] temp = Input.GetJoystickNames();
         if (temp.Length > 0)
         {
-            for (int i = 0; i < temp.Length; ++i)
+             if (!string.IsNullOrEmpty(temp[0]))
+             {             
+                 Debug.Log("Joystick conectado");
+
+                 controleX += Input.GetAxis("LeftStickHorizontal") * Sensibilidade_cam;
+                 controleY -= Input.GetAxis("LeftStickVertical") * Sensibilidade_cam;
+                 controleY = Mathf.Clamp(controleY, -35, 60);
+
+                 transform.LookAt(Target);
+                 if (Input.GetButton("LeftStickPress"))
+                 {
+                    Target.rotation = Quaternion.Euler(controleY, controleX, 0);
+                 }
+                 else
+                 {
+                    Target.rotation = Quaternion.Euler(controleY, controleX, 0);
+                    player.rotation = Quaternion.Euler(0, controleX, 0);
+                 }
+             }
+        }
+        else
+        {
+
+
+            mouseX += Input.GetAxis("Mouse X") * Sensibilidade_cam;
+            mouseY -= Input.GetAxis("Mouse Y") * Sensibilidade_cam;
+            mouseY = Mathf.Clamp(mouseY, -35, 60);
+
+            transform.LookAt(Target);
+
+            if (Input.GetKey(KeyCode.LeftAlt))
             {
-                if (!string.IsNullOrEmpty(temp[i]))
-                {
-                   
-                    Debug.Log("Controller conectado");
-
-                    controleX += Input.GetAxis("LeftStickHorizontal") * Sensibilidade_cam;
-                    controleY -= Input.GetAxis("LeftStickVertical") * Sensibilidade_cam;
-                    controleY = Mathf.Clamp(controleY, -35, 60);
-
-                    transform.LookAt(Target);
-                    if (Input.GetButton("LeftStickPress"))
-                    {
-                        Target.rotation = Quaternion.Euler(controleY, controleX, 0);
-                    }
-                    else
-                    {
-                        Target.rotation = Quaternion.Euler(controleY, controleX, 0);
-                        Player.rotation = Quaternion.Euler(0, controleX, 0);
-                    }
-                }
-                else
-                {
-                    Debug.Log("Controlle is disconnected.");
-
-                    mouseX += Input.GetAxis("Mouse X") * Sensibilidade_cam;
-                    mouseY -= Input.GetAxis("Mouse Y") * Sensibilidade_cam;
-                    mouseY = Mathf.Clamp(mouseY, -35, 60);
-
-                    transform.LookAt(Target);
-
-                    if (Input.GetKey(KeyCode.LeftAlt))
-                    {
-                        Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-                    }
-                    else
-                    {
-                        Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-                        Player.rotation = Quaternion.Euler(0, mouseX, 0);
-                    }
-
-
-                }
+                Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
             }
+            else
+            {
+                Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+                player.rotation = Quaternion.Euler(0, mouseX, 0);
+            }
+
+
         }
     }
 

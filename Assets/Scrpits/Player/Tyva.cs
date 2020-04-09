@@ -7,8 +7,6 @@ public class Tyva : Player
     float moveHorizontal;
     float moveVertical;
 
-    public Transform posicaoFaca;
-    public GameObject faca;
 
     [Header("Valores Tyva")]
     [SerializeField]
@@ -18,7 +16,11 @@ public class Tyva : Player
     [SerializeField]
     private float timeFaca;
     [SerializeField]
+
+    [Header("Referências Tyva")]
+    public Transform posicaoFaca;
     private Transform pointerPosition;
+    public GameObject faca;
 
     Rigidbody rb;
     private float contadorFaca;
@@ -38,8 +40,6 @@ public class Tyva : Player
     protected override void Awake()
     {
         base.Awake();
-
-        EventsController.onTyvaMira += MirarFaca;
     }
     #endregion
 
@@ -51,7 +51,7 @@ public class Tyva : Player
         if (Input.GetMouseButtonDown(1))
         {
             Faca();
-        }
+        }       
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -67,12 +67,6 @@ public class Tyva : Player
                 rb.velocity = Vector3.zero;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftControl) && contadorFaca > timeFaca && QntColetavel > 0)
-            EventsController.onTyvaMira.Invoke(true);
-        if (Input.GetKeyUp(KeyCode.LeftControl) && contadorFaca > timeFaca && QntColetavel > 0)
-            EventsController.onTyvaMira.Invoke(false);
-
         contadorFaca += Time.deltaTime;
         tempoDash -= Time.deltaTime;
     }
@@ -90,9 +84,7 @@ public class Tyva : Player
 
         Vector3 target = ProcuraInimigo();
         if (target == Vector3.zero)
-        {
-            target = posicaoFaca.forward; 
-        }
+            target = FacaFrontTarget();
 
         StartCoroutine(LancarFaca(target));
     }
@@ -105,11 +97,18 @@ public class Tyva : Player
 
         GameObject facaInstanciada = Instantiate(faca, posicaoFaca.position, faca.transform.rotation);
         facaInstanciada.transform.LookAt(target);
+        facaInstanciada.GetComponent<Bala>().SetCasterCollider(GetComponent<Collider>());
     }
 
-    private void MirarFaca(bool ligado)
+
+    Vector3 FacaFrontTarget()
     {
-        if (!ligado)
-            LancarFaca(pointerPosition.position);
+        float rotY = transform.localEulerAngles.y * Mathf.Deg2Rad;
+
+        Vector3 front = new Vector3(posicaoFaca.position.x + Mathf.Sin(rotY),
+                                       posicaoFaca.position.y,
+                                       posicaoFaca.position.z + Mathf.Cos(rotY));
+
+        return front;
     }
 }

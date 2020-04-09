@@ -179,9 +179,7 @@ public class Player : MonoBehaviour, IVulnerable
     private IEnumerator ProcuraInimigoMorte()
     {
         yield return new WaitForSeconds(1);
-
-        Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioPercepcao, LayerMask.GetMask("Inimigo"));
-        if (hit != null)
+        if (!Physics.CheckSphere(posicaoHit.position, raioPercepcao, LayerMask.GetMask("Inimigo")))
         {
             estadoPlayer = EstadoPlayer.NORMAL;
         }

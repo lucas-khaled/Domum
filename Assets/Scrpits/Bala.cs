@@ -6,12 +6,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bala : MonoBehaviour
 {
-
     public float velocidadeBala;
     public int danoBala;
     public string targetTag;
 
+    Collider casterCollider;
     Rigidbody rb;
+
+    public void SetCasterCollider(Collider caster)
+    {
+        casterCollider = caster;
+    }
 
     private void Start()
     {
@@ -19,7 +24,7 @@ public class Bala : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 
-        Destroy(this.gameObject, 8);
+        Destroy(this.gameObject, 4);
     }
 
     // Update is called once per frame
@@ -30,8 +35,7 @@ public class Bala : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Acertei:" + other.name);
-        if (other.isTrigger)
+        if (other.isTrigger || other == casterCollider)
             return;
 
         if (other.gameObject.CompareTag(targetTag))

@@ -414,8 +414,8 @@ GameObject:
   - component: {fileID: 581483966}
   - component: {fileID: 581483970}
   - component: {fileID: 581483969}
-  - component: {fileID: 581483967}
   - component: {fileID: 581483968}
+  - component: {fileID: 581483967}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -451,8 +451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sensibilidade_cam: 1
   Target: {fileID: 337273986}
-  Player: {fileID: 1016149844}
-  cam: {fileID: 581483970}
+  cam: {fileID: 0}
 --- !u!114 &581483968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,7 +1164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sensibilidade_cam: 1
   Target: {fileID: 1512737004}
-  Player: {fileID: 1480668805}
   cam: {fileID: 963194227}
 --- !u!1 &987239149
 GameObject:
@@ -1301,12 +1299,11 @@ MonoBehaviour:
   velocidade: 6
   maxColetavel: 3
   raioPercepcao: 15
-  posicaoFaca: {fileID: 225415890}
-  faca: {fileID: 7640702850495185563, guid: 3c5481346045a9b4a92900030e5a9462, type: 3}
   velocidadeDash: 12
   tempoDash: 2
   timeFaca: 2
-  pointerPosition: {fileID: 1033728278}
+  posicaoFaca: {fileID: 225415890}
+  faca: {fileID: 7640702850495185563, guid: 3c5481346045a9b4a92900030e5a9462, type: 3}
 --- !u!65 &1016149842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2003,10 +2000,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1415528248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 303aafae5c9b2494ea7b87cff4f61fb9, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bc8ea67c16f0de4b8e65ce97982b02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   worldCanvas: {fileID: 1455199557}
+  item: {fileID: 11400000, guid: 672e892ae0c25d74291a79a51df9d049, type: 2}
 --- !u!65 &1415528250
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2826,7 +2824,7 @@ PrefabInstance:
     - target: {fileID: 1471930652806139536, guid: 2be22f75cec290c479eb4828a3a23081,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1471930652806139536, guid: 2be22f75cec290c479eb4828a3a23081,
         type: 3}
