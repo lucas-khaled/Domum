@@ -8,7 +8,8 @@ public class ItemPickup : Interagivel
 
     public override void Interact()
     {
-        Debug.Log("Peguei: " + item.nome);
+        if (Inventario.inventario.AddItem(item)) 
+            Destroy(gameObject);
     }
 
 }

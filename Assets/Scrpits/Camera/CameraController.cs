@@ -6,6 +6,10 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
+    private enum OrigemInput {MOUSE, JOYSTICK}
+
+    private OrigemInput origem;
+
     public float Sensibilidade_cam = 1;
     public Transform Target;
 
@@ -19,6 +23,17 @@ public class CameraController : MonoBehaviour
     
     public Transform posicaoInicial;
     */
+    
+    #region SINGLETON
+    public static CameraController cameraInstance;
+     private void Awake()
+     {
+         cameraInstance = this;
+         cam = GetComponent<Camera>();
+         
+         //EventsController.onTyvaMira += ChangeCameraPosition;
+     }
+    #endregion
 
     void Start()
     {
@@ -29,38 +44,31 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        CamControl();
+        CamControl(QualOrigemInput());
     }
 
-    void CamControl()
+    void CamControl(OrigemInput origemInput)
     {
-        string[] temp = Input.GetJoystickNames();
-        if (temp.Length > 0)
+        if (origemInput == OrigemInput.JOYSTICK)
         {
-             if (!string.IsNullOrEmpty(temp[0]))
-             {             
-                 Debug.Log("Joystick conectado");
+            Debug.Log(Input.GetAxis("RightStickVertical"));
+            controleX += Input.GetAxis("RightStickHorizontal") * Sensibilidade_cam;
+            controleY -= Input.GetAxis("RightStickVertical") * Sensibilidade_cam;
+            controleY = Mathf.Clamp(controleY, -35, 120);
 
-                 controleX += Input.GetAxis("LeftStickHorizontal") * Sensibilidade_cam;
-                 controleY -= Input.GetAxis("LeftStickVertical") * Sensibilidade_cam;
-                 controleY = Mathf.Clamp(controleY, -35, 60);
-
-                 transform.LookAt(Target);
-                 if (Input.GetButton("LeftStickPress"))
-                 {
-                    Target.rotation = Quaternion.Euler(controleY, controleX, 0);
-                 }
-                 else
-                 {
-                    Target.rotation = Quaternion.Euler(controleY, controleX, 0);
-                    player.rotation = Quaternion.Euler(0, controleX, 0);
-                 }
-             }
+            transform.LookAt(Target);
+            if (Input.GetButton("RightStickPress"))
+            {
+                 Target.rotation = Quaternion.Euler(controleY, controleX, 0);
+            }
+            else
+            {
+                 Target.rotation = Quaternion.Euler(controleY, controleX, 0);
+                 player.rotation = Quaternion.Euler(0, controleX, 0);
+            }
         }
         else
         {
-
-
             mouseX += Input.GetAxis("Mouse X") * Sensibilidade_cam;
             mouseY -= Input.GetAxis("Mouse Y") * Sensibilidade_cam;
             mouseY = Mathf.Clamp(mouseY, -35, 60);
@@ -77,22 +85,20 @@ public class CameraController : MonoBehaviour
                 player.rotation = Quaternion.Euler(0, mouseX, 0);
             }
 
-
         }
     }
 
-    #region SINGLETON
-    public static CameraController cameraInstance;
 
+    private OrigemInput QualOrigemInput()
+    {
+        OrigemInput origemAtual = OrigemInput.MOUSE;
 
-     private void Awake()
-     {
-         cameraInstance = this;
-         cam = GetComponent<Camera>();
+        string[] temp = Input.GetJoystickNames();
+        if (temp.Length > 0 && !string.IsNullOrEmpty(temp[0]))
+            origemAtual = OrigemInput.JOYSTICK;
 
-         //EventsController.onTyvaMira += ChangeCameraPosition;
-     }
-    #endregion
+        return origemAtual;
+    }
 
     /*void ChangeCameraPosition(bool ligado)
     {

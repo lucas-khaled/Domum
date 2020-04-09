@@ -1481,6 +1481,7 @@ GameObject:
   - component: {fileID: 1125846902}
   - component: {fileID: 1125846901}
   - component: {fileID: 1125846903}
+  - component: {fileID: 1125846904}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1531,6 +1532,19 @@ MonoBehaviour:
   pointerPosition: {fileID: 0}
   pointer: {fileID: 1388029253}
   Canvas2D: {fileID: 1749861224}
+--- !u!114 &1125846904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125846900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc9f11aab8073846aa6ec0404463edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pesoMaximo: 100
 --- !u!1 &1159064428
 GameObject:
   m_ObjectHideFlags: 0
