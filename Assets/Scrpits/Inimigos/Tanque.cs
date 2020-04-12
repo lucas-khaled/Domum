@@ -25,7 +25,6 @@ public class Tanque : Inimigo
                    EscolheAcao();
             }
 
-
             Movimentar(collider.transform.position, mover);
         }
     }
@@ -63,6 +62,8 @@ public class Tanque : Inimigo
 
     void EscolheAcao()
     {
+        //talvez colocar probabilidade de acordo com a vida do tanque. 12/04/2020
+
         int chance = Mathf.CeilToInt(Random.Range(1, 100));
 
         if (chance >= 50)      
@@ -70,5 +71,4 @@ public class Tanque : Inimigo
         else
             StartCoroutine(Defender());
     }
-
 }
