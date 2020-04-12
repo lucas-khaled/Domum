@@ -32,11 +32,11 @@ public class Inimigo : MonoBehaviour, IVulnerable
     [SerializeField]
     protected float velocidadeAtaque;
     [SerializeField]
-    protected float ataqueCooldown;
-    [SerializeField]
     private int experienciaMorte;
 
     private Transform hitCanvas;
+
+    protected float ataqueCooldown;
 
     public int Vida
     {
