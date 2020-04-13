@@ -26,6 +26,8 @@ public class Player : MonoBehaviour, IVulnerable
     private int maxColetavel;
     [SerializeField]
     private float raioPercepcao;
+    [SerializeField]
+    private float raioAtaque = 2f;
 
     private int level;
     private int vida, qtnColetavel, dinheiro, experiencia;
@@ -105,7 +107,7 @@ public class Player : MonoBehaviour, IVulnerable
         // tocar animação de ataque
 
        
-        Collider[] hit = Physics.OverlapSphere(posicaoHit.position, 2, LayerMask.GetMask("Inimigo"));
+        Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
 
         if (hit.Length > 0)
         {

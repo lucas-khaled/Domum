@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
     public float Sensibilidade_cam = 1;
     public Transform Target;
 
-    Transform player;
+    public Transform player;
     float mouseX, mouseY, controleX, controleY;
     
 
@@ -37,7 +37,6 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        player = Player.player.transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

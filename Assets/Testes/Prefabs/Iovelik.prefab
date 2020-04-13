@@ -87,6 +87,7 @@ MonoBehaviour:
   velocidade: 4
   maxColetavel: 3
   raioPercepcao: 14
+  raioAtaque: 2
   escudo: {fileID: 972326336698842784}
   tempoEscudo: 3
   tempoRecargaEscudo: 1.5
@@ -209,6 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sensibilidade_cam: 1
   Target: {fileID: 972326336428154056}
+  player: {fileID: 3566967874879947802}
   cam: {fileID: 972326335945718103}
 --- !u!1 &972326336313636787
 GameObject:
@@ -468,6 +470,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3566967874879947802}
     m_Modifications:
+    - target: {fileID: -9189589845202050852, guid: 00c5ee0688482c6419125ad6a73a2c07,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d8e5c1d266ac5134d8eed2aba0d230b9, type: 2}
+    - target: {fileID: -4704535907922322595, guid: 00c5ee0688482c6419125ad6a73a2c07,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d8e5c1d266ac5134d8eed2aba0d230b9, type: 2}
     - target: {fileID: -4216859302048453862, guid: 00c5ee0688482c6419125ad6a73a2c07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -528,6 +540,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IovelikA
       objectReference: {fileID: 0}
+    - target: {fileID: 1449055210769607652, guid: 00c5ee0688482c6419125ad6a73a2c07,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d8e5c1d266ac5134d8eed2aba0d230b9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c5ee0688482c6419125ad6a73a2c07, type: 3}
 --- !u!4 &2272518660415447134 stripped

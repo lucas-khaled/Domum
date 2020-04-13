@@ -17,7 +17,8 @@ public class Iovelik : Player
     private float esperaDanoArea = 0;
     private float distancia;
 
-    private float recarregaEscudo;   
+    private float recarregaEscudo;
+    bool usandoDanoArea = false;
     public float RecarregaEscudo
     {
         get
@@ -98,15 +99,18 @@ public class Iovelik : Player
         if (esperaDanoArea < 0 && QntColetavel > 0)
         {
             Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioDanoArea, LayerMask.GetMask("Inimigo"));
+
             foreach (Collider inimigoArea in hit)
             {
                 distancia = Vector3.Distance(inimigoArea.gameObject.transform.position, this.gameObject.transform.position);
                 inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));
                 esperaDanoArea = coolDownDanoArea;
-                QntColetavel--;
             }
+
+            QntColetavel--;
+            yield return new WaitForSeconds(0.5f);
         }
-        yield return new WaitForSeconds(0.5f);
         estadoPlayer = EstadoPlayer.COMBATE;
+
     }
 }
