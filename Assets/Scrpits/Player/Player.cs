@@ -28,9 +28,7 @@ public class Player : MonoBehaviour, IVulnerable
     private float raioPercepcao;
     [SerializeField]
     private float raioAtaque = 2f;
-    private Rigidbody rb;
-    [SerializeField]
-    private float boostAtaque;
+    protected Rigidbody rb;
 
     private int level;
     private int vida, qtnColetavel, dinheiro, experiencia;
@@ -98,31 +96,26 @@ public class Player : MonoBehaviour, IVulnerable
 
     protected virtual void Start()
     {
+        rb = this.GetComponent<Rigidbody>();
         estadoPlayer = EstadoPlayer.NORMAL;
         hitCanvas = transform.Find("Hit_life");
     }
     #endregion
 
     #region COMBATE
+    private void MoverPlayerAtaque()
+    {
+        //transform.LookAt((transform.forward * velocidade * Input.GetAxis("Vertical")) + (transform.right * velocidade * Input.GetAxis("Horizontal")) + player.transform.position);
+        rb.velocity = (transform.forward * 3);
+    }
+
     private IEnumerator Atacar()
     {
         estadoPlayer = EstadoPlayer.ATACANDO;
 
         // tocar animação de ataque
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.AddForce(-transform.right * boostAtaque, ForceMode.VelocityChange);
-        }
-        else
-            if (Input.GetKey(KeyCode.D))
-            {
-                rb.AddForce(transform.right * boostAtaque, ForceMode.VelocityChange);
-            }
-            else if (!Input.GetKey(KeyCode.S))
-            {
-                rb.AddForce(transform.forward * boostAtaque, ForceMode.VelocityChange);
-            }
+        MoverPlayerAtaque();
 
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
 
@@ -223,31 +216,10 @@ public class Player : MonoBehaviour, IVulnerable
 
     void Movimento()
     {
-        /*if (estadoPlayer != EstadoPlayer.ATACANDO)
-        {*/
-        transform.Translate(Vector3.right * velocidade * Input.GetAxis("Horizontal") * Time.deltaTime);
-            transform.Translate(Vector3.forward * velocidade * Input.GetAxis("Vertical") * Time.deltaTime);
-
-            /*if (Input.GetKey(KeyCode.W))
-            {
-                transform.Translate(Vector3.forward * velocidade * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.Translate(-Vector3.forward * velocidade * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(-Vector3.right * velocidade * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(Vector3.right * velocidade * Time.deltaTime);
-            }*/
-        //}
+        if (estadoPlayer != EstadoPlayer.ATACANDO)
+        {
+            rb.velocity = (transform.forward * velocidade * Input.GetAxis("Vertical")) + (transform.right * velocidade * Input.GetAxis("Horizontal"));
+        }
     }
 
 

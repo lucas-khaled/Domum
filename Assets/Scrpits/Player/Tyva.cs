@@ -15,14 +15,11 @@ public class Tyva : Player
     private float tempoDash;
     [SerializeField]
     private float timeFaca;
-    [SerializeField]
 
     [Header("Referências Tyva")]
     public Transform posicaoFaca;
     private Transform pointerPosition;
     public GameObject faca;
-
-    Rigidbody rb;
     private float contadorFaca;
 
     #region PreSettings

@@ -4484,6 +4484,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Iovelik
       objectReference: {fileID: 0}
+    - target: {fileID: 566103055828121097, guid: 39e1b8d74710639468d8e1c4294b7ca4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 972326336467378850, guid: 39e1b8d74710639468d8e1c4294b7ca4,
+        type: 3}
+      propertyPath: boostAtaque
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3566967874879947802, guid: 39e1b8d74710639468d8e1c4294b7ca4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7929,6 +7939,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tyva
+      objectReference: {fileID: 0}
+    - target: {fileID: 7527718327364399422, guid: 5fb8b67462c1d434bba393b5c705ae7a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8504069874198487857, guid: 5fb8b67462c1d434bba393b5c705ae7a,
+        type: 3}
+      propertyPath: boostAtaque
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fb8b67462c1d434bba393b5c705ae7a, type: 3}
