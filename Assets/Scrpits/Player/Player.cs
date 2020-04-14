@@ -28,6 +28,9 @@ public class Player : MonoBehaviour, IVulnerable
     private float raioPercepcao;
     [SerializeField]
     private float raioAtaque = 2f;
+    private Rigidbody rb;
+    [SerializeField]
+    private float boostAtaque;
 
     private int level;
     private int vida, qtnColetavel, dinheiro, experiencia;
@@ -87,6 +90,7 @@ public class Player : MonoBehaviour, IVulnerable
     public static Player player;
     protected virtual void Awake()
     {
+        rb = this.GetComponent<Rigidbody>();
         EventsController.onMorteInimigoCallback += OnMorteInimigo;
         player = this;
         vida = maxVida;
@@ -106,7 +110,20 @@ public class Player : MonoBehaviour, IVulnerable
 
         // tocar animação de ataque
 
-       
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.AddForce(-transform.right * boostAtaque, ForceMode.VelocityChange);
+        }
+        else
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(transform.right * boostAtaque, ForceMode.VelocityChange);
+            }
+            else if (!Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(transform.forward * boostAtaque, ForceMode.VelocityChange);
+            }
+
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
 
         if (hit.Length > 0)
@@ -206,11 +223,9 @@ public class Player : MonoBehaviour, IVulnerable
 
     void Movimento()
     {
-        if (estadoPlayer != EstadoPlayer.ATACANDO)
-        {
-
-
-            transform.Translate(Vector3.right * velocidade * Input.GetAxis("Horizontal") * Time.deltaTime);
+        /*if (estadoPlayer != EstadoPlayer.ATACANDO)
+        {*/
+        transform.Translate(Vector3.right * velocidade * Input.GetAxis("Horizontal") * Time.deltaTime);
             transform.Translate(Vector3.forward * velocidade * Input.GetAxis("Vertical") * Time.deltaTime);
 
             /*if (Input.GetKey(KeyCode.W))
@@ -232,7 +247,7 @@ public class Player : MonoBehaviour, IVulnerable
             {
                 transform.Translate(Vector3.right * velocidade * Time.deltaTime);
             }*/
-        }
+        //}
     }
 
 

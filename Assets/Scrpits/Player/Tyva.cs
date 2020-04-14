@@ -32,7 +32,6 @@ public class Tyva : Player
         base.Start();
         //só para teste, deletar depois
         QntColetavel = 3;
-        rb = this.GetComponent<Rigidbody>();
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
     }
