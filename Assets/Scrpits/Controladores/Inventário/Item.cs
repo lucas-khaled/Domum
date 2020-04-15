@@ -13,6 +13,4 @@ public class Item : ScriptableObject
     public float peso;
 
     public Sprite icone;
-
-
 }

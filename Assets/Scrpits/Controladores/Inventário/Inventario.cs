@@ -15,10 +15,21 @@ public class Inventario : MonoBehaviour
 
     #endregion
 
-    public float pesoMaximo;
+    [HideInInspector]
+    public SkinnedMeshRenderer armaMesh;
+    public float pesoMaximo;   
+    public Arma armaDefault;
+    [HideInInspector]
+    public Arma armaEquipada;
 
     List<Item> itens = new List<Item>();
     private float pesoInventario = 0;
+
+
+    private void Start()
+    {
+        armaEquipada = armaDefault;
+    }
 
     public bool AddItem(Item item)
     {
@@ -39,12 +50,40 @@ public class Inventario : MonoBehaviour
         pesoInventario -= item.peso;
     }
 
+    #region ARMA
+    public void EquipArma(Arma arma)
+    {
+        if(Player.player.level >= arma.nivelMinimo)
+        {
+            UnequipArma();
+            armaEquipada = arma;
+            itens.Remove(arma);
+            armaMesh.sharedMesh = arma.armaMesh;
+        }
+    }
+    
+    public void UnequipArma()
+    {
+        if (armaEquipada != null)
+        {
+            armaMesh.sharedMesh = null;
+            itens.Add(armaEquipada);
+            armaEquipada = null;
+        }
+    }
+    #endregion
+
     //so de teste. Apagar depois
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
             RemoverItem(itens[0]);
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Arma arma= (Arma)itens.Find(x => x.GetType() == typeof(Arma));
+            EquipArma(arma);
         }
     }
 }

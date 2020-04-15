@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL }
 
+[RequireComponent(typeof(Rigidbody))] [RequireComponent(typeof(Collider))]
 public class Player : MonoBehaviour, IVulnerable
 {
 
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour, IVulnerable
     private float raioAtaque = 2f;
     protected Rigidbody rb;
 
-    private int level;
+    public int level;
     private int vida, qtnColetavel, dinheiro, experiencia;
 
     private Transform hitCanvas;

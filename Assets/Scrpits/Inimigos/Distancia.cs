@@ -15,16 +15,17 @@ public class Distancia : Inimigo
 
         Transform transform = this.gameObject.transform;
         transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z);
-        GameObject gameObject = Instantiate(imagemAlerta, transform.position, imagemAlerta.transform.rotation);
-        gameObject.AddComponent<FaceCamera>();
+
+        GameObject alerta = Instantiate(imagemAlerta, transform.position, imagemAlerta.transform.rotation);
+        alerta.AddComponent<FaceCamera>();
 
 
         yield return new WaitForSeconds(3f);
 
-        Destroy(gameObject);
+        Destroy(alerta);
         StopCoroutine(mira);
 
-        GameObject balaInstanciada = Instantiate(bala, pontoTiro.position, bala.transform.rotation);
+        GameObject balaInstanciada = Instantiate(bala, pontoTiro.position, pontoTiro.transform.rotation);
         balaInstanciada.GetComponent<Bala>().SetCasterCollider(this.GetComponent<Collider>());
         
         //tocar animação de tiro
