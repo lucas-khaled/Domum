@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
 
     public Transform player;
     float mouseX, mouseY, controleX, controleY;
+    float controleXEsq, grauRotacao;
     
 
     public Camera cam;
@@ -50,22 +51,16 @@ public class CameraController : MonoBehaviour
     {
         if (origemInput == OrigemInput.JOYSTICK)
         {
-            Debug.Log(Input.GetAxis("RightStickVertical"));
             controleX += Input.GetAxis("RightStickHorizontal") * Sensibilidade_cam;
             controleY -= Input.GetAxis("RightStickVertical") * Sensibilidade_cam;
             controleY = Mathf.Clamp(controleY, -35, 120);
 
             transform.LookAt(Target);
-            if (Input.GetButton("RightStickPress"))
-            {
-                 Target.rotation = Quaternion.Euler(controleY, controleX, 0);
-            }
-            else
-            {
-                 Target.rotation = Quaternion.Euler(controleY, controleX, 0);
-                 player.rotation = Quaternion.Euler(0, controleX, 0);
-            }
+            Target.rotation = Quaternion.Euler(controleY, controleX, 0);
+            player.rotation = Quaternion.Euler(0, controleX, 0);
+
         }
+
         else
         {
             mouseX += Input.GetAxis("Mouse X") * Sensibilidade_cam;
