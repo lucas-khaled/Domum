@@ -123,7 +123,6 @@ public class Player : MonoBehaviour, IVulnerable
         if (hit.Length > 0)
         {
             int danin = CalculaDano();
-            Debug.Log("Ataque: " + danin);
             hit[0].gameObject.GetComponent<Inimigo>().ReceberDano(danin);
         }
 

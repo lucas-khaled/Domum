@@ -77,7 +77,6 @@ public class Inimigo : MonoBehaviour, IVulnerable
         // é checado se o ataque atingiu o player e lhe dá o dano
         if (hit.Length > 0)
         {
-            Debug.Log("Ataque do inimigo");
             hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
         }
 

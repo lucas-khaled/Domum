@@ -2,49 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Nova Quest", menuName = "Quest/Quest")]
+[CreateAssetMenu(fileName = "Nova Quest", menuName = "Quest/Nova Quest")]
 public class Quest : ScriptableObject
 {
     public bool principal;
+    public string nome;
+
     public List<Condicoes> condicoes;
 
     Condicoes condicaoAtual;
-    bool realizada, ativa;
+    bool realizada, aceita;
     int numCondicoes, condicaoAtualIndex;
 
-    private void Awake()
+    public Condicoes getCondicaoAtual()
     {
-        
+        return condicaoAtual;
     }
 
     public void AceitarQuest()
     {
-        QuestLog.questLog.AdicionarQuest(this);
         condicaoAtual = condicoes[0];
-        condicaoAtual.SetCondicaoAtual();
         realizada = false;
-        numCondicoes = condicoes.Count;
         condicaoAtualIndex = 0;
-
+        aceita = true;
     }
 
-    private void ProximaCondicao()
+    public Condicoes ProximaCondicao()
     {
-        condicaoAtual.SetCondicaoRealizada();
-        if (condicaoAtualIndex < numCondicoes)
+        condicaoAtualIndex++;
+        if (condicaoAtualIndex < condicoes.Count)
         {
-            condicaoAtual = condicoes[++condicaoAtualIndex];
-            condicaoAtual.SetCondicaoAtual();
+            condicaoAtual = condicoes[condicaoAtualIndex];
         }
         else
         {
-            TerminaMissao();
+            condicaoAtual = null;
+            //TerminaMissao();
         }
+
+        return condicaoAtual;
     }
 
-    private void TerminaMissao()
+    public void TerminaMissao()
     {
         // adicionar recompensa
+
         realizada = true;
+    }
+
+    public bool IsRealizada()
+    {
+        return realizada;
     }
 }

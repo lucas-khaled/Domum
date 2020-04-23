@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Caminhar : StateMachineBehaviour
+public class Girafa : StateMachineBehaviour
 {
     public NavMeshAgent animal;
     public GameObject[] waypoints;

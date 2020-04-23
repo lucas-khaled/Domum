@@ -9,8 +9,5 @@ public static class EventsController
 
     public delegate void OnPlayerChangeState(EstadoPlayer estadoPlayer);
     public static OnPlayerChangeState onPlayerStateChanged;
-
-    public delegate void OnTyvaMira(bool ligado);
-    public static OnTyvaMira onTyvaMira;
 }
 
