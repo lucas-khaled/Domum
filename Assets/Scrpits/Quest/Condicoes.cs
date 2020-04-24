@@ -17,10 +17,13 @@ public class Condicoes
     public List<GameObject> inimigosDaCondicao;
     public float raioDeSpawn = 2;
     public float distanciaChegada;
+    public Interagivel interagivel;
 
     #endregion
 
     GameObject inimigoParent;
+
+
     public bool ChecaCondicao()
     {
         bool volta = false;
@@ -35,10 +38,15 @@ public class Condicoes
             volta = CheckCombate();
         }
 
+        if(tipoCondicao == TipoCondicao.INTERACAO)
+        {
+            volta = CheckInteracao();
+        }
+
         return volta;
     }
 
-
+    #region IDA
     private bool CheckIda()
     {
         if (Vector3.Distance(Player.player.transform.position, local) < distanciaChegada)
@@ -48,7 +56,9 @@ public class Condicoes
 
         return false;
     }
+    #endregion
 
+    #region COMBATE
     private bool CheckCombate()
     {
         bool retorno = false;
@@ -59,6 +69,25 @@ public class Condicoes
         Debug.Log(retorno);
         return retorno;
     }
+    #endregion
+
+    #region INTERACAO
+    bool interagiu = false;
+    private bool CheckInteracao()
+    {
+        return interagiu;
+    }
+
+    private void OnInteracao(Interagivel interagido)
+    {
+        Debug.Log(interagido.name + " - " + interagivel.name);
+        if(interagido == interagivel)
+        {
+            Debug.Log("issaaa");
+            interagiu = true;
+        }
+    }
+    #endregion
 
     public void AtivarCondicao()
     {      
@@ -75,6 +104,13 @@ public class Condicoes
                 GameObject inimigoInstanciado = MonoBehaviour.Instantiate(inimigo, loc, rot);
                 inimigoInstanciado.transform.SetParent(inimigoParent.transform);
             }
+        }
+
+        if(tipoCondicao == TipoCondicao.INTERACAO)
+        {
+            GameObject interagivelObj = MonoBehaviour.Instantiate(interagivel.gameObject, local, interagivel.gameObject.transform.rotation);
+            interagivel = interagivelObj.GetComponent<Interagivel>();
+            EventsController.onInteracao += OnInteracao;
         }
     }
 }

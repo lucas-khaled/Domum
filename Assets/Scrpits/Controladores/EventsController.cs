@@ -9,5 +9,8 @@ public static class EventsController
 
     public delegate void OnPlayerChangeState(EstadoPlayer estadoPlayer);
     public static OnPlayerChangeState onPlayerStateChanged;
+
+    public delegate void OnInteracao(Interagivel interagivel);
+    public static OnInteracao onInteracao;
 }
 

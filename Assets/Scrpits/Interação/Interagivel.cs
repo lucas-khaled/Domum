@@ -18,7 +18,11 @@ public class Interagivel : MonoBehaviour
 
     public virtual void Interact()
     {
-        Debug.Log("Interagi" + this.transform.name);
+        if (EventsController.onInteracao != null)
+        {
+            EventsController.onInteracao.Invoke(this);
+            Debug.Log("uooou");
+        }
     }
 
 }
