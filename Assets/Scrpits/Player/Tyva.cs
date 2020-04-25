@@ -59,6 +59,7 @@ public class Tyva : Player
             }
             else
             {
+                UIController.uiController.SkillCD(player.Skill,1/tempoDash*Time.deltaTime);//Controlador UI da recarga
                 tempoDash -= Time.deltaTime;
                 rb.velocity = Vector3.zero;
             }
@@ -69,6 +70,8 @@ public class Tyva : Player
     void Dash(Vector3 movimento)
     {
         rb.AddForce(transform.forward * velocidadeDash, ForceMode.VelocityChange);
+
+        UIController.uiController.SkillCD(player.Skill,0);//Zerar Ui de recarga
 
         rb.velocity = Vector3.zero;
     }

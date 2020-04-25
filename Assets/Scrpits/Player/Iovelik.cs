@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Iovelik : Player
 {
     [Header("Valores Iovelik")]
     public GameObject escudo;
+    
     public float tempoEscudo = 3;
     public float tempoRecargaEscudo = 1.5f;
     [SerializeField]
@@ -35,6 +37,7 @@ public class Iovelik : Player
 
             if (value <= 0)
             {
+                
                 escudoCarregado = false;
                 AtivarEscudo(false);
             }
@@ -59,7 +62,9 @@ public class Iovelik : Player
         {
             StartCoroutine(danoArea());
         }
+        if(esperaDanoArea != 0){
         esperaDanoArea -= Time.deltaTime;
+        }
 
         if (Input.GetKey(KeyCode.LeftShift) && escudoCarregado && recarregaEscudo > 0)
         {
@@ -72,6 +77,7 @@ public class Iovelik : Player
             escudoCarregado = false;
         }
         RecarregaEscudo += tempoRecargaEscudo * Time.deltaTime;
+        UIController.uiController.SkillCD(player.Skill,1/RecarregaEscudo);//Controlador da barra de recarga da skill
     }
 
     public override void ReceberDano(int danoRecebido)
@@ -89,6 +95,8 @@ public class Iovelik : Player
     {
         escudo.SetActive(ativo);
 
+        UIController.uiController.LifeBar(player.Skill,0);//Zerar barra de recarga
+
         RecarregaEscudo = ativo ? RecarregaEscudo - Time.deltaTime : RecarregaEscudo + tempoRecargaEscudo * Time.deltaTime;
         estadoPlayer = ativo ? EstadoPlayer.RECARREGAVEL : EstadoPlayer.COMBATE;
     }
@@ -96,7 +104,7 @@ public class Iovelik : Player
     private IEnumerator danoArea()
     {
         estadoPlayer = EstadoPlayer.ATACANDO;
-        if (esperaDanoArea < 0 && QntColetavel > 0)
+        if (esperaDanoArea == 0 && QntColetavel > 0)
         {
             Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioDanoArea, LayerMask.GetMask("Inimigo"));
 

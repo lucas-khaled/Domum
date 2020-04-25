@@ -14,6 +14,15 @@ public class Player : MonoBehaviour, IVulnerable
     [Header("Referências")]
     public Transform posicaoHit;
     public GameObject CBTprefab;
+    public Image lifeBar;
+    public Image XpBar;
+    public Image Skill;
+
+    [Header("Coletaveis_UI")]
+    //public Image[] Coletaveis_Slot = new Image[5];
+    //public Image[] Coletaveis = new Image[5];
+
+
 
     //Adicionar Interagível
 
@@ -28,6 +37,7 @@ public class Player : MonoBehaviour, IVulnerable
     [SerializeField]
     private float raioPercepcao;
     [SerializeField]
+    private float XPRequisito = 100;//Variavel so pra testar barra de xp, se quiser pode usar ja para fazer level up
     private float raioAtaque = 2f;
     protected Rigidbody rb;
 
@@ -93,6 +103,7 @@ public class Player : MonoBehaviour, IVulnerable
         EventsController.onMorteInimigoCallback += OnMorteInimigo;
         player = this;
         vida = maxVida;
+        
     }
 
     protected virtual void Start()
@@ -198,10 +209,19 @@ public class Player : MonoBehaviour, IVulnerable
 
     }
     #endregion
+    /*void VerificarColetaveis()
+    {
+        
+    }*/
 
     protected virtual void Update()
     {
+        
         Movimento();
+        //VerificarColetaveis();
+        UIController.uiController.LifeBar(lifeBar,((float)vida / maxVida));//controle barra de vida
+        UIController.uiController.XPbar(XpBar,((float)experiencia / XPRequisito));//controle barra de xp
+
 
         if (Input.GetMouseButtonDown(0) && estadoPlayer == EstadoPlayer.COMBATE)
         {
@@ -213,6 +233,7 @@ public class Player : MonoBehaviour, IVulnerable
             Interagir();
         }
     }
+
 
     void Movimento()
     {

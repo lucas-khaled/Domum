@@ -44,6 +44,15 @@ public class UIController : MonoBehaviour
     }
     #endregion
 
+    public void XPbar(Image XpBar, float value)
+    {
+        XpBar.fillAmount = value;
+    }
+    public void SkillCD(Image skill, float value)
+    {
+        skill.fillAmount += value;
+    }
+
     /*private void TurnPointer(bool ligado)
     {
         pointer.gameObject.SetActive(ligado);
