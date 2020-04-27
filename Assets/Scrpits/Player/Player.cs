@@ -5,51 +5,32 @@ using UnityEngine.UI;
 
 public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL }
 
-[RequireComponent(typeof(Rigidbody))] [RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))] [RequireComponent(typeof(Collider))] [RequireComponent(typeof(StatusPlayer))]
 public class Player : MonoBehaviour, IVulnerable
 {
 
     private EstadoPlayer estado_player;
+
+    [HideInInspector]
+    public StatusPlayer status;
 
     [Header("Referências")]
     public Transform posicaoHit;
     public GameObject CBTprefab;
 
     [Header("Valores")]
-    public int danoMedio;
-    public const int MAXLEVEL = 100;
-    public int maxVida;
     [SerializeField]
     private float velocidade = 2;
     [SerializeField]
-    private int maxColetavel;
-    [SerializeField]
     private float raioPercepcao;
     [SerializeField]
-    private float XPRequisito = 100;//Variavel so pra testar barra de xp, se quiser pode usar ja para fazer level up
     private float raioAtaque = 2f;
-    protected Rigidbody rb;
 
-    public int level;
-    private int vida, qtnColetavel, dinheiro, experiencia;
+    protected Rigidbody rb;
 
     private Transform hitCanvas;
 
     #region GETTERS & SETTERS
-
-    public int Vida
-    {
-        get
-        {
-            return vida;
-        }
-
-        set
-        {
-            vida = Mathf.Clamp(value, 0, maxVida);
-            UIController.uiController.LifeBar(((float)value / maxVida));//controle barra de vida
-        }
-    }
 
     public EstadoPlayer estadoPlayer
     {
@@ -65,39 +46,6 @@ public class Player : MonoBehaviour, IVulnerable
             EventsController.onPlayerStateChanged.Invoke(estado_player);
         }
     }
-
-    public int QntColetavel
-    {
-        get { return qtnColetavel; }
-
-        set
-        {
-            qtnColetavel = Mathf.Clamp(value, 0, maxColetavel);
-        }
-    }
-
-    public int Dinheiro
-    {
-        get { return dinheiro; }
-
-        set
-        {
-            dinheiro = Mathf.Clamp(value, 0, int.MaxValue);
-        }
-    }
-
-    public int Experiencia
-    {
-        get { return experiencia; }
-        set
-        {
-            if (level < MAXLEVEL)
-            {
-                experiencia = value;
-                UIController.uiController.XPbar(((float)experiencia / XPRequisito));//controle barra de xp
-            }
-        }
-    }
     #endregion
 
     #region PreSettings
@@ -105,10 +53,11 @@ public class Player : MonoBehaviour, IVulnerable
     protected virtual void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
+        status = GetComponent<StatusPlayer>();
+
         EventsController.onMorteInimigoCallback += OnMorteInimigo;
-        player = this;
-        vida = maxVida;
-        
+
+        player = this;     
     }
 
     protected virtual void Start()
@@ -149,7 +98,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     public int CalculaDano()
     {
-        return danoMedio + Random.Range(-5, 5);
+        return status.DanoMedio + Random.Range(-5, 5);
     } 
     // Passei essa parte do calcula dano para o script de ArmaPlayer, não faz sentido o player calcular o dano que
     // vai ser passado no inimigo pelo script ArmaPlayer.
@@ -162,11 +111,11 @@ public class Player : MonoBehaviour, IVulnerable
 
     public virtual void ReceberDano(int danoRecebido)
     {
-        Vida -= danoRecebido;
+        status.Vida -= danoRecebido;
         UIController.uiController.InitCBT(danoRecebido.ToString(), CBTprefab, hitCanvas);
         string nomeAnim = "Dano";
 
-        if (Vida <= 0)
+        if (status.Vida <= 0)
         {
             nomeAnim = "Morte";
             Morrer();
@@ -259,7 +208,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     void OnMorteInimigo(int xp)
     {
-        Experiencia += xp;
+        status.Experiencia += xp;
         StartCoroutine(ProcuraInimigoMorte());
     }
 

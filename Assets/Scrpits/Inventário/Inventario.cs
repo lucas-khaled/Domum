@@ -63,7 +63,7 @@ public class Inventario : MonoBehaviour
     #region ARMA
     public void EquipArma(Arma arma)
     {
-        if(Player.player.level >= arma.nivelMinimo)
+        if(Player.player.status.Level >= arma.nivelMinimo)
         {
             UnequipArma();
             armaEquipada = arma;

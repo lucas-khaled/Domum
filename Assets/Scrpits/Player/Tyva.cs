@@ -11,8 +11,6 @@ public class Tyva : Player
     [SerializeField]
     private float velocidadeDash;
     [SerializeField]
-    private float tempoDashTotal;
-    [SerializeField]
     private float timeFaca;
 
     private float tempoDash;
@@ -23,14 +21,13 @@ public class Tyva : Player
             return tempoDash;
         }
 
-        set
+        private set
         {
-            tempoDash = Mathf.Clamp(value, 0, tempoDashTotal);
+            tempoDash = Mathf.Clamp(value, 0, status.tempoDashTotal);
 
-            if (value >= 0 && value <= tempoDashTotal)
+            if (value >= 0 && value <= status.tempoDashTotal)
             {
-                Debug.Log("Ihay");
-                UIController.uiController.SkillCD((float)1 / tempoDash * Time.deltaTime);//Controlador UI da recarga
+                UIController.uiController.SkillCD((float)tempoDash/status.tempoDashTotal);//Controlador UI da recarga
             }
         }
     }
@@ -47,7 +44,7 @@ public class Tyva : Player
     {
         base.Start();
         //só para teste, deletar depois
-        QntColetavel = 3;
+        status.QntColetavel = 3;
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
     }
@@ -57,7 +54,6 @@ public class Tyva : Player
         base.Awake();
     }
     #endregion
-
 
     protected override void Update()
     {
@@ -70,7 +66,7 @@ public class Tyva : Player
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if (TempoDash >= tempoDashTotal)
+            if (TempoDash >= status.tempoDashTotal)
             {
                 Vector3 movimento = new Vector3(moveHorizontal, 0.0f, moveVertical);
                 Dash(movimento);
@@ -89,15 +85,12 @@ public class Tyva : Player
     void Dash(Vector3 movimento)
     {
         rb.AddForce(transform.forward * velocidadeDash, ForceMode.VelocityChange);
-
-        UIController.uiController.SkillCD(0);//Zerar Ui de recarga
-
         rb.velocity = Vector3.zero;
     }
 
     private void Faca()
     {
-        if (contadorFaca < timeFaca || QntColetavel <= 0)
+        if (contadorFaca < timeFaca || status.QntColetavel <= 0)
             return;
 
         Vector3 target = ProcuraInimigo();

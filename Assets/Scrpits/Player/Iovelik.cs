@@ -8,7 +8,6 @@ public class Iovelik : Player
     [Header("Valores Iovelik")]
     public GameObject escudo;
     
-    public float tempoEscudo = 3;
     public float tempoRecargaEscudo = 1.5f;
     [SerializeField]
     private float valorDanoArea;
@@ -30,14 +29,14 @@ public class Iovelik : Player
 
         private set
         {
-            recarregaEscudo = Mathf.Clamp(value, 0, tempoEscudo);
+            recarregaEscudo = Mathf.Clamp(value, 0, status.tempoEscudo);
 
-            if (value >= 0 && value <= tempoEscudo)
+            if (value >= 0 && value <= status.tempoEscudo)
             {
-                UIController.uiController.SkillCD((float)recarregaEscudo/tempoEscudo);//Controlador da barra de recarga da skill
+                UIController.uiController.SkillCD((float)recarregaEscudo/status.tempoEscudo);//Controlador da barra de recarga da skill
             }
 
-            if (value >= tempoEscudo)
+            if (value >= status.tempoEscudo)
                 escudoCarregado = true;
 
             if (value <= 0)
@@ -55,8 +54,8 @@ public class Iovelik : Player
     {
         base.Start();
 
-        QntColetavel = 3;
-        RecarregaEscudo = tempoEscudo;
+        status.QntColetavel = 3;
+        RecarregaEscudo = status.tempoEscudo;
     }
 
     protected override void Update()
@@ -108,7 +107,7 @@ public class Iovelik : Player
     private IEnumerator danoArea()
     {
         estadoPlayer = EstadoPlayer.ATACANDO;
-        if (esperaDanoArea == 0 && QntColetavel > 0)
+        if (esperaDanoArea == 0 && status.QntColetavel > 0)
         {
             Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioDanoArea, LayerMask.GetMask("Inimigo"));
 
@@ -119,7 +118,7 @@ public class Iovelik : Player
                 esperaDanoArea = coolDownDanoArea;
             }
 
-            QntColetavel--;
+            status.QntColetavel--;
             yield return new WaitForSeconds(0.5f);
         }
         estadoPlayer = EstadoPlayer.COMBATE;
