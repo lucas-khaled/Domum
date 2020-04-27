@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL }
 
-[RequireComponent(typeof(Rigidbody))] [RequireComponent(typeof(Collider))] [RequireComponent(typeof(StatusPlayer))]
+[RequireComponent(typeof(Rigidbody))] [RequireComponent(typeof(Collider))] [RequireComponent(typeof(StatusPlayer))] [RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour, IVulnerable
 {
-
+    private Animator animator;
     private EstadoPlayer estado_player;
 
     [HideInInspector]
@@ -52,6 +52,7 @@ public class Player : MonoBehaviour, IVulnerable
     public static Player player;
     protected virtual void Awake()
     {
+        animator = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
         status = GetComponent<StatusPlayer>();
 
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour, IVulnerable
     {
         estadoPlayer = EstadoPlayer.ATACANDO;
 
-        // tocar animação de ataque
+        animator.SetTrigger("Atacando");
 
         MoverPlayerAtaque();
 
@@ -190,7 +191,14 @@ public class Player : MonoBehaviour, IVulnerable
     {
         if (estadoPlayer != EstadoPlayer.ATACANDO)
         {
-            rb.velocity = (transform.forward * velocidade * Input.GetAxis("Vertical")) + (transform.right * velocidade * Input.GetAxis("Horizontal"));
+            animator.SetBool("Correndo", true);
+            animator.SetFloat("VetX", Input.GetAxis("Horizontal"));
+            animator.SetFloat("VetY", Input.GetAxis("Vertical"));
+            rb.velocity = ((transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"))) * velocidade;
+            if(animator.GetFloat("VetX") == 0 && animator.GetFloat("VetY") == 0)
+            {
+                animator.SetBool("Correndo", false);
+            }
         }
     }
 
