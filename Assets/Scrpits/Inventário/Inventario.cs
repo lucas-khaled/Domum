@@ -17,8 +17,10 @@ public class Inventario : MonoBehaviour
 
     [HideInInspector]
     public SkinnedMeshRenderer armaMesh;
+
     public float pesoMaximo;   
     public Arma armaDefault;
+
     [HideInInspector]
     public Arma armaEquipada;
 
@@ -39,6 +41,11 @@ public class Inventario : MonoBehaviour
             itens.Add(item);
             pesoInventario += item.peso;
             inseriu = true;
+
+            if (EventsController.onItemPego != null)
+            {
+                EventsController.onItemPego.Invoke(item);
+            }
         }
 
         return inseriu;
@@ -46,8 +53,11 @@ public class Inventario : MonoBehaviour
 
     public void RemoverItem(Item item)
     {
-        itens.Remove(item);
-        pesoInventario -= item.peso;
+        if (!item.isItemMissao)
+        {
+            itens.Remove(item);
+            pesoInventario -= item.peso;
+        }
     }
 
     #region ARMA

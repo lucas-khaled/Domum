@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public Transform pointerPosition;
-    public Image pointer;
-    public Canvas Canvas2D;
+    public Image playerLifeBar;
+    public Image XpBar;
+    public Image Skill;
 
     #region SINGLETON
 
@@ -44,13 +44,20 @@ public class UIController : MonoBehaviour
     }
     #endregion
 
-    public void XPbar(Image XpBar, float value)
+    public void LifeBar(float value)
+    {
+        playerLifeBar.fillAmount = value;
+    }
+
+    public void XPbar(float value)
     {
         XpBar.fillAmount = value;
     }
-    public void SkillCD(Image skill, float value)
+    public void SkillCD(float value)
     {
-        skill.fillAmount += value;
+        Skill.fillAmount = value;
+        Debug.Log("Valor: "+ value + " - amount: "+Skill.fillAmount);
+
     }
 
     /*private void TurnPointer(bool ligado)

@@ -13,6 +13,7 @@ public class Condicoes
 
     #region HIDDENVARIABLES
 
+    public ItemPickup itemDaCondicao;
     public List<GameObject> objetosDaCondicao;
     public List<GameObject> inimigosDaCondicao;
     public float raioDeSpawn = 2;
@@ -43,6 +44,11 @@ public class Condicoes
             volta = CheckInteracao();
         }
 
+        if(tipoCondicao == TipoCondicao.PEGA_ITEM)
+        {
+            volta = CheckPegaItem();
+        }
+
         return volta;
     }
 
@@ -66,7 +72,6 @@ public class Condicoes
         {
             retorno = true;
         }
-        Debug.Log(retorno);
         return retorno;
     }
     #endregion
@@ -87,6 +92,27 @@ public class Condicoes
             interagiu = true;
         }
     }
+    #endregion
+
+    #region PEGA_ITEM
+
+    bool CheckPegaItem()
+    {
+        return itemPego;
+    }
+
+    bool itemPego;
+
+    private void OnItemPego(Item item)
+    {
+        if (item == itemDaCondicao.item)
+        {
+            itemPego = true;
+            return;
+        }
+        itemPego = false;
+    }
+
     #endregion
 
     public void AtivarCondicao()
@@ -111,6 +137,13 @@ public class Condicoes
             GameObject interagivelObj = MonoBehaviour.Instantiate(interagivel.gameObject, local, interagivel.gameObject.transform.rotation);
             interagivel = interagivelObj.GetComponent<Interagivel>();
             EventsController.onInteracao += OnInteracao;
+        }
+
+        if(tipoCondicao == TipoCondicao.PEGA_ITEM)
+        {
+            GameObject itemObj = MonoBehaviour.Instantiate(itemDaCondicao.gameObject);
+            itemObj.transform.position = local;
+            EventsController.onItemPego += OnItemPego;
         }
     }
 }

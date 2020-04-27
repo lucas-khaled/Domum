@@ -161,6 +161,9 @@ public class ItemManagerWindow : EditorWindow
             itemAtual.peso = EditorGUILayout.FloatField("Peso: ", itemAtual.peso);
             GUILayout.Space(3);
 
+            itemAtual.isItemMissao = EditorGUILayout.Toggle("Item é de Missão: ", itemAtual.isItemMissao);
+            GUILayout.Space(6);
+
             GUILayout.Label("Ícone");
             itemAtual.icone = (Sprite)EditorGUILayout.ObjectField(itemAtual.icone, typeof(Sprite));
             GUILayout.Space(3);

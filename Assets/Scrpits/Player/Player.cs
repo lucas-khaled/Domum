@@ -14,17 +14,6 @@ public class Player : MonoBehaviour, IVulnerable
     [Header("Referências")]
     public Transform posicaoHit;
     public GameObject CBTprefab;
-    public Image lifeBar;
-    public Image XpBar;
-    public Image Skill;
-
-    [Header("Coletaveis_UI")]
-    //public Image[] Coletaveis_Slot = new Image[5];
-    //public Image[] Coletaveis = new Image[5];
-
-
-
-    //Adicionar Interagível
 
     [Header("Valores")]
     public int danoMedio;
@@ -47,6 +36,21 @@ public class Player : MonoBehaviour, IVulnerable
     private Transform hitCanvas;
 
     #region GETTERS & SETTERS
+
+    public int Vida
+    {
+        get
+        {
+            return vida;
+        }
+
+        set
+        {
+            vida = Mathf.Clamp(value, 0, maxVida);
+            UIController.uiController.LifeBar(((float)value / maxVida));//controle barra de vida
+        }
+    }
+
     public EstadoPlayer estadoPlayer
     {
         get { return estado_player; }
@@ -90,6 +94,7 @@ public class Player : MonoBehaviour, IVulnerable
             if (level < MAXLEVEL)
             {
                 experiencia = value;
+                UIController.uiController.XPbar(((float)experiencia / XPRequisito));//controle barra de xp
             }
         }
     }
@@ -157,11 +162,11 @@ public class Player : MonoBehaviour, IVulnerable
 
     public virtual void ReceberDano(int danoRecebido)
     {
-        vida = Mathf.Clamp(vida - danoRecebido, 0, maxVida);
+        Vida -= danoRecebido;
         UIController.uiController.InitCBT(danoRecebido.ToString(), CBTprefab, hitCanvas);
         string nomeAnim = "Dano";
 
-        if (vida <= 0)
+        if (Vida <= 0)
         {
             nomeAnim = "Morte";
             Morrer();
@@ -209,6 +214,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     }
     #endregion
+
     /*void VerificarColetaveis()
     {
         
@@ -216,12 +222,8 @@ public class Player : MonoBehaviour, IVulnerable
 
     protected virtual void Update()
     {
-        
         Movimento();
-        //VerificarColetaveis();
-        UIController.uiController.LifeBar(lifeBar,((float)vida / maxVida));//controle barra de vida
-        UIController.uiController.XPbar(XpBar,((float)experiencia / XPRequisito));//controle barra de xp
-
+        //VerificarColetaveis();       
 
         if (Input.GetMouseButtonDown(0) && estadoPlayer == EstadoPlayer.COMBATE)
         {
@@ -265,7 +267,6 @@ public class Player : MonoBehaviour, IVulnerable
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, raioPercepcao);
-
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, 2);
     }

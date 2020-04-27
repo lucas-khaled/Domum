@@ -9,6 +9,7 @@ public class Item : ScriptableObject
     [TextArea]
     public string descricao;
 
+    public bool isItemMissao;
     public int custoMoeda;
     public float peso;
 

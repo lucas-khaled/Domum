@@ -7,14 +7,33 @@ public class Tyva : Player
     float moveHorizontal;
     float moveVertical;
 
-
     [Header("Valores Tyva")]
     [SerializeField]
     private float velocidadeDash;
     [SerializeField]
-    private float tempoDash;
+    private float tempoDashTotal;
     [SerializeField]
     private float timeFaca;
+
+    private float tempoDash;
+    public float TempoDash
+    {
+        get
+        {
+            return tempoDash;
+        }
+
+        set
+        {
+            tempoDash = Mathf.Clamp(value, 0, tempoDashTotal);
+
+            if (value >= 0 && value <= tempoDashTotal)
+            {
+                Debug.Log("Ihay");
+                UIController.uiController.SkillCD((float)1 / tempoDash * Time.deltaTime);//Controlador UI da recarga
+            }
+        }
+    }
 
     [Header("Referências Tyva")]
     public Transform posicaoFaca;
@@ -51,27 +70,27 @@ public class Tyva : Player
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if (tempoDash <= 0)
+            if (TempoDash >= tempoDashTotal)
             {
                 Vector3 movimento = new Vector3(moveHorizontal, 0.0f, moveVertical);
                 Dash(movimento);
-                tempoDash = 3;
+                TempoDash = 0;
             }
             else
-            {
-                UIController.uiController.SkillCD(player.Skill,1/tempoDash*Time.deltaTime);//Controlador UI da recarga
-                tempoDash -= Time.deltaTime;
+            {            
                 rb.velocity = Vector3.zero;
             }
         }
+
+        TempoDash += Time.deltaTime;
         contadorFaca += Time.deltaTime;
-        tempoDash -= Time.deltaTime;
     }
+
     void Dash(Vector3 movimento)
     {
         rb.AddForce(transform.forward * velocidadeDash, ForceMode.VelocityChange);
 
-        UIController.uiController.SkillCD(player.Skill,0);//Zerar Ui de recarga
+        UIController.uiController.SkillCD(0);//Zerar Ui de recarga
 
         rb.velocity = Vector3.zero;
     }

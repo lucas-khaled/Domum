@@ -32,6 +32,11 @@ public class Iovelik : Player
         {
             recarregaEscudo = Mathf.Clamp(value, 0, tempoEscudo);
 
+            if (value >= 0 && value <= tempoEscudo)
+            {
+                UIController.uiController.SkillCD((float)recarregaEscudo/tempoEscudo);//Controlador da barra de recarga da skill
+            }
+
             if (value >= tempoEscudo)
                 escudoCarregado = true;
 
@@ -77,7 +82,6 @@ public class Iovelik : Player
             escudoCarregado = false;
         }
         RecarregaEscudo += tempoRecargaEscudo * Time.deltaTime;
-        UIController.uiController.SkillCD(player.Skill,1/RecarregaEscudo);//Controlador da barra de recarga da skill
     }
 
     public override void ReceberDano(int danoRecebido)
@@ -95,7 +99,7 @@ public class Iovelik : Player
     {
         escudo.SetActive(ativo);
 
-        UIController.uiController.LifeBar(player.Skill,0);//Zerar barra de recarga
+        //UIController.uiController.LifeBar(player.Skill,0);//Zerar barra de recarga
 
         RecarregaEscudo = ativo ? RecarregaEscudo - Time.deltaTime : RecarregaEscudo + tempoRecargaEscudo * Time.deltaTime;
         estadoPlayer = ativo ? EstadoPlayer.RECARREGAVEL : EstadoPlayer.COMBATE;
