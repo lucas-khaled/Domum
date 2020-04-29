@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL }
+public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL, MORTO }
 
 [RequireComponent(typeof(Rigidbody))] [RequireComponent(typeof(Collider))] [RequireComponent(typeof(StatusPlayer))] [RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour, IVulnerable
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     IEnumerator WaitForAnimation(string animacao)
     {
-        var clip = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+
         while(animator.GetCurrentAnimatorStateInfo(0).IsName(animacao))
         {
             yield return null;
@@ -164,7 +164,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     private void Morrer()
     {
-
+        estadoPlayer = EstadoPlayer.MORTO;
     }
 
     public virtual void ReceberDano(int danoRecebido)
@@ -173,12 +173,18 @@ public class Player : MonoBehaviour, IVulnerable
         UIController.uiController.InitCBT(danoRecebido.ToString(), CBTprefab, hitCanvas);
         string nomeAnim = "Dano";
 
+        if(danoRecebido > status.maxVida*30/100)
+        {
+            nomeAnim += "Forte";
+        }
+
+
         if (status.Vida <= 0)
         {
             nomeAnim = "Morte";
-            Morrer();
         }
 
+        animator.applyRootMotion = true;
         StartCoroutine(Dano(nomeAnim));
         
     }
@@ -186,9 +192,19 @@ public class Player : MonoBehaviour, IVulnerable
     private IEnumerator Dano(string animationName)
     {
         estadoPlayer = EstadoPlayer.DANO;
-        //tocar animação
-        yield return new WaitForSeconds(0.2f);
-        estadoPlayer = EstadoPlayer.COMBATE;
+
+        animator.SetTrigger(animationName);
+        yield return WaitForAnimation(animationName);
+
+        if (animationName == "Morte")
+        {
+            Morrer();
+        }
+        else
+        {
+            estadoPlayer = EstadoPlayer.COMBATE;
+        }
+        
     }
 
     protected Vector3 ProcuraInimigo()
@@ -247,7 +263,6 @@ public class Player : MonoBehaviour, IVulnerable
 
     void Movimento()
     {
-        animator.applyRootMotion = true;
         if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
         {
             animator.applyRootMotion = false;

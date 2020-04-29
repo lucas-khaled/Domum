@@ -8,7 +8,7 @@ public class Iovelik : Player
     [Header("Valores Iovelik")]
     public GameObject escudo;
     
-    public float tempoRecargaEscudo = 1.5f;
+    public float tempoRecargaEscudo = 0.5f;
     [SerializeField]
     private float valorDanoArea;
     [SerializeField]
@@ -70,17 +70,20 @@ public class Iovelik : Player
         esperaDanoArea -= Time.deltaTime;
         }
 
+        RecarregaEscudo = (escudo.activeSelf) ? RecarregaEscudo-Time.deltaTime : RecarregaEscudo + tempoRecargaEscudo * Time.deltaTime;
+
         if (Input.GetButtonDown("Recarregavel") && escudoCarregado && recarregaEscudo > 0 && (estadoPlayer == EstadoPlayer.COMBATE || estadoPlayer == EstadoPlayer.ATACANDO))
         {
+            animator.SetBool("Escudo", true);
             AtivarEscudo(true);
             return;
         }
         if(Input.GetButtonUp("Recarregavel"))
         {
+            animator.SetBool("Escudo", false);
             AtivarEscudo(false);
             escudoCarregado = false;
         }
-        RecarregaEscudo += tempoRecargaEscudo * Time.deltaTime;
     }
 
     public override void ReceberDano(int danoRecebido)
@@ -97,10 +100,6 @@ public class Iovelik : Player
     private void AtivarEscudo(bool ativo)
     {
         escudo.SetActive(ativo);
-
-        animator.SetBool("Escudo", ativo);
-
-        RecarregaEscudo = ativo ? RecarregaEscudo - Time.deltaTime : RecarregaEscudo + tempoRecargaEscudo * Time.deltaTime;
         estadoPlayer = ativo ? EstadoPlayer.RECARREGAVEL : EstadoPlayer.COMBATE;
     }
 
