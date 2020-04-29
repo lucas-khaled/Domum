@@ -93,7 +93,7 @@ public class Player : MonoBehaviour, IVulnerable
         }
     }
 
-    IEnumerator WaitForAnimation(string animacao)
+    protected IEnumerator WaitForAnimation(string animacao)
     {
 
         while(animator.GetCurrentAnimatorStateInfo(0).IsName(animacao))

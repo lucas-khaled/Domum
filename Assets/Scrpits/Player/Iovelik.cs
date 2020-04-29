@@ -19,7 +19,7 @@ public class Iovelik : Player
     private float distancia;
 
     private float recarregaEscudo;
-    bool usandoDanoArea = false;
+    bool canAttack = true;
     public float RecarregaEscudo
     {
         get
@@ -62,15 +62,17 @@ public class Iovelik : Player
     {
         base.Update();
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && esperaDanoArea <= 0 && status.QntColetavel > 0)
         {
             StartCoroutine(danoArea());
         }
-        if(esperaDanoArea != 0){
-        esperaDanoArea -= Time.deltaTime;
-        }
 
+        if(esperaDanoArea > 0)
+        {
+            esperaDanoArea -= Time.deltaTime;
+        }
         RecarregaEscudo = (escudo.activeSelf) ? RecarregaEscudo-Time.deltaTime : RecarregaEscudo + tempoRecargaEscudo * Time.deltaTime;
+
 
         if (Input.GetButtonDown("Recarregavel") && escudoCarregado && recarregaEscudo > 0 && (estadoPlayer == EstadoPlayer.COMBATE || estadoPlayer == EstadoPlayer.ATACANDO))
         {
@@ -106,20 +108,21 @@ public class Iovelik : Player
     private IEnumerator danoArea()
     {
         estadoPlayer = EstadoPlayer.ATACANDO;
-        if (esperaDanoArea == 0 && status.QntColetavel > 0)
+        animator.SetTrigger("Especial");
+        canAttack = false;
+
+        Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioDanoArea, LayerMask.GetMask("Inimigo"));
+
+        foreach (Collider inimigoArea in hit)
         {
-            Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioDanoArea, LayerMask.GetMask("Inimigo"));
-
-            foreach (Collider inimigoArea in hit)
-            {
-                distancia = Vector3.Distance(inimigoArea.gameObject.transform.position, this.gameObject.transform.position);
-                inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));
-                esperaDanoArea = coolDownDanoArea;
-            }
-
-            status.QntColetavel--;
-            yield return new WaitForSeconds(0.5f);
+            distancia = Vector3.Distance(inimigoArea.gameObject.transform.position, this.gameObject.transform.position);
+            inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));
+            esperaDanoArea = coolDownDanoArea;
         }
+
+        status.QntColetavel--;
+        yield return WaitForAnimation("Especial");
+
         estadoPlayer = EstadoPlayer.COMBATE;
 
     }
