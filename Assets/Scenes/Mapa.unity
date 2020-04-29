@@ -2072,7 +2072,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sensibilidade_cam: 1
   Target: {fileID: 972326335747691992}
-  player: {fileID: 5006512735628575026}
   cam: {fileID: 972326337303556167}
 --- !u!1 &972326337303556165
 GameObject:
@@ -2706,8 +2705,8 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: d2b6fca09ddec2a48ad766cdbd5f57c0, type: 3}
   m_Controller: {fileID: 9100000, guid: 33a897f3e1fec834286814b73cb8e36a, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1

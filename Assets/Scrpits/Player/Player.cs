@@ -8,7 +8,7 @@ public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL }
 [RequireComponent(typeof(Rigidbody))] [RequireComponent(typeof(Collider))] [RequireComponent(typeof(StatusPlayer))] [RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour, IVulnerable
 {
-    private Animator animator;
+    protected Animator animator;
     private EstadoPlayer estado_player;
 
     [HideInInspector]
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour, IVulnerable
     private void MoverPlayerAtaque()
     {
         //transform.LookAt((transform.forward * velocidade * Input.GetAxis("Vertical")) + (transform.right * velocidade * Input.GetAxis("Horizontal")) + player.transform.position);
-        rb.velocity = (transform.forward * 3);
+        rb.velocity = (transform.forward * 5);
     }
 
     private bool CheckCombo()
@@ -95,7 +95,6 @@ public class Player : MonoBehaviour, IVulnerable
 
     IEnumerator WaitForAnimation(string animacao)
     {
-
         var clip = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         while(animator.GetCurrentAnimatorStateInfo(0).IsName(animacao))
         {
@@ -131,7 +130,7 @@ public class Player : MonoBehaviour, IVulnerable
             outroAtaque = false;
 
             //animator.SetFloat("Attack", attack);
-            //MoverPlayerAtaque();
+           
 
             Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
 
@@ -142,9 +141,11 @@ public class Player : MonoBehaviour, IVulnerable
             }
 
             yield return WaitForAnimation("Attack"+ QualAtaque());
+
             
             if (!outroAtaque)
             {
+                //MoverPlayerAtaque();
                 animator.SetBool("Atacando", false);
                 estadoPlayer = EstadoPlayer.COMBATE;
                 attack = 0;
@@ -229,7 +230,7 @@ public class Player : MonoBehaviour, IVulnerable
     protected virtual void Update()
     {
         Movimento();
-        //VerificarColetaveis();       
+            
 
         if (Input.GetButtonDown("Attack") && estadoPlayer == EstadoPlayer.COMBATE)
         {
@@ -237,7 +238,7 @@ public class Player : MonoBehaviour, IVulnerable
             StartCoroutine(Atacar());
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("Interact"))
         {
             Interagir();
         }
@@ -246,8 +247,10 @@ public class Player : MonoBehaviour, IVulnerable
 
     void Movimento()
     {
-        if (estadoPlayer != EstadoPlayer.ATACANDO)
+        animator.applyRootMotion = true;
+        if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
         {
+            animator.applyRootMotion = false;
             float y = Mathf.Lerp(animator.GetFloat("VetY"), Input.GetAxis("Vertical"), 0.4f);
             float x = Mathf.Lerp(animator.GetFloat("VetX"), Input.GetAxis("Horizontal"), 0.4f);
 

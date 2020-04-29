@@ -70,7 +70,7 @@ public class Iovelik : Player
         esperaDanoArea -= Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Recarregavel") && escudoCarregado && recarregaEscudo > 0)
+        if (Input.GetButtonDown("Recarregavel") && escudoCarregado && recarregaEscudo > 0 && (estadoPlayer == EstadoPlayer.COMBATE || estadoPlayer == EstadoPlayer.ATACANDO))
         {
             AtivarEscudo(true);
             return;
@@ -98,7 +98,7 @@ public class Iovelik : Player
     {
         escudo.SetActive(ativo);
 
-        //UIController.uiController.LifeBar(player.Skill,0);//Zerar barra de recarga
+        animator.SetBool("Escudo", ativo);
 
         RecarregaEscudo = ativo ? RecarregaEscudo - Time.deltaTime : RecarregaEscudo + tempoRecargaEscudo * Time.deltaTime;
         estadoPlayer = ativo ? EstadoPlayer.RECARREGAVEL : EstadoPlayer.COMBATE;
