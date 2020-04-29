@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deitar : StateMachineBehaviour
+public class Levantar : StateMachineBehaviour
 {
-    private float aux = 30;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("Deitado",true);
+        animator.SetBool("Deitado",false);
+        animator.SetTrigger("Levantar");
     }
 }
