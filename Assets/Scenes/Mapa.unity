@@ -1964,7 +1964,7 @@ Transform:
   m_LocalScale: {x: 3.1085389, y: 3.1085389, z: 3.1085389}
   m_Children: []
   m_Father: {fileID: 5006512735628575026}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &972326335747691992
 Transform:
@@ -1974,12 +1974,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972326335747691999}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15350342, y: 1.1100029, z: -0.10101318}
+  m_LocalPosition: {x: 575.79004, y: 1.2200029, z: 416.32358}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 972326337303556160}
-  m_Father: {fileID: 5006512735628575026}
-  m_RootOrder: 6
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &972326335747691999
 GameObject:
@@ -2035,7 +2035,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972326337303556165}
   m_LocalRotation: {x: 0.22771023, y: -0, z: -0, w: 0.97372895}
-  m_LocalPosition: {x: 0, y: 1.58, z: -2.83}
+  m_LocalPosition: {x: 0, y: 1.5800003, z: -2.8299866}
   m_LocalScale: {x: 0.44756, y: 0.44756, z: 0.44756}
   m_Children: []
   m_Father: {fileID: 972326335747691992}
@@ -4840,10 +4840,9 @@ Transform:
   - {fileID: 748689160156761455}
   - {fileID: 972326337203814060}
   - {fileID: 972326335441477060}
-  - {fileID: 972326335747691992}
   - {fileID: 972326335475218355}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5130276662772709820
 GameObject:
@@ -5527,6 +5526,7 @@ MonoBehaviour:
   velocidade: 4
   raioPercepcao: 10
   raioAtaque: 2
+  numAtaque: 2
   escudo: {fileID: 972326335475218352}
   tempoRecargaEscudo: 1.5
   valorDanoArea: 20

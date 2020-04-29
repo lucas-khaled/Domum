@@ -56,7 +56,6 @@ public class UIController : MonoBehaviour
     public void SkillCD(float value)
     {
         Skill.fillAmount = value;
-        Debug.Log("Valor: "+ value + " - amount: "+Skill.fillAmount);
 
     }
 
