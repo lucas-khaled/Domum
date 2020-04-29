@@ -13,8 +13,8 @@ public class Distancia : Inimigo
         ataqueCooldown = velocidadeAtaque;
         Coroutine mira = StartCoroutine(Mirar());
 
-        Transform transform = this.gameObject.transform;
-        transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z);
+        Vector3 transformBala = this.gameObject.transform.position;
+        transformBala = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z);
 
         GameObject alerta = Instantiate(imagemAlerta, transform.position, imagemAlerta.transform.rotation);
         alerta.AddComponent<FaceCamera>();
@@ -23,12 +23,11 @@ public class Distancia : Inimigo
         yield return new WaitForSeconds(3f);
 
         Destroy(alerta);
+        anim.SetTrigger("Atirar");
         StopCoroutine(mira);
 
         GameObject balaInstanciada = Instantiate(bala, pontoTiro.position, pontoTiro.transform.rotation);
         balaInstanciada.GetComponent<Bala>().SetCasterCollider(this.GetComponent<Collider>());
-        
-        //tocar animação de tiro
         
 
         yield return new WaitForSeconds(0.5f);
@@ -37,7 +36,7 @@ public class Distancia : Inimigo
 
     IEnumerator Mirar()
     {
-        //tocar animação de mirar
+        anim.SetBool("Atacar", true);
 
         while (true)
         {

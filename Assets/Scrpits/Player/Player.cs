@@ -132,13 +132,13 @@ public class Player : MonoBehaviour, IVulnerable
             //animator.SetFloat("Attack", attack);
            
 
-            Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
+            /*Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
 
             if (hit.Length > 0)
             {
                 int danin = CalculaDano();
                 hit[0].gameObject.GetComponent<Inimigo>().ReceberDano(danin);
-            }
+            }*/
 
             yield return WaitForAnimation("Attack"+ QualAtaque());
 
