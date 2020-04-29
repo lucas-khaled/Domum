@@ -70,12 +70,12 @@ public class Iovelik : Player
         esperaDanoArea -= Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && escudoCarregado && recarregaEscudo > 0)
+        if (Input.GetButtonDown("Recarregavel") && escudoCarregado && recarregaEscudo > 0)
         {
             AtivarEscudo(true);
             return;
         }
-        if(Input.GetKeyUp(KeyCode.LeftShift))
+        if(Input.GetButtonUp("Recarregavel"))
         {
             AtivarEscudo(false);
             escudoCarregado = false;

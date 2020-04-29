@@ -13,8 +13,7 @@ public class CameraController : MonoBehaviour
     public float Sensibilidade_cam = 1;
     public Transform Target;
 
-    public Transform player;
-    float mouseX, mouseY, controleX, controleY;
+    float mouseX, mouseY, controleX, controleY, baseOffset;
     float controleXEsq, grauRotacao;
     
 
@@ -38,6 +37,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        baseOffset = Target.position.y - Player.player.transform.position.y; 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -45,19 +45,31 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         CamControl(QualOrigemInput());
+        CamFolow();
+    }
+
+    void CamFolow()
+    {
+        float x = Mathf.Lerp(Target.position.x, Player.player.transform.position.x, Sensibilidade_cam);
+        float y = Mathf.Lerp(Target.position.y, Player.player.transform.position.y + baseOffset, Sensibilidade_cam);
+        float z = Mathf.Lerp(Target.position.z, Player.player.transform.position.z, Sensibilidade_cam);
+
+        Target.position = new Vector3(x,y,z);
     }
 
     void CamControl(OrigemInput origemInput)
     {
         if (origemInput == OrigemInput.JOYSTICK)
         {
+            Debug.Log(Input.GetAxis("RightStickVertical"));
+
             controleX += Input.GetAxis("RightStickHorizontal") * Sensibilidade_cam;
-            controleY -= Input.GetAxis("RightStickVertical") * Sensibilidade_cam;
+            controleY += Input.GetAxisRaw("RightStickVertical") * Sensibilidade_cam;
             controleY = Mathf.Clamp(controleY, -35, 120);
 
             transform.LookAt(Target);
             Target.rotation = Quaternion.Euler(controleY, controleX, 0);
-            player.rotation = Quaternion.Euler(0, controleX, 0);
+            Player.player.transform.rotation = Quaternion.Euler(0, controleX, 0);
 
         }
 
@@ -76,7 +88,7 @@ public class CameraController : MonoBehaviour
             else
             {
                 Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-                player.rotation = Quaternion.Euler(0, mouseX, 0);
+                Player.player.transform.rotation = Quaternion.Euler(0, mouseX, 0);
             }
 
         }

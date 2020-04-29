@@ -25,9 +25,12 @@ public class Player : MonoBehaviour, IVulnerable
     private float raioPercepcao;
     [SerializeField]
     private float raioAtaque = 2f;
+    public int numAtaque = 2;
 
     protected Rigidbody rb;
 
+    bool outroAtaque;
+    private float attack = 0;
     private Transform hitCanvas;
 
     #region GETTERS & SETTERS
@@ -76,25 +79,78 @@ public class Player : MonoBehaviour, IVulnerable
         rb.velocity = (transform.forward * 3);
     }
 
-    private IEnumerator Atacar()
+    private bool CheckCombo()
     {
-        estadoPlayer = EstadoPlayer.ATACANDO;
-
-        animator.SetTrigger("Atacando");
-
-        MoverPlayerAtaque();
-
-        Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
-
-        if (hit.Length > 0)
+        if(attack == 1)
         {
-            int danin = CalculaDano();
-            hit[0].gameObject.GetComponent<Inimigo>().ReceberDano(danin);
+            attack = 0;
+            return false;
+        }
+        else
+        {
+            attack += Mathf.Clamp(1f / numAtaque-1, 0, 1);
+            return true;
+        }
+    }
+
+    IEnumerator WaitForAnimation(string animacao)
+    {
+
+        var clip = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        while(animator.GetCurrentAnimatorStateInfo(0).IsName(animacao))
+        {
+            yield return null;
         }
 
-        yield return new WaitForSeconds(0.5f);
+    }
 
-        estadoPlayer = EstadoPlayer.COMBATE;
+    int QualAtaque()
+    {
+        int x = 0;
+        int retorno = 0;
+        for(int i = 1; i<=numAtaque; i++)
+        {
+            retorno = i;
+            if(attack == x)
+            {
+                break;
+            }
+            x += 1 / numAtaque-1;
+        }
+        return retorno;
+    }
+
+    private IEnumerator Atacar()
+    {
+
+        if (CheckCombo() && outroAtaque)
+        {
+            estadoPlayer = EstadoPlayer.ATACANDO;
+            animator.SetBool("Atacando", true);
+
+            outroAtaque = false;
+
+            //animator.SetFloat("Attack", attack);
+            //MoverPlayerAtaque();
+
+            Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
+
+            if (hit.Length > 0)
+            {
+                int danin = CalculaDano();
+                hit[0].gameObject.GetComponent<Inimigo>().ReceberDano(danin);
+            }
+
+            yield return WaitForAnimation("Attack"+ QualAtaque());
+            
+            if (!outroAtaque)
+            {
+                animator.SetBool("Atacando", false);
+                estadoPlayer = EstadoPlayer.COMBATE;
+                attack = 0;
+            }
+        }
+
     }
 
     public int CalculaDano()
@@ -175,8 +231,9 @@ public class Player : MonoBehaviour, IVulnerable
         Movimento();
         //VerificarColetaveis();       
 
-        if (Input.GetMouseButtonDown(0) && estadoPlayer == EstadoPlayer.COMBATE)
+        if (Input.GetButtonDown("Attack") && estadoPlayer == EstadoPlayer.COMBATE)
         {
+            outroAtaque = true;
             StartCoroutine(Atacar());
         }
 
@@ -191,14 +248,13 @@ public class Player : MonoBehaviour, IVulnerable
     {
         if (estadoPlayer != EstadoPlayer.ATACANDO)
         {
-            animator.SetBool("Correndo", true);
-            animator.SetFloat("VetX", Input.GetAxis("Horizontal"));
-            animator.SetFloat("VetY", Input.GetAxis("Vertical"));
-            rb.velocity = ((transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"))) * velocidade;
-            if(animator.GetFloat("VetX") == 0 && animator.GetFloat("VetY") == 0)
-            {
-                animator.SetBool("Correndo", false);
-            }
+            float y = Mathf.Lerp(animator.GetFloat("VetY"), Input.GetAxis("Vertical"), 0.4f);
+            float x = Mathf.Lerp(animator.GetFloat("VetX"), Input.GetAxis("Horizontal"), 0.4f);
+
+            animator.SetFloat("VetX", x);
+            animator.SetFloat("VetY", y);
+
+            rb.velocity = ((transform.forward * y) + (transform.right * x)) * velocidade;
         }
     }
 
