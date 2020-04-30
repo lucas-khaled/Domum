@@ -16,7 +16,7 @@ public class ArmaPlayer : MonoBehaviour
     {
         return Dano + Inventario.inventario.armaEquipada.dano + Random.Range(-5, 5);
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerHit(Collider other)
     {
         if (other.gameObject.tag == "Inimigo" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO || Player.player.estadoPlayer == EstadoPlayer.RECARREGAVEL))
         {

@@ -33,11 +33,9 @@ public class Inimigo : MonoBehaviour, IVulnerable
     protected float velocidadeAtaque;
     [SerializeField]
     private int experienciaMorte;
-
     private Transform hitCanvas;
 
     protected float ataqueCooldown;
-
     public int Vida
     {
         get { return vida; }
@@ -70,9 +68,13 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     //realiza o ataque do inimigo
     protected virtual IEnumerator Atacar()
-    {    
-
-        Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
+    {
+        int escolha = Random.Range(1, 3);
+        if (escolha == 1)
+            anim.SetTrigger("Ataque 1");
+        else
+            anim.SetTrigger("Ataque 2");
+        /*Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
 
         // é checado se o ataque atingiu o player e lhe dá o dano
         if (hit.Length > 0)
@@ -80,7 +82,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
             hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
         }
 
-        //reseta o cooldown(espera) do ataque e espera para tocar a animação
+        //reseta o cooldown(espera) do ataque e espera para tocar a animação*/
         ataqueCooldown = velocidadeAtaque;
         yield return new WaitForSeconds(0.5f);              
     }
@@ -95,12 +97,13 @@ public class Inimigo : MonoBehaviour, IVulnerable
         
         if (vida <= 0)
         {
-            //Animação de morte
+            anim.SetTrigger("Tomar Dano");
+            anim.SetBool("Morreu", true);
             Morrer();
         }
         else
         {
-            //Animação de dano  
+            anim.SetTrigger("Tomar Dano");
         }
         
     }
