@@ -210,10 +210,11 @@ public class Player : MonoBehaviour, IVulnerable
     protected Vector3 ProcuraInimigo()
     {
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioPercepcao, LayerMask.GetMask("Inimigo"));
+
         if (hit.Length > 0)
         {
             foreach (Collider inimigo in hit)
-            {             
+            {
                     if (inimigo.GetComponent<Inimigo>().hostil && inimigo.gameObject.activeSelf)
                     {
                         estadoPlayer = EstadoPlayer.COMBATE;
