@@ -24,6 +24,8 @@ public class Bala : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 
+        
+
         Destroy(this.gameObject, 4);
     }
 

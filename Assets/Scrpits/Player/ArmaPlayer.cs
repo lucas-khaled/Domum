@@ -16,10 +16,11 @@ public class ArmaPlayer : MonoBehaviour
     {
         return Dano + Inventario.inventario.armaEquipada.dano + Random.Range(-5, 5);
     }
-    private void OnTriggerHit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Inimigo" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO || Player.player.estadoPlayer == EstadoPlayer.RECARREGAVEL))
+        if (other.gameObject.tag == "Inimigo" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO || Player.player.estadoPlayer == EstadoPlayer.RECARREGAVEL) && !other.isTrigger)
         {
+            Debug.Log("Vai tomar no cuuuuuuuuuuuu");
             other.gameObject.GetComponent<Inimigo>().ReceberDano(CalculaDano());
         }
     }

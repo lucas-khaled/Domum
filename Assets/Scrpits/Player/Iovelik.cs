@@ -62,7 +62,7 @@ public class Iovelik : Player
     {
         base.Update();
 
-        if (Input.GetMouseButtonDown(1) && esperaDanoArea <= 0 && status.QntColetavel > 0)
+        if (Input.GetMouseButtonDown(1) && esperaDanoArea <= 0 && status.QntColetavel > 0 && estadoPlayer == EstadoPlayer.COMBATE)
         {
             StartCoroutine(danoArea());
         }
@@ -110,6 +110,10 @@ public class Iovelik : Player
         estadoPlayer = EstadoPlayer.ATACANDO;
         animator.SetTrigger("Especial");
         canAttack = false;
+
+        yield return new WaitForSeconds(1f);
+
+        Debug.Log("Toma porra");
 
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioDanoArea, LayerMask.GetMask("Inimigo"));
 

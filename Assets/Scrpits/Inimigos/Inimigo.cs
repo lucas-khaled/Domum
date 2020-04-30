@@ -74,7 +74,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
             anim.SetTrigger("Ataque 1");
         else
             anim.SetTrigger("Ataque 2");
-        /*Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
+
+        Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
 
         // é checado se o ataque atingiu o player e lhe dá o dano
         if (hit.Length > 0)
@@ -82,7 +83,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
             hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
         }
 
-        //reseta o cooldown(espera) do ataque e espera para tocar a animação*/
+        //reseta o cooldown(espera) do ataque e espera para tocar a animação
+
         ataqueCooldown = velocidadeAtaque;
         yield return new WaitForSeconds(0.5f);              
     }
@@ -93,7 +95,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
         
         //chama metodo do UIController para exibir o dano no worldCanvas
         UIController.uiController.InitCBT(danoRecebido.ToString(), CBTprefab, hitCanvas);
-        
+
+        StopAllCoroutines();
         
         if (vida <= 0)
         {
@@ -108,16 +111,25 @@ public class Inimigo : MonoBehaviour, IVulnerable
         
     }
    
-    void Morrer()
+    protected virtual void Morrer()
     {
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 60);
+        anim.SetBool("Morreu", true);
+
+        Destroy(GetComponent<NavMeshAgent>());
+        Destroy(GetComponent<BoxCollider>());
+        Destroy(GetComponent<SphereCollider>());
+
+        foreach(FaceCamera destruir in GetComponentsInChildren(typeof(FaceCamera), true))
+        {
+            Destroy(destruir.gameObject);
+        }
 
         //AQUI O DELEGATE DE MORTE DO INIGO É CHAMADO E TODOS OS MÉTODOS INSCRITOS NESTE DELEGATE SERÃO CHAMADOS
         if (EventsController.onMorteInimigoCallback != null)
         {
             EventsController.onMorteInimigoCallback.Invoke(experienciaMorte);
         }
-        Debug.Log("Morri");
     }
 
     void DroparLoot()
@@ -127,7 +139,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     protected void Movimentar(Vector3 destino, bool move = true)
     {
-        if (!move)
+        if (!move && NavMesh != null)
         {
             NavMesh.isStopped = true;
             return;
@@ -141,6 +153,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         if (collider.gameObject.tag == "Player" && hostil)
         {
+            anim.SetBool("Idle", false);
             bool mover = true;
 
             float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
@@ -163,6 +176,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
         {
             Movimentar(posicaoInicial.position);
             ataqueCooldown = 0;
+            anim.SetBool("Idle", true);
         }
     }
 

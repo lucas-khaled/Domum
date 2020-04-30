@@ -7,18 +7,18 @@ public class Distancia : Inimigo
     public GameObject imagemAlerta;
     public GameObject bala;
     public Transform pontoTiro;
+    public Transform pontoAlerta;
+
+    private GameObject alerta;
     protected override IEnumerator Atacar()
     {
 
         ataqueCooldown = velocidadeAtaque;
         Coroutine mira = StartCoroutine(Mirar());
 
-        Vector3 transformBala = this.gameObject.transform.position;
-        transformBala = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z);
-
-        GameObject alerta = Instantiate(imagemAlerta, transform.position, imagemAlerta.transform.rotation);
+        alerta = Instantiate(imagemAlerta, pontoAlerta);
         alerta.AddComponent<FaceCamera>();
-
+        alerta.transform.SetParent(transform);
 
         yield return new WaitForSeconds(3f);
 
@@ -43,5 +43,12 @@ public class Distancia : Inimigo
             this.transform.LookAt(Player.player.transform);
             yield return null;
         }
+    }
+
+    protected override void Morrer()
+    {
+        base.Morrer();
+
+        Destroy(GetComponentInChildren(typeof(FaceCamera), true));
     }
 }

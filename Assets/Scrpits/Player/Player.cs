@@ -128,8 +128,6 @@ public class Player : MonoBehaviour, IVulnerable
             animator.SetBool("Atacando", true);
 
             outroAtaque = false;
-
-            //animator.SetFloat("Attack", attack);
            
 
             /*Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
