@@ -44,8 +44,12 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        CamControl(QualOrigemInput());
+        if (Player.player.estadoPlayer != EstadoPlayer.MORTO)
+        {
+            CamControl(QualOrigemInput());
+        }
         CamFolow();
+
     }
 
     void CamFolow()

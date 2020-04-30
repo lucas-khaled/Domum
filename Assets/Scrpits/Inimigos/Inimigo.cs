@@ -117,7 +117,6 @@ public class Inimigo : MonoBehaviour, IVulnerable
         anim.SetBool("Morreu", true);
 
         Destroy(GetComponent<NavMeshAgent>());
-        Destroy(GetComponent<BoxCollider>());
         Destroy(GetComponent<SphereCollider>());
 
         foreach(FaceCamera destruir in GetComponentsInChildren(typeof(FaceCamera), true))
@@ -151,7 +150,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     protected virtual void OnTriggerStay(Collider collider)
     {
-        if (collider.gameObject.tag == "Player" && hostil)
+        if (collider.gameObject.tag == "Player" && hostil && Player.player.estadoPlayer != EstadoPlayer.MORTO)
         {
             anim.SetBool("Idle", false);
             bool mover = true;
