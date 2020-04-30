@@ -8,6 +8,13 @@ public class UIController : MonoBehaviour
     public Image playerLifeBar;
     public Image XpBar;
     public Image Skill;
+    public GameObject Usavel;
+    //public Transform Inicio;
+    private GameObject[] Bases;
+
+    public GameObject Painel;
+    private List<Transform> listinha = new List<Transform>();
+
 
     #region SINGLETON
 
@@ -15,11 +22,15 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
-        //EventsController.onTyvaMira += TurnPointer;
         uiController = this;
     }
 
     #endregion
+    private void Start()
+    {
+        UseTest();
+        Usandinho();
+    }
 
     #region WORLD CANVAS
 
@@ -59,21 +70,23 @@ public class UIController : MonoBehaviour
 
     }
 
-    
 
-    /*private void TurnPointer(bool ligado)
-    {
-        pointer.gameObject.SetActive(ligado);
-        StartCoroutine(DrawPointer());
+    public void UseTest(){
+
+        for(int i = 0; i < Painel.transform.childCount; i++){
+            listinha.Add(Painel.transform.GetChild(i));
+        }
+        for(int i = 0; i < Player.player.status.maxColetavel; i++){
+            listinha[i].gameObject.SetActive(true);
+        }
     }
-
-    IEnumerator DrawPointer()
-    {
-        yield return new WaitForSeconds(2);
-        Vector3 screenPointerPosition = CameraController.cameraInstance.cam.WorldToScreenPoint(pointerPosition.position);
-
-        pointer.transform.SetParent(Canvas2D.transform);
-        pointer.transform.position = screenPointerPosition;
-    }*/
+    public void Usandinho(){
+        for(int i = 0; i < Player.player.status.QntColetavel; i++){
+            listinha[i].GetChild(1).gameObject.SetActive(true);
+        }
+        for(int i = Player.player.status.maxColetavel-1; i > Player.player.status.QntColetavel-1; i--){
+            listinha[i].GetChild(1).gameObject.SetActive(false);
+        }
+    }
 
 }
