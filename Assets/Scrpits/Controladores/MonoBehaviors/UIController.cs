@@ -59,6 +59,8 @@ public class UIController : MonoBehaviour
 
     }
 
+    
+
     /*private void TurnPointer(bool ligado)
     {
         pointer.gameObject.SetActive(ligado);

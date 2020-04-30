@@ -25,6 +25,7 @@ public class StatusPlayer : MonoBehaviour
         set
         {
             qntColetavel = Mathf.Clamp(value, 0, maxColetavel);
+            Instante_Cristais.instante.pegaValor(QntColetavel);
         }
     }
 
