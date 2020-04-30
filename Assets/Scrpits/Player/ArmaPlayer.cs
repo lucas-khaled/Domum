@@ -18,7 +18,7 @@ public class ArmaPlayer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Inimigo")
+        if (other.gameObject.tag == "Inimigo" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO || Player.player.estadoPlayer == EstadoPlayer.RECARREGAVEL))
         {
             other.gameObject.GetComponent<Inimigo>().ReceberDano(CalculaDano());
         }
