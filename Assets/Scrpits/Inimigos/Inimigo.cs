@@ -69,6 +69,10 @@ public class Inimigo : MonoBehaviour, IVulnerable
     //realiza o ataque do inimigo
     protected virtual IEnumerator Atacar()
     {
+        if (Player.player.estadoPlayer == EstadoPlayer.MORTO)
+        {
+            yield break;
+        }
         int escolha = Random.Range(1, 3);
         if (escolha == 1)
             anim.SetTrigger("Ataque 1");
