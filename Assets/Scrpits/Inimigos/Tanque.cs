@@ -9,25 +9,6 @@ public class Tanque : Inimigo
     public GameObject escudo;
 
     private bool choose = true;
-
-    protected override void OnTriggerStay(Collider collider)
-    {
-        if (collider.gameObject.tag == "Player" && hostil)
-        {
-            bool mover = true;
-
-            float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
-
-            if (distancia <= distanciaAtaque)
-            {
-                mover = false;
-                if(choose)
-                   EscolheAcao();
-            }
-
-            Movimentar(collider.transform.position, mover);
-        }
-    }
     public override void ReceberDano(int danoRecebido)
     {
         if(!escudo.activeSelf)
@@ -41,18 +22,21 @@ public class Tanque : Inimigo
 
         yield return c;
         Debug.Log("Ataque Tanque");
-        yield return new WaitForSeconds(cooldownGeral);
 
+        anim.SetBool("Idle", true);
+        yield return new WaitForSeconds(cooldownGeral);
         choose = true;
     }
 
     IEnumerator Defender()
     {
+                    anim.SetBool("Defendendo", true);
         escudo.SetActive(true);
         choose = false;
 
         yield return new WaitForSeconds(2);
 
+        anim.SetBool("Defendendo", false);
         escudo.SetActive(false);
 
         yield return new WaitForSeconds(cooldownGeral);
@@ -66,9 +50,11 @@ public class Tanque : Inimigo
 
         int chance = Mathf.CeilToInt(Random.Range(1, 100));
 
-        if (chance >= 50)      
-            StartCoroutine(Atacar());     
+        if (chance >= 50)
+            StartCoroutine(Atacar());
         else
+        {
             StartCoroutine(Defender());
+        }
     }
 }

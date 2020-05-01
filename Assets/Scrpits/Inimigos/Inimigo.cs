@@ -34,6 +34,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
     [SerializeField]
     private int experienciaMorte;
     private Transform hitCanvas;
+    [SerializeField]
+    bool tanque;
 
     protected float ataqueCooldown;
     public int Vida
@@ -160,7 +162,6 @@ public class Inimigo : MonoBehaviour, IVulnerable
             bool mover = true;
 
             float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
-
             if (distancia <= distanciaAtaque)
             {
                 mover = false;
