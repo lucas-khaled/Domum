@@ -53,11 +53,8 @@ public class Inventario : MonoBehaviour
 
     public void RemoverItem(Item item)
     {
-        if (!item.isItemMissao)
-        {
-            itens.Remove(item);
-            pesoInventario -= item.peso;
-        }
+        itens.Remove(item);
+        pesoInventario -= item.peso;
     }
 
     #region ARMA

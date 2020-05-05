@@ -8,22 +8,40 @@ public class Condicoes
     public enum TipoCondicao { IDA, FALA, COMBATE, INTERACAO, PEGA_ITEM, DEVOLVE_ITEM,};
 
     public TipoCondicao tipoCondicao;
+
     public Vector3 local;
     public string descricao;
 
     #region HIDDENVARIABLES
 
     public ItemPickup itemDaCondicao;
-    public List<GameObject> objetosDaCondicao;
     public List<GameObject> inimigosDaCondicao;
     public float raioDeSpawn = 2;
-    public float distanciaChegada;
+    public float distanciaChegada = 5;
     public Interagivel interagivel;
 
     #endregion
 
     GameObject inimigoParent;
 
+
+    public void CleanUnsusedConditions()
+    {
+        if(tipoCondicao != TipoCondicao.COMBATE)
+        {
+            inimigosDaCondicao.Clear();
+        }
+
+        if (tipoCondicao != TipoCondicao.PEGA_ITEM && tipoCondicao != TipoCondicao.DEVOLVE_ITEM)
+        {
+            itemDaCondicao = null;
+        }
+
+        if(tipoCondicao != TipoCondicao.INTERACAO && tipoCondicao != TipoCondicao.DEVOLVE_ITEM)
+        {
+            interagivel = null;
+        }
+    }
 
     public bool ChecaCondicao()
     {
@@ -47,6 +65,11 @@ public class Condicoes
         if(tipoCondicao == TipoCondicao.PEGA_ITEM)
         {
             volta = CheckPegaItem();
+        }
+
+        if(tipoCondicao == TipoCondicao.DEVOLVE_ITEM)
+        {
+            volta = CheckDevolveItem();
         }
 
         return volta;
@@ -88,8 +111,11 @@ public class Condicoes
         Debug.Log(interagido.name + " - " + interagivel.name);
         if(interagido == interagivel)
         {
-            Debug.Log("issaaa");
             interagiu = true;
+            if(tipoCondicao == TipoCondicao.DEVOLVE_ITEM)
+            {
+                Inventario.inventario.RemoverItem(itemDaCondicao.item);
+            }
         }
     }
     #endregion
@@ -115,6 +141,23 @@ public class Condicoes
 
     #endregion
 
+    #region DEVOLVE_ITEM
+    // a parte mais importante desse código está na região de interação, pois aqui foi reutilizada sua estrutula lógica.
+
+    private bool CheckDevolveItem()
+    {
+        return interagiu;
+    }
+
+    #endregion
+
+    public Vector3 SpawnRandomico()
+    {
+        Vector3 loc = local + (Random.insideUnitSphere * raioDeSpawn);
+        loc.y = local.y;
+        return loc;
+    }
+
     public void AtivarCondicao()
     {      
         if (inimigosDaCondicao.Count>0) {
@@ -123,16 +166,12 @@ public class Condicoes
             Transform parentao = GameObject.Find("CondHolder").transform;
             foreach (GameObject inimigo in inimigosDaCondicao)
             {
-                Vector3 loc = local + (Random.insideUnitSphere * raioDeSpawn);
-                loc.y = local.y;
-                Quaternion rot = Random.rotation;
-
-                GameObject inimigoInstanciado = MonoBehaviour.Instantiate(inimigo, loc, rot);
+                GameObject inimigoInstanciado = MonoBehaviour.Instantiate(inimigo, SpawnRandomico(), Quaternion.identity);
                 inimigoInstanciado.transform.SetParent(inimigoParent.transform);
             }
         }
 
-        if(tipoCondicao == TipoCondicao.INTERACAO)
+        if(tipoCondicao == TipoCondicao.INTERACAO || tipoCondicao == TipoCondicao.DEVOLVE_ITEM)
         {
             GameObject interagivelObj = MonoBehaviour.Instantiate(interagivel.gameObject, local, interagivel.gameObject.transform.rotation);
             interagivel = interagivelObj.GetComponent<Interagivel>();

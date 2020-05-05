@@ -15,17 +15,20 @@ MonoBehaviour:
   principal: 0
   nome: 
   condicoes:
-  - tipoCondicao: 0
+  - tipoCondicao: 3
     local: {x: -7.28, y: 5.3, z: -1.4}
     descricao: Go
-    objetosDaCondicao: []
+    itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 2
     distanciaChegada: 4.13
-  - tipoCondicao: 0
+    interagivel: {fileID: 0}
+  - tipoCondicao: 4
     local: {x: 23.1, y: 5.3, z: -3.19}
-    descricao: yo
-    objetosDaCondicao: []
+    descricao: 
+    itemDaCondicao: {fileID: 318894017831601180, guid: cce8f1f57fd2fc04eb83933ee21f7437,
+      type: 3}
     inimigosDaCondicao: []
     raioDeSpawn: 2
     distanciaChegada: 4.13
+    interagivel: {fileID: 0}
