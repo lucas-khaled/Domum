@@ -15,6 +15,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
     public NavMeshAgent NavMesh;
     public Transform posicaoInicial;
     public GameObject CBTprefab;
+    public Item[] itensDropaveis;
+    private List<Item> itens = new List<Item>();
 
     //Criar Array de Itens para ele dropar
     [Header("Valores")]
@@ -139,7 +141,14 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     void DroparLoot()
     {
-
+        int numeroItens = Random.Range(0, 4);
+        for (int i = 0; i <= numeroItens; i++)
+        {
+            int itemEsc = Random.Range(0, itensDropaveis.Length);
+            itens.Add(itensDropaveis[itemEsc]);
+        }
+        
+        // Acessar inventário de loot
     }
 
     protected void Movimentar(Vector3 destino, bool move = true)

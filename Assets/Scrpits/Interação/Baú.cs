@@ -4,27 +4,21 @@ using UnityEngine;
 
 public class Baú : Interagivel
 {
-    [SerializeField]
-    List<Item> itens = new List<Item>();
-    [SerializeField]
-    private Item[] vetItens;
+    public List<Item> itens = new List<Item>();
+    private GameObject player;
     [SerializeField]
     Animator anim;
-    /*private void GeraItens()
+
+    private void Start()
     {
-        int escolha = Random.Range(1, 5);
-        for (int i = 0; i < escolha; i++)
-        {
-            int itemEsc = Random.Range(0, vetItens.Length);
-            itens.Add(vetItens[itemEsc]);
-        }
-    }*/
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     public override void Interact()
     {
         if (Inventario.inventario.AddItem(itens[0]))
         {
+            anim.SetBool("Aberto", true);
             Debug.Log("IEI");
         }
-        anim.SetBool("Aberto", true);
     }
 }
