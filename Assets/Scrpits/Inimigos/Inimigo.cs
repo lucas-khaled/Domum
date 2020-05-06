@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-
-
 public class Inimigo : MonoBehaviour, IVulnerable
 {
 
@@ -173,6 +171,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
             float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
             if (distancia <= distanciaAtaque)
             {
+                anim.SetBool("Idle", true);
                 mover = false;
                 if(ataqueCooldown<=0)
                   StartCoroutine(Atacar());        
@@ -191,6 +190,19 @@ public class Inimigo : MonoBehaviour, IVulnerable
             ataqueCooldown = 0;
             anim.SetBool("Idle", true);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 
     private void OnDrawGizmosSelected()
