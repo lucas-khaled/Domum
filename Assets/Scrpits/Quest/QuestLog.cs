@@ -20,6 +20,11 @@ public class QuestLog : MonoBehaviour
 
     List<QuestChecker> activeQuestCheckers = new List<QuestChecker>();
 
+    public List<Quest> getQuestAceitas()
+    {
+        return questsAceitas;
+    }
+
     public void AdicionarQuest(Quest quest)
     {
         //adiciona na lista de quest aceitas
