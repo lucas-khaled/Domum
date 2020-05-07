@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SkinnedMeshRenderer))]
 public class ArmaPlayer : MonoBehaviour
 {
     [SerializeField]
     private int Dano;
+
+    public SkinnedMeshRenderer mesh;
+
     private void Start()
     {
         if (gameObject.activeSelf)
-            Inventario.inventario.armaMesh = GetComponent<SkinnedMeshRenderer>();
+            Inventario.inventario.armaMesh = mesh;
     }
     private int CalculaDano()
     {
