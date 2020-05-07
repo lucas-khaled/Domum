@@ -23,10 +23,5 @@ public class ArmaPlayer : MonoBehaviour
             Debug.Log("Vai tomar no cuuuuuuuuuuuu");
             other.gameObject.GetComponent<Inimigo>().ReceberDano(CalculaDano());
         }
-        if (other.gameObject.tag == "Girafa" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO || Player.player.estadoPlayer == EstadoPlayer.RECARREGAVEL) && !other.isTrigger)
-        {
-            Debug.Log("Vai tomar no cuuuuuuuuuuuu");
-            other.gameObject.GetComponent<Girafa>().ReceberDano(CalculaDano());
-        }
     }
 }
