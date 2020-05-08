@@ -30,7 +30,8 @@ public class Tanque : Inimigo
 
     IEnumerator Defender()
     {
-                    anim.SetBool("Defendendo", true);
+        ataqueCooldown = velocidadeAtaque;
+        anim.SetBool("Defendendo", true);
         escudo.SetActive(true);
         choose = false;
 
@@ -55,6 +56,29 @@ public class Tanque : Inimigo
         else
         {
             StartCoroutine(Defender());
+        }
+    }
+
+    protected override void OnTriggerStay(Collider collider)
+    {
+        if (collider.gameObject.tag == "Player" && hostil && Player.player.estadoPlayer != EstadoPlayer.MORTO)
+        {
+            anim.SetBool("Idle", false);
+            bool mover = true;
+
+            float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
+
+            Debug.Log(distancia);
+            if (distancia <= distanciaAtaque)
+            {
+                anim.SetBool("Idle", true);
+                mover = false;
+                if (ataqueCooldown <= 0 && choose)
+                    EscolheAcao();
+            }
+
+            ataqueCooldown -= Time.deltaTime * 1;
+            Movimentar(collider.transform.position, mover);
         }
     }
 }

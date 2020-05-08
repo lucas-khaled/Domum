@@ -21,7 +21,6 @@ public class Interagivel : MonoBehaviour
         if (EventsController.onInteracao != null)
         {
             EventsController.onInteracao.Invoke(this);
-            Debug.Log("uooou");
         }
     }
 

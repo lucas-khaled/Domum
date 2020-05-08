@@ -41,6 +41,12 @@ public class Player : MonoBehaviour, IVulnerable
 
         protected set
         {
+            if (status.Vida <= 0)
+            {
+                estado_player = EstadoPlayer.MORTO;
+                return;
+            }
+
             estado_player = value;
             if (value == EstadoPlayer.NORMAL)
             {
