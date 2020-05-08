@@ -65,7 +65,6 @@ public class CameraController : MonoBehaviour
     {
         if (origemInput == OrigemInput.JOYSTICK)
         {
-            Debug.Log(Input.GetAxis("RightStickVertical"));
 
             controleX += Input.GetAxis("RightStickHorizontal") * Sensibilidade_cam;
             controleY += Input.GetAxisRaw("RightStickVertical") * Sensibilidade_cam;

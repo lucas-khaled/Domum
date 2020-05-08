@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class Girafa : MonoBehaviour
+public class Tigre : MonoBehaviour
 {
     [Header("Referências")]
     public Image lifeBar;
@@ -26,97 +26,134 @@ public class Girafa : MonoBehaviour
     private int vida;
     [SerializeField]
     private int experienciaMorte;
+    [SerializeField]
+    private int danoMedio;
+    [SerializeField]
+    private GameObject boca;
+    [SerializeField]
+    private GameObject pata;
+    [SerializeField]
+    private int distanciaAtaque;
+    [SerializeField]
+    private int cooldown;
+    private float ataqueCooldown;
+    private Rigidbody rb;
 
     private Transform hitCanvas;
 
-    //auxiliares
-    private float aux = 0;
-    private bool vaicomer;
-    private int corrida;
-    private bool correndo;
-
+    #region COMBATE
+    private void jumpAttack()
+    {
+        anim.SetTrigger("Atacar");
+        Collider[] hit = Physics.OverlapSphere(boca.transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
+        if (hit.Length > 0)
+        {
+            hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
+        }
+    }
+    #endregion
     private void Update()
     {
-        if (anim.GetBool("Caminhando")){
+        if (anim.GetBool("Caminhando"))
+        {
             if (Vector3.Distance(this.gameObject.transform.position, destino) < 1f)
             {
                 anim.SetBool("Caminhando", false);
                 StartCoroutine(Escolher());
             }
         }
-        if (vaicomer)
+    }
+    protected virtual void OnTriggerStay(Collider collider)
+    {
+        if (collider.gameObject.tag == "Player" && Player.player.estadoPlayer != EstadoPlayer.MORTO)
         {
-            if ((Vector3.Distance(this.gameObject.transform.position, destino) < 5f))
+            anim.SetBool("Caminhando", false);
+            anim.SetFloat("Distancia", Vector3.Distance(collider.transform.position, this.transform.position));
+            anim.SetBool("Idle", false);
+
+            if (anim.GetFloat("Distancia") > 3f)
             {
-                animal.SetDestination(this.gameObject.transform.position);
-                this.gameObject.transform.LookAt(destino);
-                StartCoroutine(Comer());
+                GetComponent<NavMeshAgent>().speed = 3f;
+                anim.SetBool("Correndo", true);
             }
-            vaicomer = false;
-        }
-        if (correndo && corrida > 0)
-        {
-            if (Vector3.Distance(this.gameObject.transform.position, destino) < 1.5f)
+
+            if (Vector3.Distance(this.gameObject.transform.position, collider.transform.position) > 2.5f)
+                    animal.SetDestination(collider.transform.position);
+
+            if (anim.GetFloat("Distancia") <= 3f && anim.GetBool("Correndo"))
             {
-                destino = RandomNavMeshGenerator(20f);
-                animal.SetDestination(destino);
-                corrida--;
+                jumpAttack();
+                anim.SetBool("Correndo",false);
+                ataqueCooldown = cooldown;
             }
+            else if (ataqueCooldown <= 0 && anim.GetFloat("Distancia") <= 2f)
+            {
+                Atacar();
+                ataqueCooldown = cooldown;
+            }
+            ataqueCooldown -= Time.deltaTime * 1;
         }
-        else if (correndo && corrida <= 0)
+    }
+    protected void Atacar()
+    {
+        int escolha = Random.Range(0, 2);
+        if (escolha == 1)
         {
-            GetComponent<NavMeshAgent>().speed = 0.8f;
+            anim.SetTrigger("Atacar");
+            ataqueCooldown = cooldown;
+        }
+        else
+        {
+            anim.SetTrigger("Atacar 2");
+            ataqueCooldown = cooldown;
+        }
+           
+    }
+    protected void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            ataqueCooldown = 0;
             anim.SetBool("Correndo", false);
-            correndo = false;
         }
     }
     private IEnumerator Escolher()
     {
-        int escolha = Random.Range(0, 4);
-        if (escolha == 0)
+        int escolha = Random.Range(0, 100);
+        Debug.Log(escolha);
+        if (escolha <= 70)
         {
-            destino = RandomNavMeshGenerator(10f);
-            Movimentar(destino);
-        }
-        else if (escolha == 2)
-        {
-            StartCoroutine(Deitado());
-        }
-        else if (escolha == 3)
-        {
-            Collider[] arvore = Physics.OverlapSphere(this.transform.position, 15f, LayerMask.GetMask("Arvore"));
-            if (arvore.Length > 0)
+            if (anim.GetBool("Idle"))
             {
-                maisPerto = arvore[0];
-                for (int i = 1; i < arvore.Length; i++)
-                {
-                    if (Vector3.Distance(maisPerto.transform.position, this.gameObject.transform.position) < Vector3.Distance(arvore[i].transform.position, this.gameObject.transform.position))
-                    {
-                        maisPerto = arvore[i];
-                    }
-                }
-                vaicomer = true;
-                destino = maisPerto.transform.position;
+                anim.SetBool("Idle", false);
+                Debug.Log("ANDAAA");
+                destino = RandomNavMeshGenerator(10f);
+                animal.speed = 1.5f;
                 Movimentar(destino);
-            }
-            else
-            {
-                StopCoroutine(Escolher());
-                StartCoroutine(Escolher());
+                anim.SetBool("Idle",true);
             }
         }
-        else if (escolha == 1)
+        else if(escolha <= 80)
         {
-            yield return new WaitForSeconds(13f);
+            Debug.Log("Farejar");
+            StartCoroutine(Farejar());
+        }
+        else
+        {
+            Debug.Log("IA");
+            yield return new WaitForSeconds(4f);
+            //StopCoroutine(Escolher());
             StartCoroutine(Escolher());
         }
     }
     private void Start()
     {
+        anim.SetBool("Idle", true);
         StartCoroutine(Escolher());
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
         anim.SetFloat("Vida", maxVida);
+        rb = this.gameObject.GetComponent<Rigidbody>();
     }
     public int Vida
     {
@@ -128,16 +165,12 @@ public class Girafa : MonoBehaviour
             UIController.uiController.LifeBar(lifeBar, ((float)vida / maxVida));
         }
     }
-    public IEnumerator Deitado()
+    public IEnumerator Farejar()
     {
-        anim.SetBool("Deitado", true);
-        yield return new WaitForSeconds(20f);
-        anim.SetTrigger("Levantar");
-        anim.SetBool("Deitado", false);
-        yield return new WaitForSeconds(3f);
-        destino = RandomNavMeshGenerator(10f);
-        yield return new WaitForSeconds(0.5f);
-        Movimentar(destino);
+        anim.SetTrigger("Farejar");
+        anim.SetBool("Idle", false);
+        yield return new WaitForSeconds(5f);
+        anim.SetBool("Idle", true);
         StartCoroutine(Escolher());
     }
     public Vector3 RandomNavMeshGenerator(float raioCaminhada)
@@ -178,12 +211,12 @@ public class Girafa : MonoBehaviour
             anim.SetBool("Deitado", false);
             anim.SetTrigger("Tomar dano");
             anim.SetFloat("Vida", vida);
-            Correr();
         }
 
     }
     protected void Movimentar(Vector3 destino, bool move = true)
     {
+        GetComponent<NavMeshAgent>().speed = 0.8f;
         anim.SetBool("Caminhando", true);
         if (!move)
         {
@@ -213,31 +246,9 @@ public class Girafa : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = true;
         }
     }
-    private void Correr()
-    {
-        anim.SetBool("Correndo", true);
-        correndo = true;
-        corrida = Random.Range(2, 6);
-        GetComponent<NavMeshAgent>().speed = 4;
-        destino = RandomNavMeshGenerator(20f);
-        animal.SetDestination(destino);
-    }
     private void OnCollisionExit(Collision collision)
     {
         GetComponent<Rigidbody>().isKinematic = false;
     }
-    private IEnumerator Comer()
-    {
-        anim.SetBool("Caminhando", false);
-        anim.SetBool("Comendo", true);
-        yield return new WaitForSeconds(9f);
-        anim.SetBool("Comendo",false);
-        StartCoroutine(Escolher());
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, 20f);
-        Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(transform.position, 2);
-    }
+
 }
