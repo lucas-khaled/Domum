@@ -114,6 +114,12 @@ public class Tigre : MonoBehaviour
             anim.SetTrigger("Atacar 2");
         }
 
+        Collider[] hit = Physics.OverlapSphere(boca.transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
+        if (hit.Length > 0)
+        {
+            hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
+        }
+
         canAttack = false;
         yield return new WaitForSeconds(cooldown);
         canAttack = true;
