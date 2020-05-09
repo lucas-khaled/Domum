@@ -36,13 +36,14 @@ public class Tigre : MonoBehaviour
     private int distanciaAtaque;
     [SerializeField]
     private int cooldown;
-    private float ataqueCooldown;
     private Rigidbody rb;
 
     private Transform hitCanvas;
 
+    bool canAttack = true;
+
     #region COMBATE
-    private void jumpAttack()
+    private IEnumerator jumpAttack()
     {
         anim.SetTrigger("Atacar");
         Collider[] hit = Physics.OverlapSphere(boca.transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
@@ -50,8 +51,13 @@ public class Tigre : MonoBehaviour
         {
             hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
         }
+
+        canAttack = false;
+        yield return new WaitForSeconds(cooldown);
+        canAttack = true;
     }
     #endregion
+
     private void Update()
     {
         if (anim.GetBool("Caminhando"))
@@ -68,10 +74,13 @@ public class Tigre : MonoBehaviour
         if (collider.gameObject.tag == "Player" && Player.player.estadoPlayer != EstadoPlayer.MORTO)
         {
             anim.SetBool("Caminhando", false);
-            anim.SetFloat("Distancia", Vector3.Distance(collider.transform.position, this.transform.position));
+
+            float distancia = Vector3.Distance(collider.transform.position, this.transform.position);
+
+            anim.SetFloat("Distancia", distancia);
             anim.SetBool("Idle", false);
 
-            if (anim.GetFloat("Distancia") > 3f)
+            if (distancia > 3f)
             {
                 GetComponent<NavMeshAgent>().speed = 3f;
                 anim.SetBool("Correndo", true);
@@ -80,40 +89,39 @@ public class Tigre : MonoBehaviour
             if (Vector3.Distance(this.gameObject.transform.position, collider.transform.position) > 2.5f)
                     animal.SetDestination(collider.transform.position);
 
-            if (anim.GetFloat("Distancia") <= 3f && anim.GetBool("Correndo"))
+            if (distancia <= 3f && anim.GetBool("Correndo") && distancia > 2 && canAttack)
             {
-                jumpAttack();
+                StartCoroutine(jumpAttack());
                 anim.SetBool("Correndo",false);
-                ataqueCooldown = cooldown;
+                return;
             }
-            else if (ataqueCooldown <= 0 && anim.GetFloat("Distancia") <= 2f)
+
+            if (canAttack && distancia <= 2f)
             {
-                Atacar();
-                ataqueCooldown = cooldown;
-            }
-            ataqueCooldown -= Time.deltaTime * 1;
+                StartCoroutine(Atacar());
+            }  
         }
     }
-    protected void Atacar()
+    protected IEnumerator Atacar()
     {
         int escolha = Random.Range(0, 2);
         if (escolha == 1)
         {
-            anim.SetTrigger("Atacar");
-            ataqueCooldown = cooldown;
+            anim.SetTrigger("Atacar");          
         }
         else
         {
             anim.SetTrigger("Atacar 2");
-            ataqueCooldown = cooldown;
         }
-           
+
+        canAttack = false;
+        yield return new WaitForSeconds(cooldown);
+        canAttack = true;
     }
     protected void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            ataqueCooldown = 0;
             anim.SetBool("Correndo", false);
         }
     }
@@ -189,7 +197,7 @@ public class Tigre : MonoBehaviour
     void Morrer()
     {
         StopAllCoroutines();
-        animal.Stop();
+        animal.isStopped = true;
         Debug.Log("Morri");
     }
     public virtual void ReceberDano(int danoRecebido)
