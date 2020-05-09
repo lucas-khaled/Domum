@@ -13,6 +13,8 @@ public class UIController : MonoBehaviour
     private GameObject[] Bases;
 
     public GameObject Painel;
+    public GameObject QuestLog;
+    public bool questLogAberto = false;
     private List<Transform> listinha = new List<Transform>();
 
 
@@ -30,6 +32,21 @@ public class UIController : MonoBehaviour
     {
         UseTest();
         Usandinho();
+    }
+
+    protected virtual void Update() {        
+
+        if (Input.GetKey("J")) { //trocar para GetButtonDown("QuestLog") e setar o botão
+            // Pausar jogo
+            AbrirQuestLog();
+            questLogAberto = true;            
+        }
+
+        if (Input.GetKey("J") && questLogAberto == true) { //trocar para GetButtonDown("QuestLog") e setar o botão
+                FecharQuestLog();
+                questLogAberto = false;
+                // Retomar jogo
+            }
     }
 
     #region WORLD CANVAS
@@ -87,6 +104,14 @@ public class UIController : MonoBehaviour
         for(int i = Player.player.status.maxColetavel-1; i > Player.player.status.QntColetavel-1; i--){
             listinha[i].GetChild(1).gameObject.SetActive(false);
         }
+    }
+
+    public void AbrirQuestLog() {
+        QuestLog.SetActive(true);
+    }
+
+    public void FecharQuestLog() {
+        QuestLog.SetActive(false);
     }
 
 }

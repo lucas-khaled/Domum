@@ -264,8 +264,7 @@ public class Player : MonoBehaviour, IVulnerable
             Interagir();
         }
     }
-
-
+    
     void Movimento()
     {
         if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
