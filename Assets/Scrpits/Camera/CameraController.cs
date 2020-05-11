@@ -15,6 +15,8 @@ public class CameraController : MonoBehaviour
 
     float mouseX, mouseY, controleX, controleY, baseOffset;
     float controleXEsq, grauRotacao;
+
+    public bool Trava;
     
 
     public Camera cam;
@@ -44,7 +46,7 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Player.player.estadoPlayer != EstadoPlayer.MORTO)
+        if (Player.player.estadoPlayer != EstadoPlayer.MORTO && !Trava)
         {
             CamControl(QualOrigemInput());
         }

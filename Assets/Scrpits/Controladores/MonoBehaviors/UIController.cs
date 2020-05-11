@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     public GameObject Usavel;
     //public Transform Inicio;
     private GameObject[] Bases;
+    public GameObject Pause;
 
     public GameObject Painel;
     public GameObject QuestLog;
@@ -32,11 +33,13 @@ public class UIController : MonoBehaviour
     {
         UseTest();
         Usandinho();
+        
     }
 
     protected virtual void Update() {        
+       PauseOn();
 
-        if (Input.GetKey("J")) { //trocar para GetButtonDown("QuestLog") e setar o botão
+        /*if (Input.GetKey("J")) { //trocar para GetButtonDown("QuestLog") e setar o botão
             // Pausar jogo
             AbrirQuestLog();
             questLogAberto = true;            
@@ -46,7 +49,7 @@ public class UIController : MonoBehaviour
                 FecharQuestLog();
                 questLogAberto = false;
                 // Retomar jogo
-            }
+            }*/
     }
 
     #region WORLD CANVAS
@@ -106,12 +109,35 @@ public class UIController : MonoBehaviour
         }
     }
 
+
     public void AbrirQuestLog() {
         QuestLog.SetActive(true);
     }
 
     public void FecharQuestLog() {
         QuestLog.SetActive(false);
+    }
+
+    public void PauseOn(){
+
+        if(Input.GetKey(KeyCode.Escape)){
+
+        Pause.SetActive(true);
+        CameraController.cameraInstance.Trava = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+
+        }
+
+    }
+    public void PauseOff(){
+
+        Pause.SetActive(false);
+        Cursor.visible = false;
+        CameraController.cameraInstance.Trava = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
     }
 
 }
