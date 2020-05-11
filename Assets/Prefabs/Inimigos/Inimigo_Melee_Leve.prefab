@@ -312,6 +312,13 @@ MonoBehaviour:
   posicaoInicial: {fileID: 0}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
+  itensDropaveis:
+  - {fileID: 11400000, guid: ee444615afb2ac04981992ad37e64f64, type: 2}
+  - {fileID: 11400000, guid: 04857c3ec53de80458eb0fc69df86694, type: 2}
+  - {fileID: 11400000, guid: fd791417e440dfb468932d5155bf0ac9, type: 2}
+  - {fileID: 11400000, guid: fe7f5377baca23a40a3d0382390f8a2a, type: 2}
+  - {fileID: 11400000, guid: 6f13f957c1caa7b4c862909266e5beb9, type: 2}
+  drop: {fileID: 4501771150669755731, guid: 86901b452bd0d7f48bbb8654eefc0748, type: 3}
   hostil: 1
   maxVida: 100
   danoMedio: 10
@@ -320,6 +327,7 @@ MonoBehaviour:
   vida: 0
   velocidadeAtaque: 2
   experienciaMorte: 20
+  tanque: 0
 --- !u!1 &1043549649305270198
 GameObject:
   m_ObjectHideFlags: 0

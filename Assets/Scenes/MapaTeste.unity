@@ -1570,6 +1570,11 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 90ec6cd55f0dbef4d881389c7c6ea5bd, type: 3}
+    - target: {fileID: 7460661566698977156, guid: 1c89acade4caa0d45b45103a6ccbccdd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d8e5c1d266ac5134d8eed2aba0d230b9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
 --- !u!114 &927688112 stripped
@@ -1600,7 +1605,7 @@ PrefabInstance:
     - target: {fileID: 2190840333756759123, guid: e77be8f7697e4bf47bf84be7f9c7b056,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.492126
+      value: -11.26
       objectReference: {fileID: 0}
     - target: {fileID: 2190840333756759123, guid: e77be8f7697e4bf47bf84be7f9c7b056,
         type: 3}
@@ -1610,7 +1615,7 @@ PrefabInstance:
     - target: {fileID: 2190840333756759123, guid: e77be8f7697e4bf47bf84be7f9c7b056,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.715057
+      value: 23.21
       objectReference: {fileID: 0}
     - target: {fileID: 2190840333756759123, guid: e77be8f7697e4bf47bf84be7f9c7b056,
         type: 3}
@@ -1692,6 +1697,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 6565642853361571653, guid: e77be8f7697e4bf47bf84be7f9c7b056,
+        type: 3}
+      propertyPath: velocidadeAtaque
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6565642853361571654, guid: e77be8f7697e4bf47bf84be7f9c7b056,
         type: 3}
       propertyPath: m_Height
@@ -1727,6 +1737,11 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -0.0023498535
       objectReference: {fileID: 0}
+    - target: {fileID: 8137281514602746153, guid: e77be8f7697e4bf47bf84be7f9c7b056,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 745d1b817b381c644861632c82adfa7a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
 --- !u!1001 &1015256086
@@ -2738,7 +2753,7 @@ PrefabInstance:
     - target: {fileID: 4423528063262511374, guid: 5636177fe4bb142489c27d6b3d41f60d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3
+      value: -7.37
       objectReference: {fileID: 0}
     - target: {fileID: 4423528063262511374, guid: 5636177fe4bb142489c27d6b3d41f60d,
         type: 3}
@@ -2748,7 +2763,7 @@ PrefabInstance:
     - target: {fileID: 4423528063262511374, guid: 5636177fe4bb142489c27d6b3d41f60d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40.5
+      value: 26.17
       objectReference: {fileID: 0}
     - target: {fileID: 4423528063262511374, guid: 5636177fe4bb142489c27d6b3d41f60d,
         type: 3}
@@ -2794,11 +2809,16 @@ PrefabInstance:
         type: 3}
       propertyPath: posicaoInicial
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1503328876}
     - target: {fileID: 8654004889868990992, guid: 5636177fe4bb142489c27d6b3d41f60d,
         type: 3}
       propertyPath: velocidadeAtaque
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654004889868990992, guid: 5636177fe4bb142489c27d6b3d41f60d,
+        type: 3}
+      propertyPath: velocidadeAnim
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
@@ -3176,6 +3196,7 @@ MonoBehaviour:
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   itensDropaveis: []
+  drop: {fileID: 0}
   hostil: 1
   maxVida: 80
   danoMedio: 25
@@ -3183,8 +3204,8 @@ MonoBehaviour:
   distanciaAtaque: 5
   vida: 0
   velocidadeAtaque: 4
+  velocidadeAnim: 0
   experienciaMorte: 20
-  tanque: 0
   imagemAlerta: {fileID: 7662658465596606365, guid: f80ad8d3422d0da4d9dfccdf2f8aac6f,
     type: 3}
   bala: {fileID: 1779981273043796429, guid: 165146131202b4945ac99992bcf42f52, type: 3}

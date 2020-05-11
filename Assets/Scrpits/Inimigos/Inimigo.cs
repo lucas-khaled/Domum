@@ -14,7 +14,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
     public Transform posicaoInicial;
     public GameObject CBTprefab;
     public Item[] itensDropaveis;
-    private List<Item> itens = new List<Item>();
+    public Bau drop;
 
     //Criar Array de Itens para ele dropar
     [Header("Valores")]
@@ -32,12 +32,17 @@ public class Inimigo : MonoBehaviour, IVulnerable
     [SerializeField]
     protected float velocidadeAtaque;
     [SerializeField]
+    protected float velocidadeAnim;
+    [SerializeField]
     private int experienciaMorte;
     private Transform hitCanvas;
-    [SerializeField]
-    bool tanque;
+
+    protected bool canAttack = true;
 
     protected float ataqueCooldown;
+
+    bool morto = false;
+
     public int Vida
     {
         get { return vida; }
@@ -75,11 +80,16 @@ public class Inimigo : MonoBehaviour, IVulnerable
         {
             yield break;
         }
+
+        canAttack = false;
+
         int escolha = Random.Range(1, 3);
         if (escolha == 1)
             anim.SetTrigger("Ataque 1");
         else
             anim.SetTrigger("Ataque 2");
+
+        yield return new WaitForSeconds(velocidadeAnim/2);
 
         Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
 
@@ -90,13 +100,18 @@ public class Inimigo : MonoBehaviour, IVulnerable
         }
 
         //reseta o cooldown(espera) do ataque e espera para tocar a animação
-
-        ataqueCooldown = velocidadeAtaque;
-        yield return new WaitForSeconds(0.5f);              
+        
+        yield return new WaitForSeconds(velocidadeAtaque);
+        canAttack = true;
     }
 
     public virtual void ReceberDano(int danoRecebido)
     {
+        if (morto)
+        {
+            return;
+        }
+
         Vida -= danoRecebido;
         
         //chama metodo do UIController para exibir o dano no worldCanvas
@@ -130,6 +145,9 @@ public class Inimigo : MonoBehaviour, IVulnerable
             Destroy(destruir.gameObject);
         }
 
+        morto = true;
+        DroparLoot();
+
         //AQUI O DELEGATE DE MORTE DO INIGO É CHAMADO E TODOS OS MÉTODOS INSCRITOS NESTE DELEGATE SERÃO CHAMADOS
         if (EventsController.onMorteInimigoCallback != null)
         {
@@ -140,13 +158,16 @@ public class Inimigo : MonoBehaviour, IVulnerable
     void DroparLoot()
     {
         int numeroItens = Random.Range(0, 4);
+
+        Debug.Log(numeroItens);
+
+        Bau dropzera = Instantiate(drop.gameObject, transform.position, transform.rotation).GetComponent<Bau>();
+
         for (int i = 0; i <= numeroItens; i++)
         {
             int itemEsc = Random.Range(0, itensDropaveis.Length);
-            itens.Add(itensDropaveis[itemEsc]);
-        }
-        
-        // Acessar inventário de loot
+            dropzera.itens.Add(itensDropaveis[itemEsc]);
+        }        
     }
 
     protected void Movimentar(Vector3 destino, bool move = true)
@@ -171,13 +192,16 @@ public class Inimigo : MonoBehaviour, IVulnerable
             float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
             if (distancia <= distanciaAtaque)
             {
-                anim.SetBool("Idle", true);
+                anim.SetBool("PertoPlayer", true);
                 mover = false;
-                if(ataqueCooldown<=0)
+                if(canAttack)
                   StartCoroutine(Atacar());        
             }
+            else
+            {
+                anim.SetBool("PertoPlayer", false);
+            }
 
-            ataqueCooldown -= Time.deltaTime * 1;
             Movimentar(collider.transform.position, mover);
         }
 

@@ -6,12 +6,11 @@ public class Tanque : Inimigo
 {
     [SerializeField]
     private float cooldownGeral = 1.5f;
-    public GameObject escudo;
 
-    private bool choose = true;
+    private bool choose = true, defendendo = false;
     public override void ReceberDano(int danoRecebido)
     {
-        if(!escudo.activeSelf)
+        if(!defendendo)
             base.ReceberDano(danoRecebido);
     }
 
@@ -32,13 +31,13 @@ public class Tanque : Inimigo
     {
         ataqueCooldown = velocidadeAtaque;
         anim.SetBool("Defendendo", true);
-        escudo.SetActive(true);
         choose = false;
+        defendendo = true;
 
         yield return new WaitForSeconds(2);
 
         anim.SetBool("Defendendo", false);
-        escudo.SetActive(false);
+        defendendo = false;
 
         yield return new WaitForSeconds(cooldownGeral);
 
@@ -64,17 +63,26 @@ public class Tanque : Inimigo
         if (collider.gameObject.tag == "Player" && hostil && Player.player.estadoPlayer != EstadoPlayer.MORTO)
         {
             anim.SetBool("Idle", false);
-            bool mover = true;
+            bool mover = false;
+
+            if (!defendendo)
+            {
+                mover = true;
+            }
 
             float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
 
             Debug.Log(distancia);
             if (distancia <= distanciaAtaque)
             {
-                anim.SetBool("Idle", true);
+                anim.SetBool("PertoPlayer", true);
                 mover = false;
                 if (ataqueCooldown <= 0 && choose)
                     EscolheAcao();
+            }
+            else
+            {
+                anim.SetBool("PertoPlayer", false);
             }
 
             ataqueCooldown -= Time.deltaTime * 1;
