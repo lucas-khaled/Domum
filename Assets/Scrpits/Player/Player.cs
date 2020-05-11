@@ -101,8 +101,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     protected IEnumerator WaitForAnimation(string animacao)
     {
-
-        while(animator.GetCurrentAnimatorStateInfo(0).IsName(animacao))
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName(animacao))
         {
             yield return null;
         }
@@ -125,6 +124,16 @@ public class Player : MonoBehaviour, IVulnerable
         return retorno;
     }
 
+    private IEnumerator WaitForCurrentAnimation()
+    {
+        int hash = animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
+
+        while(animator.GetCurrentAnimatorStateInfo(0).shortNameHash == hash)
+        {
+            yield return null;
+        }
+    }
+
     private IEnumerator Atacar()
     {
 
@@ -134,19 +143,10 @@ public class Player : MonoBehaviour, IVulnerable
             animator.SetBool("Atacando", true);
 
             outroAtaque = false;
-           
 
-            /*Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
+            yield return WaitForCurrentAnimation();
+            yield return new WaitForSeconds(0.3f);
 
-            if (hit.Length > 0)
-            {
-                int danin = CalculaDano();
-                hit[0].gameObject.GetComponent<Inimigo>().ReceberDano(danin);
-            }*/
-
-            yield return WaitForAnimation("Attack"+ QualAtaque());
-
-            
             if (!outroAtaque)
             {
                 //MoverPlayerAtaque();

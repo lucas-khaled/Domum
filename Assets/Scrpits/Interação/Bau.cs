@@ -21,7 +21,6 @@ public class Bau : Interagivel
         if (Inventario.inventario.AddItem(itens[0]))
         {
             itens.RemoveAt(0);
-            Debug.Log("IEI");
         }
     }
 }

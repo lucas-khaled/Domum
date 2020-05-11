@@ -12,8 +12,8 @@ public class Distancia : Inimigo
     private GameObject alerta;
     protected override IEnumerator Atacar()
     {
+        canAttack = false;
 
-        ataqueCooldown = velocidadeAtaque;
         Coroutine mira = StartCoroutine(Mirar());
 
         alerta = Instantiate(imagemAlerta, pontoAlerta);
@@ -30,7 +30,8 @@ public class Distancia : Inimigo
         balaInstanciada.GetComponent<Bala>().SetCasterCollider(this.GetComponent<Collider>());
         
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(velocidadeAtaque);
+        canAttack = true;
 
     }
 

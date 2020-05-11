@@ -36,7 +36,7 @@ public class UIController : MonoBehaviour
 
     protected virtual void Update() {        
 
-        if (Input.GetKey("J")) { //trocar para GetButtonDown("QuestLog") e setar o botão
+        /*if (Input.GetKey("J")) { //trocar para GetButtonDown("QuestLog") e setar o botão
             // Pausar jogo
             AbrirQuestLog();
             questLogAberto = true;            
@@ -46,7 +46,7 @@ public class UIController : MonoBehaviour
                 FecharQuestLog();
                 questLogAberto = false;
                 // Retomar jogo
-            }
+            }*/
     }
 
     #region WORLD CANVAS
