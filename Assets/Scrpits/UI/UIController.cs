@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     //public Transform Inicio;
     private GameObject[] Bases;
     public GameObject Pause;
+    public InventarioUI Inventario;
 
     public GameObject Painel;
     public GameObject QuestLog;

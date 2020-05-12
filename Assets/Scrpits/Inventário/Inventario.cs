@@ -25,12 +25,17 @@ public class Inventario : MonoBehaviour
     public Arma armaEquipada;
 
     List<Item> itens = new List<Item>();
-    private float pesoInventario = 0;
+    public float pesoInventario = 0;
 
 
     private void Start()
     {
         armaEquipada = armaDefault;
+    }
+
+    public List<Item> Getitens()
+    {
+        return itens;
     }
 
     public bool AddItem(Item item)
@@ -45,6 +50,11 @@ public class Inventario : MonoBehaviour
             if (EventsController.onItemPego != null)
             {
                 EventsController.onItemPego.Invoke(item);
+                
+            }
+            if(EventsController.onInventarioChange != null)
+            {
+                EventsController.onInventarioChange.Invoke(item, true);
             }
         }
 
@@ -55,6 +65,10 @@ public class Inventario : MonoBehaviour
     {
         itens.Remove(item);
         pesoInventario -= item.peso;
+        if(EventsController.onInventarioChange != null)
+        {
+            EventsController.onInventarioChange.Invoke(item, false);
+        }
     }
 
     #region ARMA
@@ -64,7 +78,7 @@ public class Inventario : MonoBehaviour
         {
             UnequipArma();
             armaEquipada = arma;
-            itens.Remove(arma);
+            RemoverItem(arma);
             armaMesh.sharedMesh = arma.armaMesh;
         }
     }
@@ -74,7 +88,7 @@ public class Inventario : MonoBehaviour
         if (armaEquipada != null)
         {
             armaMesh.sharedMesh = null;
-            itens.Add(armaEquipada);
+            AddItem(armaEquipada);
             armaEquipada = null;
         }
     }

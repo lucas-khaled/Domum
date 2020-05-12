@@ -15,5 +15,8 @@ public static class EventsController
 
     public delegate void OnItemPego(Item item);
     public static OnItemPego onItemPego;
+
+    public delegate void OnInventarioChange(Item item, bool mudanca);
+    public static OnInventarioChange onInventarioChange; 
 }
 
