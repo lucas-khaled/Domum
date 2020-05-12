@@ -25,6 +25,8 @@ public class Player : MonoBehaviour, IVulnerable
     private float raioPercepcao;
     [SerializeField]
     private float raioAtaque = 2f;
+    [SerializeField]
+    private float espera;
     public int numAtaque = 2;
 
     protected Rigidbody rb;
@@ -145,7 +147,7 @@ public class Player : MonoBehaviour, IVulnerable
             outroAtaque = false;
 
             yield return WaitForCurrentAnimation();
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(espera);
 
             if (!outroAtaque)
             {
