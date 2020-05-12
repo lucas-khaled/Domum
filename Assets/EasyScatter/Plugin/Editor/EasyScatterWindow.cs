@@ -1062,7 +1062,7 @@ public class EasyScatterWindow : EditorWindow {
 							obj.layer = brush.layer;
 							obj.tag = brush.tag;
 						
-							StaticEditorFlags flag = brush.lightmapStatic?StaticEditorFlags.LightmapStatic:0;
+							StaticEditorFlags flag = brush.lightmapStatic?StaticEditorFlags.ContributeGI:0;
 							flag |= brush.batchingStatic?StaticEditorFlags.BatchingStatic:flag;
 							flag |= brush.occludeeStatic?StaticEditorFlags.OccludeeStatic:flag;
 						
