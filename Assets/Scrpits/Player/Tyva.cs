@@ -69,7 +69,7 @@ public class Tyva : Player
             if (TempoDash >= status.tempoDashTotal)
             {
                 Vector3 movimento = new Vector3(moveHorizontal, 0.0f, moveVertical);
-                Dash(movimento);
+                Dash();
                 TempoDash = 0;
             }
             else
@@ -82,10 +82,11 @@ public class Tyva : Player
         contadorFaca += Time.deltaTime;
     }
 
-    void Dash(Vector3 movimento)
+    void Dash()
     {
-        rb.AddForce(transform.forward * velocidadeDash, ForceMode.VelocityChange);
-        rb.velocity = Vector3.zero;
+        animator.SetTrigger("Dash");
+        rb.AddForce(transform.forward * velocidadeDash, ForceMode.Impulse);
+        //rb.velocity = Vector3.zero;
     }
 
     private void Faca()
@@ -103,7 +104,7 @@ public class Tyva : Player
     private IEnumerator LancarFaca(Vector3 target)
     {
         contadorFaca = 0;
-        //tocar animação
+        animator.SetTrigger("JogarAdaga");
         yield return new WaitForSeconds(0.5f);
 
         GameObject facaInstanciada = Instantiate(faca, posicaoFaca.position, faca.transform.rotation);
