@@ -90,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3012453768960266219}
   - component: {fileID: 2431376624409893167}
+  - component: {fileID: 2721009464786662438}
   m_Layer: 0
   m_Name: SalaInLOD
   m_TagString: Untagged
@@ -141,6 +142,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2113581751838247578}
   m_Enabled: 1
+--- !u!64 &2721009464786662438
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275790499983867384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: -1
+  m_Mesh: {fileID: -34485228426713632, guid: 54021cf7b08c77b489969633015715e1, type: 3}
 --- !u!1 &6961368410003232314
 GameObject:
   m_ObjectHideFlags: 0
