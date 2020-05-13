@@ -88,9 +88,14 @@ public class InventarioUI : MonoBehaviour
 
     public void Equipar()
     {
-        Inventario.inventario.EquipArma((Arma)selecionado);
-        ExcluirB.SetActive(false);
-        EquiparB.SetActive(false);
+        Arma selection = (Arma)selecionado;
+
+        if (selection.armaPlayer == GameController.gameController.GetPersonagemEscolhido())
+        {
+            Inventario.inventario.EquipArma((Arma)selecionado);
+            ExcluirB.SetActive(false);
+            EquiparB.SetActive(false);
+        }
 
     }
     public void PegaValores()

@@ -6,18 +6,17 @@ public class EscolhaPersonagemController : MonoBehaviour
 {
 
     public GameObject tyva, iovelik;
+    public Transform posicaoInicio;
 
     void Awake()
     {
-        if(GameController.gameController.GetPersonagemEscolhido() == "Tyva")
+        if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.TYVA)
         {
-            tyva.SetActive(true);
-            iovelik.SetActive(false);
+            Instantiate(tyva, posicaoInicio.position, posicaoInicio.rotation);
         }
-        else if (GameController.gameController.GetPersonagemEscolhido() == "Iovelik")
+        else if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
         {
-            iovelik.SetActive(true);
-            tyva.SetActive(false);
+            Instantiate(iovelik, posicaoInicio.position, posicaoInicio.rotation);
         }
     }
 }

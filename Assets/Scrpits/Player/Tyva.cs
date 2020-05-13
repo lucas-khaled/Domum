@@ -7,11 +7,15 @@ public class Tyva : Player
     float moveHorizontal;
     float moveVertical;
 
+
+
     [Header("Valores Tyva")]
     [SerializeField]
     private float velocidadeDash;
     [SerializeField]
     private float timeFaca;
+    [SerializeField]
+    private float timeDash;
 
     private float tempoDash;
     public float TempoDash
@@ -69,7 +73,7 @@ public class Tyva : Player
             if (TempoDash >= status.tempoDashTotal)
             {
                 Vector3 movimento = new Vector3(moveHorizontal, 0.0f, moveVertical);
-                Dash();
+                StartCoroutine(Dash());
                 TempoDash = 0;
             }
             else
@@ -82,11 +86,21 @@ public class Tyva : Player
         contadorFaca += Time.deltaTime;
     }
 
-    void Dash()
+    IEnumerator Dash()
     {
         animator.SetTrigger("Dash");
-        rb.AddForce(transform.forward * velocidadeDash, ForceMode.Impulse);
-        //rb.velocity = Vector3.zero;
+        estadoPlayer = EstadoPlayer.RECARREGAVEL;
+
+        float tempo = 0;
+
+        while (tempo < timeDash)
+        {
+            rb.AddForce(transform.forward * velocidadeDash * Time.deltaTime, ForceMode.VelocityChange);
+            tempo += Time.deltaTime;
+            yield return null;
+        }
+
+        estadoPlayer = EstadoPlayer.COMBATE;
     }
 
     private void Faca()
@@ -108,8 +122,11 @@ public class Tyva : Player
         yield return new WaitForSeconds(0.5f);
 
         GameObject facaInstanciada = Instantiate(faca, posicaoFaca.position, faca.transform.rotation);
+        target.y += 1;
         facaInstanciada.transform.LookAt(target);
         facaInstanciada.GetComponent<Bala>().SetCasterCollider(GetComponent<Collider>());
+
+        status.QntColetavel--;
     }
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -11,11 +12,10 @@ public class UIController : MonoBehaviour
     public GameObject Usavel;
     //public Transform Inicio;
     private GameObject[] Bases;
-    public GameObject Pause;
-    public InventarioUI Inventario;
+    public GameObject Pause, painelMorte;
 
-    public GameObject Painel;
-    public GameObject QuestLog;
+    public GameObject painelUsáveis;
+    public GameObject painelQuestLog;
     public bool questLogAberto = false;
     private List<Transform> listinha = new List<Transform>();
 
@@ -32,8 +32,8 @@ public class UIController : MonoBehaviour
     #endregion
     private void Start()
     {
-        UseTest();
-        Usandinho();
+        InicializarPainelUsasveis();
+        AtualizarPainelUsaveis();
         
     }
 
@@ -92,36 +92,45 @@ public class UIController : MonoBehaviour
     }
 
 
-    public void UseTest(){
+    public void InicializarPainelUsasveis(){
 
-        for(int i = 0; i < Painel.transform.childCount; i++){
-            listinha.Add(Painel.transform.GetChild(i));
+        for(int i = 0; i < painelUsáveis.transform.childCount; i++){
+            listinha.Add(painelUsáveis.transform.GetChild(i));
         }
         for(int i = 0; i < Player.player.status.maxColetavel; i++){
             listinha[i].gameObject.SetActive(true);
         }
     }
-    public void Usandinho(){
+
+    public void AtualizarPainelUsaveis(){
+
+        int numFilho = 1;
+
+        if(GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.TYVA)
+        {
+            numFilho = 2;
+        }
+
         for(int i = 0; i < Player.player.status.QntColetavel; i++){
-            listinha[i].GetChild(1).gameObject.SetActive(true);
+            listinha[i].GetChild(numFilho).gameObject.SetActive(true);
         }
         for(int i = Player.player.status.maxColetavel-1; i > Player.player.status.QntColetavel-1; i--){
-            listinha[i].GetChild(1).gameObject.SetActive(false);
+            listinha[i].GetChild(numFilho).gameObject.SetActive(false);
         }
     }
 
 
     public void AbrirQuestLog() {
-        QuestLog.SetActive(true);
+        painelQuestLog.SetActive(true);
     }
 
     public void FecharQuestLog() {
-        QuestLog.SetActive(false);
+        painelQuestLog.SetActive(false);
     }
 
     public void PauseOn(){
 
-        if(Input.GetKey(KeyCode.Escape)){
+        if(Input.GetKey(KeyCode.Escape) && Player.player.estadoPlayer != EstadoPlayer.MORTO){
 
         Pause.SetActive(true);
         CameraController.cameraInstance.Trava = true;
@@ -141,4 +150,15 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void PainelMorteOn()
+    {
+        painelMorte.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void Reiniciar()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

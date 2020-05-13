@@ -46,6 +46,7 @@ public class Player : MonoBehaviour, IVulnerable
             if (status.Vida <= 0)
             {
                 estado_player = EstadoPlayer.MORTO;
+                UIController.uiController.PainelMorteOn();
                 return;
             }
 
@@ -255,7 +256,7 @@ public class Player : MonoBehaviour, IVulnerable
         Movimento();
             
 
-        if (Input.GetButtonDown("Attack") && estadoPlayer == EstadoPlayer.COMBATE)
+        if (Input.GetButtonDown("Attack") && (estadoPlayer == EstadoPlayer.COMBATE || estadoPlayer == EstadoPlayer.NORMAL))
         {
             outroAtaque = true;
             StartCoroutine(Atacar());

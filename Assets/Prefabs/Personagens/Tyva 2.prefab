@@ -1283,7 +1283,6 @@ MonoBehaviour:
   tempoEscudo: 3
   tempoDashTotal: 2
   maxVida: 100
-  status: {fileID: 0}
 --- !u!65 &7209360681662249471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1332,11 +1331,13 @@ MonoBehaviour:
   velocidade: 5
   raioPercepcao: 10
   raioAtaque: 2
+  espera: 0.2
   numAtaque: 3
-  velocidadeDash: 10
-  timeFaca: 5
+  velocidadeDash: 0.8
+  timeFaca: 2
+  timeDash: 0.6
   posicaoFaca: {fileID: 358274111229235362}
-  faca: {fileID: 0}
+  faca: {fileID: 7640702850495185563, guid: 3c5481346045a9b4a92900030e5a9462, type: 3}
 --- !u!1 &2904937758582295748
 GameObject:
   m_ObjectHideFlags: 0

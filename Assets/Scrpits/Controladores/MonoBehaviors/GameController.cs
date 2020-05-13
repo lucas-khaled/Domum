@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController gameController;
 
-    private string personagemEscolhido; 
+    private TipoPlayer qualPlayer;
 
     private void Awake()
     {
@@ -17,12 +17,20 @@ public class GameController : MonoBehaviour
 
     public void EscolherPersonagem(string personagem)
     {
-        personagemEscolhido = personagem;
+
+        if(personagem == "Iovelik")
+        {
+            qualPlayer = TipoPlayer.IOVELIK;
+        }
+        else
+        {
+            qualPlayer = TipoPlayer.TYVA;
+        }
     }
 
-    public string GetPersonagemEscolhido()
+    public TipoPlayer GetPersonagemEscolhido()
     {
-        return personagemEscolhido;
+        return qualPlayer;
     }
 
     public void ChangeScene(string cena)

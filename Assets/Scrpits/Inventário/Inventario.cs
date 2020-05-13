@@ -19,7 +19,8 @@ public class Inventario : MonoBehaviour
     public SkinnedMeshRenderer armaMesh;
 
     public float pesoMaximo;   
-    public Arma armaDefault;
+    public Arma armaDefaultIovelik;
+    public Arma armaDefautTyva;
 
     [HideInInspector]
     public Arma armaEquipada;
@@ -30,7 +31,14 @@ public class Inventario : MonoBehaviour
 
     private void Start()
     {
-        armaEquipada = armaDefault;
+        if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
+        {
+            armaEquipada = armaDefaultIovelik;
+        }
+        else
+        {
+            armaEquipada = armaDefautTyva;
+        }
     }
 
     public List<Item> Getitens()

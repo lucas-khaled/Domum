@@ -242,7 +242,6 @@ MonoBehaviour:
   tempoEscudo: 3
   tempoDashTotal: 2
   maxVida: 150
-  status: {fileID: 0}
 --- !u!95 &934791932304155737
 Animator:
   serializedVersion: 3
@@ -281,6 +280,7 @@ MonoBehaviour:
   velocidade: 4
   raioPercepcao: 10
   raioAtaque: 2
+  espera: 0.3
   numAtaque: 2
   escudo: {fileID: 3253708962369423270}
   tempoRecargaEscudo: 1.5
@@ -677,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sensibilidade_cam: 1
   Target: {fileID: 2330923596359964269}
+  Trava: 0
   cam: {fileID: 2330923596297826708}
 --- !u!1 &2330923596359964268
 GameObject:
@@ -767,6 +768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dano: 20
+  mesh: {fileID: 0}
 --- !u!1 &2334666634565787831
 GameObject:
   m_ObjectHideFlags: 0

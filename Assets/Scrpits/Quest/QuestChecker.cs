@@ -15,7 +15,7 @@ public class QuestChecker : MonoBehaviour
         if (condHolder != null)
         {
             condHolder.AtivarCondicao();
-            InvokeRepeating("CheckCondicaoHolder", 0.5f, 1f);
+            InvokeRepeating("CheckCondicaoHolder", 1f, 1f);
         }
         else
         {

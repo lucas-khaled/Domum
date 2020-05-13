@@ -15,8 +15,6 @@ public class StatusPlayer : MonoBehaviour
     private int experiencia, level = 1;
     private const int MAXLEVEL = 100;
     private int danoMedio = 10;
-    public StatusPlayer status;
-
 
     public int QntColetavel
     {
@@ -27,7 +25,7 @@ public class StatusPlayer : MonoBehaviour
         set
         {
             qntColetavel = Mathf.Clamp(value, 0, maxColetavel);
-            UIController.uiController.Usandinho();
+            UIController.uiController.AtualizarPainelUsaveis();
         }
     }
 

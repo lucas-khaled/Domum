@@ -134,7 +134,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
    
     protected virtual void Morrer()
     {
-        Destroy(this.gameObject, 60);
+        Destroy(this.gameObject, 10);
         anim.SetBool("Morreu", true);
 
         Destroy(GetComponent<NavMeshAgent>());

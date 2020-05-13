@@ -64,7 +64,7 @@ public class Condicoes
 
         if(tipoCondicao == TipoCondicao.PEGA_ITEM)
         {
-            volta = CheckPegaItem();
+            volta = itemPego;
         }
 
         if(tipoCondicao == TipoCondicao.DEVOLVE_ITEM)
@@ -122,17 +122,13 @@ public class Condicoes
 
     #region PEGA_ITEM
 
-    bool CheckPegaItem()
-    {
-        return itemPego;
-    }
-
-    bool itemPego;
+    bool itemPego = false;
 
     private void OnItemPego(Item item)
     {
         if (item == itemDaCondicao.item)
         {
+            Debug.Log(item.nome);
             itemPego = true;
             return;
         }
@@ -180,9 +176,10 @@ public class Condicoes
 
         if(tipoCondicao == TipoCondicao.PEGA_ITEM)
         {
-            GameObject itemObj = MonoBehaviour.Instantiate(itemDaCondicao.gameObject);
-            itemObj.transform.position = local;
+            itemPego = false;
             EventsController.onItemPego += OnItemPego;
+            GameObject itemObj = MonoBehaviour.Instantiate(itemDaCondicao.gameObject);
+            itemObj.transform.position = local;          
         }
     }
 }

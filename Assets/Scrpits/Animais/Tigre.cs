@@ -134,13 +134,11 @@ public class Tigre : MonoBehaviour
     private IEnumerator Escolher()
     {
         int escolha = Random.Range(0, 100);
-        Debug.Log(escolha);
         if (escolha <= 70)
         {
             if (anim.GetBool("Idle"))
             {
                 anim.SetBool("Idle", false);
-                Debug.Log("ANDAAA");
                 destino = RandomNavMeshGenerator(10f);
                 animal.speed = 1.5f;
                 Movimentar(destino);
@@ -149,12 +147,10 @@ public class Tigre : MonoBehaviour
         }
         else if(escolha <= 80)
         {
-            Debug.Log("Farejar");
             StartCoroutine(Farejar());
         }
         else
         {
-            Debug.Log("IA");
             yield return new WaitForSeconds(4f);
             //StopCoroutine(Escolher());
             StartCoroutine(Escolher());
