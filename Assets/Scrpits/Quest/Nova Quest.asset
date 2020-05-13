@@ -13,21 +13,28 @@ MonoBehaviour:
   m_Name: Nova Quest
   m_EditorClassIdentifier: 
   principal: 0
-  nome: 
+  nome: Humor & Piadas
   condicoes:
-  - tipoCondicao: 3
-    local: {x: -7.28, y: 5.3, z: -1.4}
-    descricao: Interage ai porra
+  - tipoCondicao: 0
+    local: {x: 454.1, y: 19, z: 339.7}
+    descricao: Chegou a hora de PIADAS!
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 2
     distanciaChegada: 4.13
     interagivel: {fileID: 0}
-  - tipoCondicao: 4
-    local: {x: 23.1, y: 5.3, z: -3.19}
-    descricao: 
-    itemDaCondicao: {fileID: 318894017831601180, guid: cce8f1f57fd2fc04eb83933ee21f7437,
-      type: 3}
+  - tipoCondicao: 0
+    local: {x: 442.6, y: 19.9, z: 339.4}
+    descricao: "Segunda descri\xE7ao"
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 2
+    distanciaChegada: 4.13
+    interagivel: {fileID: 0}
+  - tipoCondicao: 0
+    local: {x: 453.5, y: 18.8, z: 320.7}
+    descricao: "terceira e final am\xE9m"
+    itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 2
     distanciaChegada: 4.13

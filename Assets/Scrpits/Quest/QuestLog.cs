@@ -41,6 +41,10 @@ public class QuestLog : MonoBehaviour
 
         //parenteia o game obj para organização
         check.transform.SetParent(transform);
+
+        if (EventsController.onQuestLogChange != null) {
+            EventsController.onQuestLogChange.Invoke(quest);
+        }
     }
 
     public void FinalizarQuest(QuestChecker questChecker)

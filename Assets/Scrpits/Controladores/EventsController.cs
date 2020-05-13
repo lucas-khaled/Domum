@@ -18,5 +18,11 @@ public static class EventsController
 
     public delegate void OnInventarioChange(Item item, bool mudanca);
     public static OnInventarioChange onInventarioChange; 
+
+    public delegate void OnQuestLogChange(Quest quest);
+    public static OnQuestLogChange onQuestLogChange;
+
+    //public delegate void OnQuestConditionChange(Quest quest, List<Condicoes> condicoes);
+    //public static OnQuestConditionChange onQuestConditionChange;
 }
 
