@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3236858782818306772}
   - component: {fileID: 5886388704124219618}
   - component: {fileID: 183572526691634203}
+  - component: {fileID: 3286067886304834882}
   m_Layer: 0
   m_Name: edificioLux
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3286067886304834882
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923309931271551175}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.290155, y: 24.052048, z: 16.218882}
+  m_Center: {x: 0.14971828, y: 12.030619, z: -1.5719068}

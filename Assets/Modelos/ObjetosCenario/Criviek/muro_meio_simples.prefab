@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1539470989890652529}
   - component: {fileID: 7495760038237877063}
   - component: {fileID: 4267938419012227006}
+  - component: {fileID: 3600358648759166252}
   m_Layer: 0
   m_Name: muro_meio_simples
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3600358648759166252
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523728201665313634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 41.734047, y: 41.524437, z: 21.319761}
+  m_Center: {x: 0.04955387, y: 20.754349, z: -0.027765274}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8379345604293443010}
   - component: {fileID: 653704542519232500}
   - component: {fileID: 6498383900042132237}
+  - component: {fileID: 7756027346464825014}
   m_Layer: 0
   m_Name: edificacao6
   m_TagString: Untagged
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &7756027346464825014
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760924615506841553}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 5.9000926
+  m_Height: 19.995998
+  m_Direction: 1
+  m_Center: {x: 0, y: 9.971985, z: 0.00000023841858}

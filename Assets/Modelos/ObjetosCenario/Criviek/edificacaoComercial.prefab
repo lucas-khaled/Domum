@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6221351887409906346}
   - component: {fileID: 3102320622056323228}
   - component: {fileID: 8660740117402666085}
+  - component: {fileID: 2604752662130113841}
   m_Layer: 0
   m_Name: edificacaoComercial
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2604752662130113841
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6921460111220207801}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 39.102573, y: 21.96819, z: 23.878185}
+  m_Center: {x: -4.5138955, y: 10.76318, z: 0.015786171}

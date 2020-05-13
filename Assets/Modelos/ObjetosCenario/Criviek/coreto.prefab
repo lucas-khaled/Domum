@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2204527632910323329}
   - component: {fileID: 7188598830553117879}
   - component: {fileID: 3530683465829959758}
+  - component: {fileID: 6024241840467253618}
   m_Layer: 0
   m_Name: coreto
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &6024241840467253618
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937288050259131538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.490033
+  m_Center: {x: -0.011093736, y: 2.013915, z: -0.002514124}

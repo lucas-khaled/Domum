@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1232830633604835565}
   - component: {fileID: 7800483400295600859}
   - component: {fileID: 4574649216914730530}
+  - component: {fileID: 383604933598558854}
+  - component: {fileID: 6715846419908589832}
   m_Layer: 0
   m_Name: edificacao3-1
   m_TagString: Untagged
@@ -79,3 +81,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &383604933598558854
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2828468601850862334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 25.34843, y: 9.640045, z: 9.262512}
+  m_Center: {x: -0.36293602, y: 4.833234, z: -0.2106018}
+--- !u!65 &6715846419908589832
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2828468601850862334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.1562805, y: 9.640045, z: 32.705864}
+  m_Center: {x: -0.2421112, y: 4.833234, z: -0.33145523}

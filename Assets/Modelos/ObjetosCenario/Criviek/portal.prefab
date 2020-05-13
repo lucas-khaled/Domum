@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3703267741851258791}
   - component: {fileID: 5638402129069225361}
   - component: {fileID: 2090560520925071720}
+  - component: {fileID: 7361769050046517686}
+  - component: {fileID: 5398651781662195106}
   m_Layer: 0
   m_Name: portal
   m_TagString: Untagged
@@ -79,3 +81,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &7361769050046517686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378302072793333172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 28.000359, y: 41.5, z: 21.48371}
+  m_Center: {x: 29.947598, y: 20.737793, z: -0.0000009536743}
+--- !u!65 &5398651781662195106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378302072793333172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 27.717125, y: 41.5, z: 21.48371}
+  m_Center: {x: -30.089214, y: 20.737793, z: -0.0000009536743}

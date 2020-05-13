@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3628477116835559815}
   - component: {fileID: 5693101924875944881}
   - component: {fileID: 2034922668789677896}
+  - component: {fileID: 7014632767741194848}
   m_Layer: 0
   m_Name: fonte
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &7014632767741194848
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288698143037131668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.90242004
+  m_Center: {x: 0.024307251, y: 0.9953704, z: 5.4715266e-24}
