@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class QuestLogUI : MonoBehaviour
 {
+    private GameObject bandeiraAtiva;
+
+    public Text tituloQuest;
+    public Text descricaoQuest;
+
     public List<GameObject> slotQuests;
     public GameObject slot;
 
@@ -24,18 +29,6 @@ public class QuestLogUI : MonoBehaviour
         questLogUI = this;
     }
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void AtualizarQuestLog(Quest quest) {
 
         GameObject obj = slot;
@@ -81,5 +74,17 @@ public class QuestLogUI : MonoBehaviour
             Destroy(contentDescricao.GetChild(i).gameObject);            
         }
         titulo.text = string.Empty;
+    }
+
+    public void AtualizarQuestHUD(Quest quest, GameObject bandeiraAtiva)
+    {
+        if (this.bandeiraAtiva != null)
+        this.bandeiraAtiva.SetActive(false);
+
+        bandeiraAtiva.SetActive(true);
+        this.bandeiraAtiva = bandeiraAtiva;
+
+        tituloQuest.text = quest.nome;
+        descricaoQuest.text = quest.getCondicaoAtual().descricao;
     }
 }

@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 221.02, y: 0.000016689}
-  m_SizeDelta: {x: 86.46144, y: 119.02449}
+  m_AnchoredPosition: {x: 221.02, y: 9.3}
+  m_SizeDelta: {x: 86.46144, y: 100.42178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7590742188481376335
 CanvasRenderer:
@@ -160,6 +160,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  bandeiraAtiva: {fileID: 7590742188481376330}
   referenciaQuest: {fileID: 0}
   referenciaTitulo: {fileID: 7590742189401017701}
 --- !u!222 &5003764457631850304

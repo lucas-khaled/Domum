@@ -12,11 +12,13 @@ public class Holder_Item : Button, ISelectHandler
     protected override void Start()
     {
         base.Start();
+        Spritu_item.sprite = item.icone;
 
-        if (item.icone != null)
-        {
-            Spritu_item.sprite = item.icone;
-        }
+
+    }
+    void Update()
+    {
+        
     }
 
     public override void OnSelect(BaseEventData eventData)
