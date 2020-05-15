@@ -17,10 +17,6 @@ public class Bau : Interagivel
             anim.SetBool("Aberto", true);
         }
 
-
-        if (Inventario.inventario.AddItem(itens[0]))
-        {
-            itens.RemoveAt(0);
-        }
+        BauUI.bauUI.SetBau(this);
     }
 }
