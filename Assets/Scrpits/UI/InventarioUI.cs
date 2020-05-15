@@ -112,4 +112,15 @@ public class InventarioUI : MonoBehaviour
     {
         EquiparB.SetActive(true);
     }
+
+    public void ClearOpcoes()
+    {
+        ExcluirB.SetActive(false);
+        EquiparB.SetActive(false);
+
+        Info.text = string.Empty;
+        Titulo.text = string.Empty;
+        peso.text = string.Empty;
+        Valor_venda.text = string.Empty;
+    }
 }

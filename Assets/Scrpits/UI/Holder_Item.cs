@@ -30,19 +30,19 @@ public class Holder_Item : Button, ISelectHandler
         InventarioUI.inventarioUI.Valor_venda.text = item.custoMoeda.ToString();
         InventarioUI.inventarioUI.selecionado = item;
         InventarioUI.inventarioUI.ApareceExcluir();
-        if(item.GetType() == typeof(Arma))
+        if (item.GetType() == typeof(Arma))
         {
-            InventarioUI.inventarioUI.ApareceEquipar();
+            Arma arma = (Arma)item;
+            if (GameController.gameController.GetPersonagemEscolhido() == arma.armaPlayer)
+            {
+                InventarioUI.inventarioUI.ApareceEquipar();
+            }
         }
     }
 
     public override void OnDeselect(BaseEventData eventData)
     {
         base.OnDeselect(eventData);
-        InventarioUI.inventarioUI.Info.text = string.Empty;
-        InventarioUI.inventarioUI.Titulo.text = string.Empty;
-        InventarioUI.inventarioUI.peso.text = string.Empty;
-        InventarioUI.inventarioUI.Valor_venda.text = string.Empty;
-
+        InventarioUI.inventarioUI.ClearOpcoes();
     }
 }

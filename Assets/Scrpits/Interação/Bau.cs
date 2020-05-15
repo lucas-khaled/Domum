@@ -8,6 +8,8 @@ public class Bau : Interagivel
     [SerializeField]
     Animator anim;
 
+    public bool someSeVazia;
+
     public override void Interact()
     {
         base.Interact();
@@ -18,5 +20,20 @@ public class Bau : Interagivel
         }
 
         BauUI.bauUI.SetBau(this);
+
+        if(someSeVazia)
+        {
+            StartCoroutine(Some());
+        }
+
+    }
+
+    private IEnumerator Some()
+    {
+        yield return new WaitForSeconds(0.01f);
+        if (itens.Count == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
