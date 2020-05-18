@@ -159,7 +159,7 @@ public class Girafa : MonoBehaviour
         animal.Stop();
         Debug.Log("Morri");
     }
-    public virtual void ReceberDano(int danoRecebido)
+    public virtual IEnumerator ReceberDano(int danoRecebido)
     {
         Vida -= danoRecebido;
 
@@ -175,10 +175,20 @@ public class Girafa : MonoBehaviour
         }
         else
         {
-            anim.SetBool("Deitado", false);
-            anim.SetTrigger("Tomar dano");
-            anim.SetFloat("Vida", vida);
-            Correr();
+            if (anim.GetBool("Deitado"))
+            {
+                anim.SetBool("Deitado", false);
+                anim.SetTrigger("Tomar dano");
+                anim.SetFloat("Vida", vida);
+                yield return new WaitForSeconds(1f);
+                Correr();
+            }
+            else
+            {
+                anim.SetTrigger("Tomar dano");
+                anim.SetFloat("Vida", vida);
+                Correr();
+            }
         }
 
     }
