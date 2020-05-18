@@ -47,11 +47,6 @@ public class InventarioUI : MonoBehaviour
         
     }
 
-    void Update()
-    {
-        
-    }
-
     public void AttUI(Item item, bool mudanca)
     {
 
@@ -62,6 +57,7 @@ public class InventarioUI : MonoBehaviour
 
             GameObject Obj = Slot;
             Obj.GetComponent<Holder_Item>().item = item;
+            Obj.GetComponent<Holder_Item>().isLoja = false;
             GameObject mundano = (GameObject)Instantiate(Obj);
             mundano.transform.SetParent(Grid.transform);
             mundano.transform.localScale = Vector3.one;
@@ -104,23 +100,41 @@ public class InventarioUI : MonoBehaviour
         Peso_Atual.text = Inventario.inventario.pesoInventario.ToString();
     }
 
-    public void ApareceExcluir()
+    IEnumerator ApareceExcluirWait()
     {
+        yield return new WaitForSecondsRealtime(0.1f);
         ExcluirB.SetActive(true);
     }
+
+    public void ApareceExcluir()
+    {
+        StartCoroutine(ApareceExcluirWait());
+    }
+
+    IEnumerator ApareceEquiparWait()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        EquiparB.SetActive(true);
+    }
+
     public void ApareceEquipar()
     {
-        EquiparB.SetActive(true);
+        StartCoroutine(ApareceEquiparWait());
     }
 
     public void ClearOpcoes()
     {
-        ExcluirB.SetActive(false);
-        EquiparB.SetActive(false);
-
+        StartCoroutine(ClearBotoes());
         Info.text = string.Empty;
         Titulo.text = string.Empty;
         peso.text = string.Empty;
         Valor_venda.text = string.Empty;
+    }
+
+    IEnumerator ClearBotoes()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        ExcluirB.SetActive(false);
+        EquiparB.SetActive(false);
     }
 }

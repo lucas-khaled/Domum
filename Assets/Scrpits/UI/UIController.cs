@@ -34,7 +34,6 @@ public class UIController : MonoBehaviour
     {
         InicializarPainelUsasveis();
         AtualizarPainelUsaveis();
-        
     }
 
     protected virtual void Update() {        

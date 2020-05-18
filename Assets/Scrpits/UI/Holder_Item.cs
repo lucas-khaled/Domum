@@ -9,40 +9,53 @@ public class Holder_Item : Button, ISelectHandler
     public Item item;
     public Image Spritu_item;
 
+    public bool isLoja = false;
+
     protected override void Start()
     {
         base.Start();
         Spritu_item.sprite = item.icone;
-
-
-    }
-    void Update()
-    {
-        
     }
 
     public override void OnSelect(BaseEventData eventData)
     {
         base.OnSelect(eventData);
-        InventarioUI.inventarioUI.Info.text = item.descricao;
-        InventarioUI.inventarioUI.Titulo.text = item.nome;
-        InventarioUI.inventarioUI.peso.text = item.peso.ToString();
-        InventarioUI.inventarioUI.Valor_venda.text = item.custoMoeda.ToString();
-        InventarioUI.inventarioUI.selecionado = item;
-        InventarioUI.inventarioUI.ApareceExcluir();
-        if (item.GetType() == typeof(Arma))
+        if (!isLoja)
         {
-            Arma arma = (Arma)item;
-            if (GameController.gameController.GetPersonagemEscolhido() == arma.armaPlayer)
+            InventarioUI.inventarioUI.Info.text = item.descricao;
+            InventarioUI.inventarioUI.Titulo.text = item.nome;
+            InventarioUI.inventarioUI.peso.text = item.peso.ToString();
+            InventarioUI.inventarioUI.Valor_venda.text = item.custoMoeda.ToString();
+            InventarioUI.inventarioUI.selecionado = item;
+            InventarioUI.inventarioUI.ApareceExcluir();
+            if (item.GetType() == typeof(Arma))
             {
-                InventarioUI.inventarioUI.ApareceEquipar();
+                Arma arma = (Arma)item;
+                if (GameController.gameController.GetPersonagemEscolhido() == arma.armaPlayer)
+                {
+                    InventarioUI.inventarioUI.ApareceEquipar();
+                }
             }
+        }
+
+        else
+        {
+            LojaUI.lojaUi.SetItemSelecionado(this);
         }
     }
 
     public override void OnDeselect(BaseEventData eventData)
     {
         base.OnDeselect(eventData);
-        InventarioUI.inventarioUI.ClearOpcoes();
+
+        if (!isLoja)
+        {
+            InventarioUI.inventarioUI.ClearOpcoes();
+        }
+
+        else
+        {
+            LojaUI.lojaUi.DeselectItem();
+        }
     }
 }
