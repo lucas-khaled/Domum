@@ -140,7 +140,7 @@ public class Girafa : MonoBehaviour
         Movimentar(destino);
         StartCoroutine(Escolher());
     }
-    public Vector3 RandomNavMeshGenerator(float raioCaminhada)
+    private Vector3 RandomNavMeshGenerator(float raioCaminhada)
     {
         Vector3 randomDirection = Random.insideUnitSphere * raioCaminhada;
         randomDirection += this.gameObject.transform.position;
@@ -156,10 +156,10 @@ public class Girafa : MonoBehaviour
     void Morrer()
     {
         StopAllCoroutines();
-        animal.Stop();
+        animal.isStopped = true;
         Debug.Log("Morri");
     }
-    public virtual void ReceberDano(int danoRecebido)
+    public virtual IEnumerator ReceberDano(int danoRecebido)
     {
         Vida -= danoRecebido;
 
@@ -176,8 +176,10 @@ public class Girafa : MonoBehaviour
         else
         {
             anim.SetBool("Deitado", false);
+            yield return new WaitForSeconds(2f);
             anim.SetTrigger("Tomar dano");
             anim.SetFloat("Vida", vida);
+            yield return new WaitForSeconds(1f);
             Correr();
         }
 

@@ -26,7 +26,7 @@ public class ArmaPlayer : MonoBehaviour
         }
         if (other.gameObject.tag == "Girafa" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO) && !other.isTrigger)
         {
-            other.gameObject.GetComponent<Girafa>().ReceberDano(CalculaDano());
+            StartCoroutine(other.gameObject.GetComponent<Girafa>().ReceberDano(CalculaDano()));
         }
         if (other.gameObject.tag == "Tigre" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO) && !other.isTrigger)
         {

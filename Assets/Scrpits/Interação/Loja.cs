@@ -23,7 +23,6 @@ public class Loja : Interagivel
         itensAVenda = new List<Item>();
         RenovaItens();
         StartCoroutine(RenovacaoLoja());
-        
     }
 
     void RenovaItens()

@@ -26,7 +26,7 @@ public class LojaUI : MonoBehaviour
     public Button btnVender; 
     public Button btnComprar;
 
-
+    public static int contVendasCompras;
     List<GameObject> listaVendedor = new List<GameObject>(), listaPlayer = new List<GameObject>();
     Holder_Item holderAtual;
     Loja lojaAtual;
@@ -46,6 +46,7 @@ public class LojaUI : MonoBehaviour
 
         painelLoja.SetActive(false);
         ClearLoja();
+
     }
 
     public void AbrirLoja(Loja loja)
@@ -196,6 +197,7 @@ public class LojaUI : MonoBehaviour
     public void VenderItem()
     {
         Debug.Log("fEDAPUTA");
+        contVendasCompras--;
         Item vendido = holderAtual.item;
         lojaAtual.itensAVenda.Add(vendido);
         Inventario.inventario.RemoverItem(vendido);
@@ -209,6 +211,8 @@ public class LojaUI : MonoBehaviour
 
         Player.player.status.Dinheiro += vendido.custoMoeda;
         CarregaInfoPlayer();
+
+        
     }
 
     public void ComprarItem()
@@ -217,6 +221,7 @@ public class LojaUI : MonoBehaviour
         {
             return;
         }
+        contVendasCompras++;
 
         Item vendido = holderAtual.item;
         lojaAtual.itensAVenda.Remove(vendido);
