@@ -13,6 +13,8 @@ public class InventarioUI : MonoBehaviour
 
     public GameObject EquiparB;
 
+    public GameObject UsarB;
+
     public Text Dinheiro_Atual;
 
     public Text Peso_Atual;
@@ -92,8 +94,18 @@ public class InventarioUI : MonoBehaviour
             ExcluirB.SetActive(false);
             EquiparB.SetActive(false);
         }
-
     }
+
+    public void Usar()
+    {
+        Cura itemCura = (Cura)selecionado;
+        Player.player.Curar(itemCura.quantidadeCura);
+
+        Inventario.inventario.RemoverItem(selecionado);
+        selecionado = null;
+        ClearBotoes();
+    }
+
     public void PegaValores()
     {
         Dinheiro_Atual.text = Player.player.status.Dinheiro.ToString();
@@ -122,6 +134,17 @@ public class InventarioUI : MonoBehaviour
         StartCoroutine(ApareceEquiparWait());
     }
 
+    public void ApareceUsar()
+    {
+        StartCoroutine(ApareceUsarWait());
+    }
+
+    IEnumerator ApareceUsarWait()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        UsarB.SetActive(true);
+    }
+
     public void ClearOpcoes()
     {
         StartCoroutine(ClearBotoes());
@@ -136,5 +159,6 @@ public class InventarioUI : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.1f);
         ExcluirB.SetActive(false);
         EquiparB.SetActive(false);
+        UsarB.SetActive(false);
     }
 }

@@ -286,7 +286,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     public void Curar(int cura)
     {
-
+        status.Vida += cura;
     }
 
     private void Interagir()

@@ -36,6 +36,11 @@ public class Holder_Item : Button, ISelectHandler
                     InventarioUI.inventarioUI.ApareceEquipar();
                 }
             }
+
+            else if(item.GetType() == typeof(Cura))
+            {
+                InventarioUI.inventarioUI.ApareceUsar();
+            }
         }
 
         else

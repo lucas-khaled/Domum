@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using UnityEditor.Sprites;
 
 public class ItemManagerWindow : EditorWindow
 {
@@ -13,6 +14,7 @@ public class ItemManagerWindow : EditorWindow
 
     Item itemAtual;
 
+    Vector2 scrollPosition = Vector2.zero;
 
     [MenuItem("Window/Item Manager")]
     public static void ShowWindow()
@@ -32,27 +34,37 @@ public class ItemManagerWindow : EditorWindow
         }
     }
 
-    public void MakeANewItem()
+     void MakeANewCura()
+     {
+        Cura novaCura = new Cura();
+        novaCura.nome = "Nova Cura" + (allItems.Count + 1);
+
+        string novoPath = pathBase + novaCura.nome + ".asset";
+
+        AssetDatabase.CreateAsset(novaCura, novoPath);
+     }
+
+     void MakeANewItem()
     {
         Item novoItem = new Item();
-        novoItem.nome = "Novo Item" + allItems.Count+1;
+        novoItem.nome = "Novo Item" + (allItems.Count+1);
 
         string novoPath = pathBase + novoItem.nome + ".asset";
 
         AssetDatabase.CreateAsset(novoItem, novoPath);
     }
 
-    public void MakeANewArma()
+    void MakeANewArma()
     {
         Arma novaArma = new Arma();
-        novaArma.nome = "Nova Arma" + allItems.Count + 1;
+        novaArma.nome = "Nova Arma" + (allItems.Count + 1);
 
         string novoPath = pathBase + novaArma.nome + ".asset";
 
         AssetDatabase.CreateAsset(novaArma, novoPath);
     }
 
-    public void RemoveItem()
+     void RemoveItem()
     {
         string path = AssetDatabase.GetAssetPath(itemAtual);
         itemAtual = null;
@@ -68,6 +80,12 @@ public class ItemManagerWindow : EditorWindow
         return vertical;
     }
 
+    void ChangeName(Item item, string newName)
+    {
+        AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(item), newName);
+        Debug.Log("Roooodeiiii");
+    }
+
     private void OnGUI()
     {
         GetAllItensAvaliable();
@@ -78,14 +96,14 @@ public class ItemManagerWindow : EditorWindow
         #region BUTTONS
         GUILayout.BeginVertical();
 
-        GUILayout.BeginScrollView(Vector2.zero);
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition);
 
         GUILayout.Label("Items", VerticalAlligment());
         GUILayout.Space(10);
 
         foreach (Item item in allItems)
         {
-            if (item.GetType() != typeof(Arma))
+            if (item.GetType() != typeof(Arma) && item.GetType() != typeof(Cura))
             {
                 if (GUILayout.Button(item.nome))
                 {
@@ -103,6 +121,23 @@ public class ItemManagerWindow : EditorWindow
         foreach (Item item in allItems)
         {
             if (item.GetType() == typeof(Arma))
+            {
+                if (GUILayout.Button(item.nome))
+                {
+                    itemAtual = item;
+                }
+                GUILayout.Space(3);
+            }
+        }
+
+        EditorGUILayout.Separator();
+
+        GUILayout.Label("Itens de Cura", VerticalAlligment());
+        GUILayout.Space(10);
+
+        foreach (Item item in allItems)
+        {
+            if (item.GetType() == typeof(Cura))
             {
                 if (GUILayout.Button(item.nome))
                 {
@@ -133,6 +168,11 @@ public class ItemManagerWindow : EditorWindow
             MakeANewArma();
         }
 
+        if(GUILayout.Button("Nova Cura"))
+        {
+            MakeANewCura();
+        }
+
         if (itemAtual != null) {
             if (GUILayout.Button("Remover Item"))
             {
@@ -154,8 +194,17 @@ public class ItemManagerWindow : EditorWindow
         {
             GUILayout.BeginVertical();
 
+            GUILayout.BeginHorizontal();
             itemAtual.nome = EditorGUILayout.TextField("Nome: ", itemAtual.nome);
-            GUILayout.Space(3);
+            itemAtual.name = itemAtual.nome;
+
+            if (GUILayout.Button("Apply Name"))
+            {
+                ChangeName(itemAtual, itemAtual.nome);
+            }
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10);
             itemAtual.custoMoeda = EditorGUILayout.IntField("Custo em Moedas: ", itemAtual.custoMoeda);
             GUILayout.Space(3);
             itemAtual.peso = EditorGUILayout.FloatField("Peso: ", itemAtual.peso);
@@ -167,6 +216,14 @@ public class ItemManagerWindow : EditorWindow
             GUILayout.Label("Ícone");
             itemAtual.icone = (Sprite)EditorGUILayout.ObjectField(itemAtual.icone, typeof(Sprite));
             GUILayout.Space(3);
+
+            if(itemAtual.icone != null)
+            {
+                Texture2D texture = SpriteUtility.GetSpriteTexture(itemAtual.icone, false);
+                EditorGUI.DrawPreviewTexture(new Rect(new Vector2((position.width*(float)2/3)+100, (position.height/2)+100), Vector3.one*200), texture);
+            }
+
+            
 
             GUILayout.Label("Descrição:");
             itemAtual.descricao = EditorGUILayout.TextArea(itemAtual.descricao);
@@ -198,6 +255,20 @@ public class ItemManagerWindow : EditorWindow
             }
             #endregion
 
+            #region CURA
+
+            if(itemAtual.GetType() == typeof(Cura))
+            {
+                EditorGUILayout.Separator();
+                GUILayout.Label("Valor Cura");
+                GUILayout.Space(10);
+
+                Cura curaAtual = (Cura)itemAtual;
+
+                curaAtual.quantidadeCura = EditorGUILayout.IntField("Quantidade de Cura", curaAtual.quantidadeCura);
+            }
+
+            #endregion
 
             GUILayout.EndVertical();
         }
@@ -234,4 +305,14 @@ public class ItemManagerWindow : EditorWindow
 
         return result;
     }
+    Texture2D GenerateTextureFromSprite(Sprite aSprite)
+    {
+        var rect = aSprite.rect;
+        var tex = new Texture2D((int)rect.width, (int)rect.height);
+        var data = aSprite.texture.GetPixels((int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height);
+        tex.SetPixels(data);
+        tex.Apply(true);
+        return tex;
+    }
+
 }
