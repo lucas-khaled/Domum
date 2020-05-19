@@ -15,7 +15,7 @@ public class Loja : Interagivel
     public override void Interact()
     {
         base.Interact();
-        LojaUI.lojaUi.AbrirLoja(this);
+        StartCoroutine(LojaUI.lojaUi.AbrirLoja(this));
     }
 
     private void Start()

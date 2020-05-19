@@ -9,8 +9,9 @@ public class Atriet : MonoBehaviour
     private Animator anim;
     [SerializeField]
     private NavMeshAgent vendedor;
+    private bool playerPerto;
 
-    public static int contVendasCompras;
+    public int contVenderComprar;
 
     Vector3 finalPosition;
     Collider maisPerto;
@@ -40,17 +41,20 @@ public class Atriet : MonoBehaviour
     private IEnumerator Escolha()
     {
         int random = Random.Range(0, 100);
-        if (random > 80)
+        if (random > 80 && !playerPerto)
         {
             Andar();
+            yield return new WaitForSeconds(5f);
         }
-        else if (random > 50)
+        else if (random > 50 && !playerPerto)
         {
             anim.SetTrigger("Soneca");
+            yield return new WaitForSeconds(5f);
         }
-        else if (random > 30)
+        else if (random > 30 && !playerPerto)
         {
             anim.SetTrigger("Alongar");
+            yield return new WaitForSeconds(5f);
         }
         else
         {
@@ -59,13 +63,13 @@ public class Atriet : MonoBehaviour
         }
     }
 
-    public void FimInteração()
+    public void FimInteracao()
     {
-        contVendasCompras = LojaUI.contVendasCompras;
+        contVenderComprar = LojaUI.lojaUi.contCompraVenda;
 
-        if (contVendasCompras > 0)
+        if (contVenderComprar > 0)
             anim.SetTrigger("Compra");
-        else if (contVendasCompras < 0)
+        else if (contVenderComprar < 0)
             anim.SetTrigger("Venda");
         else if (Random.Range(0, 2) == 0)
             anim.SetTrigger("Compra");
@@ -97,15 +101,25 @@ public class Atriet : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            anim.ResetTrigger("Soneca");
+            anim.ResetTrigger("Alongar");
+
             vendedor.isStopped = true;
             anim.SetBool("Idle", true);
             anim.SetTrigger("Cumprimentar");
+            playerPerto = true;
+            anim.SetBool("PlayerPerto", true);
         }
         StopCoroutine(Escolha());
     }
     private void OnTriggerExit(Collider other)
     {
-        StartCoroutine(Escolha());
+        if (other.gameObject.tag == "Player")
+        {
+            anim.SetBool("PlayerPerto", false);
+            StartCoroutine(Escolha());
+            playerPerto = false;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {

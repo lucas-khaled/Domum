@@ -9,8 +9,9 @@ public class Kambim : MonoBehaviour
     private Animator anim;
     [SerializeField]
     private NavMeshAgent vendedor;
+    private bool playerPerto;
 
-    public static int contVendasCompras;
+    public int contVenderComprar;
 
     Vector3 finalPosition;
     Collider maisPerto;
@@ -48,11 +49,11 @@ public class Kambim : MonoBehaviour
     private IEnumerator Escolha()
     {
         int random = Random.Range(0, 100);
-        if (random > 80)
+        if (random > 80 && !playerPerto)
         {
             Andar();
         }
-        else if (random > 50)
+        else if (random > 50 && !playerPerto)
         {
             anim.SetTrigger("Dormir");
             anim.SetBool("Dormindo",true);
@@ -68,13 +69,14 @@ public class Kambim : MonoBehaviour
         }
     }
     
-    public void FimInteração()
+    public void FimInteracao()
     {
-        contVendasCompras = LojaUI.contVendasCompras;
+        contVenderComprar = LojaUI.lojaUi.contCompraVenda;
+        Debug.Log(contVenderComprar);
 
-        if (contVendasCompras > 0)
+        if (contVenderComprar > 0)
             anim.SetTrigger("Compra");
-        else if (contVendasCompras < 0)
+        else if (contVenderComprar < 0)
             anim.SetTrigger("Venda");
         else if (Random.Range(0, 2) == 0)
             anim.SetTrigger("Compra");
@@ -86,7 +88,10 @@ public class Kambim : MonoBehaviour
     public void Conversa()
     {
         if (anim.GetBool("Dormindo"))
+        {
             anim.SetBool("Dormindo", false);
+            anim.ResetTrigger("Cumprimentar");
+        }
         else
             anim.SetTrigger("Interacao");
     }
@@ -111,12 +116,20 @@ public class Kambim : MonoBehaviour
             vendedor.isStopped = true;
             anim.SetBool("Andando", false);
             anim.SetTrigger("Cumprimentar");
+            playerPerto = true;
+            anim.SetBool("PlayerPerto", true);
         }
         StopCoroutine(Escolha());
     }
     private void OnTriggerExit(Collider other)
     {
-        StartCoroutine(Escolha());
+        if (other.gameObject.tag == "Player")
+        {
+            anim.ResetTrigger("Dormir");
+            playerPerto = false;
+            anim.SetBool("PlayerPerto", false);
+            StartCoroutine(Escolha());
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {

@@ -26,7 +26,9 @@ public class LojaUI : MonoBehaviour
     public Button btnVender; 
     public Button btnComprar;
 
-    public static int contVendasCompras;
+    [HideInInspector]
+    public int contCompraVenda;
+
     List<GameObject> listaVendedor = new List<GameObject>(), listaPlayer = new List<GameObject>();
     Holder_Item holderAtual;
     Loja lojaAtual;
@@ -45,13 +47,35 @@ public class LojaUI : MonoBehaviour
         CameraController.cameraInstance.Trava = false;
 
         painelLoja.SetActive(false);
-        ClearLoja();
 
+        if (lojaAtual.gameObject.GetComponent<Kambim>())
+        {
+            lojaAtual.gameObject.GetComponent<Kambim>().FimInteracao();
+        }
+        else if (lojaAtual.gameObject.GetComponent<Atriet>())
+        {
+            lojaAtual.gameObject.GetComponent<Atriet>().FimInteracao();
+        }
+
+        ClearLoja();
     }
 
-    public void AbrirLoja(Loja loja)
+    public IEnumerator AbrirLoja(Loja loja)
     {
         lojaAtual = loja;
+
+        if (lojaAtual.gameObject.GetComponent<Kambim>())
+        {
+            lojaAtual.gameObject.GetComponent<Kambim>().Conversa();
+        }
+        else if (lojaAtual.gameObject.GetComponent<Atriet>())
+        {
+            lojaAtual.gameObject.GetComponent<Atriet>().Conversa();
+        }
+
+        contCompraVenda = 0;
+        yield return new WaitForSeconds(2.5f);
+
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -197,7 +221,8 @@ public class LojaUI : MonoBehaviour
     public void VenderItem()
     {
         Debug.Log("fEDAPUTA");
-        contVendasCompras--;
+        contCompraVenda--;
+        Debug.Log(contCompraVenda);
         Item vendido = holderAtual.item;
         lojaAtual.itensAVenda.Add(vendido);
         Inventario.inventario.RemoverItem(vendido);
@@ -221,7 +246,7 @@ public class LojaUI : MonoBehaviour
         {
             return;
         }
-        contVendasCompras++;
+        contCompraVenda++;
 
         Item vendido = holderAtual.item;
         lojaAtual.itensAVenda.Remove(vendido);
