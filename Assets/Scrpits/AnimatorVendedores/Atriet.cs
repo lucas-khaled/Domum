@@ -26,6 +26,8 @@ public class Atriet : MonoBehaviour
             {
                 anim.SetBool("Idle", true);
                 vendedor.isStopped = true;
+
+                StartCoroutine(Escolha());
             }
         }
         if (playerPerto)
@@ -50,11 +52,12 @@ public class Atriet : MonoBehaviour
         vendedor.isStopped = false;
         this.destino = destino;
         vendedor.SetDestination(destino);
+
     }
     private IEnumerator Escolha()
     {
         int random = Random.Range(0, 100);
-        if (random > 80 && !playerPerto)
+        if (random > 75 && !playerPerto)
         {
             Andar(RandomNavMeshGenerator(4f));
         }
@@ -62,15 +65,17 @@ public class Atriet : MonoBehaviour
         {
             anim.SetTrigger("Soneca");
             yield return new WaitForSeconds(5f);
+            StartCoroutine(Escolha());
         }
         else if (random > 30 && !playerPerto)
         {
             anim.SetTrigger("Alongar");
             yield return new WaitForSeconds(5f);
+            StartCoroutine(Escolha());
         }
         else
         {
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(5f);
             StartCoroutine(Escolha());
         }
     }

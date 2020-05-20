@@ -26,6 +26,7 @@ public class Kambim : MonoBehaviour
             {
                 anim.SetBool("Andando", false);
                 vendedor.isStopped = true;
+                StartCoroutine(Escolha());
             }
         }
         if (playerPerto)
