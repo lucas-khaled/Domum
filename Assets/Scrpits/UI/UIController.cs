@@ -9,6 +9,11 @@ public class UIController : MonoBehaviour
     public Image playerLifeBar;
     public Image XpBar;
     public Image Skill;
+    private GameObject tituloAtual;
+    private GameObject textoAtual;
+    public Transform ContentGlosa;
+    public Scrollbar scrollGlosa;
+    
     public GameObject Usavel;
     //public Transform Inicio;
     private GameObject[] Bases;
@@ -80,6 +85,26 @@ public class UIController : MonoBehaviour
         playerLifeBar.fillAmount = value;
     }
 
+    public void AtualizarTextoGlossario(GameObject titulo, GameObject texto)
+    {
+        if(tituloAtual != null)
+        {
+            tituloAtual.SetActive(false);
+        }
+        if(textoAtual != null)
+        {
+            textoAtual.SetActive(false);
+            textoAtual.transform.SetParent(ContentGlosa.parent.parent.parent);
+            
+        }
+        
+        tituloAtual = titulo;
+        textoAtual = texto;
+        tituloAtual.SetActive(true);
+        textoAtual.SetActive(true);
+        textoAtual.transform.SetParent(ContentGlosa);
+        scrollGlosa.value = 1;
+    }
     public void XPbar(float value)
     {
         XpBar.fillAmount = value;
@@ -140,6 +165,7 @@ public class UIController : MonoBehaviour
         }
 
     }
+
     public void PauseOff(){
 
         Pause.SetActive(false);
@@ -160,4 +186,10 @@ public class UIController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void MudarCena(string cena)
+    {
+        SceneManager.LoadScene(cena);
+    }
+
 }
