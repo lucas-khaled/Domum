@@ -37,4 +37,8 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(cena);
     }
+    public void FecharJogo()
+    {
+        Application.Quit();
+    }
 }
