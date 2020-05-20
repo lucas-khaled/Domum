@@ -20,31 +20,43 @@ public class Atriet : MonoBehaviour
 
     private void Update()
     {
-        if (anim.GetBool("Andando"))
+        if (!anim.GetBool("Idle"))
         {
-            if (this.gameObject.transform.position == destino)
+            if (Vector3.Distance(this.gameObject.transform.position, destino) < 0.3f)
             {
-                anim.SetBool("Andando", false);
+                anim.SetBool("Idle", true);
+                vendedor.isStopped = true;
             }
+        }
+        if (playerPerto)
+        {
+            anim.SetBool("Idle", true);
+            vendedor.isStopped = true;
         }
     }
     private void Start()
     {
         StartCoroutine(Escolha());
     }
-    private void Andar()
+    private void Andar(Vector3 destino, bool move = true)
     {
         anim.SetBool("Idle", false);
-        vendedor.SetDestination(RandomNavMeshGenerator(4f));
-        StartCoroutine(Escolha());
+        if (!move)
+        {
+            vendedor.isStopped = true;
+            return;
+        }
+
+        vendedor.isStopped = false;
+        this.destino = destino;
+        vendedor.SetDestination(destino);
     }
     private IEnumerator Escolha()
     {
         int random = Random.Range(0, 100);
         if (random > 80 && !playerPerto)
         {
-            Andar();
-            yield return new WaitForSeconds(5f);
+            Andar(RandomNavMeshGenerator(4f));
         }
         else if (random > 50 && !playerPerto)
         {
@@ -103,9 +115,6 @@ public class Atriet : MonoBehaviour
         {
             anim.ResetTrigger("Soneca");
             anim.ResetTrigger("Alongar");
-
-            vendedor.isStopped = true;
-            anim.SetBool("Idle", true);
             anim.SetTrigger("Cumprimentar");
             playerPerto = true;
             anim.SetBool("PlayerPerto", true);

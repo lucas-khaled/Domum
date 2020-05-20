@@ -8678,6 +8678,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1136480150321236320, guid: 7a77fce9237bb584d883d138e6f4aa4a,
+        type: 3}
+      propertyPath: m_Speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3545214495923734347, guid: 7a77fce9237bb584d883d138e6f4aa4a,
         type: 3}
       propertyPath: possiveisItensAVenda.Array.size
@@ -11236,6 +11241,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ee444615afb2ac04981992ad37e64f64,
         type: 2}
+    - target: {fileID: 7337239162857290831, guid: 07590113294fc504889dac454fd25f2f,
+        type: 3}
+      propertyPath: m_Speed
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07590113294fc504889dac454fd25f2f, type: 3}
 --- !u!1 &1279274602 stripped
@@ -14591,7 +14601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -87, y: -28.259}
+  m_AnchoredPosition: {x: -87, y: -28.258972}
   m_SizeDelta: {x: 74.15196, y: 70.75081}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1626259372

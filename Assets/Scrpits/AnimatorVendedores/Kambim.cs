@@ -22,10 +22,16 @@ public class Kambim : MonoBehaviour
     {
         if (anim.GetBool("Andando"))
         {
-            if (this.gameObject.transform.position == destino)
+            if (Vector3.Distance(this.gameObject.transform.position, destino) < 0.3f)
             {
                 anim.SetBool("Andando", false);
+                vendedor.isStopped = true;
             }
+        }
+        if (playerPerto)
+        {
+            anim.SetBool("Andando", false);
+            vendedor.isStopped = true;
         }
     }
     private void Start()
@@ -40,18 +46,25 @@ public class Kambim : MonoBehaviour
         }
         StartCoroutine(Escolha());
     }
-    private void Andar()
+    private void Andar(Vector3 destino, bool move = true)
     {
-        anim.SetBool("Andando",true);
-        vendedor.SetDestination(RandomNavMeshGenerator(4f));
-        StartCoroutine(Escolha());
+        anim.SetBool("Andando", true);
+        if (!move)
+        {
+            vendedor.isStopped = true;
+            return;
+        }
+
+        vendedor.isStopped = false;
+        this.destino = destino;
+        vendedor.SetDestination(destino);
     }
     private IEnumerator Escolha()
     {
         int random = Random.Range(0, 100);
         if (random > 80 && !playerPerto)
         {
-            Andar();
+            Andar(RandomNavMeshGenerator(4f));
         }
         else if (random > 50 && !playerPerto)
         {
