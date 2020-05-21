@@ -8,7 +8,7 @@ public class Tanque : Inimigo
     private float cooldownGeral = 1.5f;
 
     private bool choose = true, defendendo = false;
-    public override void ReceberDano(int danoRecebido)
+    public override void ReceberDano(int danoRecebido, Inimigo inim = null)
     {
         if(!defendendo)
             base.ReceberDano(danoRecebido);
@@ -20,7 +20,6 @@ public class Tanque : Inimigo
         Coroutine c = StartCoroutine(base.Atacar());
 
         yield return c;
-        Debug.Log("Ataque Tanque");
 
         anim.SetBool("Idle", true);
         yield return new WaitForSeconds(cooldownGeral);

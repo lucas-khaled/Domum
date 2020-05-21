@@ -11,7 +11,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
     public Image lifeBar;
     public Animator anim;
     public NavMeshAgent NavMesh;
-    public Transform posicaoInicial;
+    public Vector3 posicaoInicial;
     public GameObject CBTprefab;
     public Item[] itensDropaveis;
     public Bau drop;
@@ -41,7 +41,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     protected float ataqueCooldown;
 
-    bool morto = false;
+    [HideInInspector]
+    public bool morto = false;
 
     public int Vida
     {
@@ -71,6 +72,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
+        posicaoInicial = this.transform.position;
     }
 
     //realiza o ataque do inimigo
@@ -96,7 +98,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
         // é checado se o ataque atingiu o player e lhe dá o dano
         if (hit.Length > 0)
         {
-            hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
+            hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio, this);
         }
 
         //reseta o cooldown(espera) do ataque e espera para tocar a animação
@@ -105,7 +107,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
         canAttack = true;
     }
 
-    public virtual void ReceberDano(int danoRecebido)
+    public virtual void ReceberDano(int danoRecebido, Inimigo inim = null)
     {
         if (morto)
         {
@@ -210,7 +212,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         if (collider.gameObject.tag == "Player")
         {
-            Movimentar(posicaoInicial.position);
+            Movimentar(posicaoInicial);
             ataqueCooldown = 0;
             anim.SetBool("Idle", true);
         }

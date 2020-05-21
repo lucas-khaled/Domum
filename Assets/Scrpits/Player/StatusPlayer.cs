@@ -5,8 +5,23 @@ using UnityEngine;
 [System.Serializable]
 public class StatusPlayer : MonoBehaviour
 {
-    public int maxColetavel = 3;
+    public int maxColetavel;
+
+    public int MaxColetavel
+    {
+        get
+        {
+            return maxColetavel;
+        }
+        set
+        {
+            maxColetavel = value;
+            UIController.uiController.InicializarPainelUsasveis();
+        }
+    }
+
     public float tempoEscudo = 3;
+
     public float tempoDashTotal = 2;
     public int maxVida = 100;
 
@@ -15,6 +30,19 @@ public class StatusPlayer : MonoBehaviour
     private int experiencia, level = 1;
     private const int MAXLEVEL = 100;
     private int danoMedio = 10;
+
+    public float TempoEscudo
+    {
+        get
+        {
+            return tempoEscudo;
+        }
+
+        set
+        {
+            tempoEscudo = value;
+        }
+    }
 
     public int QntColetavel
     {
@@ -108,5 +136,6 @@ public class StatusPlayer : MonoBehaviour
     private void Awake()
     {
         vida = maxVida;
+        maxColetavel = 3;
     }
 }

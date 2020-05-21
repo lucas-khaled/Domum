@@ -10,12 +10,13 @@ public class CameraController : MonoBehaviour
 
     private OrigemInput origem;
 
-    public float Sensibilidade_cam = 1;
+    public float Sensibilidade_cam = 1, baseOffset;
     public Transform Target;
 
-    float mouseX, mouseY, controleX, controleY, baseOffset;
+    float mouseX, mouseY, controleX, controleY;
     float controleXEsq, grauRotacao;
 
+    [HideInInspector]
     public bool Trava;
     
 
@@ -81,8 +82,8 @@ public class CameraController : MonoBehaviour
         else
         {
             mouseX += Input.GetAxis("Mouse X") * Sensibilidade_cam;
-            mouseY -= Input.GetAxis("Mouse Y") * Sensibilidade_cam;
-            mouseY = Mathf.Clamp(mouseY, -35, 60);
+            mouseY += Input.GetAxis("Mouse Y") * Sensibilidade_cam;
+            mouseY = Mathf.Clamp(mouseY, -25, 60);
 
             transform.LookAt(Target);
 

@@ -7,8 +7,6 @@ public class Tyva : Player
     float moveHorizontal;
     float moveVertical;
 
-
-
     [Header("Valores Tyva")]
     [SerializeField]
     private float velocidadeDash;
@@ -16,6 +14,37 @@ public class Tyva : Player
     private float timeFaca;
     [SerializeField]
     private float timeDash;
+    [SerializeField]
+    private float tempoRecarga = 1;
+
+    private bool dashEspecial = false;
+
+    public bool facaLetal { get; set; }
+
+    public bool DashEspecial
+    {
+        get
+        {
+            return dashEspecial;
+        }
+        set
+        {
+            dashEspecial = value;
+            animator.SetBool("DashEspecial", value);
+        }
+    }
+
+    public float TempoRecarga
+    {
+        get
+        {
+            return tempoRecarga;
+        }
+        set
+        {
+            tempoRecarga = value;
+        }
+    }
 
     private float tempoDash;
     public float TempoDash
@@ -51,6 +80,7 @@ public class Tyva : Player
         status.QntColetavel = 3;
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
+        facaLetal = false;
     }
 
     protected override void Awake()
@@ -82,14 +112,18 @@ public class Tyva : Player
             }
         }
 
-        TempoDash += Time.deltaTime;
+        TempoDash += Time.deltaTime*tempoRecarga;
         contadorFaca += Time.deltaTime;
     }
 
     IEnumerator Dash()
     {
         animator.SetTrigger("Dash");
-        estadoPlayer = EstadoPlayer.RECARREGAVEL;
+
+        if (dashEspecial)
+            estadoPlayer = EstadoPlayer.ATACANDO;
+        else
+            estadoPlayer = EstadoPlayer.RECARREGAVEL;
 
         float tempo = 0;
 
@@ -126,9 +160,11 @@ public class Tyva : Player
         facaInstanciada.transform.LookAt(target);
         facaInstanciada.GetComponent<Bala>().SetCasterCollider(GetComponent<Collider>());
 
+        if (facaLetal)
+            facaInstanciada.GetComponent<Bala>().canBeLetal = true;
+
         status.QntColetavel--;
     }
-
 
     Vector3 FacaFrontTarget()
     {
@@ -139,5 +175,56 @@ public class Tyva : Player
                                        posicaoFaca.position.z + Mathf.Cos(rotY));
 
         return front;
+    }
+
+    public void CheckCombo()
+    {
+        podeAtacar = false;
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick == 1)
+        {
+            animator.SetInteger("Ataque", 0);
+            numClick = 0;
+            estadoPlayer = EstadoPlayer.COMBATE;
+        }
+
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick >= 2)
+        {
+            animator.SetInteger("Ataque", 2);
+            podeAtacar = true;
+        }
+
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && numClick == 2)
+        {
+            animator.SetInteger("Ataque", 0);
+            numClick = 0;
+            estadoPlayer = EstadoPlayer.COMBATE;
+        }
+
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && numClick >= 3)
+        {
+            animator.SetInteger("Ataque", 3);
+            podeAtacar = true;
+        }
+
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3") && numClick == 3)
+        {
+            animator.SetInteger("Ataque", 0);
+            numClick = 0;
+            estadoPlayer = EstadoPlayer.COMBATE;
+        }
+
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3") && numClick >= 4)
+        {
+            animator.SetInteger("Ataque", 4);
+            podeAtacar = true;
+        }
+
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack4"))
+        {
+            animator.SetInteger("Ataque", 0);
+            numClick = 0;
+            estadoPlayer = EstadoPlayer.COMBATE;
+        }
     }
 }

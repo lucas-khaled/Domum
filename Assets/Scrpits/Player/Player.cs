@@ -29,13 +29,28 @@ public class Player : MonoBehaviour, IVulnerable
     private float espera;
     public int numAtaque = 2;
 
-    protected Rigidbody rb;
 
-    bool outroAtaque;
-    private float attack = 0;
+    protected Rigidbody rb;
+    protected bool podeAtacar = true;
+    protected int numClick = 0;
+
+
     private Transform hitCanvas;
 
     #region GETTERS & SETTERS
+
+    public int NumAtaque
+    {
+        get
+        {
+            return numAtaque;
+        }
+
+        set
+        {
+            numAtaque = value;
+        }
+    }
 
     public EstadoPlayer estadoPlayer
     {
@@ -51,10 +66,6 @@ public class Player : MonoBehaviour, IVulnerable
             }
 
             estado_player = value;
-            if (value == EstadoPlayer.NORMAL)
-            {
-                InvokeRepeating("ProcuraInimigo", 0f, 0.2f); 
-            }
             EventsController.onPlayerStateChanged.Invoke(estado_player);
         }
     }
@@ -88,20 +99,6 @@ public class Player : MonoBehaviour, IVulnerable
         rb.velocity = (transform.forward * 5);
     }
 
-    private bool CheckCombo()
-    {
-        if(attack == 1)
-        {
-            attack = 0;
-            return false;
-        }
-        else
-        {
-            attack += Mathf.Clamp(1f / numAtaque-1, 0, 1);
-            return true;
-        }
-    }
-
     protected IEnumerator WaitForAnimation(string animacao)
     {
         while (animator.GetCurrentAnimatorStateInfo(0).IsName(animacao))
@@ -111,54 +108,19 @@ public class Player : MonoBehaviour, IVulnerable
 
     }
 
-    int QualAtaque()
+    private void Atacar()
     {
-        int x = 0;
-        int retorno = 0;
-        for(int i = 1; i<=numAtaque; i++)
+        if (podeAtacar && numClick<numAtaque)
         {
-            retorno = i;
-            if(attack == x)
-            {
-                break;
-            }
-            x += 1 / numAtaque-1;
+            numClick++;
         }
-        return retorno;
-    }
 
-    private IEnumerator WaitForCurrentAnimation()
-    {
-        int hash = animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
-
-        while(animator.GetCurrentAnimatorStateInfo(0).shortNameHash == hash)
+        if(numClick == 1)
         {
-            yield return null;
-        }
-    }
-
-    private IEnumerator Atacar()
-    {
-
-        if (CheckCombo() && outroAtaque)
-        {
+            animator.SetInteger("Ataque", 1);
+            animator.applyRootMotion = true;
             estadoPlayer = EstadoPlayer.ATACANDO;
-            animator.SetBool("Atacando", true);
-
-            outroAtaque = false;
-
-            yield return WaitForCurrentAnimation();
-            yield return new WaitForSeconds(espera);
-
-            if (!outroAtaque)
-            {
-                //MoverPlayerAtaque();
-                animator.SetBool("Atacando", false);
-                estadoPlayer = EstadoPlayer.COMBATE;
-                attack = 0;
-            }
         }
-
     }
 
     public int CalculaDano()
@@ -174,7 +136,7 @@ public class Player : MonoBehaviour, IVulnerable
         estadoPlayer = EstadoPlayer.MORTO;
     }
 
-    public virtual void ReceberDano(int danoRecebido)
+    public virtual void ReceberDano(int danoRecebido, Inimigo inim = null)
     {
         status.Vida -= danoRecebido;
         UIController.uiController.InitCBT(danoRecebido.ToString(), CBTprefab, hitCanvas);
@@ -195,6 +157,8 @@ public class Player : MonoBehaviour, IVulnerable
         StartCoroutine(Dano(nomeAnim));
         
     }
+
+
 
     private IEnumerator Dano(string animationName)
     {
@@ -222,12 +186,10 @@ public class Player : MonoBehaviour, IVulnerable
         {
             foreach (Collider inimigo in hit)
             {
-                    if (inimigo.GetComponent<Inimigo>().hostil && inimigo.gameObject.activeSelf)
-                    {
-                        estadoPlayer = EstadoPlayer.COMBATE;
-                        CancelInvoke("ProcuraInimigo");
-                        return inimigo.transform.position;
-                    }
+                if (inimigo.GetComponent<Inimigo>().hostil && !inimigo.GetComponent<Inimigo>().morto)
+                {
+                    return inimigo.transform.position;
+                }
             }         
         }
 
@@ -244,22 +206,35 @@ public class Player : MonoBehaviour, IVulnerable
         }
 
     }
+
+    public void ResetCanAttack()
+    {
+        podeAtacar = true;
+        numClick = 0;
+        animator.applyRootMotion = false;
+        
+        if(ProcuraInimigo() == Vector3.zero)
+        {
+            estadoPlayer = EstadoPlayer.NORMAL;
+        }
+
+        else
+        {
+            estadoPlayer = EstadoPlayer.COMBATE;
+        }
+    }
+
+
     #endregion
 
-    /*void VerificarColetaveis()
-    {
-        
-    }*/
 
     protected virtual void Update()
     {
         Movimento();
-            
 
-        if (Input.GetButtonDown("Attack") && (estadoPlayer == EstadoPlayer.COMBATE || estadoPlayer == EstadoPlayer.NORMAL))
-        {
-            outroAtaque = true;
-            StartCoroutine(Atacar());
+        if (Input.GetButtonDown("Attack") && (estadoPlayer != EstadoPlayer.RECARREGAVEL && estadoPlayer != EstadoPlayer.MORTO) && podeAtacar && Time.timeScale != 0)
+        {         
+            Atacar();
         }
 
         if (Input.GetButtonDown("Interact"))

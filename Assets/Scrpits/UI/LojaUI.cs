@@ -58,37 +58,41 @@ public class LojaUI : MonoBehaviour
         }
 
         ClearLoja();
+        lojaAtual = null;
     }
 
     public IEnumerator AbrirLoja(Loja loja)
     {
-        lojaAtual = loja;
-
-        if (lojaAtual.gameObject.GetComponent<Kambim>())
+        if (lojaAtual == null)
         {
-            lojaAtual.gameObject.GetComponent<Kambim>().Conversa();
+            lojaAtual = loja;
+
+            if (lojaAtual.gameObject.GetComponent<Kambim>())
+            {
+                lojaAtual.gameObject.GetComponent<Kambim>().Conversa();
+            }
+            else if (lojaAtual.gameObject.GetComponent<Atriet>())
+            {
+                lojaAtual.gameObject.GetComponent<Atriet>().Conversa();
+            }
+
+            contCompraVenda = 0;
+            yield return new WaitForSeconds(2.5f);
+
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            CameraController.cameraInstance.Trava = true;
+
+            painelLoja.SetActive(true);
+
+            ClearLoja();
+
+            CarregaInfoPlayer();
+
+            CarregaItensPlayer();
+            CarregaItensVendedor(loja.itensAVenda);
         }
-        else if (lojaAtual.gameObject.GetComponent<Atriet>())
-        {
-            lojaAtual.gameObject.GetComponent<Atriet>().Conversa();
-        }
-
-        contCompraVenda = 0;
-        yield return new WaitForSeconds(2.5f);
-
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        CameraController.cameraInstance.Trava = true;
-
-        painelLoja.SetActive(true);
-
-        ClearLoja();
-
-        CarregaInfoPlayer();
-
-        CarregaItensPlayer();
-        CarregaItensVendedor(loja.itensAVenda);
     }
 
     void CarregaInfoPlayer()
@@ -220,7 +224,6 @@ public class LojaUI : MonoBehaviour
 
     public void VenderItem()
     {
-        Debug.Log("fEDAPUTA");
         contCompraVenda--;
         Debug.Log(contCompraVenda);
         Item vendido = holderAtual.item;

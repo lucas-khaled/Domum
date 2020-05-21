@@ -74,7 +74,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: Body/MASTER/Master-Body
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -115,7 +115,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -144,7 +152,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.7286432
+        functionName: CheckCombo
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -173,7 +189,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.44539082
+        functionName: CheckCombo
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -260,7 +284,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.30653265
+        functionName: AreaAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6968174
+        functionName: AreaAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -289,7 +329,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.4639866
+        functionName: AreaAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -318,7 +366,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -347,7 +403,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -376,7 +440,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -405,7 +477,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -434,7 +514,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -550,7 +638,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -579,7 +675,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -608,7 +712,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 540f98ff3c0f7f94dbb61c21abf47527,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

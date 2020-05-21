@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IVulnerable
 {
-    void ReceberDano(int dano);
+    void ReceberDano(int dano, Inimigo inim = null);
 }

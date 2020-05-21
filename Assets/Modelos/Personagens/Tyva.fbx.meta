@@ -74,133 +74,11 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: Tyva_Armature/Root
     rigImportErrors: 
-    rigImportWarnings: "Avatar Rig Configuration mis-match. Inbetween bone rotation
-      in configuration does not match rotation in animation file:\n\t'Shin.L' : rotation
-      error = 49.522507 deg\n\t'Shin.R' : rotation error = 7.518810 deg\n"
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Tyva_Armature|Bake-Attack_1' has import animation
-      warnings that might lower retargeting quality:\nNote: Activate translation
-      DOF on avatar to improve retargeting quality.\n\t'ForeArm.L' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'ForeArm.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Hip'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Attack_2' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'ForeArm.L' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'ForeArm.R' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'Hip' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'Shin.L' is
-      inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Attack_3' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'clavicle.L' has translation animation that will be discarded.\n\t'ForeArm.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'clavicle.R'
-      has translation animation that will be discarded.\n\t'ForeArm.R' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'Hip'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Attack_Dash' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'ForeArm.L' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'ForeArm.R' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'Hip' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'Shin.L' is
-      inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Dash' has import animation warnings that might lower retargeting
-      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'ForeArm.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ForeArm.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Death' has import animation warnings that might lower retargeting
-      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'ForeArm.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ForeArm.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Hip'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Idle' has import animation warnings that might lower retargeting
-      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Shin.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Jumping_Attack' has import animation warnings that might
-      lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
-      retargeting quality.\n\t'ForeArm.L' is inbetween humanoid transforms and has
-      rotation animation that will be discarded.\n\t'ProximalIndex.L' has translation
-      animation that will be discarded.\n\t'ProximalMiddle.L' has translation animation
-      that will be discarded.\n\t'ProximalRing.L' has translation animation that
-      will be discarded.\n\t'ForeArm.R' is inbetween humanoid transforms and has
-      rotation animation that will be discarded.\n\t'Hip' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'Shin.L' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Run' has import animation warnings that might lower retargeting
-      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'ForeArm.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ForeArm.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Hip'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-RunBack' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'clavicle.L' has translation animation that will be discarded.\n\t'ForeArm.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'clavicle.R'
-      has translation animation that will be discarded.\n\t'ForeArm.R' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'Hip'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-RunSideLeft' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'clavicle.L' has translation animation that will be discarded.\n\t'ForeArm.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'clavicle.R'
-      has translation animation that will be discarded.\n\t'ForeArm.R' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'Hip'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-RunSideRight' has import animation warnings that might
-      lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
-      retargeting quality.\n\t'clavicle.L' has translation animation that will be
-      discarded.\n\t'ForeArm.L' is inbetween humanoid transforms and has rotation
-      animation that will be discarded.\n\t'clavicle.R' has translation animation
-      that will be discarded.\n\t'ForeArm.R' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'Shin.L' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'Shin.R' is
-      inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Walk' has import animation warnings that might lower retargeting
-      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'ForeArm.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ForeArm.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Hip'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Walk_Back' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'ForeArm.L' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'ForeArm.R' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'Hip' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'Shin.L' is
-      inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Tyva_Armature|Bake-Walk_Left' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'Hip' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'Shin.L' is inbetween humanoid transforms and has
-      rotation animation that will be discarded.\n\t'Shin.R' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\nClip 'Tyva_Armature|Bake-Walk_Right'
-      has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Hip'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Shin.R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -237,7 +115,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.6718976
+        functionName: CheckCombo
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -266,7 +152,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.68389267
+        functionName: CheckCombo
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -295,7 +189,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.8056951
+        functionName: CheckCombo
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -411,7 +313,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -440,7 +350,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.99832493
+        functionName: CheckCombo
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -469,7 +387,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -498,7 +424,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -527,7 +461,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -556,7 +498,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -585,7 +535,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -614,7 +572,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -643,7 +609,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -672,7 +646,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ResetCanAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 65788238490e7a248ad58f9028b1bd88,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
