@@ -27,6 +27,11 @@ public class Quest : ScriptableObject
         aceita = true;
     }
 
+    public Condicoes getProximaCondicao()
+    {
+        return condicoes[condicaoAtualIndex + 1];
+    }
+
     public Condicoes ProximaCondicao()
     {
         condicaoAtualIndex++;

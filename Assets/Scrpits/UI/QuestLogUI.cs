@@ -32,8 +32,11 @@ public class QuestLogUI : MonoBehaviour
 
     public static QuestLogUI questLogUI;
 
+    private Quest questSelecionada;
+
     void Awake() {
         EventsController.onQuestLogChange += AtualizarQuestLog;
+        EventsController.onCondicaoTerminada += TerminaCondicao;
         //EventsController.onQuestConditionChange += AtualizarDescricao;
         questLogUI = this;
     }
@@ -85,6 +88,16 @@ public class QuestLogUI : MonoBehaviour
         titulo.text = string.Empty;
     }
 
+    private void TerminaCondicao(Quest quest)
+    {
+        if (quest == questSelecionada)
+        {
+            tituloQuest.text = quest.nome;
+            descricaoQuest.text = quest.getProximaCondicao().descricao;
+
+        }
+    }
+
     public void AtualizarQuestHUD(Quest quest, GameObject bandeiraAtiva)
     {
         if (this.bandeiraAtiva != null)
@@ -95,5 +108,7 @@ public class QuestLogUI : MonoBehaviour
 
         tituloQuest.text = quest.nome;
         descricaoQuest.text = quest.getCondicaoAtual().descricao;
+
+        questSelecionada = quest;
     }
 }
