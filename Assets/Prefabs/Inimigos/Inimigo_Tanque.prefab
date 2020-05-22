@@ -591,7 +591,7 @@ Animator:
   m_GameObject: {fileID: 2899249941039648320}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2b3338edb2b7a5048817e95a6659a6b5, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 745d1b817b381c644861632c82adfa7a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -666,9 +666,11 @@ MonoBehaviour:
   lifeBar: {fileID: 7628613942227086589}
   anim: {fileID: 8137281514602746153}
   NavMesh: {fileID: 6565642853361571654}
-  posicaoInicial: {fileID: 5408194530888699477}
+  posicaoInicial: {x: 0, y: 0, z: 0}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
+  itensDropaveis: []
+  drop: {fileID: 0}
   hostil: 1
   maxVida: 100
   danoMedio: 15
@@ -676,9 +678,11 @@ MonoBehaviour:
   distanciaAtaque: 2.91
   vida: 0
   velocidadeAtaque: 1
+  velocidadeAnim: 0
   experienciaMorte: 20
+  hitPoint: {fileID: 5408194530888699477}
+  morto: 0
   cooldownGeral: 1
-  escudo: {fileID: 5408194531450174680}
 --- !u!1 &3095258631507323388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,7 +1061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5408194530888699477}
   m_Layer: 8
-  m_Name: PosicaoInicial
+  m_Name: HitPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1071,7 +1075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5408194530888699476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.06, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2190840333756759123}

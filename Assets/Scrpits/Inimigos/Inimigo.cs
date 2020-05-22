@@ -37,6 +37,9 @@ public class Inimigo : MonoBehaviour, IVulnerable
     private int experienciaMorte;
     private Transform hitCanvas;
 
+    [SerializeField]
+    protected Transform hitPoint;
+
     protected bool canAttack = true;
 
     protected float ataqueCooldown;
@@ -90,22 +93,20 @@ public class Inimigo : MonoBehaviour, IVulnerable
             anim.SetTrigger("Ataque 1");
         else
             anim.SetTrigger("Ataque 2");
-
-        yield return new WaitForSeconds(velocidadeAnim/2);
-
-        Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
-
-        // é checado se o ataque atingiu o player e lhe dá o dano
-        if (hit.Length > 0)
-        {
-            hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio, this);
-        }
-
-        //reseta o cooldown(espera) do ataque e espera para tocar a animação
         
         yield return new WaitForSeconds(velocidadeAtaque);
         canAttack = true;
     }
+
+    public void DoDamage()
+    {
+        Collider[] hit = Physics.OverlapSphere(hitPoint.position, 0.7f, LayerMask.GetMask("Player"));
+        if (hit.Length > 0)
+        {
+            hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio, this);
+        }
+    }
+
 
     public virtual void ReceberDano(int danoRecebido, Inimigo inim = null)
     {
@@ -235,5 +236,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(gameObject.transform.position, distanciaAtaque);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(hitPoint.position, 0.7f);
     }
 }

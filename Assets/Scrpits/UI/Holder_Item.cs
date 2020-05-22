@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Holder_Item : Button, ISelectHandler
 {
+
     public Item item;
     public Image Spritu_item;
 
@@ -14,7 +15,10 @@ public class Holder_Item : Button, ISelectHandler
     protected override void Start()
     {
         base.Start();
-        Spritu_item.sprite = item.icone;
+        if (item.icone != null)
+        {
+            Spritu_item.sprite = item.icone;
+        }
     }
 
     public override void OnSelect(BaseEventData eventData)
@@ -22,11 +26,7 @@ public class Holder_Item : Button, ISelectHandler
         base.OnSelect(eventData);
         if (!isLoja)
         {
-            InventarioUI.inventarioUI.Info.text = item.descricao;
-            InventarioUI.inventarioUI.Titulo.text = item.nome;
-            InventarioUI.inventarioUI.peso.text = item.peso.ToString();
-            InventarioUI.inventarioUI.Valor_venda.text = item.custoMoeda.ToString();
-            InventarioUI.inventarioUI.selecionado = item;
+            InventarioUI.inventarioUI.ShowInfo(item);
             InventarioUI.inventarioUI.ApareceExcluir();
             if (item.GetType() == typeof(Arma))
             {

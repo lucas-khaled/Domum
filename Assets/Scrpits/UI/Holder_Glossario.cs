@@ -7,8 +7,10 @@ using UnityEngine.EventSystems;
 
 public class Holder_Glossario : Button, ISelectHandler
 {
-    public GameObject texto;
-    public GameObject titulo;
+    [SerializeField]
+    private GameObject texto;
+    [SerializeField]
+    private GameObject titulo;
 
 
     public override void OnSelect(BaseEventData eventData)

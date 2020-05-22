@@ -13,7 +13,18 @@ public class Skill
     public float qntMudança;
     public string mudançaSeString;
 
+    [TextArea]
+    public string descricaoHabilidade;
+
     private bool ativo = false;
+
+    public bool IsActive()
+    {
+        return ativo;
+    }
+
+
+    public bool podeAtivar{ get; set; }
 
     public void AtivaSkill()
     {
@@ -26,7 +37,7 @@ public class Skill
 
         if(varAcesso == null)
         {
-            Debug.Log("Cuzin");
+            return;
         }
 
         if (varAcesso.PropertyType == typeof(int))
@@ -44,7 +55,6 @@ public class Skill
         {
             bool muda = (qntMudança >= 1) ? true : false;
             varAcesso.SetValue(objAcesso, muda);
-            Debug.Log("cuu");
         }
 
         else if(varAcesso.PropertyType == typeof(string))

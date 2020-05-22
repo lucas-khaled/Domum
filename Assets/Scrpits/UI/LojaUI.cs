@@ -9,22 +9,34 @@ public class LojaUI : MonoBehaviour
     public GameObject slotPrefab, painelLoja;
 
     [Header("InfoPlayer")]
-    public Text playerMoedas;  
-    public Text playerFama;
-    public Text inventarioPeso;
+    [SerializeField]
+    private Text playerMoedas;
+    [SerializeField]
+    private Text playerFama;
+    [SerializeField]
+    private Text inventarioPeso;
 
     [Header("InfoItem")]
-    public Text itemMoedas; 
-    public Text itemFama;
-    public Text itemPeso;
-    public Text itemNome;
-    public Text itemDescricao;
-    public GameObject painelInfoItem;
-    public Image spriteItem;
+    [SerializeField]
+    private Text itemMoedas;
+    [SerializeField]
+    private Text itemFama;
+    [SerializeField]
+    private Text itemPeso;
+    [SerializeField]
+    private Text itemNome;
+    [SerializeField]
+    private Text itemDescricao;
+    [SerializeField]
+    private GameObject painelInfoItem;
+    [SerializeField]
+    private Image spriteItem;
 
     [Header("Botões")]
-    public Button btnVender; 
-    public Button btnComprar;
+    [SerializeField]
+    private Button btnVender;
+    [SerializeField]
+    private Button btnComprar;
 
     [HideInInspector]
     public int contCompraVenda;

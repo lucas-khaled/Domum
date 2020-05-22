@@ -16,10 +16,13 @@ public class BauUI : MonoBehaviour
     [SerializeField]
     private Vector2 offset;
 
-    public GameObject slot, panelBau, descricaoPanel;
-    public Transform content;
+    [SerializeField]
+    private GameObject slot, panelBau, descricaoPanel;
+    [SerializeField]
+    private Transform content;
 
-    public Text moedaText, descricaoText, tituloText, pesoTexto; 
+    [SerializeField]
+    private Text moedaText, descricaoText, tituloText, pesoTexto; 
 
     private List<GameObject> instancias = new List<GameObject>();
 

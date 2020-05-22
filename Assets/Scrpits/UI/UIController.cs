@@ -6,22 +6,38 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
-    public Image playerLifeBar;
-    public Image XpBar;
-    public Image Skill;
+    [SerializeField]
+    private Image playerLifeBar;
+    [SerializeField]
+    private Image XpBar;
+    [SerializeField]
+    private Image Skill;
+
     private GameObject tituloAtual;
     private GameObject textoAtual;
-    public Transform ContentGlosa;
-    public Scrollbar scrollGlosa;
-    
-    public GameObject Usavel;
-    //public Transform Inicio;
-    private GameObject[] Bases;
-    public GameObject Pause, painelMorte;
 
-    public GameObject painelUsáveis;
-    public GameObject painelQuestLog;
-    public bool questLogAberto = false;
+    [SerializeField]
+    private Transform ContentGlosa;
+
+    [SerializeField]
+    private Scrollbar scrollGlosa;
+
+    [SerializeField]
+    private GameObject Usavel;
+    //public Transform Inicio;
+
+    private GameObject[] Bases;
+
+    [SerializeField]
+    private GameObject Pause, painelMorte;
+
+    [SerializeField]
+    private GameObject painelUsáveis;
+    [SerializeField]
+    private GameObject painelQuestLog;
+
+
+    bool questLogAberto = false;
     private List<Transform> listinha = new List<Transform>();
 
 

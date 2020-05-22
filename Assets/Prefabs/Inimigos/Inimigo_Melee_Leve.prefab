@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 732953660625071798}
   m_Layer: 8
-  m_Name: PosicaoInicial
+  m_Name: HitPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732953660625071797}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.001, y: 1.092, z: 0.861}
   m_LocalScale: {x: 0.74626863, y: 0.74626863, z: 0.74626863}
   m_Children: []
   m_Father: {fileID: 1444791547437953098}
@@ -774,7 +774,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2474648388022321753}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3, y: -5.41, z: 40.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5221901868454820074}
@@ -869,12 +869,12 @@ MonoBehaviour:
   lifeBar: {fileID: 732953660717379080}
   anim: {fileID: 8829005254618127664}
   NavMesh: {fileID: 5869978736398375767}
-  posicaoInicial: {fileID: 0}
+  posicaoInicial: {x: 0, y: 0, z: 0}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   itensDropaveis:
   - {fileID: 11400000, guid: ee444615afb2ac04981992ad37e64f64, type: 2}
-  - {fileID: 11400000, guid: 04857c3ec53de80458eb0fc69df86694, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: d1135a47b29ed364995effe9b7c0cdeb, type: 2}
   - {fileID: 11400000, guid: fe7f5377baca23a40a3d0382390f8a2a, type: 2}
   drop: {fileID: 4501771150669755731, guid: 86901b452bd0d7f48bbb8654eefc0748, type: 3}
@@ -887,6 +887,8 @@ MonoBehaviour:
   velocidadeAtaque: 5
   velocidadeAnim: 0
   experienciaMorte: 20
+  hitPoint: {fileID: 732953660625071798}
+  morto: 0
 --- !u!135 &2985720629304583028
 SphereCollider:
   m_ObjectHideFlags: 0

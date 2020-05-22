@@ -130,6 +130,11 @@ public class StatusPlayer : MonoBehaviour
             level = value;
             XPRequisito += 50 + 10 * level;
             DanoMedio += 2;
+
+            if(level%8 == 0)
+            {
+                ArvoreDeHabilidades.IncrementaPerk();
+            }
         }
     }
 

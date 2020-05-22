@@ -5,29 +5,30 @@ using UnityEngine.UI;
 
 public class InventarioUI : MonoBehaviour
 {
-    public GameObject Slot;
-
-    public GameObject Grid;
-
-    public GameObject ExcluirB;
-
-    public GameObject EquiparB;
-
-    public GameObject UsarB;
-
-    public Text Dinheiro_Atual;
-
-    public Text Peso_Atual;
-
-    public Text Info;
-
-    public Text Valor_venda;
-
-    public Text Titulo;
-
-    public Text peso;
-
-    public Image ArmaEq;
+    [SerializeField]
+    private GameObject Slot;
+    [SerializeField]
+    private GameObject Grid;
+    [SerializeField]
+    private GameObject ExcluirB;
+    [SerializeField]
+    private GameObject EquiparB;
+    [SerializeField]
+    private GameObject UsarB;
+    [SerializeField]
+    private Text Dinheiro_Atual;
+    [SerializeField]
+    private Text Peso_Atual;
+    [SerializeField]
+    private Text Info;
+    [SerializeField]
+    private Text Valor_venda;
+    [SerializeField]
+    private Text Titulo;
+    [SerializeField]
+    private Text peso;
+    [SerializeField]
+    private Image ArmaEq;
 
 
     [HideInInspector]
@@ -160,5 +161,24 @@ public class InventarioUI : MonoBehaviour
         ExcluirB.SetActive(false);
         EquiparB.SetActive(false);
         UsarB.SetActive(false);
+    }
+
+    public void ShowInfo(Item item)
+    {
+        if(item == null)
+        {
+            Debug.Log("é o item");
+        }
+
+        if(Info.text == null)
+        {
+            Debug.Log("cu");
+        }
+
+        Info.text = (item.descricao != null) ? item.descricao: string.Empty;
+        Titulo.text = item.nome;
+        peso.text = item.peso.ToString();
+        Valor_venda.text = item.custoMoeda.ToString();
+        selecionado = item;
     }
 }

@@ -8,18 +8,27 @@ public class QuestLogUI : MonoBehaviour
 {
     private GameObject bandeiraAtiva;
 
-    public Text tituloQuest;
-    public Text descricaoQuest;
+    [SerializeField]
+    private Text tituloQuest;
+    [SerializeField]
+    private Text descricaoQuest;
 
-    public List<GameObject> slotQuests;
-    public GameObject slot;
+    private List<GameObject> slotQuests;
 
-    public Transform content;
+    [SerializeField]
+    private GameObject slot;
 
-    public Text titulo;
-    public Transform contentDescricao;
+    [SerializeField]
+    private Transform content;
 
-    public GameObject topicosCondicoes;
+    [SerializeField]
+    private Text titulo;
+
+    [SerializeField]
+    private Transform contentDescricao;
+
+    [SerializeField]
+    private GameObject topicosCondicoes;
 
     public static QuestLogUI questLogUI;
 
