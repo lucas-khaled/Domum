@@ -1692,7 +1692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &229313717
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1705,8 +1705,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1526143178}
-  - {fileID: 811877674}
   - {fileID: 475289619}
+  - {fileID: 811877674}
   - {fileID: 2053942414}
   - {fileID: 2075353198}
   - {fileID: 938072247}
@@ -3757,7 +3757,7 @@ GameObject:
   - component: {fileID: 475289620}
   - component: {fileID: 475289622}
   m_Layer: 5
-  m_Name: MaisFaca2
+  m_Name: MaisFaca1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3776,7 +3776,7 @@ RectTransform:
   m_Children:
   - {fileID: 1774956940}
   m_Father: {fileID: 229313717}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3870,7 +3870,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7335,7 +7335,7 @@ MonoBehaviour:
   - player: 1
     ObjectDeAcesso: StatusPlayer
     VariavelDeAcesso: TempoEscudo
-    "qntMudan\xE7a": 2.5
+    "qntMudan\xE7a": 4
     "mudan\xE7aSeString": 
     descricaoHabilidade: Aumenta a quantidade de tempo em que o escudo funciona
   - player: 1
@@ -7377,7 +7377,7 @@ MonoBehaviour:
     VariavelDeAcesso: MaxColetavel
     "qntMudan\xE7a": 5
     "mudan\xE7aSeString": 
-    descricaoHabilidade: "Aumenta para 4 a capacidade de facas arremess\xE1veis que
+    descricaoHabilidade: "Aumenta para 5 a capacidade de facas arremess\xE1veis que
       Tyva carrega"
   - player: 0
     ObjectDeAcesso: Tyva
@@ -7410,7 +7410,7 @@ MonoBehaviour:
     "mudan\xE7aSeString": 
     descricaoHabilidade: "Adiciona a possibilidade de 50% dos inimigos morrerem instant\xE2neamente
       por uma faca arremess\xE1vel"
-  textoPerk: {fileID: 784578705}
+  textoInfo: {fileID: 686303201}
   ativarHabilidade: {fileID: 2138174558}
   botoesTyva:
   - {fileID: 811877677}
@@ -7686,7 +7686,7 @@ GameObject:
   - component: {fileID: 811877675}
   - component: {fileID: 811877677}
   m_Layer: 5
-  m_Name: MaisFaca1
+  m_Name: MaisFaca2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7705,7 +7705,7 @@ RectTransform:
   m_Children:
   - {fileID: 1314138894}
   m_Father: {fileID: 229313717}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7799,7 +7799,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8316,7 +8316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11.299988, y: 0}
+  m_AnchoredPosition: {x: 11.300049, y: 0}
   m_SizeDelta: {x: -63.956512, y: -46.100586}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &868056004
@@ -14340,7 +14340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -35.8282, y: -25.004425}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1244365045
@@ -14627,7 +14627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0.000061035156}
   m_SizeDelta: {x: -35.387146, y: -19.647476}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1262133465
@@ -16087,7 +16087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11.299988, y: 0}
+  m_AnchoredPosition: {x: 11.300049, y: 0}
   m_SizeDelta: {x: -63.956512, y: -46.100586}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1394899677

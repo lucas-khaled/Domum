@@ -10,9 +10,9 @@ public class ArvoreDeHabilidades : MonoBehaviour
     [SerializeField]
     private Skill[] skillsTyva;
     [SerializeField]
-    private static Text textoInfo;
-    [SerializeField]
-    private Text textoPerk;
+    private Text textoInfo;
+
+    private static Text textoPerk;
     [SerializeField]
     private Button ativarHabilidade;
 
@@ -32,18 +32,19 @@ public class ArvoreDeHabilidades : MonoBehaviour
     {
         SetHabilidadesAtivas();
         AtivaArvorePlayerEscolhido();
+        textoPerk = textoInfo.transform.parent.GetChild(2).GetComponent<Text>();
     }
 
     public static void IncrementaPerk()
     {
         qntPerk++;
-        textoInfo.text = qntPerk.ToString();
+        textoPerk.text = qntPerk.ToString();
     }
 
     private static void DecrementaPerk()
     {
         qntPerk--;
-        textoInfo.text = qntPerk.ToString();
+        textoPerk.text = qntPerk.ToString();
     }
 
     void AtivaArvorePlayerEscolhido()
@@ -102,10 +103,13 @@ public class ArvoreDeHabilidades : MonoBehaviour
     {
         if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
         {
-            skillsIovelik[indiceAtual].AtivaSkill();
-            qntAtivas++;
-            SetHabilidadesAtivas();
-            DecrementaPerk();
+            if (qntPerk > 0)
+            {
+                skillsIovelik[indiceAtual].AtivaSkill();
+                qntAtivas++;
+                SetHabilidadesAtivas();
+                DecrementaPerk();
+            }
         }
     }
 
@@ -113,10 +117,13 @@ public class ArvoreDeHabilidades : MonoBehaviour
     {
         if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.TYVA)
         {
-            skillsTyva[indiceAtual].AtivaSkill();
-            qntAtivas++;
-            SetHabilidadesAtivas();
-            DecrementaPerk();
+            if (qntPerk > 0)
+            {
+                skillsTyva[indiceAtual].AtivaSkill();
+                qntAtivas++;
+                SetHabilidadesAtivas();
+                DecrementaPerk();
+            }
         }
     }
 
@@ -124,7 +131,7 @@ public class ArvoreDeHabilidades : MonoBehaviour
     {
         indiceAtual = index;
         textoInfo.text = skillsIovelik[index].descricaoHabilidade;
-        if (skillsIovelik[index].podeAtivar)
+        if (skillsIovelik[index].podeAtivar && !skillsIovelik[index].IsActive())
         {
             ativarHabilidade.gameObject.SetActive(true);
         }
@@ -138,7 +145,7 @@ public class ArvoreDeHabilidades : MonoBehaviour
     {
         indiceAtual = index;
         textoInfo.text = skillsTyva[index].descricaoHabilidade;
-        if (skillsIovelik[index].podeAtivar)
+        if (skillsTyva[index].podeAtivar && !skillsTyva[index].IsActive())
         {
             ativarHabilidade.gameObject.SetActive(true);
         }
