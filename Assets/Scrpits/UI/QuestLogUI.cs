@@ -12,8 +12,14 @@ public class QuestLogUI : MonoBehaviour
     private Text tituloQuest;
     [SerializeField]
     private Text descricaoQuest;
+    [SerializeField]
+    private Text famaMissaoText;
+    [SerializeField]
+    private Text dinheiroMissaoText;
+    [SerializeField]
+    private Text xpMissaoText;
 
-    private List<GameObject> slotQuests;
+    private List<GameObject> slotQuests =  new List<GameObject>();
 
     [SerializeField]
     private GameObject slot;
@@ -58,6 +64,10 @@ public class QuestLogUI : MonoBehaviour
         // limpar descriçoes quando mudar de quest
         LimparDescricoes();
 
+        xpMissaoText.text = quest.getRecompensaAtual().GetXP().ToString();
+        dinheiroMissaoText.text = quest.getRecompensaAtual().GetDinheiro().ToString();
+        famaMissaoText.text = quest.getRecompensaAtual().GetFama().ToString();
+
         List<Condicoes> condicoesSoFar = new List<Condicoes>();
 
         titulo.text = quest.nome;
@@ -92,9 +102,24 @@ public class QuestLogUI : MonoBehaviour
     {
         if (quest == questSelecionada)
         {
-            tituloQuest.text = quest.nome;
-            descricaoQuest.text = quest.getProximaCondicao().descricao;
+            StartCoroutine(WaitToLoadQuest(quest));
+        }
+    }
 
+    IEnumerator WaitToLoadQuest(Quest quest)
+    {
+        yield return new WaitForSeconds(0.1f);
+        Condicoes condAtual = quest.getCondicaoAtual();
+
+        if (condAtual != null)
+        {
+            tituloQuest.text = quest.nome;
+            descricaoQuest.text = quest.getCondicaoAtual().descricao;
+        }
+        else
+        {
+            tituloQuest.text = "Selecione uma quest no QuestLog";
+            descricaoQuest.text = string.Empty;
         }
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class QuestChecker : MonoBehaviour
 {
-
     Quest questHolder;
     Condicoes condHolder;
 

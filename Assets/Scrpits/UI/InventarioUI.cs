@@ -46,13 +46,11 @@ public class InventarioUI : MonoBehaviour
     void Start()
     {
         PegaValores();
-        ArmaEq.sprite = Inventario.inventario.armaEquipada.icone;
-        
+        ArmaEq.sprite = Inventario.inventario.armaEquipada.icone;  
     }
 
     public void AttUI(Item item, bool mudanca)
     {
-
         ArmaEq.sprite = Inventario.inventario.armaEquipada.icone;
         PegaValores();
         if (mudanca)

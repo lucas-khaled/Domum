@@ -89,6 +89,7 @@ public class StatusPlayer : MonoBehaviour
         set
         {
             dinheiro = Mathf.Clamp(value, 0, int.MaxValue);
+            InventarioUI.inventarioUI.PegaValores();
         }
     }
 

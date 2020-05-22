@@ -32,6 +32,7 @@ public class QuestEditor : Editor
     {
         q.nome = EditorGUILayout.TextField("Título: ", q.nome);
         q.principal = EditorGUILayout.Toggle("Principal: ", q.principal);
+        EditorGUILayout.PropertyField(obj.FindProperty("reward"));
 
         ShowConditions(obj.FindProperty("condicoes"));
         obj.ApplyModifiedProperties();

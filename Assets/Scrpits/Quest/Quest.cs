@@ -14,6 +14,14 @@ public class Quest : ScriptableObject
     bool realizada, aceita;
     int numCondicoes, condicaoAtualIndex;
 
+    [SerializeField]
+    private Recompensa reward;
+
+    public Recompensa getRecompensaAtual()
+    {
+        return reward;
+    }
+
     public Condicoes getCondicaoAtual()
     {
         return condicaoAtual;
@@ -50,8 +58,7 @@ public class Quest : ScriptableObject
 
     public void TerminaMissao()
     {
-        // adicionar recompensa
-
+        reward.DarRecompensa();
         realizada = true;
     }
 
