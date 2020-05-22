@@ -34,6 +34,8 @@ public class QuestEditor : Editor
         q.principal = EditorGUILayout.Toggle("Principal: ", q.principal);
         EditorGUILayout.PropertyField(obj.FindProperty("reward"));
 
+        EditorGUILayout.PropertyField(obj.FindProperty("dialogo"));
+
         ShowConditions(obj.FindProperty("condicoes"));
         obj.ApplyModifiedProperties();
 

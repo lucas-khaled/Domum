@@ -7,6 +7,7 @@ public class StatusPlayer : MonoBehaviour
 {
     public int maxColetavel;
 
+
     public int MaxColetavel
     {
         get

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL, MORTO }
+public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL, MORTO, INTERAGINDO }
 
 [RequireComponent(typeof(Rigidbody))] [RequireComponent(typeof(Collider))] [RequireComponent(typeof(StatusPlayer))] [RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour, IVulnerable
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour, IVulnerable
     {
         get { return estado_player; }
 
-        protected set
+        set
         {
             if (status.Vida <= 0)
             {

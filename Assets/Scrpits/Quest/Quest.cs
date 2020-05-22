@@ -8,6 +8,8 @@ public class Quest : ScriptableObject
     public bool principal;
     public string nome;
 
+    public Dialogo dialogo;
+
     public List<Condicoes> condicoes;
 
     Condicoes condicaoAtual;
