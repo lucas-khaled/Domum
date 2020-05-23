@@ -26,7 +26,7 @@ public class Holder_Quest : Button, ISelectHandler
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
-        if (eventData.clickCount == 2)
+        if (eventData.clickCount == 2 && !referenciaQuest.IsRealizada())
             QuestLogUI.questLogUI.AtualizarQuestHUD(referenciaQuest, bandeiraAtiva);
     }
     public override void OnSubmit(BaseEventData eventData)

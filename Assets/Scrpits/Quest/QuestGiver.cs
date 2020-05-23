@@ -21,7 +21,8 @@ public class QuestGiver : Interagivel
             }
         }
 
-        DialogueSystem.sistemaDialogo.NPCName(quests[questsAceitas].dialogo);
+        DarQuest();
+        //DialogueSystem.sistemaDialogo.NPCName(quests[questsAceitas].dialogo);
     }
 
     public void DarQuest()

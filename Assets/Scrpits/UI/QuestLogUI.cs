@@ -25,7 +25,9 @@ public class QuestLogUI : MonoBehaviour
     private GameObject slot;
 
     [SerializeField]
-    private Transform content;
+    private Transform contentAceitas;
+    [SerializeField]
+    private Transform contentFeitas;
 
     [SerializeField]
     private Text titulo;
@@ -43,11 +45,20 @@ public class QuestLogUI : MonoBehaviour
     void Awake() {
         EventsController.onQuestLogChange += AtualizarQuestLog;
         EventsController.onCondicaoTerminada += TerminaCondicao;
-        //EventsController.onQuestConditionChange += AtualizarDescricao;
         questLogUI = this;
     }
     
     void AtualizarQuestLog(Quest quest) {
+
+        GameObject goExists = slotQuests.Find(x => x.GetComponent<Holder_Quest>().referenciaQuest == quest);
+
+        if (goExists != null)
+        {
+            goExists.transform.SetParent(contentFeitas);
+            goExists.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
+            goExists.transform.GetChild(1).gameObject.SetActive(false);
+            return;
+        }
 
         GameObject obj = slot;
         obj.GetComponent<Holder_Quest>().referenciaQuest = quest;
@@ -55,7 +66,7 @@ public class QuestLogUI : MonoBehaviour
         GameObject questInstanciada = (GameObject)Instantiate(obj);
         slotQuests.Add(questInstanciada);
         
-        questInstanciada.transform.SetParent(content);        
+        questInstanciada.transform.SetParent(contentAceitas);        
         questInstanciada.transform.localScale = Vector3.one;
     }
 
@@ -120,6 +131,7 @@ public class QuestLogUI : MonoBehaviour
         {
             tituloQuest.text = "Selecione uma quest no QuestLog";
             descricaoQuest.text = string.Empty;
+            AtualizarQuestLog(quest);
         }
     }
 
