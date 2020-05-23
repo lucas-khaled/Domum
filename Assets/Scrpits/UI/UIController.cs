@@ -24,6 +24,12 @@ public class UIController : MonoBehaviour
 
     [SerializeField]
     private GameObject Usavel;
+
+    [SerializeField]
+    private GameObject RenderTyva;
+    [SerializeField]
+    private GameObject RenderIovelik;
+
     //public Transform Inicio;
 
     private GameObject[] Bases;
@@ -55,6 +61,7 @@ public class UIController : MonoBehaviour
     {
         InicializarPainelUsasveis();
         AtualizarPainelUsaveis();
+        AtualizaRender();
     }
 
     protected virtual void Update() {        
@@ -156,6 +163,18 @@ public class UIController : MonoBehaviour
         }
         for(int i = Player.player.status.maxColetavel-1; i > Player.player.status.QntColetavel-1; i--){
             listinha[i].GetChild(numFilho).gameObject.SetActive(false);
+        }
+    }
+
+    public void AtualizaRender()
+    {
+        if(GameController.gameController.GetPersonagemEscolhido() ==  TipoPlayer.TYVA)
+        {
+            RenderTyva.SetActive(true);
+        }
+        else if(GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
+        {
+            RenderIovelik.SetActive(true);
         }
     }
 
