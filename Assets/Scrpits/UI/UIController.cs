@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class UIController : MonoBehaviour
 {
@@ -46,6 +47,9 @@ public class UIController : MonoBehaviour
     bool questLogAberto = false;
     private List<Transform> listinha = new List<Transform>();
 
+    // Configurações de Áudio e Volume
+    public AudioMixer mixer;
+    public Slider sliderJogo, sliderEfeitos, sliderMusica;
 
     #region SINGLETON
 
@@ -62,6 +66,9 @@ public class UIController : MonoBehaviour
         InicializarPainelUsasveis();
         AtualizarPainelUsaveis();
         AtualizaRender();
+        mixer.SetFloat("volumeJogo", sliderJogo.value);
+        mixer.SetFloat("volumeEfeitos", sliderEfeitos.value);
+        mixer.SetFloat("volumeMusica", sliderMusica.value);
     }
 
     protected virtual void Update() {        
@@ -227,4 +234,15 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene(cena);
     }
 
+    public void AjustarVolumeJogo(float volume) {
+        mixer.SetFloat("volumeJogo", volume);
+    }
+
+    public void AjustarVolumeEfeitos(float volume) {
+        mixer.SetFloat("volumeEfeitos", volume);
+    }
+
+    public void AjustarVolumeMusica(float volume) {
+        mixer.SetFloat("volumeMusica", volume);
+    }
 }
