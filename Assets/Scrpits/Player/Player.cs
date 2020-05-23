@@ -158,14 +158,14 @@ public class Player : MonoBehaviour, IVulnerable
         
     }
 
-
-
     private IEnumerator Dano(string animationName)
     {
-        estadoPlayer = EstadoPlayer.DANO;
-
-        animator.SetTrigger(animationName);
-        yield return WaitForAnimation(animationName);
+        if (!(estadoPlayer == EstadoPlayer.ATACANDO) && !(estadoPlayer == EstadoPlayer.INTERAGINDO) && !(estadoPlayer == EstadoPlayer.RECARREGAVEL))
+        {
+            estadoPlayer = EstadoPlayer.DANO;
+            animator.SetTrigger(animationName);
+            yield return WaitForAnimation(animationName);
+        }
 
         if (animationName == "Morte")
         {
@@ -226,7 +226,6 @@ public class Player : MonoBehaviour, IVulnerable
 
 
     #endregion
-
 
     protected virtual void Update()
     {

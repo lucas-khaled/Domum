@@ -103,6 +103,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
         Collider[] hit = Physics.OverlapSphere(hitPoint.position, 0.7f, LayerMask.GetMask("Player"));
         if (hit.Length > 0)
         {
+            Debug.Log(hit[0].name);
             hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio, this);
         }
     }
@@ -185,6 +186,13 @@ public class Inimigo : MonoBehaviour, IVulnerable
         NavMesh.SetDestination(destino);
     }
 
+    void FaceTarget()
+    {
+        Vector3 direcao = (Player.player.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direcao.x, 0, direcao.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime*5);
+    }
+
     protected virtual void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.tag == "Player" && hostil && Player.player.estadoPlayer != EstadoPlayer.MORTO)
@@ -197,7 +205,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
             {
                 anim.SetBool("PertoPlayer", true);
                 mover = false;
-                if(canAttack)
+                FaceTarget();
+                if (canAttack)
                   StartCoroutine(Atacar());        
             }
             else

@@ -66,9 +66,9 @@ public class UIController : MonoBehaviour
         InicializarPainelUsasveis();
         AtualizarPainelUsaveis();
         AtualizaRender();
-        mixer.SetFloat("volumeJogo", sliderJogo.value);
+        /*mixer.SetFloat("volumeJogo", sliderJogo.value);
         mixer.SetFloat("volumeEfeitos", sliderEfeitos.value);
-        mixer.SetFloat("volumeMusica", sliderMusica.value);
+        mixer.SetFloat("volumeMusica", sliderMusica.value);*/
     }
 
     protected virtual void Update() {        
