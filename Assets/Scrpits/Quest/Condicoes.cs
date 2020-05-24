@@ -13,16 +13,29 @@ public class Condicoes
     public string descricao;
 
     #region HIDDENVARIABLES
+    [SerializeField]
+    private bool isOnScene;
+    [SerializeField]
+    private string nameOnScene;
 
     public ItemPickup itemDaCondicao;
+
     public List<GameObject> inimigosDaCondicao;
-    public float raioDeSpawn = 2;
+    [SerializeField]
+    private float raioDeSpawn = 2;
+
     public float distanciaChegada = 5;
+
     public Interagivel interagivel;
 
     #endregion
 
     GameObject inimigoParent;
+
+    public bool IsOnScene()
+    {
+        return isOnScene;
+    }
 
 
     public void CleanUnsusedConditions()
@@ -128,7 +141,6 @@ public class Condicoes
     {
         if (item == itemDaCondicao.item)
         {
-            Debug.Log(item.nome);
             itemPego = true;
             return;
         }
@@ -169,8 +181,17 @@ public class Condicoes
 
         if(tipoCondicao == TipoCondicao.INTERACAO || tipoCondicao == TipoCondicao.DEVOLVE_ITEM)
         {
-            GameObject interagivelObj = MonoBehaviour.Instantiate(interagivel.gameObject, local, interagivel.gameObject.transform.rotation);
-            interagivel = interagivelObj.GetComponent<Interagivel>();
+            interagiu = false;
+            if (!isOnScene)
+            {
+                GameObject interagivelObj = MonoBehaviour.Instantiate(interagivel.gameObject, local, interagivel.gameObject.transform.rotation);
+                interagivel = interagivelObj.GetComponent<Interagivel>();       
+            }
+            else
+            {
+                interagivel = GameObject.Find(nameOnScene).GetComponent<Interagivel>();
+                local = interagivel.transform.position;
+            }
             EventsController.onInteracao += OnInteracao;
         }
 

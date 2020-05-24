@@ -7,7 +7,43 @@ public class QuestGiver : Interagivel
     [SerializeField]
     Quest[] quests;
 
+    [SerializeField]
+    Dialogo famaBaixa;
+    [SerializeField]
+    Dialogo famaMedia;
+    [SerializeField]
+    Dialogo famaAlta;
+
     int questsAceitas = 0;
+
+    private void Awake()
+    {
+        EventsController.onDialogoTerminado += DarQuest;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        DeAcceptQuests();
+    }
+
+    void DeAcceptQuests()
+    {
+        try
+        {
+            if (quests.Length > 0)
+            {
+                foreach (Quest quest in quests)
+                {
+                    quest.SetQuestNaoAceita();
+                }
+            }
+        }
+        catch
+        {
+            Debug.Log(this.name);
+        }
+    }
 
     public override void Interact()
     {
@@ -15,21 +51,23 @@ public class QuestGiver : Interagivel
 
         if (questsAceitas != 0)
         {
+            Debug.Log("aaaaaa");
             if (questsAceitas > quests.Length - 1 && !quests[questsAceitas - 1].IsRealizada())
             {
+                Debug.Log(quests.Length - 1);
                 if (!quests[questsAceitas - 1].IsRealizada())
                 {
                     if (Player.player.status.Fama < 30)
                     {
-                        DialogueSystem.sistemaDialogo.NPCName(quests[questsAceitas -1].dialogo[1]);
+                        DialogueSystem.sistemaDialogo.NPCName(famaBaixa);
                     }
                     else if (Player.player.status.Fama < 60)
                     {
-                        DialogueSystem.sistemaDialogo.NPCName(quests[questsAceitas - 1].dialogo[2]);
+                        DialogueSystem.sistemaDialogo.NPCName(famaMedia);
                     }
                     else
                     {
-                        DialogueSystem.sistemaDialogo.NPCName(quests[questsAceitas - 1].dialogo[3]);
+                        DialogueSystem.sistemaDialogo.NPCName(famaBaixa);
                     }
                 }
                 return;
@@ -38,15 +76,18 @@ public class QuestGiver : Interagivel
 
         if (!quests[questsAceitas].IsAceita())
         {
-            DialogueSystem.sistemaDialogo.NPCName(quests[questsAceitas].dialogo[0]);
-            DarQuest();
+            quests[questsAceitas].dialogo.whosDialog = this.name;
+            DialogueSystem.sistemaDialogo.NPCName(quests[questsAceitas].dialogo);
         }
 
     }
 
-    public void DarQuest()
+    void DarQuest(Dialogo dialogo)
     {
-        QuestLog.questLog.AdicionarQuest(quests[questsAceitas]);
-        questsAceitas++;
+        if (dialogo.whosDialog == this.name)
+        {
+            QuestLog.questLog.AdicionarQuest(quests[questsAceitas]);
+            questsAceitas++;
+        }
     }
 }

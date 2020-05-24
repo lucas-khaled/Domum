@@ -6,7 +6,7 @@ public class Interagivel : MonoBehaviour
 {
     public GameObject worldCanvas;
 
-    private void Start()
+    protected virtual void Start()
     {
         worldCanvas.SetActive(false);
     }

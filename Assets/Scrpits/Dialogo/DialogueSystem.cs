@@ -54,55 +54,48 @@ public class DialogueSystem:MonoBehaviour
             StartCoroutine(StartDialogue());
         }
     }
-    public void SairDialogo()
-    {
-        Debug.Log("CARALHO");
-        Player.player.estadoPlayer = EstadoPlayer.NORMAL;
-        caixaTexto.SetActive(false);
-    }
     private IEnumerator StartDialogue()
     {
         Player.player.estadoPlayer = EstadoPlayer.INTERAGINDO;
-        if (!outOfRange)
+        CameraController.cameraInstance.Trava = true;
+        Player.player.SetPlayerOnIdle();
+
+        int dialogueLength = dialogo.dialogueLines.Length;
+        int currentDialogueIndex = 0;
+
+        while (currentDialogueIndex < dialogueLength || !letterIsMultiplied)
         {
-
-            int dialogueLength = dialogo.dialogueLines.Length;
-            int currentDialogueIndex = 0;
-
-            while (currentDialogueIndex < dialogueLength || !letterIsMultiplied)
+            if (!letterIsMultiplied)
             {
-                if (!letterIsMultiplied)
-                {
-                    letterIsMultiplied = true;
-                    caixaTexto.SetActive(true);
-                    StartCoroutine(DisplayString(dialogo.dialogueLines[currentDialogueIndex++]));
+                letterIsMultiplied = true;
+                caixaTexto.SetActive(true);
+                StartCoroutine(DisplayString(dialogo.dialogueLines[currentDialogueIndex++]));
 
-                    if (currentDialogueIndex >= dialogueLength)
-                    {
-                        dialogueEnded = true;
-                    }
+                if (currentDialogueIndex >= dialogueLength)
+                {
+                    dialogueEnded = true;
                 }
+            }
                 
-                yield return 0;
-            }
-
-            while (true)
-            {
-                if (Input.GetButton("Interact") && dialogueEnded == false)
-                {
-                    break;
-                }
-                yield return 0;
-            }
-            dialogueEnded = false;
-            dialogueActive = false;
-
-            Player.player.estadoPlayer = EstadoPlayer.NORMAL;
+            yield return 0;
         }
-        else
+
+        while (true)
         {
-            SairDialogo();
+            if (Input.GetButton("Interact") && dialogueEnded == false)
+            {
+                break;
+            }
+            yield return 0;
         }
+        dialogueEnded = false;
+        dialogueActive = false;
+
+        CameraController.cameraInstance.Trava = false;
+        Player.player.estadoPlayer = EstadoPlayer.NORMAL;
+
+        EventsController.onDialogoTerminado.Invoke(dialogo);
+
     }
 
     private IEnumerator DisplayString(string stringToDisplay)
@@ -157,15 +150,5 @@ public class DialogueSystem:MonoBehaviour
             letterIsMultiplied = false;
             dialogueText.text = "";
         }
-    }
-
-    public void OutOfRange()
-    {
-        outOfRange = true;
-        letterIsMultiplied = false;
-        dialogueActive = false;
-        StopAllCoroutines();
-        //dialogueGUI.SetActive(false);
-        //dialogueBoxGUI.gameObject.SetActive(false);
     }
 }

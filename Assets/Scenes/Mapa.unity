@@ -1642,7 +1642,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldCanvas: {fileID: 1846266133}
   quests:
-  - {fileID: 11400000, guid: fc897259f3f135d469c929ce8570aca6, type: 2}
+  - {fileID: 11400000, guid: e31763c600130774ebed7e1afe153cbd, type: 2}
+  famaBaixa:
+    dialogueLines:
+    - Carai
+  famaMedia:
+    dialogueLines:
+    - Fodas
+  famaAlta:
+    dialogueLines:
+    - Vaaaaaai
 --- !u!65 &208982842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7434,7 +7443,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -15420,22 +15429,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldCanvas: {fileID: 0}
-  Name: ZUEI
-  quests: []
-  dialogosFamaBaixa:
-  - AI MERMAO
-  - TE MANDA O PAPO
-  - "SE \xC9 MO OTARIO MORO"
-  dialogosFamaMedia:
-  - 'A
-
-'
-  - A
-  - A
-  dialogosFamaAlta:
-  - OI
-  - COMO VAI
-  - TUDO OTIMO
 --- !u!136 &1292039119
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18609,7 +18602,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 97046307fa3d06649b18f2908157eae2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -20931,7 +20924,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldCanvas: {fileID: 1279274602}
   quests:
-  - {fileID: 11400000, guid: fc897259f3f135d469c929ce8570aca6, type: 2}
+  - {fileID: 0}
+  famaBaixa:
+    dialogueLines: []
+  famaMedia:
+    dialogueLines: []
+  famaAlta:
+    dialogueLines: []
 --- !u!1001 &1725664236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27292,6 +27291,15 @@ MonoBehaviour:
   worldCanvas: {fileID: 318894017270653156}
   quests:
   - {fileID: 11400000, guid: 3720f27a4f5406b44a513997473bab84, type: 2}
+  famaBaixa:
+    dialogueLines:
+    - "Vai logo Vagabundo Desgra\xE7ado"
+  famaMedia:
+    dialogueLines:
+    - "Vai l\xE1 z\xE9"
+  famaAlta:
+    dialogueLines:
+    - "\xD4 mo\xE7o, pufav\xF4 meu, faiz l\xE1 pra mim"
 --- !u!222 &330765972943753777
 CanvasRenderer:
   m_ObjectHideFlags: 0

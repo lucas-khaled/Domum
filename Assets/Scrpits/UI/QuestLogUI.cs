@@ -54,6 +54,7 @@ public class QuestLogUI : MonoBehaviour
 
         if (goExists != null)
         {
+            Debug.Log("Entrei aq");
             goExists.transform.SetParent(contentFeitas);
             goExists.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
             goExists.transform.GetChild(1).gameObject.SetActive(false);
@@ -111,10 +112,7 @@ public class QuestLogUI : MonoBehaviour
 
     private void TerminaCondicao(Quest quest)
     {
-        if (quest == questSelecionada)
-        {
-            StartCoroutine(WaitToLoadQuest(quest));
-        }
+        StartCoroutine(WaitToLoadQuest(quest));
     }
 
     IEnumerator WaitToLoadQuest(Quest quest)
@@ -122,7 +120,7 @@ public class QuestLogUI : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Condicoes condAtual = quest.getCondicaoAtual();
 
-        if (condAtual != null)
+        if (condAtual != null && quest == questSelecionada)
         {
             tituloQuest.text = quest.nome;
             descricaoQuest.text = quest.getCondicaoAtual().descricao;
@@ -131,8 +129,8 @@ public class QuestLogUI : MonoBehaviour
         {
             tituloQuest.text = "Selecione uma quest no QuestLog";
             descricaoQuest.text = string.Empty;
-            AtualizarQuestLog(quest);
         }
+        AtualizarQuestLog(quest);
     }
 
     public void AtualizarQuestHUD(Quest quest, GameObject bandeiraAtiva)

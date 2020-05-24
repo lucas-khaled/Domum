@@ -212,7 +212,10 @@ public class Player : MonoBehaviour, IVulnerable
         podeAtacar = true;
         numClick = 0;
         animator.applyRootMotion = false;
-        
+
+        if (estadoPlayer == EstadoPlayer.INTERAGINDO)
+            return;
+
         if(ProcuraInimigo() == Vector3.zero)
         {
             estadoPlayer = EstadoPlayer.NORMAL;
@@ -273,6 +276,12 @@ public class Player : MonoBehaviour, IVulnerable
     {
         status.Experiencia += xp;
         StartCoroutine(ProcuraInimigoMorte());
+    }
+
+    public void SetPlayerOnIdle()
+    {
+        animator.SetFloat("VetY", 0);
+        animator.SetFloat("VetX", 0);
     }
 
 
