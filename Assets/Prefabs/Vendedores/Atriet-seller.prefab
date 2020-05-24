@@ -196,6 +196,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 6002043867412440550}
   vendedor: {fileID: 7337239162857290831}
+  dialogoInteracao:
+    dialogueLines:
+    - "Fala meu patr\xE3o."
+  contVenderComprar: 0
 --- !u!195 &7337239162857290831
 NavMeshAgent:
   m_ObjectHideFlags: 0

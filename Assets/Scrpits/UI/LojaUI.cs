@@ -89,7 +89,17 @@ public class LojaUI : MonoBehaviour
             }
 
             contCompraVenda = 0;
-            yield return new WaitForSeconds(2.5f);
+
+            yield return new WaitForSeconds(0.4f);
+
+            while (true)
+            {
+                Debug.Log(DialogueSystem.sistemaDialogo.dialogoTerminado);
+                if ((Input.GetButton("Interact")) && DialogueSystem.sistemaDialogo.dialogoTerminado)
+                    break;
+
+                yield return 0;
+            }
 
             Time.timeScale = 0;
             Cursor.visible = true;

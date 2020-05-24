@@ -13,6 +13,11 @@ public class Kambim : MonoBehaviour
 
     public int contVenderComprar;
 
+    [SerializeField]
+    private Dialogo dialogoDormindo;
+    [SerializeField]
+    private Dialogo dialogoAcordado;
+
     Vector3 finalPosition;
     Collider maisPerto;
     Vector3 destino;
@@ -63,14 +68,15 @@ public class Kambim : MonoBehaviour
     private IEnumerator Escolha()
     {
         int random = Random.Range(0, 100);
-        if (random > 80 && !playerPerto)
-        {
-            Andar(RandomNavMeshGenerator(4f));
-        }
-        else if (random > 50 && !playerPerto)
+        if (random > 90 && !playerPerto && !anim.GetBool("Dormindo"))
         {
             anim.SetTrigger("Dormir");
-            anim.SetBool("Dormindo",true);
+            anim.SetBool("Dormindo", true);
+
+        }
+        else if (random > 70 && !playerPerto && !anim.GetBool("Dormindo"))
+        {
+            Andar(RandomNavMeshGenerator(4f));
         }
         else if (random > 30)
         {
@@ -104,10 +110,14 @@ public class Kambim : MonoBehaviour
         if (anim.GetBool("Dormindo"))
         {
             anim.SetBool("Dormindo", false);
+            DialogueSystem.sistemaDialogo.NPCName(dialogoDormindo);
             anim.ResetTrigger("Cumprimentar");
         }
         else
+        {
+            DialogueSystem.sistemaDialogo.NPCName(dialogoAcordado);
             anim.SetTrigger("Interacao");
+        }
     }
 
     public Vector3 RandomNavMeshGenerator(float raioCaminhada)

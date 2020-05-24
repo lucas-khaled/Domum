@@ -11,6 +11,9 @@ public class Atriet : MonoBehaviour
     private NavMeshAgent vendedor;
     private bool playerPerto;
 
+    [SerializeField]
+    Dialogo dialogoInteracao;
+
     public int contVenderComprar;
 
     Vector3 finalPosition;
@@ -99,6 +102,7 @@ public class Atriet : MonoBehaviour
     public void Conversa()
     {
          anim.SetTrigger("Interacao");
+         DialogueSystem.sistemaDialogo.NPCName(dialogoInteracao);
     }
 
     public Vector3 RandomNavMeshGenerator(float raioCaminhada)

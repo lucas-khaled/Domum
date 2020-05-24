@@ -30,6 +30,7 @@ public class DialogueSystem:MonoBehaviour
     private bool dialogueActive = false;
     private bool dialogueEnded = false;
     private bool outOfRange = true;
+    public bool dialogoTerminado = true;
 
     public AudioClip audioClip;
     AudioSource audioSource;
@@ -54,48 +55,66 @@ public class DialogueSystem:MonoBehaviour
             StartCoroutine(StartDialogue());
         }
     }
+    public void SairDialogo()
+    {
+        Player.player.estadoPlayer = EstadoPlayer.NORMAL;
+        caixaTexto.SetActive(false);
+    }
     private IEnumerator StartDialogue()
     {
         Player.player.estadoPlayer = EstadoPlayer.INTERAGINDO;
         CameraController.cameraInstance.Trava = true;
         Player.player.SetPlayerOnIdle();
 
-        int dialogueLength = dialogo.dialogueLines.Length;
-        int currentDialogueIndex = 0;
-
-        while (currentDialogueIndex < dialogueLength || !letterIsMultiplied)
+        if (!outOfRange)
         {
-            if (!letterIsMultiplied)
+
+            int dialogueLength = dialogo.dialogueLines.Length;
+            int currentDialogueIndex = 0;
+
+            while (currentDialogueIndex < dialogueLength || !letterIsMultiplied)
             {
-                letterIsMultiplied = true;
-                caixaTexto.SetActive(true);
-                StartCoroutine(DisplayString(dialogo.dialogueLines[currentDialogueIndex++]));
+                if (!letterIsMultiplied)
+                {
+                    letterIsMultiplied = true;
+                    caixaTexto.SetActive(true);
+                    StartCoroutine(DisplayString(dialogo.dialogueLines[currentDialogueIndex++]));
+                    if (currentDialogueIndex >= dialogueLength)
+                    {
+                        dialogueEnded = true;
+                    }
+                }
 
                 if (currentDialogueIndex >= dialogueLength)
                 {
-                    dialogueEnded = true;
+                    //criado para não gerar conflitos entre codigos
+                    dialogoTerminado = true;
                 }
-            }
-                
-            yield return 0;
-        }
 
-        while (true)
-        {
-            if (Input.GetButton("Interact") && dialogueEnded == false)
+                yield return 0;
+            }
+
+            while (true)
             {
-                break;
+                if (Input.GetButton("Interact") && dialogueEnded == false)
+                {
+                    break;
+                }
+                yield return 0;
             }
-            yield return 0;
+            dialogueEnded = false;
+            dialogueActive = false;
+
+            CameraController.cameraInstance.Trava = false;
+            Player.player.estadoPlayer = EstadoPlayer.NORMAL;
+
+            EventsController.onDialogoTerminado.Invoke(dialogo);
+
         }
-        dialogueEnded = false;
-        dialogueActive = false;
-
-        CameraController.cameraInstance.Trava = false;
-        Player.player.estadoPlayer = EstadoPlayer.NORMAL;
-
-        EventsController.onDialogoTerminado.Invoke(dialogo);
-
+        else
+        {
+            SairDialogo();
+        }
     }
 
     private IEnumerator DisplayString(string stringToDisplay)

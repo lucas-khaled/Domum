@@ -1749,7 +1749,6 @@ MonoBehaviour:
   worldCanvas: {fileID: 8146142608182764280}
   maxNumItens: 0
   minNumItens: 0
-  contCompraVenda: 0
   possiveisItensAVenda: []
 --- !u!135 &3275880971138534357
 SphereCollider:
@@ -1791,6 +1790,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 8680194412655135515}
   vendedor: {fileID: 1136480150321236320}
+  contVenderComprar: 0
+  dialogoDormindo:
+    dialogueLines:
+    - "H\xE3 ? ... Oi ... Oi "
+  dialogoAcordado:
+    dialogueLines:
+    - "Fala querido, to com umas coisa boa pra voc\xEA."
 --- !u!95 &8680194412655135515
 Animator:
   serializedVersion: 3
