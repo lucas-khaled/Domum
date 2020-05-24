@@ -96,6 +96,8 @@ public class DialogueSystem:MonoBehaviour
             }
             dialogueEnded = false;
             dialogueActive = false;
+
+            Player.player.estadoPlayer = EstadoPlayer.NORMAL;
         }
         else
         {

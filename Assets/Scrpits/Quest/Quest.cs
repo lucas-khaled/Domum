@@ -8,7 +8,7 @@ public class Quest : ScriptableObject
     public bool principal;
     public string nome;
 
-    public Dialogo dialogo;
+    public Dialogo[] dialogo;
 
     public List<Condicoes> condicoes;
 
@@ -67,5 +67,10 @@ public class Quest : ScriptableObject
     public bool IsRealizada()
     {
         return realizada;
+    }
+
+    public bool IsAceita()
+    {
+        return aceita;
     }
 }
