@@ -19,7 +19,7 @@ public static class EventsController
     public delegate void OnInventarioChange(Item item, bool mudanca);
     public static OnInventarioChange onInventarioChange; 
 
-    public delegate void OnQuestLogChange(Quest quest);
+    public delegate void OnQuestLogChange(Quest quest, bool endQuest = false);
     public static OnQuestLogChange onQuestLogChange;
 
     public delegate void OnCondicaoTerminada(Quest quest);

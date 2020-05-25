@@ -6,4 +6,6 @@ using UnityEngine;
 public class Dialogo
 {
     public string[] dialogueLines;
+
+    public string whosDialog { get; set; }
 }

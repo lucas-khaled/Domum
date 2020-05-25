@@ -56,6 +56,11 @@ public class QuestLog : MonoBehaviour
         //remove da lista de checkers e destroy seu gameobject
         activeQuestCheckers.Remove(questChecker);
         Destroy(questChecker.gameObject);
+
+        if (EventsController.onQuestLogChange != null)
+        {
+            EventsController.onQuestLogChange.Invoke(questChecker.GetQuestOnHolder(), true);
+        }
     }
 
     /*void CheckCondicoes()

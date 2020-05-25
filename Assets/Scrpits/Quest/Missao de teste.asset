@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Missao de teste
   m_EditorClassIdentifier: 
   principal: 0
-  nome: 
+  nome: Testinhoo
   dialogo:
     dialogueLines:
     - Faz faz
@@ -21,6 +21,8 @@ MonoBehaviour:
   - tipoCondicao: 0
     local: {x: 458.87384, y: 19.996338, z: 333.51474}
     descricao: Vai ali
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines: []
     isOnScene: 0
     nameOnScene: 
     itemDaCondicao: {fileID: 0}
@@ -28,9 +30,12 @@ MonoBehaviour:
     raioDeSpawn: 0
     distanciaChegada: 4
     interagivel: {fileID: 0}
-  - tipoCondicao: 3
-    local: {x: 458.77988, y: 19.996338, z: 333.48578}
-    descricao: Interage
+  - tipoCondicao: 1
+    local: {x: 447.81284, y: 20, z: 342.12836}
+    descricao: "Fala com o mo\xE7o"
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines:
+      - "C\xEA tem que hablar comigo n\xE9. Vai te tomar no cu rapaz"
     isOnScene: 1
     nameOnScene: Seller-Kambim 1
     itemDaCondicao: {fileID: 0}
@@ -40,7 +45,9 @@ MonoBehaviour:
     interagivel: {fileID: 0}
   - tipoCondicao: 4
     local: {x: 470.06195, y: 21.3, z: 324.10178}
-    descricao: 
+    descricao: Pega o trem la
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines: []
     isOnScene: 0
     nameOnScene: 
     itemDaCondicao: {fileID: 9100806293854980319, guid: 0a8af845dae8f5a4e85ee7c055e899e7,

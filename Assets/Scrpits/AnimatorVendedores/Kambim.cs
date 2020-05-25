@@ -92,7 +92,6 @@ public class Kambim : MonoBehaviour
     public void FimInteracao()
     {
         contVenderComprar = LojaUI.lojaUi.contCompraVenda;
-        Debug.Log(contVenderComprar);
 
         if (contVenderComprar > 0)
             anim.SetTrigger("Compra");
@@ -110,12 +109,12 @@ public class Kambim : MonoBehaviour
         if (anim.GetBool("Dormindo"))
         {
             anim.SetBool("Dormindo", false);
-            DialogueSystem.sistemaDialogo.NPCName(dialogoDormindo);
+            DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoDormindo);
             anim.ResetTrigger("Cumprimentar");
         }
         else
         {
-            DialogueSystem.sistemaDialogo.NPCName(dialogoAcordado);
+            DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoAcordado);
             anim.SetTrigger("Interacao");
         }
     }

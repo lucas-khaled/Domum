@@ -49,37 +49,39 @@ public class QuestGiver : Interagivel
     {
         base.Interact();
 
-        if (questsAceitas != 0)
+        if (!isPartOfDialogue)
         {
-            Debug.Log("aaaaaa");
-            if (questsAceitas > quests.Length - 1 && !quests[questsAceitas - 1].IsRealizada())
+            if (questsAceitas != 0)
             {
-                Debug.Log(quests.Length - 1);
-                if (!quests[questsAceitas - 1].IsRealizada())
+                Debug.Log("aaaaaa");
+                if (questsAceitas > quests.Length - 1 && !quests[questsAceitas - 1].IsRealizada())
                 {
-                    if (Player.player.status.Fama < 30)
+                    Debug.Log(quests.Length - 1);
+                    if (!quests[questsAceitas - 1].IsRealizada())
                     {
-                        DialogueSystem.sistemaDialogo.NPCName(famaBaixa);
+                        if (Player.player.status.Fama < 30)
+                        {
+                            DialogueSystem.sistemaDialogo.IniciaDialogo(famaBaixa);
+                        }
+                        else if (Player.player.status.Fama < 60)
+                        {
+                            DialogueSystem.sistemaDialogo.IniciaDialogo(famaMedia);
+                        }
+                        else
+                        {
+                            DialogueSystem.sistemaDialogo.IniciaDialogo(famaBaixa);
+                        }
                     }
-                    else if (Player.player.status.Fama < 60)
-                    {
-                        DialogueSystem.sistemaDialogo.NPCName(famaMedia);
-                    }
-                    else
-                    {
-                        DialogueSystem.sistemaDialogo.NPCName(famaBaixa);
-                    }
+                    return;
                 }
-                return;
+            }
+
+            if (!quests[questsAceitas].IsAceita())
+            {
+                quests[questsAceitas].dialogo.whosDialog = this.name;
+                DialogueSystem.sistemaDialogo.IniciaDialogo(quests[questsAceitas].dialogo);
             }
         }
-
-        if (!quests[questsAceitas].IsAceita())
-        {
-            quests[questsAceitas].dialogo.whosDialog = this.name;
-            DialogueSystem.sistemaDialogo.NPCName(quests[questsAceitas].dialogo);
-        }
-
     }
 
     void DarQuest(Dialogo dialogo)

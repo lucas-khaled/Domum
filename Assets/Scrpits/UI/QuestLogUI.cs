@@ -48,17 +48,19 @@ public class QuestLogUI : MonoBehaviour
         questLogUI = this;
     }
     
-    void AtualizarQuestLog(Quest quest) {
+    void AtualizarQuestLog(Quest quest, bool endQuest = false) {
 
-        GameObject goExists = slotQuests.Find(x => x.GetComponent<Holder_Quest>().referenciaQuest == quest);
-
-        if (goExists != null)
+        if (endQuest)
         {
-            Debug.Log("Entrei aq");
-            goExists.transform.SetParent(contentFeitas);
-            goExists.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
-            goExists.transform.GetChild(1).gameObject.SetActive(false);
-            return;
+            GameObject goExists = slotQuests.Find(x => x.GetComponent<Holder_Quest>().referenciaQuest == quest);
+
+            if (goExists != null)
+            {
+                goExists.transform.SetParent(contentFeitas);
+                goExists.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
+                goExists.transform.GetChild(1).gameObject.SetActive(false);
+                return;
+            }
         }
 
         GameObject obj = slot;
@@ -130,7 +132,6 @@ public class QuestLogUI : MonoBehaviour
             tituloQuest.text = "Selecione uma quest no QuestLog";
             descricaoQuest.text = string.Empty;
         }
-        AtualizarQuestLog(quest);
     }
 
     public void AtualizarQuestHUD(Quest quest, GameObject bandeiraAtiva)

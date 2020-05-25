@@ -44,9 +44,11 @@ public class DialogueSystem:MonoBehaviour
     {
         sistemaDialogo = this;
     }
-    public void NPCName(Dialogo dialogo)
+    public void IniciaDialogo(Dialogo dialogo)
     {
+
         this.dialogo = dialogo;
+        this.dialogo.whosDialog = dialogo.whosDialog;
         outOfRange = false;
         if (!dialogueActive)
         {

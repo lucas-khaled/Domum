@@ -102,7 +102,7 @@ public class Atriet : MonoBehaviour
     public void Conversa()
     {
          anim.SetTrigger("Interacao");
-         DialogueSystem.sistemaDialogo.NPCName(dialogoInteracao);
+         DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoInteracao);
     }
 
     public Vector3 RandomNavMeshGenerator(float raioCaminhada)

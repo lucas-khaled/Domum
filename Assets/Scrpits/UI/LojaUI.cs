@@ -94,7 +94,6 @@ public class LojaUI : MonoBehaviour
 
             while (true)
             {
-                Debug.Log(DialogueSystem.sistemaDialogo.dialogoTerminado);
                 if ((Input.GetButton("Interact")) && DialogueSystem.sistemaDialogo.dialogoTerminado)
                     break;
 

@@ -84,7 +84,7 @@ public class QuestEditor : Editor
                 }
 
                 bool onScene = false;
-                if (tipoCond == Condicoes.TipoCondicao.INTERACAO || tipoCond == Condicoes.TipoCondicao.DEVOLVE_ITEM)
+                if (tipoCond == Condicoes.TipoCondicao.INTERACAO || tipoCond == Condicoes.TipoCondicao.DEVOLVE_ITEM || tipoCond == Condicoes.TipoCondicao.FALA)
                 {
                     EditorGUILayout.PropertyField(p.FindPropertyRelative("isOnScene"));
                     onScene = p.FindPropertyRelative("isOnScene").boolValue;
@@ -109,7 +109,11 @@ public class QuestEditor : Editor
                     EditorGUILayout.PropertyField(p.FindPropertyRelative("distanciaChegada"));
                 }
 
-                
+                if(tipoCond == Condicoes.TipoCondicao.FALA)
+                {
+                    EditorGUILayout.PropertyField(p.FindPropertyRelative("dialogoDaCondição"));
+                }
+
                 if (onScene)
                 {
                     if (GUILayout.Button("Levar Condição até o interagível"))

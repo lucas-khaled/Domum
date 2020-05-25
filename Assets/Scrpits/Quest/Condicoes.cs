@@ -14,6 +14,8 @@ public class Condicoes
 
     #region HIDDENVARIABLES
     [SerializeField]
+    private Dialogo dialogoDaCondição;
+    [SerializeField]
     private bool isOnScene;
     [SerializeField]
     private string nameOnScene;
@@ -85,6 +87,11 @@ public class Condicoes
             volta = CheckDevolveItem();
         }
 
+        if(tipoCondicao == TipoCondicao.FALA)
+        {
+            volta = CheckFala();
+        }
+
         return volta;
     }
 
@@ -121,7 +128,6 @@ public class Condicoes
 
     private void OnInteracao(Interagivel interagido)
     {
-        Debug.Log(interagido.name + " - " + interagivel.name);
         if(interagido == interagivel)
         {
             interagiu = true;
@@ -159,6 +165,25 @@ public class Condicoes
 
     #endregion
 
+    #region FALA
+    bool falou = false;
+
+    bool CheckFala()
+    {
+        return falou;
+    }
+
+    void OnFalaTerminada(Dialogo dialogo)
+    {
+        Debug.Log("dE QUEM RAPÁ? " + dialogo.whosDialog);
+        if(dialogo.whosDialog == this.descricao)
+        {
+            falou = true;
+        }
+    }
+
+    #endregion
+
     public Vector3 SpawnRandomico()
     {
         Vector3 loc = local + (Random.insideUnitSphere * raioDeSpawn);
@@ -179,7 +204,7 @@ public class Condicoes
             }
         }
 
-        if(tipoCondicao == TipoCondicao.INTERACAO || tipoCondicao == TipoCondicao.DEVOLVE_ITEM)
+        if(tipoCondicao == TipoCondicao.INTERACAO || tipoCondicao == TipoCondicao.DEVOLVE_ITEM || tipoCondicao == TipoCondicao.FALA)
         {
             interagiu = false;
             if (!isOnScene)
@@ -193,6 +218,14 @@ public class Condicoes
                 local = interagivel.transform.position;
             }
             EventsController.onInteracao += OnInteracao;
+        }
+
+        if(tipoCondicao == TipoCondicao.FALA)
+        {
+            falou = false;
+            dialogoDaCondição.whosDialog = this.descricao;
+            interagivel.SetDialogoCondicao(dialogoDaCondição);
+            EventsController.onDialogoTerminado += OnFalaTerminada;
         }
 
         if(tipoCondicao == TipoCondicao.PEGA_ITEM)

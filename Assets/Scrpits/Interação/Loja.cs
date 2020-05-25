@@ -15,11 +15,16 @@ public class Loja : Interagivel
     public override void Interact()
     {
         base.Interact();
-        StartCoroutine(LojaUI.lojaUi.AbrirLoja(this));
+
+        if (!isPartOfDialogue)
+        {
+            StartCoroutine(LojaUI.lojaUi.AbrirLoja(this));
+        }
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         itensAVenda = new List<Item>();
         RenovaItens();
         StartCoroutine(RenovacaoLoja());
