@@ -43,11 +43,15 @@ public class Interagivel : MonoBehaviour
 
     void OnDialogoTerminado(Dialogo dialogo)
     {
+        if(!isPartOfDialogue)
+        {
+            return;
+        }
+
         if(dialogo.whosDialog == dialogoCondicao[0].whosDialog)
         {
             dialogoCondicao.RemoveAt(0);
 
-            Debug.Log(dialogoCondicao[1].whosDialog);
             if(dialogoCondicao.Count == 0)
             {
                 isPartOfDialogue = false;
