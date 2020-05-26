@@ -37,6 +37,7 @@ public class Tigre : MonoBehaviour
     [SerializeField]
     private int cooldown;
     private Rigidbody rb;
+    private bool morto;
 
     private Transform hitCanvas;
 
@@ -198,12 +199,23 @@ public class Tigre : MonoBehaviour
     }
     void Morrer()
     {
+        Destroy(this.gameObject, 10);
+        anim.SetBool("Morreu", true);
+
+        Destroy(GetComponent<NavMeshAgent>());
+        Destroy(GetComponent<SphereCollider>());
+
+        foreach (FaceCamera destruir in GetComponentsInChildren(typeof(FaceCamera), true))
+        {
+            Destroy(destruir.gameObject);
+        }
+
+        morto = true;
         StopAllCoroutines();
-        animal.isStopped = true;
-        Debug.Log("Morri");
     }
-    public virtual void ReceberDano(int danoRecebido)
+    public void ReceberDano(int danoRecebido)
     {
+        Debug.Log("MAMAAAA");
         Vida -= danoRecebido;
 
         //chama metodo do UIController para exibir o dano no worldCanvas

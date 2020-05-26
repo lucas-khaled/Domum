@@ -28,6 +28,9 @@ public static class EventsController
     public delegate void OnDialogoTerminado(Dialogo dialogo);
     public static OnDialogoTerminado onDialogoTerminado;
 
+    public delegate void OnLinhaTerminada(Dialogo dialogo);
+    public static OnLinhaTerminada onLinhaTerminada;
+
     //public delegate void OnQuestConditionChange(Quest quest, List<Condicoes> condicoes);
     //public static OnQuestConditionChange onQuestConditionChange;
 }
