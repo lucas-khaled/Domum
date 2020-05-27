@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Interagivel : MonoBehaviour
 {
@@ -25,6 +26,14 @@ public class Interagivel : MonoBehaviour
 
     public void SwitchImagemInteracao(bool isActual)
     {
+        if (GameController.gameController.QualOrigemInput() == OrigemInput.MOUSE)
+        {
+            worldCanvas.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = GameController.gameController.interagivelTeclado;
+        }
+        else
+        {
+            worldCanvas.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = GameController.gameController.interagivelJoystick;
+        }
         worldCanvas.SetActive(isActual);
     }
 

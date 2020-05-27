@@ -7,6 +7,9 @@ public class GameController : MonoBehaviour
 {
     public static GameController gameController;
 
+    public Sprite interagivelTeclado;
+    public Sprite interagivelJoystick;
+
     private OrigemInput origem;
 
     private TipoPlayer qualPlayer;
