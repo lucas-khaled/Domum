@@ -16,33 +16,50 @@ public class QuestGiver : Interagivel
 
     int questsAceitas = 0;
 
+    public int GetQuestAceitas()
+    {
+        return questsAceitas;
+    }
+
     private void Awake()
     {
         EventsController.onDialogoTerminado += DarQuest;
         EventsController.onLinhaTerminada += OnLinhaTerminada;
+        questsAceitas = 0;
     }
 
     protected override void Start()
     {
         base.Start();
+        if (GameController.gameController.IsLoadedGame())
+        {
+            FindMeOnLoad();
+        }
         DeAcceptQuests();
+    }
+
+    void FindMeOnLoad()
+    {
+        string[] qgNames = SaveSystem.data.questData.giversNames;
+
+        for(int i = 0; i < qgNames.Length; i++)
+        {
+            if (qgNames[i] == this.name)
+            {
+                questsAceitas = SaveSystem.data.questData.giversQntAceitas[i];
+                break;
+            }
+        }
     }
 
     void DeAcceptQuests()
     {
-        try
+        if (quests.Length > 0)
         {
-            if (quests.Length > 0)
+            for (int i = questsAceitas; i<quests.Length;i++)
             {
-                foreach (Quest quest in quests)
-                {
-                    quest.SetQuestNaoAceita();
-                }
+                quests[questsAceitas].SetQuestNaoAceita();
             }
-        }
-        catch
-        {
-            Debug.Log(this.name);
         }
     }
 
@@ -56,7 +73,6 @@ public class QuestGiver : Interagivel
             {
                 if (questsAceitas > quests.Length - 1 && !quests[questsAceitas - 1].IsRealizada())
                 {
-                    Debug.Log(quests.Length - 1);
                     if (!quests[questsAceitas - 1].IsRealizada())
                     {
                         if (Player.player.status.Fama < 30)
@@ -89,7 +105,11 @@ public class QuestGiver : Interagivel
         if (dialogo.whosDialog == this.name)
         {
             QuestGiverAnimationController questGiverAnimation = GetComponent<QuestGiverAnimationController>();
-            questGiverAnimation.Interagir();
+
+            if (questGiverAnimation != null)
+            {
+                questGiverAnimation.Interagir();
+            }
         }
 
     }

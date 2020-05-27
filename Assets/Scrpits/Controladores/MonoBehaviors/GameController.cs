@@ -13,20 +13,12 @@ public class GameController : MonoBehaviour
     private OrigemInput origem;
 
     private TipoPlayer qualPlayer;
-
-    [SerializeField]
-    private Texture2D cursor;
     
     private bool isLoadedGame = false;
 
     public bool IsLoadedGame()
     {
         return isLoadedGame;
-    }
-
-    private void Start()
-    {
-        Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
     }
     
     private void Awake()

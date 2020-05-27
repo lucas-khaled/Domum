@@ -9,6 +9,15 @@ public class Data
     public PlayerData playerData;
     public InventarioData inventarioData;
     public QuestData questData;
+    public HabilidadesData habilidadesData;
+    public int chave;
+}
+
+public static class Criptografia
+{
+    static int permanentKey = 5;
+    static int chave;
+
 }
 
 public static class SaveSystem
@@ -65,7 +74,9 @@ public static class SaveSystem
         FileStream stream = File.Create(path);
 
         data.inventarioData = new InventarioData(Inventario.inventario);
-        data.playerData = new PlayerData(Player.player.status);       
+        data.playerData = new PlayerData(Player.player.status);
+        data.habilidadesData = new HabilidadesData();
+
         var json = JsonUtility.ToJson(data);
 
         try

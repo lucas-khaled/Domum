@@ -175,7 +175,6 @@ public class Condicoes
 
     void OnFalaTerminada(Dialogo dialogo)
     {
-        Debug.Log("dE QUEM RAPÁ? " + dialogo.whosDialog);
         if(dialogo.whosDialog == this.descricao)
         {
             falou = true;

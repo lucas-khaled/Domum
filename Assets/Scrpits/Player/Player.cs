@@ -55,7 +55,11 @@ public class Player : MonoBehaviour, IVulnerable
             }
 
             estado_player = value;
-            EventsController.onPlayerStateChanged.Invoke(estado_player);
+
+            if (EventsController.onPlayerStateChanged != null)
+            {
+                EventsController.onPlayerStateChanged.Invoke(estado_player);
+            }
         }
     }
     #endregion

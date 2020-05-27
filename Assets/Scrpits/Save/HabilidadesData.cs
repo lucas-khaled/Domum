@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HabilidadesData : MonoBehaviour
+[System.Serializable]
+public class HabilidadesData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int[] indiceAtivas;
 
-    // Update is called once per frame
-    void Update()
+    public HabilidadesData()
     {
-        
+        indiceAtivas = null;
+        ArvoreDeHabilidades ar = GameObject.FindObjectOfType<ArvoreDeHabilidades>();
+
+        if(ar!=null)
+            indiceAtivas = ar.GetActualSkillsActivityIndexes();
     }
 }
