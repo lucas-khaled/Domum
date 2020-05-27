@@ -19,6 +19,7 @@ public class QuestGiver : Interagivel
     private void Awake()
     {
         EventsController.onDialogoTerminado += DarQuest;
+        EventsController.onLinhaTerminada += OnLinhaTerminada;
     }
 
     protected override void Start()
@@ -53,7 +54,6 @@ public class QuestGiver : Interagivel
         {
             if (questsAceitas != 0)
             {
-                Debug.Log("aaaaaa");
                 if (questsAceitas > quests.Length - 1 && !quests[questsAceitas - 1].IsRealizada())
                 {
                     Debug.Log(quests.Length - 1);
@@ -82,6 +82,16 @@ public class QuestGiver : Interagivel
                 DialogueSystem.sistemaDialogo.IniciaDialogo(quests[questsAceitas].dialogo);
             }
         }
+    }
+
+    private void OnLinhaTerminada(Dialogo dialogo)
+    {
+        if (dialogo.whosDialog == this.name)
+        {
+            QuestGiverAnimationController questGiverAnimation = GetComponent<QuestGiverAnimationController>();
+            questGiverAnimation.Interagir();
+        }
+
     }
 
     void DarQuest(Dialogo dialogo)

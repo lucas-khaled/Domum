@@ -93,6 +93,7 @@ public class DialogueSystem:MonoBehaviour
                     dialogoTerminado = true;
                 }
 
+
                 yield return 0;
             }
 
@@ -109,7 +110,6 @@ public class DialogueSystem:MonoBehaviour
 
             CameraController.cameraInstance.Trava = false;
             Player.player.estadoPlayer = EstadoPlayer.NORMAL;
-
             EventsController.onDialogoTerminado.Invoke(dialogo);
 
         }
@@ -123,6 +123,8 @@ public class DialogueSystem:MonoBehaviour
     {
         if (outOfRange == false)
         {
+            EventsController.onLinhaTerminada.Invoke(dialogo);
+
             int stringLength = stringToDisplay.Length;
             int currentCharacterIndex = 0;
 
@@ -157,16 +159,17 @@ public class DialogueSystem:MonoBehaviour
 
             setaProximo.SetActive(true);
 
-                while (true)
+            while (true)
+            {
+                if (Input.GetKeyDown(DialogueInput))
                 {
-                    if (Input.GetKeyDown(DialogueInput))
-                    {
-                        setaProximo.SetActive(false);
-                        caixaTexto.SetActive(false);
-                        break;
-                    }
-                    yield return 0;
+                    setaProximo.SetActive(false);
+                    caixaTexto.SetActive(false);
+                    break;
+                }
+                yield return 0;
             }
+            
             dialogueEnded = false;
             letterIsMultiplied = false;
             dialogueText.text = "";

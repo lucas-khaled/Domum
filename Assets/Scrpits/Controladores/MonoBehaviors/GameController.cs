@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController gameController;
 
+    public Texture2D cursor;
     private TipoPlayer qualPlayer;
 
     private void Awake()
@@ -14,7 +15,10 @@ public class GameController : MonoBehaviour
         gameController = this;
         DontDestroyOnLoad(this);
     }
-
+    private void Start()
+    {
+        Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
+    }
     public void EscolherPersonagem(string personagem)
     {
 
