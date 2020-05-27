@@ -60,7 +60,6 @@ public class Iovelik : Player
     {
         base.Start();
 
-        status.QntColetavel = 3;
         RecarregaEscudo = status.tempoEscudo;
         ataqueEspecialNome = "Especial";
         refleteDano = false;

@@ -11,6 +11,7 @@ public class Inventario : MonoBehaviour
     private void Awake()
     {
         inventario = this;
+        
     }
 
     #endregion
@@ -29,15 +30,33 @@ public class Inventario : MonoBehaviour
     public float pesoInventario = 0;
 
 
+    void LoadInventario()
+    {
+        armaEquipada = SaveSystem.data.inventarioData.armaEquipada;
+
+        foreach(Item item in SaveSystem.data.inventarioData.itens)
+        {
+            AddItem(item);
+        }
+        
+    }
+
     private void Start()
     {
-        if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
+        if (GameController.gameController.IsLoadedGame())
         {
-            armaEquipada = armaDefaultIovelik;
+            LoadInventario();
         }
         else
         {
-            armaEquipada = armaDefautTyva;
+            if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
+            {
+                armaEquipada = armaDefaultIovelik;
+            }
+            else
+            {
+                armaEquipada = armaDefautTyva;
+            }
         }
     }
 
@@ -87,7 +106,7 @@ public class Inventario : MonoBehaviour
             UnequipArma();
             armaEquipada = arma;
             RemoverItem(arma);
-            armaMesh.sharedMesh = arma.armaMesh;
+            //armaMesh.sharedMesh = arma.armaMesh;
         }
     }
     

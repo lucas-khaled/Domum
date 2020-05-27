@@ -214,7 +214,7 @@ public class ItemManagerWindow : EditorWindow
             GUILayout.Space(6);
 
             GUILayout.Label("Ícone");
-            itemAtual.icone = (Sprite)EditorGUILayout.ObjectField(itemAtual.icone, typeof(Sprite));
+            //itemAtual.icone = (Sprite)EditorGUILayout.ObjectField(itemAtual.icone, typeof(Sprite));
             GUILayout.Space(3);
 
             if(itemAtual.icone != null)

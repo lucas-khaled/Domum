@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(fileName = "Nova Quest", menuName = "Quest/Nova Quest")]
 public class Quest : ScriptableObject
 {
@@ -13,11 +14,17 @@ public class Quest : ScriptableObject
     public List<Condicoes> condicoes;
 
     Condicoes condicaoAtual;
-    bool realizada, aceita = false;
+    bool realizada, aceita;
     int numCondicoes, condicaoAtualIndex;
 
     [SerializeField]
     private Recompensa reward;
+
+    private void Awake()
+    {
+        if (!GameController.gameController.IsLoadedGame())
+            aceita = false;
+    }
 
     public Recompensa getRecompensaAtual()
     {
@@ -31,9 +38,11 @@ public class Quest : ScriptableObject
 
     public void AceitarQuest()
     {
-        condicaoAtual = condicoes[0];
+        if(!aceita)
+            condicaoAtualIndex = 0;
+
+        condicaoAtual = condicoes[condicaoAtualIndex];
         realizada = false;
-        condicaoAtualIndex = 0;
         aceita = true;
     }
 
@@ -60,7 +69,11 @@ public class Quest : ScriptableObject
 
     public void TerminaMissao()
     {
-        reward.DarRecompensa();
+        if (IsRealizada())
+        {
+            reward.DarRecompensa();
+        }
+        condicaoAtual = null;
         realizada = true;
     }
 

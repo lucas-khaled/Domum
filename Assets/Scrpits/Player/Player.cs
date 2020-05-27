@@ -27,7 +27,7 @@ public class Player : MonoBehaviour, IVulnerable
     private float raioAtaque = 2f;
     [SerializeField]
     private float espera;
-    public int numAtaque = 2;
+    
 
 
     protected Rigidbody rb;
@@ -39,18 +39,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     #region GETTERS & SETTERS
 
-    public int NumAtaque
-    {
-        get
-        {
-            return numAtaque;
-        }
-
-        set
-        {
-            numAtaque = value;
-        }
-    }
+    
 
     public EstadoPlayer estadoPlayer
     {
@@ -110,7 +99,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     private void Atacar()
     {
-        if (podeAtacar && numClick<numAtaque)
+        if (podeAtacar && numClick<status.NumAtaque)
         {
             numClick++;
         }
