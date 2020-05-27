@@ -972,8 +972,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2750437293865562616}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: db4ac68fdb37b8d40baafecf0be6153b, type: 3}
-  m_Controller: {fileID: 9100000, guid: f261909eb9a76c84481a885fce1c6da3, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 5fb8aa2930521634c9c651c731c0997c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7d63c0f05b6b64e43bf2a5da6f08b8eb, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -995,6 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxColetavel: 3
+  numAtaque: 2
   tempoEscudo: 3
   tempoDashTotal: 2
   maxVida: 100
@@ -1047,7 +1048,6 @@ MonoBehaviour:
   raioPercepcao: 10
   raioAtaque: 2
   espera: 0.2
-  numAtaque: 3
   velocidadeDash: 40
   timeFaca: 2
   timeDash: 0.6
