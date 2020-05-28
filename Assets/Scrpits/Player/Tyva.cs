@@ -77,7 +77,6 @@ public class Tyva : Player
     {
         base.Start();
         //só para teste, deletar depois
-        status.QntColetavel = 3;
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
         facaLetal = false;

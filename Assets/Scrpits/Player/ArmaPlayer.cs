@@ -9,11 +9,12 @@ public class ArmaPlayer : MonoBehaviour
 
     public SkinnedMeshRenderer mesh;
 
-    private void Start()
+    private void Awake()
     {
         if (gameObject.activeSelf)
             Inventario.inventario.armaMesh = mesh;
     }
+
     private int CalculaDano()
     {
         return Dano + Inventario.inventario.armaEquipada.dano + Random.Range(-5, 5);

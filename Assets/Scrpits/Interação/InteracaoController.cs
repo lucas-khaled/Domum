@@ -22,7 +22,7 @@ public class InteracaoController : MonoBehaviour
     private void onPlayerStateChanged(EstadoPlayer estadoPlayer)
     {
         if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
-            InvokeRepeating("InteragivelMaisProximo", 0, 0.1f);
+            InvokeRepeating("InteragivelMaisProximo", 1f, 0.1f);
         else
         {
             CancelInvoke("InteragivelMaisProximo");

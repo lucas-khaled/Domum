@@ -27,7 +27,7 @@ public class Player : MonoBehaviour, IVulnerable
     private float raioAtaque = 2f;
     [SerializeField]
     private float espera;
-    public int numAtaque = 2;
+    
 
 
     protected Rigidbody rb;
@@ -39,18 +39,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     #region GETTERS & SETTERS
 
-    public int NumAtaque
-    {
-        get
-        {
-            return numAtaque;
-        }
-
-        set
-        {
-            numAtaque = value;
-        }
-    }
+    
 
     public EstadoPlayer estadoPlayer
     {
@@ -66,7 +55,11 @@ public class Player : MonoBehaviour, IVulnerable
             }
 
             estado_player = value;
-            EventsController.onPlayerStateChanged.Invoke(estado_player);
+
+            if (EventsController.onPlayerStateChanged != null)
+            {
+                EventsController.onPlayerStateChanged.Invoke(estado_player);
+            }
         }
     }
     #endregion
@@ -110,7 +103,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     private void Atacar()
     {
-        if (podeAtacar && numClick<numAtaque)
+        if (podeAtacar && numClick<status.NumAtaque)
         {
             numClick++;
         }
@@ -118,7 +111,6 @@ public class Player : MonoBehaviour, IVulnerable
         if(numClick == 1)
         {
             animator.SetInteger("Ataque", 1);
-            animator.applyRootMotion = true;
             estadoPlayer = EstadoPlayer.ATACANDO;
         }
     }

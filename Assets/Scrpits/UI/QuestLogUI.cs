@@ -47,7 +47,27 @@ public class QuestLogUI : MonoBehaviour
         EventsController.onCondicaoTerminada += TerminaCondicao;
         questLogUI = this;
     }
-    
+
+   /*private void Start()
+    {
+        if (GameController.gameController.isLoadedGame)
+        {
+            LoadQuestLogUI();
+        }
+    }
+
+    void LoadQuestLogUI()
+    {
+        foreach(Quest qa in QuestLog.questLog.getQuestAceitas())
+        {
+            AtualizarQuestLog(qa);
+        }
+        foreach(Quest qf in QuestLog.questLog.getQuestFinalizadas())
+        {
+            AtualizarQuestLog(qf, true);
+        }
+    }*/
+
     void AtualizarQuestLog(Quest quest, bool endQuest = false) {
 
         if (endQuest)
@@ -68,8 +88,16 @@ public class QuestLogUI : MonoBehaviour
 
         GameObject questInstanciada = (GameObject)Instantiate(obj);
         slotQuests.Add(questInstanciada);
+
+        if (endQuest)
+        {
+            questInstanciada.transform.SetParent(contentFeitas);
+            questInstanciada.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
+            questInstanciada.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else
+            questInstanciada.transform.SetParent(contentAceitas);
         
-        questInstanciada.transform.SetParent(contentAceitas);        
         questInstanciada.transform.localScale = Vector3.one;
     }
 
@@ -87,6 +115,7 @@ public class QuestLogUI : MonoBehaviour
         titulo.text = quest.nome;
         foreach (Condicoes condicoes in quest.condicoes) {
             condicoesSoFar.Add(condicoes);
+            Debug.Log(condicoes.descricao);
             if (condicoes == quest.getCondicaoAtual()) {
                 break;
             }

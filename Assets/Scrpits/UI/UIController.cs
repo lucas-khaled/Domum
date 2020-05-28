@@ -110,6 +110,11 @@ public class UIController : MonoBehaviour
     }
     #endregion
 
+    public void SaveGame()
+    {
+        SaveSystem.Save();
+    }
+
     public void LifeBar(float value)
     {
         playerLifeBar.fillAmount = value;

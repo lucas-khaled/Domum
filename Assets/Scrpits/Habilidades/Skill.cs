@@ -31,7 +31,6 @@ public class Skill
         ativo = true;
 
         var objAcesso = GameObject.FindObjectOfType(Type.GetType(ObjectDeAcesso));
-        Debug.Log(objAcesso.GetType());
 
         PropertyInfo varAcesso = objAcesso.GetType().GetProperty(VariavelDeAcesso);
 
@@ -43,7 +42,6 @@ public class Skill
         if (varAcesso.PropertyType == typeof(int))
         {
             varAcesso.SetValue(objAcesso, Mathf.CeilToInt(qntMudança), null);
-            Debug.Log(varAcesso.GetValue(objAcesso,null));
         }
 
         else if(varAcesso.PropertyType == typeof(float))
@@ -62,5 +60,6 @@ public class Skill
             varAcesso.SetValue(objAcesso, mudançaSeString, null);
         }
 
+        podeAtivar = false;
     }
 }

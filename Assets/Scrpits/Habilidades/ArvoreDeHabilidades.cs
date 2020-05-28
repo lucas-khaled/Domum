@@ -28,11 +28,68 @@ public class ArvoreDeHabilidades : MonoBehaviour
 
     int indiceAtual, qntAtivas;
 
+    private void Awake()
+    {
+        if (GameController.gameController.IsLoadedGame())
+        {
+            LoadActiveSkills();
+        }
+    }
+
+    void LoadActiveSkills()
+    {
+        Skill[] activeSkills = null;
+        if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
+        {
+            activeSkills = skillsIovelik;
+        }
+        else
+        {
+            activeSkills = skillsTyva;
+        }
+
+        foreach (int index in SaveSystem.data.habilidadesData.indiceAtivas)
+        {
+            activeSkills[index].AtivaSkill();
+        }
+    }
+
     private void Start()
     {
         SetHabilidadesAtivas();
         AtivaArvorePlayerEscolhido();
         textoPerk = textoInfo.transform.parent.GetChild(2).GetComponent<Text>();
+    }
+
+    public int[] GetActualSkillsActivityIndexes()
+    {
+        Skill[] activeSkills = null;
+        if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
+        {
+            activeSkills = skillsIovelik;
+        }
+        else
+        {
+            activeSkills = skillsTyva;
+        }
+
+        List<int> retorno = new List<int>();
+
+        for(int i = 0; i<activeSkills.Length; i++)
+        {
+            if (activeSkills[i].IsActive())
+            {
+                retorno.Add(i);
+            }
+        }
+
+        return retorno.ToArray();
+    } 
+
+    public void Incrementa1Perk()
+    {
+        qntPerk++;
+        textoPerk.text = qntPerk.ToString();
     }
 
     public static void IncrementaPerk()
