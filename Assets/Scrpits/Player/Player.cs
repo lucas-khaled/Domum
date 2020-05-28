@@ -111,6 +111,7 @@ public class Player : MonoBehaviour, IVulnerable
         if(numClick == 1)
         {
             animator.SetInteger("Ataque", 1);
+            animator.applyRootMotion = true;
             estadoPlayer = EstadoPlayer.ATACANDO;
         }
     }
@@ -259,9 +260,8 @@ public class Player : MonoBehaviour, IVulnerable
     }
 
     private void Interagir()
-    {
-        if (InteracaoController.instance.interagivelAtual != null)
-            InteracaoController.instance.interagivelAtual.Interact();     
+    {     
+        InteracaoController.instance.Interact();     
     }
 
     void OnMorteInimigo(int xp)

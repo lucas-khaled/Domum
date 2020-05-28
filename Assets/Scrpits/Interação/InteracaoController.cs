@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class InteracaoController : MonoBehaviour
 {
+    [SerializeField]
+    private float raioInteracao = 3f;
 
-    public float raioInteracao = 3f;
-
-    public Interagivel interagivelAtual = null;
+    private Interagivel interagivelAtual = null;
 
     #region SINGLETON
     public static InteracaoController instance;
@@ -18,6 +18,14 @@ public class InteracaoController : MonoBehaviour
         EventsController.onPlayerStateChanged += onPlayerStateChanged;
     }
     #endregion
+
+    public void Interact()
+    {
+        if(interagivelAtual != null && (Player.player.estadoPlayer == EstadoPlayer.COMBATE || Player.player.estadoPlayer == EstadoPlayer.NORMAL))
+        {
+            interagivelAtual.Interact();
+        }
+    }
 
     private void onPlayerStateChanged(EstadoPlayer estadoPlayer)
     {

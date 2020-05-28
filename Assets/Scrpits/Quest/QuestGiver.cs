@@ -16,6 +16,8 @@ public class QuestGiver : Interagivel
     [SerializeField]
     Dialogo semQuest;
 
+    private GameObject icone;
+
     int questsAceitas = 0;
 
     public int GetQuestAceitas()
@@ -27,6 +29,7 @@ public class QuestGiver : Interagivel
     {
         EventsController.onDialogoTerminado += DarQuest;
         EventsController.onLinhaTerminada += OnLinhaTerminada;
+        EventsController.onQuestLogChange += OnQuestLogChanged;
         questsAceitas = 0;
     }
 
@@ -38,7 +41,16 @@ public class QuestGiver : Interagivel
             FindMeOnLoad();
         }
        DeAcceptQuests();
+       icone = transform.Find("IconeMissao").gameObject;
+
+        if (questsAceitas > 0)
+        {
+            OnQuestLogChanged(quests[questsAceitas - 1], true);
+        }
     }
+
+
+
 
     void FindMeOnLoad()
     {
@@ -56,7 +68,7 @@ public class QuestGiver : Interagivel
 
     void DeAcceptQuests()
     {
-        if (quests.Length > 0 && questsAceitas < quests.Length) ;
+        if (quests.Length > 0 && questsAceitas < quests.Length)
         {
             for (int i = questsAceitas; i<quests.Length;i++)
             {
@@ -73,7 +85,7 @@ public class QuestGiver : Interagivel
         {
             if (questsAceitas != 0)
             {
-                if (questsAceitas > quests.Length - 1 && !quests[questsAceitas - 1].IsRealizada())
+                if (questsAceitas < quests.Length - 1 && !quests[questsAceitas - 1].IsRealizada())
                 {
                     if (!quests[questsAceitas - 1].IsRealizada())
                     {
@@ -92,12 +104,37 @@ public class QuestGiver : Interagivel
                     }
                     return;
                 }
+
+                else if(questsAceitas >= quests.Length)
+                {
+                    DialogueSystem.sistemaDialogo.IniciaDialogo(semQuest);
+                }
             }
 
             if (!quests[questsAceitas].IsAceita())
             {
                 quests[questsAceitas].dialogo.whosDialog = this.name;
                 DialogueSystem.sistemaDialogo.IniciaDialogo(quests[questsAceitas].dialogo);
+            }
+        }
+    }
+
+    private void OnQuestLogChanged(Quest quest, bool endQuest = false)
+    {       
+        if (questsAceitas >= quests.Length)
+        {
+            if (questsAceitas != 0 && quest.nome == quests[questsAceitas - 1].nome && endQuest)
+            {
+                Debug.Log(quest.nome + " - Puleei - " + this.name);
+                icone.SetActive(false);
+            }
+        }
+        else
+        {
+            if(questsAceitas != 0 && quest.nome == quests[questsAceitas - 1].nome && endQuest)
+            {
+                Debug.Log(quest.nome + " - Despuleei - " + this.name);
+                icone.SetActive(true);
             }
         }
     }
@@ -121,6 +158,7 @@ public class QuestGiver : Interagivel
         if (dialogo.whosDialog == this.name)
         {
             QuestLog.questLog.AdicionarQuest(quests[questsAceitas]);
+            icone.SetActive(false);
             questsAceitas++;
         }
     }

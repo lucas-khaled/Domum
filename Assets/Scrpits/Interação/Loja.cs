@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Loja : Interagivel
 {
-
     public List<Item> itensAVenda { get; private set; }
 
     public int maxNumItens, minNumItens;

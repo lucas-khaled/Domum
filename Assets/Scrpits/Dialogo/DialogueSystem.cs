@@ -30,10 +30,14 @@ public class DialogueSystem:MonoBehaviour
     private bool dialogueActive = false;
     private bool dialogueEnded = false;
     private bool outOfRange = true;
-    public bool dialogoTerminado = true;
 
     public AudioClip audioClip;
     AudioSource audioSource;
+
+    public bool IsDialogEnded()
+    {
+        return dialogueEnded;
+    }
 
     void Start()
     {
@@ -46,7 +50,6 @@ public class DialogueSystem:MonoBehaviour
     }
     public void IniciaDialogo(Dialogo dialogo)
     {
-
         this.dialogo = dialogo;
         this.dialogo.whosDialog = dialogo.whosDialog;
         outOfRange = false;
@@ -86,14 +89,6 @@ public class DialogueSystem:MonoBehaviour
                         dialogueEnded = true;
                     }
                 }
-
-                if (currentDialogueIndex >= dialogueLength)
-                {
-                    //criado para não gerar conflitos entre codigos
-                    dialogoTerminado = true;
-                }
-
-
                 yield return 0;
             }
 

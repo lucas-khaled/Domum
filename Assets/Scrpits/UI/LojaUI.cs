@@ -94,8 +94,12 @@ public class LojaUI : MonoBehaviour
 
             while (true)
             {
-                if ((Input.GetButton("Interact")) && DialogueSystem.sistemaDialogo.dialogoTerminado)
+                Debug.Log("Ainda n cusao");
+                if ((Input.GetButton("Interact")) && !DialogueSystem.sistemaDialogo.IsDialogEnded())
+                {
+                    Debug.Log("Ihaaaa");
                     break;
+                }
 
                 yield return 0;
             }

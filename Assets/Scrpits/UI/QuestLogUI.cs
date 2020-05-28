@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.VFX;
 
 public class QuestLogUI : MonoBehaviour
 {
     private GameObject bandeiraAtiva;
 
+    [Header("Texts")]
     [SerializeField]
     private Text tituloQuest;
     [SerializeField]
@@ -21,26 +22,33 @@ public class QuestLogUI : MonoBehaviour
 
     private List<GameObject> slotQuests =  new List<GameObject>();
 
+    [Header("Prefabs")]
     [SerializeField]
     private GameObject slot;
 
+    [Header("Contents")]
     [SerializeField]
     private Transform contentAceitas;
     [SerializeField]
     private Transform contentFeitas;
 
+    [Header("HUD")]
     [SerializeField]
     private Text titulo;
-
     [SerializeField]
     private Transform contentDescricao;
-
     [SerializeField]
     private GameObject topicosCondicoes;
 
-    public static QuestLogUI questLogUI;
+    [Header("Icons")]
+    [SerializeField]
+    private Sprite iconeMissao;
+    [SerializeField]
+    private Sprite iconeInimigoMissao;
 
+    public static QuestLogUI questLogUI;
     private Quest questSelecionada;
+    private SpriteRenderer iconeSpriteRenderer;
 
     void Awake() {
         EventsController.onQuestLogChange += AtualizarQuestLog;
@@ -48,25 +56,14 @@ public class QuestLogUI : MonoBehaviour
         questLogUI = this;
     }
 
-   /*private void Start()
-    {
-        if (GameController.gameController.isLoadedGame)
-        {
-            LoadQuestLogUI();
-        }
-    }
-
-    void LoadQuestLogUI()
-    {
-        foreach(Quest qa in QuestLog.questLog.getQuestAceitas())
-        {
-            AtualizarQuestLog(qa);
-        }
-        foreach(Quest qf in QuestLog.questLog.getQuestFinalizadas())
-        {
-            AtualizarQuestLog(qf, true);
-        }
-    }*/
+   private void Start()
+   {
+        GameObject go = GameObject.Find("IconeMissão");
+        iconeSpriteRenderer = go.GetComponent<SpriteRenderer>();
+        go.transform.position = Vector3.zero;
+        go.transform.rotation = Quaternion.Euler(90, 180, 0);
+        go.transform.localScale = Vector3.one * 3f;
+   }
 
     void AtualizarQuestLog(Quest quest, bool endQuest = false) {
 
@@ -75,7 +72,7 @@ public class QuestLogUI : MonoBehaviour
             GameObject goExists = slotQuests.Find(x => x.GetComponent<Holder_Quest>().referenciaQuest == quest);
 
             if (goExists != null)
-            {
+            {               
                 goExists.transform.SetParent(contentFeitas);
                 goExists.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
                 goExists.transform.GetChild(1).gameObject.SetActive(false);
@@ -115,7 +112,6 @@ public class QuestLogUI : MonoBehaviour
         titulo.text = quest.nome;
         foreach (Condicoes condicoes in quest.condicoes) {
             condicoesSoFar.Add(condicoes);
-            Debug.Log(condicoes.descricao);
             if (condicoes == quest.getCondicaoAtual()) {
                 break;
             }
@@ -151,29 +147,84 @@ public class QuestLogUI : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Condicoes condAtual = quest.getCondicaoAtual();
 
-        if (condAtual != null && quest == questSelecionada)
+        if (condAtual != null)
         {
-            tituloQuest.text = quest.nome;
-            descricaoQuest.text = quest.getCondicaoAtual().descricao;
+            if (quest == questSelecionada) {
+                tituloQuest.text = quest.nome;
+                descricaoQuest.text = quest.getCondicaoAtual().descricao;
+                AtualizaIconesMissao();
+            }
         }
         else
         {
-            tituloQuest.text = "Selecione uma quest no QuestLog";
-            descricaoQuest.text = string.Empty;
+            tituloQuest.transform.parent.gameObject.SetActive(false);
+            iconeSpriteRenderer.gameObject.SetActive(false);
         }
     }
 
     public void AtualizarQuestHUD(Quest quest, GameObject bandeiraAtiva)
     {
         if (this.bandeiraAtiva != null)
-        this.bandeiraAtiva.SetActive(false);
+            this.bandeiraAtiva.SetActive(false);
 
         bandeiraAtiva.SetActive(true);
         this.bandeiraAtiva = bandeiraAtiva;
+
+        tituloQuest.transform.parent.gameObject.SetActive(true);
 
         tituloQuest.text = quest.nome;
         descricaoQuest.text = quest.getCondicaoAtual().descricao;
 
         questSelecionada = quest;
+        AtualizaIconesMissao();
     }
+
+    void AtualizaIconesMissao()
+    {
+        if (questSelecionada.getCondicaoAtual().tipoCondicao == Condicoes.TipoCondicao.COMBATE)
+        {
+            iconeSpriteRenderer.sprite = iconeInimigoMissao;
+            iconeSpriteRenderer.gameObject.GetComponent<LineRenderer>().enabled = false;
+        }
+        else if (questSelecionada.getCondicaoAtual().tipoCondicao == Condicoes.TipoCondicao.IDA)
+        {
+            iconeSpriteRenderer.sprite = null;
+            DrawIdaCircle();
+        }
+        else
+        {
+            iconeSpriteRenderer.sprite = iconeMissao;
+            iconeSpriteRenderer.gameObject.GetComponent<LineRenderer>().enabled = false;
+        }
+
+        Vector3 pos = questSelecionada.getCondicaoAtual().local;
+        pos.y = 25;
+        iconeSpriteRenderer.gameObject.transform.position = pos;
+    }
+
+    void DrawIdaCircle()
+    {
+        LineRenderer line = iconeSpriteRenderer.gameObject.GetComponent<LineRenderer>();
+        line.enabled = true;
+        float radius = questSelecionada.getCondicaoAtual().distanciaChegada / iconeSpriteRenderer.gameObject.transform.localScale.x;
+
+        float segments = 30;
+        float x;
+        float y;
+        float z;
+
+        float angle = 20f;
+
+        for (int i = 0; i < segments; i++)
+        {
+            x = (Mathf.Sin(Mathf.Deg2Rad * angle) * radius);
+            y = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+
+            line.SetPosition(i, new Vector3(x, y, 0));
+
+            angle += (360f / segments);
+        }
+
+    }
+
 }
