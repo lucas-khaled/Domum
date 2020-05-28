@@ -36,7 +36,7 @@ public static class SaveSystem
 
         try
         {
-            formatter.Serialize(stream, json);
+            formatter.Serialize(stream, Criptografa(json));
         }
         catch (SerializationException e)
         {
@@ -57,6 +57,7 @@ public static class SaveSystem
             FileStream stream = File.Open(path, FileMode.Open);
 
             string json = (string)formatter.Deserialize(stream);
+            json = Descriptografa(json);
             JsonUtility.FromJsonOverwrite(json, data.questData);
             stream.Close();
         }
@@ -81,7 +82,7 @@ public static class SaveSystem
 
         try
         {
-            formatter.Serialize(stream, json);
+            formatter.Serialize(stream, Criptografa(json));
         }
         catch (SerializationException e)
         {
@@ -103,6 +104,7 @@ public static class SaveSystem
             FileStream stream = File.Open(path, FileMode.Open);
 
             string json = (string)formatter.Deserialize(stream);
+            json = Descriptografa(json);
             data = JsonUtility.FromJson<Data>(json);
             stream.Close();
             LoadQuestData();
@@ -113,5 +115,32 @@ public static class SaveSystem
             Debug.LogError("File not found in "+ path);
             return null;
         }        
+    }
+
+    private static string Criptografa(string json)
+    {
+        int aux = 0;
+        char[] chars = json.ToCharArray();
+        for (int i = 0; i < chars.Length; i++)
+        {
+            aux = (int)chars[i];
+            aux = aux + 23;
+            chars[i] = (char)aux;
+        }
+        json = new string(chars);
+        return json;
+    }
+    private static string Descriptografa(string json)
+    {
+        int aux = 0;
+        char[] chars = json.ToCharArray();
+        for (int i = 0; i < chars.Length; i++)
+        {
+            aux = (int)chars[i];
+            aux = aux - 23;
+            chars[i] = (char)aux;
+        }
+        json = new string(chars);
+        return json;
     }
 }
