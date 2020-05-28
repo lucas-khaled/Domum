@@ -33,6 +33,7 @@ public class Inventario : MonoBehaviour
     void LoadInventario()
     {
         armaEquipada = SaveSystem.data.inventarioData.armaEquipada;
+        armaMesh.sharedMesh = armaEquipada.armaMesh;
 
         foreach(Item item in SaveSystem.data.inventarioData.itens)
         {
@@ -106,7 +107,7 @@ public class Inventario : MonoBehaviour
             UnequipArma();
             armaEquipada = arma;
             RemoverItem(arma);
-            //armaMesh.sharedMesh = arma.armaMesh;
+            armaMesh.sharedMesh = arma.armaMesh;
         }
     }
     
@@ -120,18 +121,4 @@ public class Inventario : MonoBehaviour
         }
     }
     #endregion
-
-    //so de teste. Apagar depois
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RemoverItem(itens[0]);
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Arma arma= (Arma)itens.Find(x => x.GetType() == typeof(Arma));
-            EquipArma(arma);
-        }
-    }
 }

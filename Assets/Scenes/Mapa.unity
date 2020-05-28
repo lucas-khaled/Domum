@@ -1652,6 +1652,9 @@ MonoBehaviour:
   famaAlta:
     dialogueLines:
     - Vaaaaaai
+  semQuest:
+    dialogueLines:
+    - Sai Sai
 --- !u!65 &208982842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14418,6 +14421,10 @@ MonoBehaviour:
   famaAlta:
     dialogueLines:
     - Vaaaaaai
+  semQuest:
+    dialogueLines:
+    - AAAAOOOOOOOOOO
+    - MOGAAAAAAAA
 --- !u!65 &1166133262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16543,7 +16550,6 @@ GameObject:
   - component: {fileID: 1369480023}
   - component: {fileID: 1369480025}
   - component: {fileID: 1369480024}
-  - component: {fileID: 1369480026}
   - component: {fileID: 1369480027}
   m_Layer: 0
   m_Name: Camera
@@ -16627,23 +16633,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1369480026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369480022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51d662bbc569e24f8ddffde14804bda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDistance: 1
-  maxDistance: 4
-  smooth: 10
-  dollyDirAdjusted: {x: 0, y: 0, z: 0}
-  distance: 0
 --- !u!81 &1369480027
 AudioListener:
   m_ObjectHideFlags: 0
@@ -21146,6 +21135,8 @@ MonoBehaviour:
   famaMedia:
     dialogueLines: []
   famaAlta:
+    dialogueLines: []
+  semQuest:
     dialogueLines: []
 --- !u!1001 &1725664236
 PrefabInstance:
@@ -27290,6 +27281,9 @@ MonoBehaviour:
   famaAlta:
     dialogueLines:
     - "\xD4 mo\xE7o, pufav\xF4 meu, faiz l\xE1 pra mim"
+  semQuest:
+    dialogueLines:
+    - "Cole Irm\xE3o, Tu \xE9 firmeza memo em"
 --- !u!1 &337955312535531953
 GameObject:
   m_ObjectHideFlags: 0
@@ -36035,7 +36029,7 @@ PrefabInstance:
     - target: {fileID: 4006560453086054723, guid: 4666bf1932664a94fb8a0fca071abbbe,
         type: 3}
       propertyPath: itens.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4006560453086054723, guid: 4666bf1932664a94fb8a0fca071abbbe,
         type: 3}
@@ -36053,19 +36047,19 @@ PrefabInstance:
         type: 3}
       propertyPath: itens.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: a58d4b1b9818f8349aa5afb461303e85,
+      objectReference: {fileID: 11400000, guid: 0a916e303cd406a4580410d13c97cc23,
         type: 2}
     - target: {fileID: 4006560453086054723, guid: 4666bf1932664a94fb8a0fca071abbbe,
         type: 3}
       propertyPath: itens.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: d1135a47b29ed364995effe9b7c0cdeb,
+      objectReference: {fileID: 11400000, guid: 54bdaf5d5b2a29644aff23eefc790e0a,
         type: 2}
     - target: {fileID: 4006560453086054723, guid: 4666bf1932664a94fb8a0fca071abbbe,
         type: 3}
       propertyPath: itens.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: d1135a47b29ed364995effe9b7c0cdeb,
+      objectReference: {fileID: 11400000, guid: 524eefb9c6e8b1a44b63babb995b5a98,
         type: 2}
     - target: {fileID: 4006560453086054723, guid: 4666bf1932664a94fb8a0fca071abbbe,
         type: 3}

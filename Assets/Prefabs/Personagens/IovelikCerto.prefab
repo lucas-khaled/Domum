@@ -1898,6 +1898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxColetavel: 3
+  numAtaque: 2
   tempoEscudo: 3
   tempoDashTotal: 2
   maxVida: 150
@@ -1940,12 +1941,12 @@ MonoBehaviour:
   raioPercepcao: 10
   raioAtaque: 2
   espera: 0.3
-  numAtaque: 2
   escudo: {fileID: 5383999835037671250}
   tempoRecargaEscudo: 1.5
   valorDanoArea: 20
   raioDanoArea: 2
   coolDownDanoArea: 2
+  walkAttackAmount: 1
 --- !u!1 &7789462149736536273
 GameObject:
   m_ObjectHideFlags: 0

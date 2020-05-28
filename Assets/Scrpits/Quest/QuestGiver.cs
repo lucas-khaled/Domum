@@ -13,6 +13,8 @@ public class QuestGiver : Interagivel
     Dialogo famaMedia;
     [SerializeField]
     Dialogo famaAlta;
+    [SerializeField]
+    Dialogo semQuest;
 
     int questsAceitas = 0;
 
@@ -35,7 +37,7 @@ public class QuestGiver : Interagivel
         {
             FindMeOnLoad();
         }
-        DeAcceptQuests();
+       DeAcceptQuests();
     }
 
     void FindMeOnLoad()
@@ -54,7 +56,7 @@ public class QuestGiver : Interagivel
 
     void DeAcceptQuests()
     {
-        if (quests.Length > 0)
+        if (quests.Length > 0 && questsAceitas < quests.Length) ;
         {
             for (int i = questsAceitas; i<quests.Length;i++)
             {

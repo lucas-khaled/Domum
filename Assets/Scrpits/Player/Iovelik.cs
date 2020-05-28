@@ -15,6 +15,10 @@ public class Iovelik : Player
     private float raioDanoArea;
     [SerializeField]
     private int coolDownDanoArea;
+    [SerializeField]
+    private float walkAttackAmount;
+
+
     private float esperaDanoArea = 0;
     private float distancia;
 
