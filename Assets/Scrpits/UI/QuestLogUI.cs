@@ -21,6 +21,10 @@ public class QuestLogUI : MonoBehaviour
     private Text dinheiroMissaoText;
     [SerializeField]
     private Text xpMissaoText;
+    [SerializeField]
+    private GameObject[] animacoes;
+    [SerializeField]
+    private GameObject posicaoDinheiroFamaXp;
 
     private List<GameObject> slotQuests =  new List<GameObject>();
 
@@ -69,15 +73,24 @@ public class QuestLogUI : MonoBehaviour
 
     void AtualizarQuestLog(Quest quest, bool endQuest = false) {
 
+        if (!endQuest)
+        {
+            StartCoroutine(QuestAnimationAceitar(quest));
+        }
+        else
+        {
+            StartCoroutine(QuestAnimationFinalizar(quest));
+        }
+
         if (endQuest)
         {
             GameObject goExists = slotQuests.Find(x => x.GetComponent<Holder_Quest>().referenciaQuest == quest);
-
             if (goExists != null)
-            {               
+            {
                 goExists.transform.SetParent(contentFeitas);
                 goExists.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
                 goExists.transform.GetChild(1).gameObject.SetActive(false);
+
                 return;
             }
         }
@@ -245,5 +258,55 @@ public class QuestLogUI : MonoBehaviour
         descricaoQuest.CrossFadeAlpha(1, 1.5f, false);           
         
         
+    }
+    private IEnumerator QuestAnimationAceitar(Quest quest)
+    {
+        var animacaoQuest = Instantiate(UIController.uiController.questAceitaTerminada, UIController.uiController.posicao.transform);
+        animacaoQuest.gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = "Quest Aceita: " + quest.nome;
+        animacaoQuest.transform.localScale = Vector3.one;
+
+        yield return new WaitForSeconds(2.7f);
+        Destroy(animacaoQuest.gameObject);
+    }
+    private IEnumerator QuestAnimationFinalizar(Quest quest)
+    {
+        var animacaoQuest = Instantiate(UIController.uiController.questAceitaTerminada, UIController.uiController.posicao.transform);
+        animacaoQuest.gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = "Quest Terminada: " + tituloQuest.text;
+        animacaoQuest.transform.localScale = Vector3.one;
+
+        StartCoroutine(AnimacaoDinheiroFamaXP(quest));
+
+        yield return new WaitForSeconds(2.7f);
+        Destroy(animacaoQuest.gameObject);
+    }
+
+    private IEnumerator AnimacaoDinheiroFamaXP(Quest quest)
+    {
+        Debug.Log("Fama");
+        var fama = Instantiate(animacoes[0]);
+        fama.gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = quest.getRecompensaAtual().GetFama().ToString();
+        fama.transform.parent = posicaoDinheiroFamaXp.transform;
+        fama.transform.localScale = Vector3.one;
+
+        yield return new WaitForSeconds(1f);
+        Destroy(fama);
+
+        Debug.Log("Dinheiro");
+        var dinheiro = Instantiate(animacoes[1]);
+        dinheiro.gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = quest.getRecompensaAtual().GetDinheiro().ToString();
+        dinheiro.transform.parent = posicaoDinheiroFamaXp.transform;
+        dinheiro.transform.localScale = Vector3.one;
+
+        yield return new WaitForSeconds(1f);
+        Destroy(dinheiro);
+
+        Debug.Log("XP");
+        var xp = Instantiate(animacoes[2]);
+        xp.gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = quest.getRecompensaAtual().GetXP().ToString();
+        xp.transform.parent = posicaoDinheiroFamaXp.transform;
+        xp.transform.localScale = Vector3.one;
+
+        yield return new WaitForSeconds(1f);
+        Destroy(xp);
     }
 }

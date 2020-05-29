@@ -3316,7 +3316,7 @@ PrefabInstance:
     - target: {fileID: 8713115281195710901, guid: a6ee230f6738ec54eb7380e6cbb8b8ae,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8713115281195710901, guid: a6ee230f6738ec54eb7380e6cbb8b8ae,
         type: 3}
@@ -4376,7 +4376,7 @@ PrefabInstance:
     - target: {fileID: 6336050154858224127, guid: d624c7189086fbc4db8a0405571f7662,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6336050154858224127, guid: d624c7189086fbc4db8a0405571f7662,
         type: 3}
@@ -8617,6 +8617,11 @@ MonoBehaviour:
   famaMissaoText: {fileID: 90955509042633786}
   dinheiroMissaoText: {fileID: 1154675859065521754}
   xpMissaoText: {fileID: 2146715810677334504}
+  animacoes:
+  - {fileID: 8357523779525458955, guid: 0bbde0e0814b55349af3feae4f1de559, type: 3}
+  - {fileID: 6037475868817470699, guid: 85b5fcc25dd11004ba40e32bb2ec2864, type: 3}
+  - {fileID: 3733724972373896568, guid: fb97421a5df0d5e4f8b27f2fa8ab83c5, type: 3}
+  posicaoDinheiroFamaXp: {fileID: 1990097040}
   slot: {fileID: 7590742189331836103, guid: 03df17d388efdc54989f3674abf0f6d9, type: 3}
   contentAceitas: {fileID: 2684954134586893904}
   contentFeitas: {fileID: 6554052240359483544}
@@ -24092,7 +24097,7 @@ RectTransform:
   - {fileID: 383678250}
   - {fileID: 1626259371}
   m_Father: {fileID: 4250239725584986720}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -25376,6 +25381,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981078451}
   m_CullTransparentMesh: 0
+--- !u!1 &1990097040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990097041}
+  m_Layer: 5
+  m_Name: PosicaoDinheiroFamaXP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1990097041
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990097040}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4250239725584986720}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 18.999968, y: 92}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1996069185
 GameObject:
   m_ObjectHideFlags: 0
@@ -26569,7 +26609,7 @@ RectTransform:
   - {fileID: 1017827175}
   - {fileID: 646203814}
   m_Father: {fileID: 4250239725584986720}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -30508,7 +30548,7 @@ PrefabInstance:
     - target: {fileID: 1667144321470129633, guid: e44cf4d780bf87d45b95ae5a60e68839,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1667144321470129633, guid: e44cf4d780bf87d45b95ae5a60e68839,
         type: 3}
@@ -31326,7 +31366,7 @@ RectTransform:
   - {fileID: 1444557211}
   - {fileID: 2043585782}
   m_Father: {fileID: 4250239725584986720}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -38067,7 +38107,7 @@ RectTransform:
   - {fileID: 4250239723920922343}
   - {fileID: 1103649816}
   m_Father: {fileID: 4250239725584986720}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -38639,7 +38679,7 @@ RectTransform:
   m_Children:
   - {fileID: 4250239724357669116}
   m_Father: {fileID: 4250239725584986720}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -38748,12 +38788,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 868990464}
   - {fileID: 4250239725504307816}
+  - {fileID: 868990464}
+  - {fileID: 1990097041}
   - {fileID: 4250239723844629275}
-  - {fileID: 346489363}
   - {fileID: 671523277}
   - {fileID: 1372758337}
+  - {fileID: 346489363}
   - {fileID: 1761330487739311710}
   - {fileID: 2089341364}
   - {fileID: 1912480309}
@@ -45959,7 +46000,7 @@ PrefabInstance:
     - target: {fileID: 2944330778167941079, guid: 1fd6884991373444781c7dee7135f24d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2944330778167941079, guid: 1fd6884991373444781c7dee7135f24d,
         type: 3}
@@ -47539,7 +47580,7 @@ PrefabInstance:
     - target: {fileID: 4586725818505058064, guid: 32d54487631aa4543bb77c96e27e68bf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4586725818505058064, guid: 32d54487631aa4543bb77c96e27e68bf,
         type: 3}
