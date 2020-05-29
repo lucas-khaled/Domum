@@ -12,6 +12,8 @@ public class QuestLogUI : MonoBehaviour
     [SerializeField]
     private Text tituloQuest;
     [SerializeField]
+    private Text descricaoQuestAuxiliar;
+    [SerializeField]
     private Text descricaoQuest;
     [SerializeField]
     private Text famaMissaoText;
@@ -150,8 +152,7 @@ public class QuestLogUI : MonoBehaviour
         if (condAtual != null)
         {
             if (quest == questSelecionada) {
-                tituloQuest.text = quest.nome;
-                descricaoQuest.text = quest.getCondicaoAtual().descricao;
+                StartCoroutine(AtualizarQuestHUD(quest, bandeiraAtiva));
                 AtualizaIconesMissao();
             }
         }
@@ -160,23 +161,6 @@ public class QuestLogUI : MonoBehaviour
             tituloQuest.transform.parent.gameObject.SetActive(false);
             iconeSpriteRenderer.gameObject.SetActive(false);
         }
-    }
-
-    public void AtualizarQuestHUD(Quest quest, GameObject bandeiraAtiva)
-    {
-        if (this.bandeiraAtiva != null)
-            this.bandeiraAtiva.SetActive(false);
-
-        bandeiraAtiva.SetActive(true);
-        this.bandeiraAtiva = bandeiraAtiva;
-
-        tituloQuest.transform.parent.gameObject.SetActive(true);
-
-        tituloQuest.text = quest.nome;
-        descricaoQuest.text = quest.getCondicaoAtual().descricao;
-
-        questSelecionada = quest;
-        AtualizaIconesMissao();
     }
 
     void AtualizaIconesMissao()
@@ -226,5 +210,53 @@ public class QuestLogUI : MonoBehaviour
         }
 
     }
+    public IEnumerator AtualizarQuestHUD(Quest quest, GameObject bandeiraAtiva)
+    {
+        /*if (this.bandeiraAtiva != null)
+            this.bandeiraAtiva.SetActive(false);
 
+        bandeiraAtiva.SetActive(true);
+        this.bandeiraAtiva = bandeiraAtiva;
+
+        tituloQuest.transform.parent.gameObject.SetActive(true);
+
+        tituloQuest.text = quest.nome;
+        descricaoQuest.text = quest.getCondicaoAtual().descricao;
+
+        questSelecionada = quest;
+        AtualizaIconesMissao();*/
+
+        if (this.bandeiraAtiva != null)
+            this.bandeiraAtiva.SetActive(false);
+
+        bandeiraAtiva.SetActive(true);
+        this.bandeiraAtiva = bandeiraAtiva;
+
+        tituloQuest.transform.parent.gameObject.SetActive(true);
+
+        if (questSelecionada == null)
+        {
+            tituloQuest.text = quest.nome;
+            descricaoQuest.text = quest.getCondicaoAtual().descricao;
+            questSelecionada = quest;
+        }
+        else
+        {
+            descricaoQuestAuxiliar.text = descricaoQuest.text;
+            var descricaoAuxiliar = Instantiate(descricaoQuestAuxiliar, descricaoQuest.transform.position, Quaternion.identity);
+            descricaoAuxiliar.transform.parent = descricaoQuest.transform;
+            descricaoAuxiliar.transform.localScale = Vector3.one;
+            descricaoQuest.GetComponent<Text>().enabled = false;
+
+            yield return new WaitForSeconds(0.8f);
+            Destroy(descricaoAuxiliar);
+
+            descricaoQuest.text = quest.getCondicaoAtual().descricao;
+            descricaoQuest.canvasRenderer.SetAlpha(0.0f);
+            descricaoQuest.GetComponent<Text>().enabled = true;
+            descricaoQuest.CrossFadeAlpha(1, 1.5f, false);
+
+            AtualizaIconesMissao();
+        }
+    }
 }
