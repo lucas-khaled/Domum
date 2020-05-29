@@ -158,6 +158,7 @@ public class QuestGiver : Interagivel
         if (dialogo.whosDialog == this.name)
         {
             QuestLog.questLog.AdicionarQuest(quests[questsAceitas]);
+            StartCoroutine(QuestLog.questLog.QuestAnimation(true, quests[questsAceitas]));
             icone.SetActive(false);
             questsAceitas++;
         }

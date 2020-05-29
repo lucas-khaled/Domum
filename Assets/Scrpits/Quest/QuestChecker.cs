@@ -19,6 +19,7 @@ public class QuestChecker : MonoBehaviour
         else
         {
             questHolder.TerminaMissao();
+            StartCoroutine(QuestLog.questLog.QuestAnimation(false, questHolder));
             QuestLog.questLog.FinalizarQuest(this);
         }
     }

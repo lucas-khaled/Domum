@@ -7,6 +7,10 @@ using UnityEngine.Audio;
 
 public class UIController : MonoBehaviour
 {
+    public Image questAceitaTerminada;
+    public GameObject questLogHUD;
+    public GameObject posicao;
+
     [SerializeField]
     private Image playerLifeBar;
     [SerializeField]

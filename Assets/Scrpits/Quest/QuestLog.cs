@@ -114,5 +114,27 @@ public class QuestLog : MonoBehaviour
             }
         }
     }*/
+    public IEnumerator QuestAnimation(bool inicio, Quest quest)
+    {
+        Debug.Log("tao me chamando");
+        if (inicio)
+        {
+            var animacaoQuest = Instantiate(UIController.uiController.questAceitaTerminada, UIController.uiController.posicao.transform);
+            animacaoQuest.gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = "Quest Aceita: " + quest.nome;
+            animacaoQuest.transform.localScale = Vector3.one;
 
+            yield return new WaitForSeconds(2.7f);
+            Destroy(animacaoQuest.gameObject);
+        }
+        else
+        {
+            Debug.Log("ENTREO");
+            UIController.uiController.questAceitaTerminada.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = "Quest Terminada: " + quest.nome;
+            var animacaoQuest = Instantiate(UIController.uiController.questAceitaTerminada, UIController.uiController.posicao.transform);
+            animacaoQuest.transform.localScale = Vector3.one;
+
+            yield return new WaitForSeconds(2.7f);
+            Destroy(animacaoQuest.gameObject);
+        }
+    }
 }

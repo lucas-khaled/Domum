@@ -244,7 +244,7 @@ public class QuestLogUI : MonoBehaviour
         {
             descricaoQuestAuxiliar.text = descricaoQuest.text;
             var descricaoAuxiliar = Instantiate(descricaoQuestAuxiliar, descricaoQuest.transform.position, Quaternion.identity);
-            descricaoAuxiliar.transform.parent = descricaoQuest.transform;
+            descricaoAuxiliar.transform.parent = UIController.uiController.questLogHUD.transform;
             descricaoAuxiliar.transform.localScale = Vector3.one;
             descricaoQuest.GetComponent<Text>().enabled = false;
 
