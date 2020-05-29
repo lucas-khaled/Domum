@@ -27,12 +27,12 @@ public class Holder_Quest : Button, ISelectHandler
     {
         base.OnPointerClick(eventData);
         if (eventData.clickCount == 2 && !referenciaQuest.IsRealizada())
-            StartCoroutine(QuestLogUI.questLogUI.AtualizarQuestHUD(referenciaQuest, bandeiraAtiva));
+            QuestLogUI.questLogUI.TrocarQuestHUD(referenciaQuest, bandeiraAtiva);
     }
     public override void OnSubmit(BaseEventData eventData)
     {
         base.OnSubmit(eventData);
-        StartCoroutine(QuestLogUI.questLogUI.AtualizarQuestHUD(referenciaQuest,bandeiraAtiva));
+        QuestLogUI.questLogUI.TrocarQuestHUD(referenciaQuest,bandeiraAtiva);
     }
 
     public override void OnDeselect(BaseEventData eventData) {

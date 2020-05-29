@@ -152,8 +152,7 @@ public class QuestLogUI : MonoBehaviour
         if (condAtual != null)
         {
             if (quest == questSelecionada) {
-                StartCoroutine(AtualizarQuestHUD(quest, bandeiraAtiva));
-                AtualizaIconesMissao();
+                StartCoroutine(AtualizarQuestHUD(quest ));
             }
         }
         else
@@ -210,22 +209,9 @@ public class QuestLogUI : MonoBehaviour
         }
 
     }
-    public IEnumerator AtualizarQuestHUD(Quest quest, GameObject bandeiraAtiva)
+
+    public void TrocarQuestHUD(Quest quest, GameObject bandeiraAtiva)
     {
-        /*if (this.bandeiraAtiva != null)
-            this.bandeiraAtiva.SetActive(false);
-
-        bandeiraAtiva.SetActive(true);
-        this.bandeiraAtiva = bandeiraAtiva;
-
-        tituloQuest.transform.parent.gameObject.SetActive(true);
-
-        tituloQuest.text = quest.nome;
-        descricaoQuest.text = quest.getCondicaoAtual().descricao;
-
-        questSelecionada = quest;
-        AtualizaIconesMissao();*/
-
         if (this.bandeiraAtiva != null)
             this.bandeiraAtiva.SetActive(false);
 
@@ -233,30 +219,31 @@ public class QuestLogUI : MonoBehaviour
         this.bandeiraAtiva = bandeiraAtiva;
 
         tituloQuest.transform.parent.gameObject.SetActive(true);
+        tituloQuest.text = quest.nome;
+        descricaoQuest.text = quest.getCondicaoAtual().descricao;
+        questSelecionada = quest;
 
-        if (questSelecionada == null)
-        {
-            tituloQuest.text = quest.nome;
-            descricaoQuest.text = quest.getCondicaoAtual().descricao;
-            questSelecionada = quest;
-        }
-        else
-        {
-            descricaoQuestAuxiliar.text = descricaoQuest.text;
-            var descricaoAuxiliar = Instantiate(descricaoQuestAuxiliar, descricaoQuest.transform.position, Quaternion.identity);
-            descricaoAuxiliar.transform.parent = descricaoQuest.transform;
-            descricaoAuxiliar.transform.localScale = Vector3.one;
-            descricaoQuest.GetComponent<Text>().enabled = false;
+        AtualizaIconesMissao();
+    }
 
-            yield return new WaitForSeconds(0.8f);
-            Destroy(descricaoAuxiliar);
+    IEnumerator AtualizarQuestHUD(Quest quest)
+    {
+        AtualizaIconesMissao();
 
-            descricaoQuest.text = quest.getCondicaoAtual().descricao;
-            descricaoQuest.canvasRenderer.SetAlpha(0.0f);
-            descricaoQuest.GetComponent<Text>().enabled = true;
-            descricaoQuest.CrossFadeAlpha(1, 1.5f, false);
+        descricaoQuestAuxiliar.text = descricaoQuest.text;
+        var descricaoAuxiliar = Instantiate(descricaoQuestAuxiliar, descricaoQuest.transform.position, Quaternion.identity);
+        descricaoAuxiliar.transform.parent = descricaoQuest.transform;
+        descricaoAuxiliar.transform.localScale = Vector3.one;
+        descricaoQuest.GetComponent<Text>().enabled = false;
 
-            AtualizaIconesMissao();
-        }
+        yield return new WaitForSeconds(0.8f);
+        Destroy(descricaoAuxiliar);
+
+        descricaoQuest.text = quest.getCondicaoAtual().descricao;
+        descricaoQuest.canvasRenderer.SetAlpha(0.0f);
+        descricaoQuest.GetComponent<Text>().enabled = true;
+        descricaoQuest.CrossFadeAlpha(1, 1.5f, false);           
+        
+        
     }
 }
