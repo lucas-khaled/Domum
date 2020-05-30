@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 
+
 public class QuestLogUI : MonoBehaviour
 {
     private GameObject bandeiraAtiva;

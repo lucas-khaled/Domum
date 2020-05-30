@@ -10,14 +10,6 @@ public class Data
     public InventarioData inventarioData;
     public QuestData questData;
     public HabilidadesData habilidadesData;
-    public int chave;
-}
-
-public static class Criptografia
-{
-    static int permanentKey = 5;
-    static int chave;
-
 }
 
 public static class SaveSystem

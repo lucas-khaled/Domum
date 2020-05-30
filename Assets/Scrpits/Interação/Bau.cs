@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static InventarioData;
 
 public class Bau : Interagivel
 {
@@ -9,6 +10,36 @@ public class Bau : Interagivel
     Animator anim;
 
     public bool someSeVazia;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        if (GameController.gameController.IsLoadedGame())
+            LoadBau();
+    }
+
+    void LoadBau()
+    {
+        BauSave mySave = new BauSave(null, null);
+        bool isThere = false;
+
+        foreach(BauSave bs in SaveSystem.data.inventarioData.baus)
+        {
+            if(bs.nomeBau == this.name)
+            {
+                isThere = true;
+                mySave = bs;
+                break;
+            }
+        }
+
+        if (isThere)
+        {
+            itens.Clear();
+            itens.AddRange(mySave.itens);
+        }
+    }
 
     public override void Interact()
     {

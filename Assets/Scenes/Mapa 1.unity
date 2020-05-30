@@ -4004,7 +4004,6 @@ MonoBehaviour:
   setaProximo: {fileID: 1830018697}
   dialogueText: {fileID: 1351910909}
   Names: 
-  dialogoTerminado: 1
   audioClip: {fileID: 0}
 --- !u!4 &428823107
 Transform:
@@ -7915,6 +7914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fb4fa0e73c893449199837c6c8bdc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questAceitaTerminada: {fileID: 0}
+  questLogHUD: {fileID: 0}
+  posicao: {fileID: 0}
   playerLifeBar: {fileID: 4250239725026874777}
   XpBar: {fileID: 4250239723601808706}
   Skill: {fileID: 4250239725104758893}
@@ -7976,7 +7978,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raioInteracao: 3
-  interagivelAtual: {fileID: 0}
 --- !u!114 &762610164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8017,10 +8018,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tituloQuest: {fileID: 346489364}
+  descricaoQuestAuxiliar: {fileID: 0}
   descricaoQuest: {fileID: 346489365}
   famaMissaoText: {fileID: 90955509042633786}
   dinheiroMissaoText: {fileID: 1154675859065521754}
   xpMissaoText: {fileID: 2146715810677334504}
+  animacoes: []
+  posicaoDinheiroFamaXp: {fileID: 0}
   slot: {fileID: 7590742189331836103, guid: 03df17d388efdc54989f3674abf0f6d9, type: 3}
   contentAceitas: {fileID: 2684954134586893904}
   contentFeitas: {fileID: 6554052240359483544}
@@ -8028,6 +8032,8 @@ MonoBehaviour:
   contentDescricao: {fileID: 8874841889024459866}
   topicosCondicoes: {fileID: 2321806548948004294, guid: 5f7a49ed057e1e949b449fa2046a0ee1,
     type: 3}
+  iconeMissao: {fileID: 0}
+  iconeInimigoMissao: {fileID: 0}
 --- !u!114 &762610167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11863,7 +11869,7 @@ PrefabInstance:
     - target: {fileID: 6715682655860641468, guid: ef6a58d6ae9451a42a627b1f25522896,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 321.75925
+      value: 306.16
       objectReference: {fileID: 0}
     - target: {fileID: 6715682655860641468, guid: ef6a58d6ae9451a42a627b1f25522896,
         type: 3}
