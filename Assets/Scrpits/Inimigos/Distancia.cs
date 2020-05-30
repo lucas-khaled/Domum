@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Distancia : Inimigo
 {
+    [Header("Audios")]
+    [SerializeField]
+    private AudioClip tiro;
+
     public GameObject imagemAlerta;
     public GameObject bala;
     public Transform pontoTiro;
@@ -24,6 +28,8 @@ public class Distancia : Inimigo
 
         Destroy(alerta);
         anim.SetTrigger("Atirar");
+        audioSource.PlayOneShot(tiro);
+        anim.SetBool("Atacar", false);
         StopCoroutine(mira);
 
         GameObject balaInstanciada = Instantiate(bala, pontoTiro.position, pontoTiro.transform.rotation);

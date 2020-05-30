@@ -16,6 +16,18 @@ public class Tigre : MonoBehaviour
     Vector3 destino;
     NavMeshHit hit;
 
+    [Header("Audios")]
+    [SerializeField]
+    private AudioClip garrada;
+    [SerializeField]
+    private AudioClip mordida;
+    [SerializeField]
+    private AudioClip ataquePulo;
+    [SerializeField]
+    private AudioClip rosnado;
+    [SerializeField]
+    private AudioSource audioSource;
+
     //Criar Array de Itens para ele dropar
     [Header("Valores")]
     [SerializeField]
@@ -93,6 +105,7 @@ public class Tigre : MonoBehaviour
             if (distancia <= 3f && anim.GetBool("Correndo") && distancia > 2 && canAttack)
             {
                 StartCoroutine(jumpAttack());
+                audioSource.PlayOneShot(mordida);
                 anim.SetBool("Correndo",false);
                 return;
             }
@@ -108,11 +121,13 @@ public class Tigre : MonoBehaviour
         int escolha = Random.Range(0, 2);
         if (escolha == 1)
         {
-            anim.SetTrigger("Atacar");          
+            anim.SetTrigger("Atacar");
+            audioSource.PlayOneShot(garrada);
         }
         else
         {
             anim.SetTrigger("Atacar 2");
+            audioSource.PlayOneShot(mordida);
         }
 
         Collider[] hit = Physics.OverlapSphere(boca.transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
@@ -215,7 +230,6 @@ public class Tigre : MonoBehaviour
     }
     public void ReceberDano(int danoRecebido)
     {
-        Debug.Log("MAMAAAA");
         Vida -= danoRecebido;
 
         //chama metodo do UIController para exibir o dano no worldCanvas

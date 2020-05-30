@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class AudioController : MonoBehaviour
 {
     [SerializeField]
-    private string parametroAudio;
+    private Slider slider;
     [SerializeField]
     private AudioMixer mixer;
+
     [SerializeField]
-    private Slider slider;
+    private string parametroAudio;
+
     private void Start()
     {
         mixer.SetFloat(parametroAudio, slider.value);

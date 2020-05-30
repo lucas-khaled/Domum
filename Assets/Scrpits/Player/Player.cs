@@ -14,6 +14,18 @@ public class Player : MonoBehaviour, IVulnerable
     [HideInInspector]
     public StatusPlayer status;
 
+    [Header("Audio Players")]
+    [SerializeField]
+    private AudioClip movimento;
+    [SerializeField]
+    private AudioClip ataque;
+    [SerializeField]
+    private AudioClip passos;
+    [SerializeField]
+    protected AudioSource audioSource;
+
+    private float audioAux;
+
     [Header("Referências")]
     public Transform posicaoHit;
     public GameObject CBTprefab;
@@ -27,7 +39,7 @@ public class Player : MonoBehaviour, IVulnerable
     private float raioAtaque = 2f;
     [SerializeField]
     private float espera;
-    
+
 
 
     protected Rigidbody rb;
@@ -39,7 +51,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     #region GETTERS & SETTERS
 
-    
+
 
     public EstadoPlayer estadoPlayer
     {
@@ -74,7 +86,7 @@ public class Player : MonoBehaviour, IVulnerable
 
         EventsController.onMorteInimigoCallback += OnMorteInimigo;
 
-        player = this;     
+        player = this;
     }
 
     protected virtual void Start()
@@ -103,14 +115,16 @@ public class Player : MonoBehaviour, IVulnerable
 
     private void Atacar()
     {
-        if (podeAtacar && numClick<status.NumAtaque)
+        if (podeAtacar && numClick < status.NumAtaque)
         {
+            audioSource.PlayOneShot(ataque);
             numClick++;
         }
 
-        if(numClick == 1)
+        if (numClick == 1)
         {
             animator.SetInteger("Ataque", 1);
+            audioSource.PlayOneShot(ataque);
             animator.applyRootMotion = true;
             estadoPlayer = EstadoPlayer.ATACANDO;
         }
@@ -119,7 +133,7 @@ public class Player : MonoBehaviour, IVulnerable
     public int CalculaDano()
     {
         return status.DanoMedio + Random.Range(-5, 5);
-    } 
+    }
     // Passei essa parte do calcula dano para o script de ArmaPlayer, não faz sentido o player calcular o dano que
     // vai ser passado no inimigo pelo script ArmaPlayer.
     // mantive comentado só pra você saber o que aconteceu.
@@ -135,7 +149,7 @@ public class Player : MonoBehaviour, IVulnerable
         UIController.uiController.InitCBT(danoRecebido.ToString(), CBTprefab, hitCanvas);
         string nomeAnim = "Dano";
 
-        if(danoRecebido > status.maxVida*30/100)
+        if (danoRecebido > status.maxVida * 30 / 100)
         {
             nomeAnim += "Forte";
         }
@@ -148,7 +162,7 @@ public class Player : MonoBehaviour, IVulnerable
 
         animator.applyRootMotion = true;
         StartCoroutine(Dano(nomeAnim));
-        
+
     }
 
     private IEnumerator Dano(string animationName)
@@ -168,7 +182,7 @@ public class Player : MonoBehaviour, IVulnerable
         {
             estadoPlayer = EstadoPlayer.COMBATE;
         }
-        
+
     }
 
     protected Vector3 ProcuraInimigo()
@@ -183,7 +197,7 @@ public class Player : MonoBehaviour, IVulnerable
                 {
                     return inimigo.transform.position;
                 }
-            }         
+            }
         }
 
         return Vector3.zero;
@@ -209,7 +223,7 @@ public class Player : MonoBehaviour, IVulnerable
         if (estadoPlayer == EstadoPlayer.INTERAGINDO)
             return;
 
-        if(ProcuraInimigo() == Vector3.zero)
+        if (ProcuraInimigo() == Vector3.zero)
         {
             estadoPlayer = EstadoPlayer.NORMAL;
         }
@@ -226,9 +240,10 @@ public class Player : MonoBehaviour, IVulnerable
     protected virtual void Update()
     {
         Movimento();
+        audioAux -= Time.deltaTime;
 
         if (Input.GetButtonDown("Attack") && (estadoPlayer != EstadoPlayer.RECARREGAVEL && estadoPlayer != EstadoPlayer.MORTO) && podeAtacar && Time.timeScale != 0)
-        {         
+        {
             Atacar();
         }
 
@@ -237,11 +252,35 @@ public class Player : MonoBehaviour, IVulnerable
             Interagir();
         }
     }
-    
+
     void Movimento()
     {
         if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
         {
+            if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+            {
+                if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.TYVA)
+                {
+                    if (audioAux <= 0)
+                    {
+                        audioSource.volume = Random.Range(0.8f, 1);
+                        audioSource.pitch = Random.Range(0.8f, 1.1f);
+                        audioSource.PlayOneShot(passos);
+                        audioAux = 0.32f;
+                    }
+                }
+                else
+                {
+                    if (audioAux <= 0)
+                    {
+                        audioSource.volume = Random.Range(0.8f, 1);
+                        audioSource.pitch = Random.Range(0.8f, 1.1f);
+                        audioSource.PlayOneShot(passos);
+                        audioAux = 0.58f;
+                    }
+                }
+            }
+
             animator.applyRootMotion = false;
             float y = Mathf.Lerp(animator.GetFloat("VetY"), Input.GetAxis("Vertical"), 0.4f);
             float x = Mathf.Lerp(animator.GetFloat("VetX"), Input.GetAxis("Horizontal"), 0.4f);
@@ -252,7 +291,6 @@ public class Player : MonoBehaviour, IVulnerable
             rb.velocity = ((transform.forward * y) + (transform.right * x)) * velocidade;
         }
     }
-
 
     public void Curar(int cura)
     {

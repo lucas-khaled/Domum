@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class Tanque : Inimigo
 {
+    [Header("Audios")]
+    [SerializeField]
+    private AudioClip defesa;
+
     [SerializeField]
     private float cooldownGeral = 1.5f;
 
     private bool choose = true, defendendo = false;
     public override void ReceberDano(int danoRecebido, Inimigo inim = null)
     {
-        if(!defendendo)
+        if (!defendendo)
             base.ReceberDano(danoRecebido);
+        else
+            audioSource.PlayOneShot(defesa);
     }
 
     protected override IEnumerator Atacar()

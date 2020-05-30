@@ -5,6 +5,12 @@ using UnityEngine.AI;
 
 public class Atriet : MonoBehaviour
 {
+    [Header("Audios")]
+    [SerializeField]
+    private AudioClip venda;
+    [SerializeField]
+    private AudioSource audioSource;
+
     [SerializeField]
     private Animator anim;
     [SerializeField]
@@ -86,6 +92,8 @@ public class Atriet : MonoBehaviour
     public void FimInteracao()
     {
         contVenderComprar = LojaUI.lojaUi.contCompraVenda;
+
+        audioSource.PlayOneShot(venda);
 
         if (contVenderComprar > 0)
             anim.SetTrigger("Compra");

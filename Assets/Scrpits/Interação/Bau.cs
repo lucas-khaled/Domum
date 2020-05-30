@@ -9,6 +9,12 @@ public class Bau : Interagivel
     [SerializeField]
     Animator anim;
 
+    [Header("Audios")]
+    [SerializeField]
+    private AudioClip abrir;
+    [SerializeField]
+    private AudioSource audioSource;
+
     public bool someSeVazia;
 
     protected override void Start()
@@ -44,6 +50,8 @@ public class Bau : Interagivel
     public override void Interact()
     {
         base.Interact();
+
+        audioSource.PlayOneShot(abrir);
 
         if (anim != null)
         {

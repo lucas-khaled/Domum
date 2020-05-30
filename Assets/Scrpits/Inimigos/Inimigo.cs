@@ -16,6 +16,14 @@ public class Inimigo : MonoBehaviour, IVulnerable
     public Item[] itensDropaveis;
     public Bau drop;
 
+    [Header("Audios")]
+    [SerializeField]
+    protected AudioSource audioSource;
+    [SerializeField]
+    private AudioClip passos;
+
+    private double audioAux;
+
     //Criar Array de Itens para ele dropar
     [Header("Valores")]
     public bool hostil;
@@ -197,10 +205,20 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         if (collider.gameObject.tag == "Player" && hostil && Player.player.estadoPlayer != EstadoPlayer.MORTO)
         {
+            float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
+
             anim.SetBool("Idle", false);
             bool mover = true;
 
-            float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
+            if (audioAux <= 0 && distancia > distanciaAtaque)
+            {
+                audioSource.volume = Random.Range(0.8f, 1);
+                audioSource.pitch = Random.Range(0.8f, 1.1f);
+                audioSource.PlayOneShot(passos);
+                audioAux = 0.5f;
+            }
+            else audioAux -= Time.deltaTime;
+
             if (distancia <= distanciaAtaque)
             {
                 anim.SetBool("PertoPlayer", true);

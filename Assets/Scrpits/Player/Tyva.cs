@@ -17,6 +17,12 @@ public class Tyva : Player
     [SerializeField]
     private float tempoRecarga = 1;
 
+    [Header("Audio Tyva")]
+    [SerializeField]
+    private AudioClip dash;
+    [SerializeField]
+    private AudioClip lancarFaca;
+
     private bool dashEspecial = false;
 
     public bool facaLetal { get; set; }
@@ -119,6 +125,8 @@ public class Tyva : Player
     {
         animator.SetTrigger("Dash");
 
+        audioSource.PlayOneShot(dash);
+
         if (dashEspecial)
             estadoPlayer = EstadoPlayer.ATACANDO;
         else
@@ -152,6 +160,7 @@ public class Tyva : Player
     {
         contadorFaca = 0;
         animator.SetTrigger("JogarAdaga");
+        audioSource.PlayOneShot(lancarFaca);
         yield return new WaitForSeconds(0.5f);
 
         GameObject facaInstanciada = Instantiate(faca, posicaoFaca.position, faca.transform.rotation);

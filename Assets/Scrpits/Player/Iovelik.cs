@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 public class Iovelik : Player
 {
+    [Header("Audio Iovelik")]
+    [SerializeField]
+    private AudioClip martelada;
+    [SerializeField]
+    private AudioClip escudoSom;
+
     [Header("Valores Iovelik")]
     public GameObject escudo;
     
+
     public float tempoRecargaEscudo = 0.5f;
     [SerializeField]
     private float valorDanoArea;
@@ -120,12 +127,14 @@ public class Iovelik : Player
 
     private void AtivarEscudo(bool ativo)
     {
+        audioSource.PlayOneShot(escudoSom);
         escudo.SetActive(ativo);
         estadoPlayer = ativo ? EstadoPlayer.RECARREGAVEL : EstadoPlayer.COMBATE;
     }
 
     private void danoArea()
     {
+        audioSource.PlayOneShot(martelada);
         estadoPlayer = EstadoPlayer.ATACANDO;
         animator.SetTrigger(ataqueEspecialNome);
         canAttack = false;

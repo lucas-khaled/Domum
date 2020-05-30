@@ -16,6 +16,14 @@ public class Girafa : MonoBehaviour
     Vector3 destino;
     NavMeshHit hit;
 
+    [Header("Audios")]
+    [SerializeField]
+    private AudioClip deitar;
+    [SerializeField]
+    private AudioClip comer;
+    [SerializeField]
+    private AudioSource audioSource;
+
     //Criar Array de Itens para ele dropar
     [Header("Valores")]
     [SerializeField]
@@ -131,6 +139,7 @@ public class Girafa : MonoBehaviour
     public IEnumerator Deitado()
     {
         anim.SetBool("Deitado", true);
+        audioSource.PlayOneShot(deitar);
         yield return new WaitForSeconds(20f);
         anim.SetTrigger("Levantar");
         anim.SetBool("Deitado", false);
@@ -232,7 +241,9 @@ public class Girafa : MonoBehaviour
     {
         anim.SetBool("Caminhando", false);
         anim.SetBool("Comendo", true);
+        audioSource.PlayOneShot(comer);
         yield return new WaitForSeconds(9f);
+        audioSource.Stop();
         anim.SetBool("Comendo",false);
         StartCoroutine(Escolher());
     }

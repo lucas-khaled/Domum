@@ -5,6 +5,12 @@ using UnityEngine.AI;
 
 public class Kambim : MonoBehaviour
 {
+    [Header("Audios")]
+    [SerializeField]
+    private AudioClip venda;
+    [SerializeField]
+    private AudioSource audioSource;
+
     [SerializeField]
     private Animator anim;
     [SerializeField]
@@ -92,6 +98,8 @@ public class Kambim : MonoBehaviour
     public void FimInteracao()
     {
         contVenderComprar = LojaUI.lojaUi.contCompraVenda;
+
+        audioSource.PlayOneShot(venda);
 
         if (contVenderComprar > 0)
             anim.SetTrigger("Compra");

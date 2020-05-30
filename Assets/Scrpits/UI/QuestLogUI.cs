@@ -9,6 +9,12 @@ public class QuestLogUI : MonoBehaviour
 {
     private GameObject bandeiraAtiva;
 
+    [Header("Audios")]
+    [SerializeField]
+    private AudioClip iniciaQuest;
+    [SerializeField]
+    private AudioSource audioSource;
+
     [Header("Texts")]
     [SerializeField]
     private Text tituloQuest;
@@ -76,6 +82,7 @@ public class QuestLogUI : MonoBehaviour
 
         if (!endQuest)
         {
+            audioSource.PlayOneShot(iniciaQuest);
             StartCoroutine(QuestAnimationAceitar(quest));
         }
         else
@@ -289,7 +296,7 @@ public class QuestLogUI : MonoBehaviour
         fama.transform.parent = posicaoDinheiroFamaXp.transform;
         fama.transform.localScale = Vector3.one;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         Destroy(fama);
 
         Debug.Log("Dinheiro");
@@ -298,7 +305,7 @@ public class QuestLogUI : MonoBehaviour
         dinheiro.transform.parent = posicaoDinheiroFamaXp.transform;
         dinheiro.transform.localScale = Vector3.one;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         Destroy(dinheiro);
 
         Debug.Log("XP");
@@ -307,7 +314,7 @@ public class QuestLogUI : MonoBehaviour
         xp.transform.parent = posicaoDinheiroFamaXp.transform;
         xp.transform.localScale = Vector3.one;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         Destroy(xp);
     }
 }
