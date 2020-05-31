@@ -7,6 +7,10 @@ public class GameController : MonoBehaviour
 {
     public static GameController gameController;
 
+    public float volumeGeral;
+    public float volumeEfeitos;
+    public float volumeMusica;
+
     public Sprite interagivelTeclado;
     public Sprite interagivelJoystick;
 

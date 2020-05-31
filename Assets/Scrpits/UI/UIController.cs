@@ -51,9 +51,6 @@ public class UIController : MonoBehaviour
     bool questLogAberto = false;
     private List<Transform> listinha = new List<Transform>();
 
-    // Configurações de Áudio e Volume
-    public AudioMixer mixer;
-    public Slider sliderJogo, sliderEfeitos, sliderMusica;
 
     #region SINGLETON
 
@@ -70,9 +67,16 @@ public class UIController : MonoBehaviour
         InicializarPainelUsasveis();
         AtualizarPainelUsaveis();
         AtualizaRender();
-        /*mixer.SetFloat("volumeJogo", sliderJogo.value);
-        mixer.SetFloat("volumeEfeitos", sliderEfeitos.value);
-        mixer.SetFloat("volumeMusica", sliderMusica.value);*/
+
+        /*float valor;
+        audioMixer.GetFloat("volumeMaster", out valor);
+        sliderJogo.value = valor;
+        audioMixer.GetFloat("volumeEfeitos", out valor);
+        sliderEfeitos.value = valor;
+        audioMixer.GetFloat("volumeMusica", out valor);
+        sliderMusica.value = valor;
+        */
+
     }
 
     protected virtual void Update() {        
@@ -241,17 +245,5 @@ public class UIController : MonoBehaviour
     public void MudarCena(string cena)
     {
         SceneManager.LoadScene(cena);
-    }
-
-    public void AjustarVolumeJogo(float volume) {
-        mixer.SetFloat("volumeJogo", volume);
-    }
-
-    public void AjustarVolumeEfeitos(float volume) {
-        mixer.SetFloat("volumeEfeitos", volume);
-    }
-
-    public void AjustarVolumeMusica(float volume) {
-        mixer.SetFloat("volumeMusica", volume);
     }
 }

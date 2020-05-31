@@ -1978,6 +1978,9 @@ MonoBehaviour:
   slider: {fileID: 7846339608054605802}
   mixer: {fileID: 24100000, guid: 554ace45f4b2e7b4ebb86de37a832cfa, type: 2}
   parametroAudio: volumeEfeitos
+  volumeGeral: 0
+  volumeEfeitos: 1
+  volumeMusica: 0
 --- !u!1 &4463307179098655878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,6 +2629,9 @@ MonoBehaviour:
   slider: {fileID: 2127951879947810374}
   mixer: {fileID: 24100000, guid: 554ace45f4b2e7b4ebb86de37a832cfa, type: 2}
   parametroAudio: volumeMusica
+  volumeGeral: 0
+  volumeEfeitos: 0
+  volumeMusica: 1
 --- !u!1 &5767863478158165663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3209,6 +3215,9 @@ MonoBehaviour:
   slider: {fileID: 2127951879947810374}
   mixer: {fileID: 24100000, guid: 554ace45f4b2e7b4ebb86de37a832cfa, type: 2}
   parametroAudio: volumeMaster
+  volumeGeral: 1
+  volumeEfeitos: 0
+  volumeMusica: 0
 --- !u!1 &7995674781787008706
 GameObject:
   m_ObjectHideFlags: 0

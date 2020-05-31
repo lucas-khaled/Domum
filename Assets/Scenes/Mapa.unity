@@ -8425,6 +8425,9 @@ MonoBehaviour:
     type: 3}
   questLogHUD: {fileID: 346489366}
   posicao: {fileID: 868990463}
+  volumeGeral: {fileID: 7463251537234951599}
+  volumeEfeitos: {fileID: 1655362050454662147}
+  volumeMusica: {fileID: 2419952636239736485}
   playerLifeBar: {fileID: 4250239725026874777}
   XpBar: {fileID: 4250239723601808706}
   Skill: {fileID: 4250239725104758893}
@@ -33273,6 +33276,9 @@ MonoBehaviour:
   slider: {fileID: 7463251537234951599}
   mixer: {fileID: 24100000, guid: 554ace45f4b2e7b4ebb86de37a832cfa, type: 2}
   parametroAudio: volumeMaster
+  volumeGeral: 1
+  volumeEfeitos: 0
+  volumeMusica: 0
 --- !u!222 &2083546827822678343
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36803,6 +36809,9 @@ MonoBehaviour:
   slider: {fileID: 7463251537234951599}
   mixer: {fileID: 24100000, guid: 554ace45f4b2e7b4ebb86de37a832cfa, type: 2}
   parametroAudio: volumeMusica
+  volumeGeral: 0
+  volumeEfeitos: 0
+  volumeMusica: 1
 --- !u!114 &3910225662077905400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40358,6 +40367,9 @@ MonoBehaviour:
   slider: {fileID: 1655362050454662147}
   mixer: {fileID: 24100000, guid: 554ace45f4b2e7b4ebb86de37a832cfa, type: 2}
   parametroAudio: volumeEfeitos
+  volumeGeral: 0
+  volumeEfeitos: 1
+  volumeMusica: 0
 --- !u!114 &5139358002962112486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44960,6 +44972,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Menu_Principal
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 762610160}
+        m_MethodName: setVolumeAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!224 &7385538497331614308
