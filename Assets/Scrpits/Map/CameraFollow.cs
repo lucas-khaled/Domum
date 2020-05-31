@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     private void Start()
     {
-        transform.parent = Player.player.transform;
+        
     }
 
     private void LateUpdate()
@@ -14,5 +14,10 @@ public class CameraFollow : MonoBehaviour
         Vector3 newPosition = Player.player.transform.position;
         newPosition.y = transform.position.y;
         transform.position = newPosition;
+
+        Vector3 euler = Player.player.transform.eulerAngles;
+        euler.x = 90;
+
+        transform.rotation = Quaternion.Euler(euler);
     }
 }

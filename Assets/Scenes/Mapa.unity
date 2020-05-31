@@ -8425,9 +8425,6 @@ MonoBehaviour:
     type: 3}
   questLogHUD: {fileID: 346489366}
   posicao: {fileID: 868990463}
-  volumeGeral: {fileID: 7463251537234951599}
-  volumeEfeitos: {fileID: 1655362050454662147}
-  volumeMusica: {fileID: 2419952636239736485}
   playerLifeBar: {fileID: 4250239725026874777}
   XpBar: {fileID: 4250239723601808706}
   Skill: {fileID: 4250239725104758893}
@@ -8440,10 +8437,6 @@ MonoBehaviour:
   painelMorte: {fileID: 1372758336}
   "painelUs\xE1veis": {fileID: 1103649815}
   painelQuestLog: {fileID: 3191885749628576}
-  mixer: {fileID: 0}
-  sliderJogo: {fileID: 0}
-  sliderEfeitos: {fileID: 0}
-  sliderMusica: {fileID: 0}
 --- !u!114 &762610161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16310,6 +16303,7 @@ GameObject:
   - component: {fileID: 1305239477}
   - component: {fileID: 1305239476}
   - component: {fileID: 1305239478}
+  - component: {fileID: 1305239479}
   m_Layer: 13
   m_Name: "IconeMiss\xE3o"
   m_TagString: Untagged
@@ -16506,6 +16500,22 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 1
+--- !u!114 &1305239479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305239475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac733fb7dbf41341b2c6ad96834c5ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 13
+  miniMapCamera: {fileID: 290877201}
+  prefabDeInstancia: {fileID: 8342037732754100103, guid: 33af587df4176bf4abca4cee8f543bac,
+    type: 3}
 --- !u!1 &1314138893
 GameObject:
   m_ObjectHideFlags: 0

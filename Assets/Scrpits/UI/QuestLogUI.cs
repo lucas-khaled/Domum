@@ -73,6 +73,7 @@ public class QuestLogUI : MonoBehaviour
    {
         GameObject go = GameObject.Find("IconeMissão");
         iconeSpriteRenderer = go.GetComponent<SpriteRenderer>();
+        go.SetActive(false);
         go.transform.position = Vector3.zero;
         go.transform.rotation = Quaternion.Euler(90, 180, 0);
         go.transform.localScale = Vector3.one * 3f;
@@ -185,6 +186,7 @@ public class QuestLogUI : MonoBehaviour
 
     void AtualizaIconesMissao()
     {
+        iconeSpriteRenderer.gameObject.SetActive(true);
         if (questSelecionada.getCondicaoAtual().tipoCondicao == Condicoes.TipoCondicao.COMBATE)
         {
             iconeSpriteRenderer.sprite = iconeInimigoMissao;
