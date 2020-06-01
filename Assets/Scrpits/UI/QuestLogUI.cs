@@ -15,13 +15,15 @@ public class QuestLogUI : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
-    [Header("Texts")]
+    [Header("Texts HUD")]
     [SerializeField]
     private Text tituloQuest;
     [SerializeField]
     private Text descricaoQuestAuxiliar;
     [SerializeField]
     private Text descricaoQuest;
+
+    [Header("Texts")]
     [SerializeField]
     private Text famaMissaoText;
     [SerializeField]
@@ -45,7 +47,7 @@ public class QuestLogUI : MonoBehaviour
     [SerializeField]
     private Transform contentFeitas;
 
-    [Header("HUD")]
+    [Header("Infos")]
     [SerializeField]
     private Text titulo;
     [SerializeField]
