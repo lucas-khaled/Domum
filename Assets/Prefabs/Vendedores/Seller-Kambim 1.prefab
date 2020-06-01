@@ -1845,9 +1845,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldCanvas: {fileID: 8146142608182764280}
-  maxNumItens: 0
-  minNumItens: 0
-  possiveisItensAVenda: []
+  maxNumItens: 15
+  minNumItens: 6
+  possiveisItensAVenda:
+  - {fileID: 11400000, guid: 0a916e303cd406a4580410d13c97cc23, type: 2}
+  - {fileID: 11400000, guid: 6f13f957c1caa7b4c862909266e5beb9, type: 2}
+  - {fileID: 11400000, guid: 6f13f957c1caa7b4c862909266e5beb9, type: 2}
+  - {fileID: 11400000, guid: cb1afe19ce3ed224fbe92c21f2d8aeba, type: 2}
+  - {fileID: 11400000, guid: 6f5f0546a1155a34ebd98c119fc0ddfd, type: 2}
+  - {fileID: 11400000, guid: 80c4ac6968a3c0547a0fb41a4854f209, type: 2}
+  - {fileID: 11400000, guid: c824570dbc97282478e0ad2784cb6ea1, type: 2}
+  - {fileID: 11400000, guid: d1135a47b29ed364995effe9b7c0cdeb, type: 2}
+  - {fileID: 11400000, guid: 524eefb9c6e8b1a44b63babb995b5a98, type: 2}
+  - {fileID: 11400000, guid: 6f5f0546a1155a34ebd98c119fc0ddfd, type: 2}
+  - {fileID: 11400000, guid: c824570dbc97282478e0ad2784cb6ea1, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: fe7f5377baca23a40a3d0382390f8a2a, type: 2}
+  - {fileID: 11400000, guid: 6f5f0546a1155a34ebd98c119fc0ddfd, type: 2}
+  - {fileID: 11400000, guid: 54bdaf5d5b2a29644aff23eefc790e0a, type: 2}
+  - {fileID: 11400000, guid: ee444615afb2ac04981992ad37e64f64, type: 2}
+  - {fileID: 11400000, guid: 95698c996840ac04eb7d190a091afd7e, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 524eefb9c6e8b1a44b63babb995b5a98, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: d1135a47b29ed364995effe9b7c0cdeb, type: 2}
+  - {fileID: 11400000, guid: fe7f5377baca23a40a3d0382390f8a2a, type: 2}
+  - {fileID: 11400000, guid: fe7f5377baca23a40a3d0382390f8a2a, type: 2}
+  - {fileID: 11400000, guid: 54bdaf5d5b2a29644aff23eefc790e0a, type: 2}
+  - {fileID: 11400000, guid: fe7f5377baca23a40a3d0382390f8a2a, type: 2}
+  - {fileID: 11400000, guid: ee444615afb2ac04981992ad37e64f64, type: 2}
+  - {fileID: 11400000, guid: 6f13f957c1caa7b4c862909266e5beb9, type: 2}
+  - {fileID: 11400000, guid: 0a916e303cd406a4580410d13c97cc23, type: 2}
+  - {fileID: 11400000, guid: cb1afe19ce3ed224fbe92c21f2d8aeba, type: 2}
+  - {fileID: 11400000, guid: ee444615afb2ac04981992ad37e64f64, type: 2}
 --- !u!135 &3275880971138534357
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1927,7 +1957,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
