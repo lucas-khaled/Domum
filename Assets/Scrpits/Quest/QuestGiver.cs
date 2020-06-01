@@ -50,8 +50,6 @@ public class QuestGiver : Interagivel
     }
 
 
-
-
     void FindMeOnLoad()
     {
         string[] qgNames = SaveSystem.data.questData.giversNames;
