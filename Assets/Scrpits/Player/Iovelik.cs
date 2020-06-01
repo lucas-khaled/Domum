@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 public class Iovelik : Player
 {
+    [Header("Audio Iovelik")]
+    [SerializeField]
+    private AudioClip martelada;
+    [SerializeField]
+    private AudioClip escudoSom;
+
     [Header("Valores Iovelik")]
     public GameObject escudo;
     
+
     public float tempoRecargaEscudo = 0.5f;
     [SerializeField]
     private float valorDanoArea;
@@ -15,11 +22,18 @@ public class Iovelik : Player
     private float raioDanoArea;
     [SerializeField]
     private int coolDownDanoArea;
+
     private float esperaDanoArea = 0;
     private float distancia;
 
+    public bool habilidadeCura { get; set; }
+    public bool refleteDano { get; set; }
+
     private float recarregaEscudo;
     bool canAttack = true;
+
+    public string ataqueEspecialNome { get; set; }
+
     public float RecarregaEscudo
     {
         get
@@ -54,8 +68,10 @@ public class Iovelik : Player
     {
         base.Start();
 
-        status.QntColetavel = 3;
         RecarregaEscudo = status.tempoEscudo;
+        ataqueEspecialNome = "Especial";
+        refleteDano = false;
+        habilidadeCura = false;
     }
 
     protected override void Update()
@@ -64,7 +80,7 @@ public class Iovelik : Player
 
         if (Input.GetMouseButtonDown(1) && esperaDanoArea <= 0 && status.QntColetavel > 0 && estadoPlayer == EstadoPlayer.COMBATE)
         {
-            StartCoroutine(danoArea());
+            danoArea();
         }
 
         if(esperaDanoArea > 0)
@@ -88,33 +104,47 @@ public class Iovelik : Player
         }
     }
 
-    public override void ReceberDano(int danoRecebido)
+    public override void ReceberDano(int danoRecebido, Inimigo inim = null)
     {
-        if(!escudo.activeSelf)
-            base.ReceberDano(danoRecebido);
+        if (!escudo.activeSelf)
+        {
+            if (status.QntColetavel > 0 && status.Vida - danoRecebido <= 0 && habilidadeCura)
+            {
+                Curar(Mathf.CeilToInt(status.maxVida * 2 / 10));
+                status.QntColetavel--;
+            }
+            else
+            {
+                base.ReceberDano(danoRecebido, inim);
+            }
+        }
+        else if (refleteDano && inim != null)
+        {
+            inim.ReceberDano(danoRecebido / 2);
+        }
     }
 
-    private IEnumerator AtaqueEmArea()
-    {
-        yield return null;
-    }
 
     private void AtivarEscudo(bool ativo)
     {
+        audioSource.PlayOneShot(escudoSom);
         escudo.SetActive(ativo);
         estadoPlayer = ativo ? EstadoPlayer.RECARREGAVEL : EstadoPlayer.COMBATE;
     }
 
-    private IEnumerator danoArea()
+    private void danoArea()
     {
+        audioSource.PlayOneShot(martelada);
         estadoPlayer = EstadoPlayer.ATACANDO;
-        animator.SetTrigger("Especial");
+        animator.SetTrigger(ataqueEspecialNome);
         canAttack = false;
+        status.QntColetavel--;
+        estadoPlayer = EstadoPlayer.COMBATE;
 
-        yield return new WaitForSeconds(1f);
+    }
 
-        Debug.Log("Toma porra");
-
+    public void AreaAttack()
+    {
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioDanoArea, LayerMask.GetMask("Inimigo"));
 
         foreach (Collider inimigoArea in hit)
@@ -123,11 +153,43 @@ public class Iovelik : Player
             inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));
             esperaDanoArea = coolDownDanoArea;
         }
+    }
 
-        status.QntColetavel--;
-        yield return WaitForAnimation("Especial");
+    public void CheckCombo()
+    {
+        podeAtacar = false; 
 
-        estadoPlayer = EstadoPlayer.COMBATE;
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick == 1)
+        {
+            animator.SetInteger("Ataque", 0);
+            numClick = 0;
+            estadoPlayer = EstadoPlayer.COMBATE;
+        }
 
+        else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick >= 2)
+        {
+            animator.SetInteger("Ataque", 2);
+            podeAtacar = true;
+        }
+
+        else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && numClick == 2)
+        {
+            animator.SetInteger("Ataque", 0);
+            numClick = 0;
+            estadoPlayer = EstadoPlayer.COMBATE;
+        }
+        
+        else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && numClick >= 3)
+        {
+            animator.SetInteger("Ataque", 3);
+            podeAtacar = true;
+        }
+
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3"))
+        {
+            animator.SetInteger("Ataque", 0);
+            numClick = 0;
+            estadoPlayer = EstadoPlayer.COMBATE;
+        }
     }
 }

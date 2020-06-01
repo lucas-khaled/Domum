@@ -53,19 +53,25 @@ public class DrawQuesGizmo : MonoBehaviour
     {
         if (instanciados.Count == 0)
         {
+            if ((condHolder.tipoCondicao == Condicoes.TipoCondicao.INTERACAO || condHolder.tipoCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM) && condHolder.interagivel != null)
+            {
+                if (!condHolder.IsOnScene())
+                {
+                    instanciados.Add((GameObject)Instantiate(condHolder.itemDaCondicao.gameObject, condHolder.local, Quaternion.identity));
+                }
+                else
+                {
+                    Clean();
+                }
+            }
+
             if (condHolder.tipoCondicao == Condicoes.TipoCondicao.COMBATE && condHolder.inimigosDaCondicao.Count>0)
             {
                 foreach(GameObject inimigo in condHolder.inimigosDaCondicao)
                 {
-
                     instanciados.Add(Instantiate(inimigo, condHolder.SpawnRandomico(), Quaternion.identity));
                 }
-            }
-
-            if ((condHolder.tipoCondicao == Condicoes.TipoCondicao.INTERACAO || condHolder.tipoCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM) && condHolder.interagivel != null)
-            {
-                instanciados.Add((GameObject)Instantiate(condHolder.itemDaCondicao.gameObject, condHolder.local, Quaternion.identity));
-            }
+            }           
 
             if ((condHolder.tipoCondicao == Condicoes.TipoCondicao.PEGA_ITEM || condHolder.tipoCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM) && condHolder.itemDaCondicao != null)
             {

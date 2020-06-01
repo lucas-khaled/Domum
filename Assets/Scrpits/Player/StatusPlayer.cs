@@ -5,18 +5,61 @@ using UnityEngine;
 [System.Serializable]
 public class StatusPlayer : MonoBehaviour
 {
-    public int maxColetavel = 3;
+    public int maxColetavel;
+    [SerializeField]
+    private int numAtaque = 2;
+
+    public int NumAtaque
+    {
+        get
+        {
+            return numAtaque;
+        }
+
+        set
+        {
+            numAtaque = value;
+        }
+    }
+
+    public int MaxColetavel
+    {
+        get
+        {
+            return maxColetavel;
+        }
+        set
+        {
+            maxColetavel = value;
+            UIController.uiController.InicializarPainelUsasveis();
+        }
+    }
+
     public float tempoEscudo = 3;
+
     public float tempoDashTotal = 2;
     public int maxVida = 100;
 
     private int dinheiro, fama, vida, qntColetavel;
-    private int XPRequisito = 100;
+
+    public int XPRequisito { get; private set; }
+
     private int experiencia, level = 1;
     private const int MAXLEVEL = 100;
     private int danoMedio = 10;
-    public StatusPlayer status;
 
+    public float TempoEscudo
+    {
+        get
+        {
+            return tempoEscudo;
+        }
+
+        set
+        {
+            tempoEscudo = value;
+        }
+    }
 
     public int QntColetavel
     {
@@ -27,7 +70,7 @@ public class StatusPlayer : MonoBehaviour
         set
         {
             qntColetavel = Mathf.Clamp(value, 0, maxColetavel);
-            UIController.uiController.Usandinho();
+            UIController.uiController.AtualizarPainelUsaveis();
         }
     }
 
@@ -63,6 +106,7 @@ public class StatusPlayer : MonoBehaviour
         set
         {
             dinheiro = Mathf.Clamp(value, 0, int.MaxValue);
+            InventarioUI.inventarioUI.PegaValores();
         }
     }
 
@@ -103,12 +147,44 @@ public class StatusPlayer : MonoBehaviour
         {
             level = value;
             XPRequisito += 50 + 10 * level;
-            DanoMedio += 2;
+            DanoMedio += Mathf.CeilToInt(1*(level%2));
+
+            maxVida += 10 + 5 * level;
+
+            if(level%8 == 0)
+            {
+                ArvoreDeHabilidades.IncrementaPerk();
+            }
         }
     }
 
     private void Awake()
     {
-        vida = maxVida;
+        if (GameController.gameController.IsLoadedGame())
+        {
+            LoadStatus();
+        }
+        else
+        {
+            vida = maxVida;
+            maxColetavel = 3;
+            XPRequisito = 100;
+            qntColetavel = 3;
+        }
+    }
+
+    void LoadStatus()
+    {
+        PlayerData playerData = SaveSystem.data.playerData;
+        maxColetavel = playerData.maxColetavel;
+        numAtaque = playerData.numAtaque;
+        tempoEscudo = playerData.tempoEscudo;
+        tempoDashTotal = playerData.tempoDashTotal;
+        maxVida = playerData.maxVida;
+        dinheiro = playerData.dinheiro;
+        fama = playerData.fama;
+        vida = playerData.vida;
+        qntColetavel = playerData.qntColetavel;
+        XPRequisito = playerData.XPRequisito;
     }
 }

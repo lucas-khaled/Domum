@@ -11,6 +11,7 @@ public class QuestLog : MonoBehaviour
     private void Awake()
     {
         questLog = this;
+      
     }
 
     #endregion
@@ -19,6 +20,37 @@ public class QuestLog : MonoBehaviour
     List<Quest> questsFinalizadas = new List<Quest>();
 
     List<QuestChecker> activeQuestCheckers = new List<QuestChecker>();
+
+    private void Start()
+    {
+        if (GameController.gameController.IsLoadedGame())
+        {
+            LoadQuestLog();
+        }
+    }
+
+    void LoadQuestLog()
+    {
+        foreach(Quest qa in SaveSystem.data.questData.questsAceitas)
+        {
+            /*questsAceitas.Add(qa);
+            AddQuestChecker(qa);*/
+
+            AdicionarQuest(qa);
+        }
+
+        foreach(Quest qf in SaveSystem.data.questData.questsFinalizadas)
+        {
+            qf.TerminaMissao();
+            questsFinalizadas.Add(qf);
+            EventsController.onQuestLogChange.Invoke(qf, true);
+        }
+    }
+
+    public List<Quest> getQuestFinalizadas()
+    {
+        return questsFinalizadas;
+    }
 
     public List<Quest> getQuestAceitas()
     {
@@ -33,6 +65,16 @@ public class QuestLog : MonoBehaviour
         //fala para a quest que ela foi aceita
         quest.AceitarQuest();
 
+
+        AddQuestChecker(quest);
+
+        if (EventsController.onQuestLogChange != null) {
+            EventsController.onQuestLogChange.Invoke(quest);
+        }
+    }
+
+    void AddQuestChecker(Quest quest)
+    {
         //Cria um Questchecker e passa qual a quest
         GameObject check = new GameObject("Checker " + quest.nome, typeof(QuestChecker));
         QuestChecker checker = check.GetComponent<QuestChecker>();
@@ -52,6 +94,11 @@ public class QuestLog : MonoBehaviour
         //remove da lista de checkers e destroy seu gameobject
         activeQuestCheckers.Remove(questChecker);
         Destroy(questChecker.gameObject);
+
+        if (EventsController.onQuestLogChange != null)
+        {
+            EventsController.onQuestLogChange.Invoke(questChecker.GetQuestOnHolder(), true);
+        }
     }
 
     /*void CheckCondicoes()
@@ -67,5 +114,4 @@ public class QuestLog : MonoBehaviour
             }
         }
     }*/
-
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class QuestChecker : MonoBehaviour
 {
-
     Quest questHolder;
     Condicoes condHolder;
 
@@ -15,7 +14,7 @@ public class QuestChecker : MonoBehaviour
         if (condHolder != null)
         {
             condHolder.AtivarCondicao();
-            InvokeRepeating("CheckCondicaoHolder", 0.5f, 1f);
+            InvokeRepeating("CheckCondicaoHolder", 1f, 1f);
         }
         else
         {
@@ -46,6 +45,7 @@ public class QuestChecker : MonoBehaviour
         if (condHolder.ChecaCondicao())
         {
             //se for, ele cancela a checagem e e seta a nova condição
+            EventsController.onCondicaoTerminada.Invoke(questHolder);
             CancelInvoke("CheckCondicaoHolder");
             SetCondicaoOnHolder(questHolder.ProximaCondicao());
         }

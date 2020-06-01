@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class InteracaoController : MonoBehaviour
 {
+    [SerializeField]
+    private float raioInteracao = 3f;
 
-    public float raioInteracao = 3f;
-
-    public Interagivel interagivelAtual = null;
+    private Interagivel interagivelAtual = null;
 
     #region SINGLETON
     public static InteracaoController instance;
@@ -19,16 +19,25 @@ public class InteracaoController : MonoBehaviour
     }
     #endregion
 
+    public void Interact()
+    {
+        if(interagivelAtual != null && (Player.player.estadoPlayer == EstadoPlayer.COMBATE || Player.player.estadoPlayer == EstadoPlayer.NORMAL))
+        {
+            interagivelAtual.Interact();
+        }
+    }
+
     private void onPlayerStateChanged(EstadoPlayer estadoPlayer)
     {
         if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
-            InvokeRepeating("InteragivelMaisProximo", 0, 0.1f);
+            InvokeRepeating("InteragivelMaisProximo", 1f, 0.1f);
         else
         {
             CancelInvoke("InteragivelMaisProximo");
             if (interagivelAtual != null)
             {
                 interagivelAtual.SwitchImagemInteracao(false);
+                interagivelAtual = null;
             }
         }
     }
@@ -45,15 +54,41 @@ public class InteracaoController : MonoBehaviour
 
         if (hit.Length > 0)
         {
-            Interagivel atual = hit[0].GetComponent<Interagivel>();
-            if (interagivelAtual == atual)
-                return;
+            int numIndex = 0;
 
-            if (interagivelAtual != null)
-                interagivelAtual.SwitchImagemInteracao(false);
+            foreach(Collider colisor in hit)
+            {
+                if (!colisor.isTrigger)
+                {
+                    break;
+                }
+                else
+                {
+                    numIndex++;
+                }
+            }
 
-            interagivelAtual = atual;
-            interagivelAtual.SwitchImagemInteracao(true);
+            if (hit.Length > numIndex)
+            {
+                Interagivel atual = hit[numIndex].GetComponent<Interagivel>();
+                if (interagivelAtual == atual)
+                    return;
+
+                if (interagivelAtual != null)
+                    interagivelAtual.SwitchImagemInteracao(false);
+
+                interagivelAtual = atual;
+                interagivelAtual.SwitchImagemInteracao(true);
+            }
+
+            else
+            {
+                if (interagivelAtual != null)
+                {
+                    interagivelAtual.SwitchImagemInteracao(false);
+                    interagivelAtual = null;
+                }
+            }
         }
 
         else

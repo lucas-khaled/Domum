@@ -16,6 +16,14 @@ public class Girafa : MonoBehaviour
     Vector3 destino;
     NavMeshHit hit;
 
+    [Header("Audios")]
+    [SerializeField]
+    private AudioClip deitar;
+    [SerializeField]
+    private AudioClip comer;
+    [SerializeField]
+    private AudioSource audioSource;
+
     //Criar Array de Itens para ele dropar
     [Header("Valores")]
     [SerializeField]
@@ -75,18 +83,15 @@ public class Girafa : MonoBehaviour
         int escolha = Random.Range(0, 4);
         if (escolha == 0)
         {
-            Debug.Log("ANDAAA");
             destino = RandomNavMeshGenerator(10f);
             Movimentar(destino);
         }
         else if (escolha == 2)
         {
-            Debug.Log("Soninho");
             StartCoroutine(Deitado());
         }
         else if (escolha == 3)
         {
-            Debug.Log("COMEEE");
             Collider[] arvore = Physics.OverlapSphere(this.transform.position, 15f, LayerMask.GetMask("Arvore"));
             if (arvore.Length > 0)
             {
@@ -110,7 +115,6 @@ public class Girafa : MonoBehaviour
         }
         else if (escolha == 1)
         {
-            Debug.Log("STO DE BOA");
             yield return new WaitForSeconds(13f);
             StartCoroutine(Escolher());
         }
@@ -135,6 +139,7 @@ public class Girafa : MonoBehaviour
     public IEnumerator Deitado()
     {
         anim.SetBool("Deitado", true);
+        audioSource.PlayOneShot(deitar);
         yield return new WaitForSeconds(20f);
         anim.SetTrigger("Levantar");
         anim.SetBool("Deitado", false);
@@ -144,7 +149,7 @@ public class Girafa : MonoBehaviour
         Movimentar(destino);
         StartCoroutine(Escolher());
     }
-    public Vector3 RandomNavMeshGenerator(float raioCaminhada)
+    private Vector3 RandomNavMeshGenerator(float raioCaminhada)
     {
         Vector3 randomDirection = Random.insideUnitSphere * raioCaminhada;
         randomDirection += this.gameObject.transform.position;
@@ -160,10 +165,10 @@ public class Girafa : MonoBehaviour
     void Morrer()
     {
         StopAllCoroutines();
-        animal.Stop();
+        animal.isStopped = true;
         Debug.Log("Morri");
     }
-    public virtual void ReceberDano(int danoRecebido)
+    public virtual IEnumerator ReceberDano(int danoRecebido)
     {
         Vida -= danoRecebido;
 
@@ -180,8 +185,10 @@ public class Girafa : MonoBehaviour
         else
         {
             anim.SetBool("Deitado", false);
+            yield return new WaitForSeconds(2f);
             anim.SetTrigger("Tomar dano");
             anim.SetFloat("Vida", vida);
+            yield return new WaitForSeconds(1f);
             Correr();
         }
 
@@ -234,7 +241,9 @@ public class Girafa : MonoBehaviour
     {
         anim.SetBool("Caminhando", false);
         anim.SetBool("Comendo", true);
+        audioSource.PlayOneShot(comer);
         yield return new WaitForSeconds(9f);
+        audioSource.Stop();
         anim.SetBool("Comendo",false);
         StartCoroutine(Escolher());
     }

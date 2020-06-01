@@ -13,16 +13,31 @@ public class Condicoes
     public string descricao;
 
     #region HIDDENVARIABLES
+    [SerializeField]
+    private Dialogo dialogoDaCondição;
+    [SerializeField]
+    private bool isOnScene;
+    [SerializeField]
+    private string nameOnScene;
 
     public ItemPickup itemDaCondicao;
+
     public List<GameObject> inimigosDaCondicao;
-    public float raioDeSpawn = 2;
+    [SerializeField]
+    private float raioDeSpawn = 2;
+
     public float distanciaChegada = 5;
+
     public Interagivel interagivel;
 
     #endregion
 
     GameObject inimigoParent;
+
+    public bool IsOnScene()
+    {
+        return isOnScene;
+    }
 
 
     public void CleanUnsusedConditions()
@@ -64,12 +79,17 @@ public class Condicoes
 
         if(tipoCondicao == TipoCondicao.PEGA_ITEM)
         {
-            volta = CheckPegaItem();
+            volta = itemPego;
         }
 
         if(tipoCondicao == TipoCondicao.DEVOLVE_ITEM)
         {
             volta = CheckDevolveItem();
+        }
+
+        if(tipoCondicao == TipoCondicao.FALA)
+        {
+            volta = CheckFala();
         }
 
         return volta;
@@ -108,7 +128,6 @@ public class Condicoes
 
     private void OnInteracao(Interagivel interagido)
     {
-        Debug.Log(interagido.name + " - " + interagivel.name);
         if(interagido == interagivel)
         {
             interagiu = true;
@@ -122,12 +141,7 @@ public class Condicoes
 
     #region PEGA_ITEM
 
-    bool CheckPegaItem()
-    {
-        return itemPego;
-    }
-
-    bool itemPego;
+    bool itemPego = false;
 
     private void OnItemPego(Item item)
     {
@@ -147,6 +161,24 @@ public class Condicoes
     private bool CheckDevolveItem()
     {
         return interagiu;
+    }
+
+    #endregion
+
+    #region FALA
+    bool falou = false;
+
+    bool CheckFala()
+    {
+        return falou;
+    }
+
+    void OnFalaTerminada(Dialogo dialogo)
+    {
+        if(dialogo.whosDialog == this.descricao)
+        {
+            falou = true;
+        }
     }
 
     #endregion
@@ -171,18 +203,36 @@ public class Condicoes
             }
         }
 
-        if(tipoCondicao == TipoCondicao.INTERACAO || tipoCondicao == TipoCondicao.DEVOLVE_ITEM)
+        if(tipoCondicao == TipoCondicao.INTERACAO || tipoCondicao == TipoCondicao.DEVOLVE_ITEM || tipoCondicao == TipoCondicao.FALA)
         {
-            GameObject interagivelObj = MonoBehaviour.Instantiate(interagivel.gameObject, local, interagivel.gameObject.transform.rotation);
-            interagivel = interagivelObj.GetComponent<Interagivel>();
+            interagiu = false;
+            if (!isOnScene)
+            {
+                GameObject interagivelObj = MonoBehaviour.Instantiate(interagivel.gameObject, local, interagivel.gameObject.transform.rotation);
+                interagivel = interagivelObj.GetComponent<Interagivel>();       
+            }
+            else
+            {
+                interagivel = GameObject.Find(nameOnScene).GetComponent<Interagivel>();
+                local = interagivel.transform.position;
+            }
             EventsController.onInteracao += OnInteracao;
+        }
+
+        if(tipoCondicao == TipoCondicao.FALA)
+        {
+            falou = false;
+            dialogoDaCondição.whosDialog = this.descricao;
+            interagivel.SetDialogoCondicao(dialogoDaCondição);
+            EventsController.onDialogoTerminado += OnFalaTerminada;
         }
 
         if(tipoCondicao == TipoCondicao.PEGA_ITEM)
         {
-            GameObject itemObj = MonoBehaviour.Instantiate(itemDaCondicao.gameObject);
-            itemObj.transform.position = local;
+            itemPego = false;
             EventsController.onItemPego += OnItemPego;
+            GameObject itemObj = MonoBehaviour.Instantiate(itemDaCondicao.gameObject);
+            itemObj.transform.position = local;          
         }
     }
 }

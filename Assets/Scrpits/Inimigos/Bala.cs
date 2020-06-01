@@ -10,6 +10,8 @@ public class Bala : MonoBehaviour
     public int danoBala;
     public string targetTag;
 
+    public bool canBeLetal = false;
+
     Collider casterCollider;
     Rigidbody rb;
 
@@ -40,8 +42,20 @@ public class Bala : MonoBehaviour
 
         if (other.gameObject.CompareTag(targetTag) && Player.player.estadoPlayer != EstadoPlayer.MORTO)
         {
-            Debug.Log("Acertei o certo");
-            other.GetComponent<IVulnerable>().ReceberDano(danoBala);
+            bool letal = false;
+
+            if (canBeLetal)
+            {
+                int chance = Random.Range(0, 2);
+                if (chance == 1)
+                    letal = true;
+            }
+
+            if (letal)
+                other.GetComponent<IVulnerable>().ReceberDano(10000);
+            else
+                other.GetComponent<IVulnerable>().ReceberDano(danoBala);
+            
         }
 
         Destroy(this.gameObject);

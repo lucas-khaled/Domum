@@ -11,6 +11,7 @@ public class Inventario : MonoBehaviour
     private void Awake()
     {
         inventario = this;
+        
     }
 
     #endregion
@@ -19,18 +20,50 @@ public class Inventario : MonoBehaviour
     public SkinnedMeshRenderer armaMesh;
 
     public float pesoMaximo;   
-    public Arma armaDefault;
+    public Arma armaDefaultIovelik;
+    public Arma armaDefautTyva;
 
     [HideInInspector]
     public Arma armaEquipada;
 
     List<Item> itens = new List<Item>();
-    private float pesoInventario = 0;
+    public float pesoInventario = 0;
 
+
+    void LoadInventario()
+    {
+        armaEquipada = SaveSystem.data.inventarioData.armaEquipada;
+        armaMesh.sharedMesh = armaEquipada.armaMesh;
+
+        foreach(Item item in SaveSystem.data.inventarioData.itens)
+        {
+            AddItem(item);
+        }
+        
+    }
 
     private void Start()
     {
-        armaEquipada = armaDefault;
+        if (GameController.gameController.IsLoadedGame())
+        {
+            LoadInventario();
+        }
+        else
+        {
+            if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
+            {
+                armaEquipada = armaDefaultIovelik;
+            }
+            else
+            {
+                armaEquipada = armaDefautTyva;
+            }
+        }
+    }
+
+    public List<Item> Getitens()
+    {
+        return itens;
     }
 
     public bool AddItem(Item item)
@@ -45,6 +78,11 @@ public class Inventario : MonoBehaviour
             if (EventsController.onItemPego != null)
             {
                 EventsController.onItemPego.Invoke(item);
+                
+            }
+            if(EventsController.onInventarioChange != null)
+            {
+                EventsController.onInventarioChange.Invoke(item, true);
             }
         }
 
@@ -55,6 +93,10 @@ public class Inventario : MonoBehaviour
     {
         itens.Remove(item);
         pesoInventario -= item.peso;
+        if(EventsController.onInventarioChange != null)
+        {
+            EventsController.onInventarioChange.Invoke(item, false);
+        }
     }
 
     #region ARMA
@@ -64,7 +106,7 @@ public class Inventario : MonoBehaviour
         {
             UnequipArma();
             armaEquipada = arma;
-            itens.Remove(arma);
+            RemoverItem(arma);
             armaMesh.sharedMesh = arma.armaMesh;
         }
     }
@@ -74,23 +116,9 @@ public class Inventario : MonoBehaviour
         if (armaEquipada != null)
         {
             armaMesh.sharedMesh = null;
-            itens.Add(armaEquipada);
+            AddItem(armaEquipada);
             armaEquipada = null;
         }
     }
     #endregion
-
-    //so de teste. Apagar depois
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RemoverItem(itens[0]);
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Arma arma= (Arma)itens.Find(x => x.GetType() == typeof(Arma));
-            EquipArma(arma);
-        }
-    }
 }

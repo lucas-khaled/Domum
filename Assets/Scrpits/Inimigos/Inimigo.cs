@@ -11,10 +11,18 @@ public class Inimigo : MonoBehaviour, IVulnerable
     public Image lifeBar;
     public Animator anim;
     public NavMeshAgent NavMesh;
-    public Transform posicaoInicial;
+    public Vector3 posicaoInicial;
     public GameObject CBTprefab;
     public Item[] itensDropaveis;
-    private List<Item> itens = new List<Item>();
+    public Bau drop;
+
+    [Header("Audios")]
+    [SerializeField]
+    protected AudioSource audioSource;
+    [SerializeField]
+    private AudioClip passos;
+
+    private double audioAux;
 
     //Criar Array de Itens para ele dropar
     [Header("Valores")]
@@ -32,12 +40,21 @@ public class Inimigo : MonoBehaviour, IVulnerable
     [SerializeField]
     protected float velocidadeAtaque;
     [SerializeField]
+    protected float velocidadeAnim;
+    [SerializeField]
     private int experienciaMorte;
     private Transform hitCanvas;
+
     [SerializeField]
-    bool tanque;
+    protected Transform hitPoint;
+
+    protected bool canAttack = true;
 
     protected float ataqueCooldown;
+
+    [HideInInspector]
+    public bool morto = false;
+
     public int Vida
     {
         get { return vida; }
@@ -66,6 +83,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
+        posicaoInicial = this.transform.position;
     }
 
     //realiza o ataque do inimigo
@@ -75,28 +93,37 @@ public class Inimigo : MonoBehaviour, IVulnerable
         {
             yield break;
         }
+
+        canAttack = false;
+
         int escolha = Random.Range(1, 3);
         if (escolha == 1)
             anim.SetTrigger("Ataque 1");
         else
             anim.SetTrigger("Ataque 2");
-
-        Collider[] hit = Physics.OverlapSphere(transform.position, distanciaAtaque, LayerMask.GetMask("Player"));
-
-        // é checado se o ataque atingiu o player e lhe dá o dano
-        if (hit.Length > 0)
-        {
-            hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio);
-        }
-
-        //reseta o cooldown(espera) do ataque e espera para tocar a animação
-
-        ataqueCooldown = velocidadeAtaque;
-        yield return new WaitForSeconds(0.5f);              
+        
+        yield return new WaitForSeconds(velocidadeAtaque);
+        canAttack = true;
     }
 
-    public virtual void ReceberDano(int danoRecebido)
+    public void DoDamage()
     {
+        Collider[] hit = Physics.OverlapSphere(hitPoint.position, 0.7f, LayerMask.GetMask("Player"));
+        if (hit.Length > 0)
+        {
+            Debug.Log(hit[0].name);
+            hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio, this);
+        }
+    }
+
+
+    public virtual void ReceberDano(int danoRecebido, Inimigo inim = null)
+    {
+        if (morto)
+        {
+            return;
+        }
+
         Vida -= danoRecebido;
         
         //chama metodo do UIController para exibir o dano no worldCanvas
@@ -119,7 +146,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
    
     protected virtual void Morrer()
     {
-        Destroy(this.gameObject, 60);
+        Destroy(this.gameObject, 10);
         anim.SetBool("Morreu", true);
 
         Destroy(GetComponent<NavMeshAgent>());
@@ -129,6 +156,9 @@ public class Inimigo : MonoBehaviour, IVulnerable
         {
             Destroy(destruir.gameObject);
         }
+
+        morto = true;
+        DroparLoot();
 
         //AQUI O DELEGATE DE MORTE DO INIGO É CHAMADO E TODOS OS MÉTODOS INSCRITOS NESTE DELEGATE SERÃO CHAMADOS
         if (EventsController.onMorteInimigoCallback != null)
@@ -140,13 +170,16 @@ public class Inimigo : MonoBehaviour, IVulnerable
     void DroparLoot()
     {
         int numeroItens = Random.Range(0, 4);
+
+        Debug.Log(numeroItens);
+
+        Bau dropzera = Instantiate(drop.gameObject, transform.position, transform.rotation).GetComponent<Bau>();
+
         for (int i = 0; i <= numeroItens; i++)
         {
             int itemEsc = Random.Range(0, itensDropaveis.Length);
-            itens.Add(itensDropaveis[itemEsc]);
-        }
-        
-        // Acessar inventário de loot
+            dropzera.itens.Add(itensDropaveis[itemEsc]);
+        }        
     }
 
     protected void Movimentar(Vector3 destino, bool move = true)
@@ -161,23 +194,44 @@ public class Inimigo : MonoBehaviour, IVulnerable
         NavMesh.SetDestination(destino);
     }
 
+    void FaceTarget()
+    {
+        Vector3 direcao = (Player.player.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direcao.x, 0, direcao.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime*5);
+    }
+
     protected virtual void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.tag == "Player" && hostil && Player.player.estadoPlayer != EstadoPlayer.MORTO)
         {
+            float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
+
             anim.SetBool("Idle", false);
             bool mover = true;
 
-            float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
+            if (audioAux <= 0 && distancia > distanciaAtaque)
+            {
+                audioSource.volume = Random.Range(0.8f, 1);
+                audioSource.pitch = Random.Range(0.8f, 1.1f);
+                audioSource.PlayOneShot(passos);
+                audioAux = 0.5f;
+            }
+            else audioAux -= Time.deltaTime;
+
             if (distancia <= distanciaAtaque)
             {
-                anim.SetBool("Idle", true);
+                anim.SetBool("PertoPlayer", true);
                 mover = false;
-                if(ataqueCooldown<=0)
+                FaceTarget();
+                if (canAttack)
                   StartCoroutine(Atacar());        
             }
+            else
+            {
+                anim.SetBool("PertoPlayer", false);
+            }
 
-            ataqueCooldown -= Time.deltaTime * 1;
             Movimentar(collider.transform.position, mover);
         }
 
@@ -186,7 +240,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         if (collider.gameObject.tag == "Player")
         {
-            Movimentar(posicaoInicial.position);
+            Movimentar(posicaoInicial);
             ataqueCooldown = 0;
             anim.SetBool("Idle", true);
         }
@@ -209,5 +263,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(gameObject.transform.position, distanciaAtaque);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(hitPoint.position, 0.7f);
     }
 }

@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum OrigemInput { MOUSE, JOYSTICK }
+
 [RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour
 {
 
-    private enum OrigemInput {MOUSE, JOYSTICK}
+    [SerializeField]
+    private float Sensibilidade_cam = 1;
+    [SerializeField]
+    private float baseOffset;
+    [SerializeField]
+    private Transform Target;
+    [SerializeField]
+    private float zoomSpeed;
 
-    private OrigemInput origem;
-
-    public float Sensibilidade_cam = 1;
-    public Transform Target;
-
-    float mouseX, mouseY, controleX, controleY, baseOffset;
+    float mouseX, mouseY, controleX, controleY;
     float controleXEsq, grauRotacao;
+
+    [HideInInspector]
+    public bool Trava;
     
 
     public Camera cam;
 
-    /*public Transform posicaoMira;
-    
-    public Transform posicaoInicial;
-    */
+    Transform obstrucao;
     
     #region SINGLETON
     public static CameraController cameraInstance;
@@ -37,6 +41,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        obstrucao = Target;
         baseOffset = Target.position.y - Player.player.transform.position.y; 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -44,12 +49,12 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Player.player.estadoPlayer != EstadoPlayer.MORTO)
+        if (Player.player.estadoPlayer != EstadoPlayer.MORTO && !Trava)
         {
-            CamControl(QualOrigemInput());
+            CamControl(GameController.gameController.QualOrigemInput());
         }
         CamFolow();
-
+        CamObstruction();
     }
 
     void CamFolow()
@@ -65,7 +70,6 @@ public class CameraController : MonoBehaviour
     {
         if (origemInput == OrigemInput.JOYSTICK)
         {
-            Debug.Log(Input.GetAxis("RightStickVertical"));
 
             controleX += Input.GetAxis("RightStickHorizontal") * Sensibilidade_cam;
             controleY += Input.GetAxisRaw("RightStickVertical") * Sensibilidade_cam;
@@ -80,8 +84,8 @@ public class CameraController : MonoBehaviour
         else
         {
             mouseX += Input.GetAxis("Mouse X") * Sensibilidade_cam;
-            mouseY -= Input.GetAxis("Mouse Y") * Sensibilidade_cam;
-            mouseY = Mathf.Clamp(mouseY, -35, 60);
+            mouseY += Input.GetAxis("Mouse Y") * Sensibilidade_cam;
+            mouseY = Mathf.Clamp(mouseY, -25, 60);
 
             transform.LookAt(Target);
 
@@ -99,47 +103,64 @@ public class CameraController : MonoBehaviour
     }
 
 
-    private OrigemInput QualOrigemInput()
+   
+
+    MeshRenderer desliga = null;
+    void CamObstruction()
     {
-        OrigemInput origemAtual = OrigemInput.MOUSE;
+        RaycastHit hit;
 
-        string[] temp = Input.GetJoystickNames();
-        if (temp.Length > 0 && !string.IsNullOrEmpty(temp[0]))
-            origemAtual = OrigemInput.JOYSTICK;
+        if(Physics.Raycast(transform.position, Target.position - transform.position, out hit, Vector3.Distance(transform.position, Player.player.transform.position)))
+        {
+            if (!hit.transform.CompareTag("Player"))
+            {
+                obstrucao = hit.transform;
 
-        return origemAtual;
+                desliga = GetMeshRenderer(obstrucao);
+
+                if(desliga != null)
+                    desliga.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+
+                if(Vector3.Distance(transform.position, obstrucao.position) >= 6f && Vector3.Distance(transform.position, Target.position) >= 3.5f)
+                {
+                    transform.Translate(transform.forward * zoomSpeed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                if(desliga != null)
+                    desliga.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+
+                if(Vector3.Distance(transform.position, Target.position) < 7f)
+                {
+                    transform.Translate(-transform.forward * zoomSpeed * Time.deltaTime);
+                }
+            }
+        }
     }
 
-    /*void ChangeCameraPosition(bool ligado)
+    MeshRenderer GetMeshRenderer(Transform pai)
     {
-        Debug.Log("Camera Listened" +  ligado);
-        if (ligado)
-            StartCoroutine(MoveCamera(posicaoMira));
-        else
-            StartCoroutine(MoveCamera(posicaoInicial));
-    }
-
-    IEnumerator MoveCamera(Transform target)
-    {
-        camFollow.IsChanging(true);
-        float newX = transform.localPosition.x;
-        float newY = transform.localPosition.y;
-        float newZ = transform.localPosition.z;
-
-        Vector3 diference = target.localPosition - transform.localPosition; 
-
-        while (Vector3.Distance(transform.localPosition, target.localPosition) > 0) {
-
-            newX = Mathf.Clamp(newX + diference.x * 0.1f, Mathf.Min(transform.localPosition.x, target.localPosition.x), Mathf.Max(transform.localPosition.x, target.localPosition.x));
-            newY = Mathf.Clamp(newY + diference.y * 0.1f, Mathf.Min(transform.localPosition.y, target.localPosition.y), Mathf.Max(transform.localPosition.y, target.localPosition.y));
-            newZ = Mathf.Clamp(newZ + diference.z * 0.1f, Mathf.Min(transform.localPosition.z, target.localPosition.z), Mathf.Max(transform.localPosition.z, target.localPosition.z));
-
-            transform.localPosition = new Vector3(newX, newY, newZ);
-            yield return new WaitForSeconds(0.2f);
+        MeshRenderer volta = pai.gameObject.GetComponent<MeshRenderer>();
+        if(volta != null)
+        {
+            Debug.Log("1 " + volta.name);
+            return volta;
         }
 
-        camFollow.IsChanging(false);
-        Debug.Log("Cheguei");
-    }*/
+        for(int i = 0; i < pai.childCount; i++)
+        {
+            volta = GetMeshRenderer(pai.GetChild(i));
+
+            if (volta != null)
+            {
+                Debug.Log(volta.name);
+                break;
+            }
+        }
+
+        return volta;
+            
+    }
 
 }

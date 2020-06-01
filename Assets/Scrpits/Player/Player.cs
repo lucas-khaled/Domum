@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL, MORTO }
+public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL, MORTO, INTERAGINDO }
 
 [RequireComponent(typeof(Rigidbody))] [RequireComponent(typeof(Collider))] [RequireComponent(typeof(StatusPlayer))] [RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour, IVulnerable
@@ -13,6 +13,18 @@ public class Player : MonoBehaviour, IVulnerable
 
     [HideInInspector]
     public StatusPlayer status;
+
+    [Header("Audio Players")]
+    [SerializeField]
+    private AudioClip movimento;
+    [SerializeField]
+    private AudioClip ataque;
+    [SerializeField]
+    private AudioClip passos;
+    [SerializeField]
+    protected AudioSource audioSource;
+
+    private float audioAux;
 
     [Header("Referências")]
     public Transform posicaoHit;
@@ -25,34 +37,41 @@ public class Player : MonoBehaviour, IVulnerable
     private float raioPercepcao;
     [SerializeField]
     private float raioAtaque = 2f;
-    public int numAtaque = 2;
+    [SerializeField]
+    private float espera;
+
+
 
     protected Rigidbody rb;
+    protected bool podeAtacar = true;
+    protected int numClick = 0;
 
-    bool outroAtaque;
-    private float attack = 0;
+
     private Transform hitCanvas;
 
     #region GETTERS & SETTERS
+
+
 
     public EstadoPlayer estadoPlayer
     {
         get { return estado_player; }
 
-        protected set
+        set
         {
             if (status.Vida <= 0)
             {
                 estado_player = EstadoPlayer.MORTO;
+                UIController.uiController.PainelMorteOn();
                 return;
             }
 
             estado_player = value;
-            if (value == EstadoPlayer.NORMAL)
+
+            if (EventsController.onPlayerStateChanged != null)
             {
-                InvokeRepeating("ProcuraInimigo", 0f, 0.2f); 
+                EventsController.onPlayerStateChanged.Invoke(estado_player);
             }
-            EventsController.onPlayerStateChanged.Invoke(estado_player);
         }
     }
     #endregion
@@ -67,7 +86,7 @@ public class Player : MonoBehaviour, IVulnerable
 
         EventsController.onMorteInimigoCallback += OnMorteInimigo;
 
-        player = this;     
+        player = this;
     }
 
     protected virtual void Start()
@@ -85,83 +104,36 @@ public class Player : MonoBehaviour, IVulnerable
         rb.velocity = (transform.forward * 5);
     }
 
-    private bool CheckCombo()
-    {
-        if(attack == 1)
-        {
-            attack = 0;
-            return false;
-        }
-        else
-        {
-            attack += Mathf.Clamp(1f / numAtaque-1, 0, 1);
-            return true;
-        }
-    }
-
     protected IEnumerator WaitForAnimation(string animacao)
     {
-
-        while(animator.GetCurrentAnimatorStateInfo(0).IsName(animacao))
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName(animacao))
         {
             yield return null;
         }
 
     }
 
-    int QualAtaque()
+    private void Atacar()
     {
-        int x = 0;
-        int retorno = 0;
-        for(int i = 1; i<=numAtaque; i++)
+        if (podeAtacar && numClick < status.NumAtaque)
         {
-            retorno = i;
-            if(attack == x)
-            {
-                break;
-            }
-            x += 1 / numAtaque-1;
+            audioSource.PlayOneShot(ataque);
+            numClick++;
         }
-        return retorno;
-    }
 
-    private IEnumerator Atacar()
-    {
-
-        if (CheckCombo() && outroAtaque)
+        if (numClick == 1)
         {
+            animator.SetInteger("Ataque", 1);
+            audioSource.PlayOneShot(ataque);
+            animator.applyRootMotion = true;
             estadoPlayer = EstadoPlayer.ATACANDO;
-            animator.SetBool("Atacando", true);
-
-            outroAtaque = false;
-           
-
-            /*Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioAtaque, LayerMask.GetMask("Inimigo"));
-
-            if (hit.Length > 0)
-            {
-                int danin = CalculaDano();
-                hit[0].gameObject.GetComponent<Inimigo>().ReceberDano(danin);
-            }*/
-
-            yield return WaitForAnimation("Attack"+ QualAtaque());
-
-            
-            if (!outroAtaque)
-            {
-                //MoverPlayerAtaque();
-                animator.SetBool("Atacando", false);
-                estadoPlayer = EstadoPlayer.COMBATE;
-                attack = 0;
-            }
         }
-
     }
 
     public int CalculaDano()
     {
         return status.DanoMedio + Random.Range(-5, 5);
-    } 
+    }
     // Passei essa parte do calcula dano para o script de ArmaPlayer, não faz sentido o player calcular o dano que
     // vai ser passado no inimigo pelo script ArmaPlayer.
     // mantive comentado só pra você saber o que aconteceu.
@@ -171,13 +143,13 @@ public class Player : MonoBehaviour, IVulnerable
         estadoPlayer = EstadoPlayer.MORTO;
     }
 
-    public virtual void ReceberDano(int danoRecebido)
+    public virtual void ReceberDano(int danoRecebido, Inimigo inim = null)
     {
         status.Vida -= danoRecebido;
         UIController.uiController.InitCBT(danoRecebido.ToString(), CBTprefab, hitCanvas);
         string nomeAnim = "Dano";
 
-        if(danoRecebido > status.maxVida*30/100)
+        if (danoRecebido > status.maxVida * 30 / 100)
         {
             nomeAnim += "Forte";
         }
@@ -190,15 +162,17 @@ public class Player : MonoBehaviour, IVulnerable
 
         animator.applyRootMotion = true;
         StartCoroutine(Dano(nomeAnim));
-        
+
     }
 
     private IEnumerator Dano(string animationName)
     {
-        estadoPlayer = EstadoPlayer.DANO;
-
-        animator.SetTrigger(animationName);
-        yield return WaitForAnimation(animationName);
+        if (!(estadoPlayer == EstadoPlayer.ATACANDO) && !(estadoPlayer == EstadoPlayer.INTERAGINDO) && !(estadoPlayer == EstadoPlayer.RECARREGAVEL))
+        {
+            estadoPlayer = EstadoPlayer.DANO;
+            animator.SetTrigger(animationName);
+            yield return WaitForAnimation(animationName);
+        }
 
         if (animationName == "Morte")
         {
@@ -208,7 +182,7 @@ public class Player : MonoBehaviour, IVulnerable
         {
             estadoPlayer = EstadoPlayer.COMBATE;
         }
-        
+
     }
 
     protected Vector3 ProcuraInimigo()
@@ -219,13 +193,11 @@ public class Player : MonoBehaviour, IVulnerable
         {
             foreach (Collider inimigo in hit)
             {
-                    if (inimigo.GetComponent<Inimigo>().hostil && inimigo.gameObject.activeSelf)
-                    {
-                        estadoPlayer = EstadoPlayer.COMBATE;
-                        CancelInvoke("ProcuraInimigo");
-                        return inimigo.transform.position;
-                    }
-            }         
+                if (inimigo.GetComponent<Inimigo>().hostil && !inimigo.GetComponent<Inimigo>().morto)
+                {
+                    return inimigo.transform.position;
+                }
+            }
         }
 
         return Vector3.zero;
@@ -241,22 +213,38 @@ public class Player : MonoBehaviour, IVulnerable
         }
 
     }
-    #endregion
 
-    /*void VerificarColetaveis()
+    public void ResetCanAttack()
     {
-        
-    }*/
+        podeAtacar = true;
+        numClick = 0;
+        animator.applyRootMotion = false;
+
+        if (estadoPlayer == EstadoPlayer.INTERAGINDO)
+            return;
+
+        if (ProcuraInimigo() == Vector3.zero)
+        {
+            estadoPlayer = EstadoPlayer.NORMAL;
+        }
+
+        else
+        {
+            estadoPlayer = EstadoPlayer.COMBATE;
+        }
+    }
+
+
+    #endregion
 
     protected virtual void Update()
     {
         Movimento();
-            
+        audioAux -= Time.deltaTime;
 
-        if (Input.GetButtonDown("Attack") && estadoPlayer == EstadoPlayer.COMBATE)
+        if (Input.GetButtonDown("Attack") && (estadoPlayer != EstadoPlayer.RECARREGAVEL && estadoPlayer != EstadoPlayer.MORTO) && podeAtacar && Time.timeScale != 0)
         {
-            outroAtaque = true;
-            StartCoroutine(Atacar());
+            Atacar();
         }
 
         if (Input.GetButtonDown("Interact"))
@@ -265,11 +253,34 @@ public class Player : MonoBehaviour, IVulnerable
         }
     }
 
-
     void Movimento()
     {
         if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
         {
+            if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+            {
+                if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.TYVA)
+                {
+                    if (audioAux <= 0)
+                    {
+                        audioSource.volume = Random.Range(0.8f, 1);
+                        audioSource.pitch = Random.Range(0.8f, 1.1f);
+                        audioSource.PlayOneShot(passos);
+                        audioAux = 0.32f;
+                    }
+                }
+                else
+                {
+                    if (audioAux <= 0)
+                    {
+                        audioSource.volume = Random.Range(0.8f, 1);
+                        audioSource.pitch = Random.Range(0.8f, 1.1f);
+                        audioSource.PlayOneShot(passos);
+                        audioAux = 0.58f;
+                    }
+                }
+            }
+
             animator.applyRootMotion = false;
             float y = Mathf.Lerp(animator.GetFloat("VetY"), Input.GetAxis("Vertical"), 0.4f);
             float x = Mathf.Lerp(animator.GetFloat("VetX"), Input.GetAxis("Horizontal"), 0.4f);
@@ -281,22 +292,26 @@ public class Player : MonoBehaviour, IVulnerable
         }
     }
 
-
     public void Curar(int cura)
     {
-
+        status.Vida += cura;
     }
 
     private void Interagir()
-    {
-        if (InteracaoController.instance.interagivelAtual != null)
-            InteracaoController.instance.interagivelAtual.Interact();     
+    {     
+        InteracaoController.instance.Interact();     
     }
 
     void OnMorteInimigo(int xp)
     {
         status.Experiencia += xp;
         StartCoroutine(ProcuraInimigoMorte());
+    }
+
+    public void SetPlayerOnIdle()
+    {
+        animator.SetFloat("VetY", 0);
+        animator.SetFloat("VetX", 0);
     }
 
 

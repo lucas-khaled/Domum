@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum TipoPlayer { TYVA, IOVELIK };
 
-[CreateAssetMenu(fileName = "Nova Arma", menuName = "Inventário/Arma")]
+[CreateAssetMenu(fileName = "Nova Arma", menuName = "Inventário/Arma")] 
 public class Arma : Item
 {
     public TipoPlayer armaPlayer;
