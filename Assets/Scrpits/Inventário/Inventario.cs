@@ -27,7 +27,7 @@ public class Inventario : MonoBehaviour
     public Arma armaEquipada;
 
     List<Item> itens = new List<Item>();
-    public float pesoInventario = 0;
+    public float pesoInventario { get; private set; }
 
 
     void LoadInventario()
@@ -50,6 +50,7 @@ public class Inventario : MonoBehaviour
         }
         else
         {
+            pesoInventario = 0;
             if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
             {
                 armaEquipada = armaDefaultIovelik;

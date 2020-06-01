@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
         {
             isLoadedGame = true;
             qualPlayer = (TipoPlayer)data.playerData.qualPlayer;
-            ChangeScene("Mapa");
+            ChangeScene("Level");
         }
     }
 
