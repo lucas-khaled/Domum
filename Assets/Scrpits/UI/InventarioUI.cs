@@ -28,6 +28,8 @@ public class InventarioUI : MonoBehaviour
     [SerializeField]
     private Text peso;
     [SerializeField]
+    private Text dano;
+    [SerializeField]
     private Image ArmaEq;
 
 
@@ -177,6 +179,15 @@ public class InventarioUI : MonoBehaviour
         Titulo.text = item.nome;
         peso.text = item.peso.ToString();
         Valor_venda.text = item.custoMoeda.ToString();
+
+        if (item.GetType() == typeof(Arma)) {
+            Arma arma = (Arma)item;
+            dano.text = arma.dano.ToString();
+        }
+        else {
+            dano.text = "---";
+        }
+
         selecionado = item;
     }
 }

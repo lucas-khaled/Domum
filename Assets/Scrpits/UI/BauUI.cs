@@ -22,7 +22,7 @@ public class BauUI : MonoBehaviour
     private Transform content;
 
     [SerializeField]
-    private Text moedaText, descricaoText, tituloText, pesoTexto; 
+    private Text moedaText, descricaoText, tituloText, pesoTexto, danoTexto; 
 
     private List<GameObject> instancias = new List<GameObject>();
 
@@ -93,6 +93,16 @@ public class BauUI : MonoBehaviour
         descricaoText.text = item.descricao;
         moedaText.text = item.custoMoeda.ToString();
         pesoTexto.text = item.peso.ToString();
+
+        if (item.GetType() == typeof(Arma)) {
+            Arma arma = (Arma)item;
+            danoTexto.text = arma.dano.ToString();
+        }
+        else {
+            danoTexto.text = "--";
+        }
+
+
 
         InvokeRepeating("SetDescriptionInMousePlace", 0, 0.1f);
     }
