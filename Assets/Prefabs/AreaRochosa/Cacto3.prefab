@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2295693407865342621}
+  - component: {fileID: 737157311696624821}
   m_Layer: 0
   m_Name: Cacto3
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -105.51601, z: 0}
+--- !u!136 &737157311696624821
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2990576129600125070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.38681278
+  m_Height: 4.25119
+  m_Direction: 1
+  m_Center: {x: -0.0053927903, y: 1.6255951, z: 2.3463245e-11}
 --- !u!1 &7707432013642574495
 GameObject:
   m_ObjectHideFlags: 0

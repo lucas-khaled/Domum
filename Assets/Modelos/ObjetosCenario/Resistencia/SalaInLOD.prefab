@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 5447562106251374103}
   - component: {fileID: 8332653389614990548}
   - component: {fileID: 6473326336669078944}
+  - component: {fileID: 3502377818550602065}
   m_Layer: 0
   m_Name: SalaInLOD
   m_TagString: Untagged
@@ -159,8 +160,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.927953, y: 4.5966887, z: 2.7165298}
-  m_Center: {x: -0.11218119, y: 2.25796, z: -9.447178}
+  m_Size: {x: 10.927953, y: 4.4998903, z: 1.3888626}
+  m_Center: {x: -0.11218119, y: 2.3063593, z: -10.1110115}
 --- !u!65 &3010742782156991913
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -213,6 +214,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.1745853, y: 1, z: 1.4284782}
   m_Center: {x: 3.6950216, y: 0, z: 2.7035809}
+--- !u!65 &3502377818550602065
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275790499983867384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.558619, y: 1.2067237, z: 14.675377}
+  m_Center: {x: -0.052659035, y: 0.103361845, z: -3.4989738}
 --- !u!1 &6961368410003232314
 GameObject:
   m_ObjectHideFlags: 0
