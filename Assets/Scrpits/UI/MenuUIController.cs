@@ -45,6 +45,13 @@ public class MenuUIController : MonoBehaviour
         getVolumeAudio();
 
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
+
+        if(GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
+        {
+            Cursor.visible = false;
+            CameraController.cameraInstance.Trava = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public void CarregaJogo()

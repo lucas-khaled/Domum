@@ -221,10 +221,13 @@ public class UIController : MonoBehaviour
 
             Pause.SetActive(true);
             CameraController.cameraInstance.Trava = true;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
 
+            if (GameController.gameController.QualOrigemInput() == OrigemInput.MOUSE)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 0;
+            }
         }
 
     }

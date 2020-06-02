@@ -73,7 +73,7 @@ public class QuestLogUI : MonoBehaviour
 
    private void Start()
    {
-        GameObject go = GameObject.Find("IconeMissão");
+        GameObject go = GameObject.Find("IconeMissao");
         iconeSpriteRenderer = go.GetComponent<SpriteRenderer>();
         go.SetActive(false);
         go.transform.position = Vector3.zero;

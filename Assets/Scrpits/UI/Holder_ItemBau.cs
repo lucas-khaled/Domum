@@ -10,9 +10,6 @@ public class Holder_ItemBau : Button, ISelectHandler
     public Item item;
     public Image spriteItem;
 
-    private int clickCount;
-    private float selectedCount;
-
     protected override void Start()
     {
         base.Start();
@@ -23,13 +20,23 @@ public class Holder_ItemBau : Button, ISelectHandler
     public override void OnSelect(BaseEventData eventData)
     {
         base.OnSelect(eventData);
+        if(GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
+        {
+            dentro = true;
+            StartCoroutine(MouseTimeOver());
+        }
     }
 
     public override void OnDeselect(BaseEventData eventData)
     {
         base.OnDeselect(eventData);
 
-        clickCount = 0;
+        if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
+        {
+            dentro = false;
+            BauUI.bauUI.CloseDescricao();
+            StartCoroutine(MouseTimeOver());
+        }
     }
 
     public override void OnPointerClick(PointerEventData eventData)

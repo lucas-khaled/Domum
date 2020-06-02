@@ -21,6 +21,34 @@ public class Holder_Item : Button, ISelectHandler
         }
     }
 
+    public override void OnSubmit(BaseEventData eventData)
+    {
+        base.OnSubmit(eventData);
+        if (!isLoja)
+        {
+            InventarioUI.inventarioUI.ShowInfo(item);
+            InventarioUI.inventarioUI.ApareceExcluir();
+            if (item.GetType() == typeof(Arma))
+            {
+                Arma arma = (Arma)item;
+                if (GameController.gameController.GetPersonagemEscolhido() == arma.armaPlayer)
+                {
+                    InventarioUI.inventarioUI.ApareceEquipar();
+                }
+            }
+
+            else if (item.GetType() == typeof(Cura))
+            {
+                InventarioUI.inventarioUI.ApareceUsar();
+            }
+        }
+
+        else
+        {
+            LojaUI.lojaUi.SetItemSelecionado(this);
+        }
+    }
+
     public override void OnSelect(BaseEventData eventData)
     {
         base.OnSelect(eventData);

@@ -134,6 +134,12 @@ public class ArvoreDeHabilidades : MonoBehaviour
 
         for(int i = 0; i<skillsAtivar.Length; i++)
         {
+            if (skillsAtivar[i].IsActive())
+            {
+                buttonAtivar[i].transform.GetChild(0).gameObject.SetActive(true);
+                buttonAtivar[i].transform.GetChild(0).GetComponent<Animation>().Play();
+            }
+
             if(i!=skillsAtivar.Length-1 && i%2 == 0)
             {
                 skillsAtivar[i].podeAtivar = true;
