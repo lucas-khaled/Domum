@@ -4,9 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class UIController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject pauseInicio;
+    [SerializeField]
+    private GameObject habilidadeIovelik;
+
     public Image questAceitaTerminada;
     public GameObject questLogHUD;
     public GameObject posicao;
@@ -211,11 +217,13 @@ public class UIController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Escape) && Player.player.estadoPlayer != EstadoPlayer.MORTO){
 
-        Pause.SetActive(true);
-        CameraController.cameraInstance.Trava = true;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
+            MudaBotaoSelecionado(pauseInicio);
+
+            Pause.SetActive(true);
+            CameraController.cameraInstance.Trava = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
 
         }
 
@@ -245,5 +253,29 @@ public class UIController : MonoBehaviour
     public void MudarCena(string cena)
     {
         SceneManager.LoadScene(cena);
+    }
+
+    public void SelecionaHabilidades(GameObject habilidade)
+    {
+        if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK && GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.TYVA)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(habilidade);
+        }
+        else if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(habilidadeIovelik);
+        }
+    }
+
+    public void MudaBotaoSelecionado(GameObject selecionado)
+    {
+        if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(selecionado);
+        }
+            
     }
 }
