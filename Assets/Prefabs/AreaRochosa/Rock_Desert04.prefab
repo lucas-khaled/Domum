@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8818318206812494185}
   - component: {fileID: 8220031557535076269}
+  - component: {fileID: 8855347369248939876}
   m_Layer: 0
   m_Name: Rock_Desert04
   m_TagString: Untagged
@@ -135,6 +136,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8564461675930333562}
   m_Enabled: 1
+--- !u!65 &8855347369248939876
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5493173737060428666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.726532, y: 0.4909668, z: 0.77285767}
+  m_Center: {x: 3.3465424, y: 0.4690857, z: -0.012619019}
 --- !u!1 &6311073854967394798
 GameObject:
   m_ObjectHideFlags: 0

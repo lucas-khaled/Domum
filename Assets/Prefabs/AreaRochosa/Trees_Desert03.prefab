@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3655636250781485036}
   - component: {fileID: 4235903023183106344}
+  - component: {fileID: 6683766966525015126}
   m_Layer: 0
   m_Name: Trees_Desert03
   m_TagString: Untagged
@@ -56,6 +57,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5548024215647285094}
   m_Enabled: 1
+--- !u!136 &6683766966525015126
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351338039295473151}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.27298403
+  m_Height: 3.397667
+  m_Direction: 1
+  m_Center: {x: -2.8587952, y: 1.6884842, z: 0.0028662682}
 --- !u!1 &6028377170603833033
 GameObject:
   m_ObjectHideFlags: 0

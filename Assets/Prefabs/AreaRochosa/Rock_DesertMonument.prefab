@@ -168,6 +168,9 @@ GameObject:
   m_Component:
   - component: {fileID: 922864158482864802}
   - component: {fileID: 341484699639975014}
+  - component: {fileID: 8149478250346829015}
+  - component: {fileID: 8329490841394360656}
+  - component: {fileID: 5454670092367251480}
   m_Layer: 0
   m_Name: Rock_DesertMonument
   m_TagString: Untagged
@@ -219,6 +222,45 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7775007910410683812}
   m_Enabled: 1
+--- !u!65 &8149478250346829015
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221550468995311793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3603591, y: 3.75921, z: 1}
+  m_Center: {x: -6.9186287, y: 1.3796022, z: -0.00003112142}
+--- !u!65 &8329490841394360656
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221550468995311793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1801943, y: 4.147459, z: 1}
+  m_Center: {x: -3.3345907, y: 1.6430535, z: -0.000010056581}
+--- !u!65 &5454670092367251480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221550468995311793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.2450767, y: 1.4851458, z: 1}
+  m_Center: {x: -5.325015, y: 2.7659101, z: -0.000008151026}
 --- !u!1 &9215747931755988871
 GameObject:
   m_ObjectHideFlags: 0
