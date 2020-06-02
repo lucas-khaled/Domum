@@ -61,4 +61,10 @@ public class MenuUIController : MonoBehaviour
     {
         GameController.gameController.FecharJogo();
     }
+
+    public void selecionaBotaoEscolha(GameObject selecionado)
+    {
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(selecionado);
+    }
 }
