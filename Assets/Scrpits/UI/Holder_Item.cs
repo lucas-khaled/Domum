@@ -24,6 +24,7 @@ public class Holder_Item : Button, ISelectHandler
     public override void OnSubmit(BaseEventData eventData)
     {
         base.OnSubmit(eventData);
+
         if (!isLoja)
         {
             InventarioUI.inventarioUI.ShowInfo(item);
@@ -52,28 +53,32 @@ public class Holder_Item : Button, ISelectHandler
     public override void OnSelect(BaseEventData eventData)
     {
         base.OnSelect(eventData);
-        if (!isLoja)
+
+        if (GameController.gameController.QualOrigemInput() == OrigemInput.MOUSE)
         {
-            InventarioUI.inventarioUI.ShowInfo(item);
-            InventarioUI.inventarioUI.ApareceExcluir();
-            if (item.GetType() == typeof(Arma))
+            if (!isLoja)
             {
-                Arma arma = (Arma)item;
-                if (GameController.gameController.GetPersonagemEscolhido() == arma.armaPlayer)
+                InventarioUI.inventarioUI.ShowInfo(item);
+                InventarioUI.inventarioUI.ApareceExcluir();
+                if (item.GetType() == typeof(Arma))
                 {
-                    InventarioUI.inventarioUI.ApareceEquipar();
+                    Arma arma = (Arma)item;
+                    if (GameController.gameController.GetPersonagemEscolhido() == arma.armaPlayer)
+                    {
+                        InventarioUI.inventarioUI.ApareceEquipar();
+                    }
+                }
+
+                else if (item.GetType() == typeof(Cura))
+                {
+                    InventarioUI.inventarioUI.ApareceUsar();
                 }
             }
 
-            else if(item.GetType() == typeof(Cura))
+            else
             {
-                InventarioUI.inventarioUI.ApareceUsar();
+                LojaUI.lojaUi.SetItemSelecionado(this);
             }
-        }
-
-        else
-        {
-            LojaUI.lojaUi.SetItemSelecionado(this);
         }
     }
 
@@ -81,14 +86,17 @@ public class Holder_Item : Button, ISelectHandler
     {
         base.OnDeselect(eventData);
 
-        if (!isLoja)
+        if (GameController.gameController.QualOrigemInput() == OrigemInput.MOUSE)
         {
-            InventarioUI.inventarioUI.ClearOpcoes();
-        }
+            if (!isLoja)
+            {
+                InventarioUI.inventarioUI.ClearOpcoes();
+            }
 
-        else
-        {
-            LojaUI.lojaUi.DeselectItem();
+            else
+            {
+                LojaUI.lojaUi.DeselectItem();
+            }
         }
     }
 }
