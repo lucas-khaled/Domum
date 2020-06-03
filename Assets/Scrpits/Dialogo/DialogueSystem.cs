@@ -22,8 +22,6 @@ public class DialogueSystem:MonoBehaviour
     private float letterDelay = 0.1f;
     private float letterMultiplier = 0.5f;
 
-    private KeyCode DialogueInput = KeyCode.E;
-
     public string Names;
 
     private bool letterIsMultiplied = false;
@@ -132,7 +130,7 @@ public class DialogueSystem:MonoBehaviour
 
                 if (currentCharacterIndex < stringLength)
                 {
-                    if (Input.GetKey(DialogueInput))
+                    if (Input.GetButtonDown("Interact"))
                     {
                         yield return new WaitForSeconds(letterDelay * letterMultiplier);
 
@@ -156,7 +154,7 @@ public class DialogueSystem:MonoBehaviour
 
             while (true)
             {
-                if (Input.GetKeyDown(DialogueInput))
+                if (Input.GetButtonDown("Interact"))
                 {
                     setaProximo.SetActive(false);
                     caixaTexto.SetActive(false);

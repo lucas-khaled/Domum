@@ -9,6 +9,9 @@ public class Bau : Interagivel
     [SerializeField]
     Animator anim;
 
+    [SerializeField]
+    private GameObject inicialBau;
+
     [Header("Audios")]
     [SerializeField]
     private AudioClip abrir;
@@ -64,6 +67,9 @@ public class Bau : Interagivel
         {
             StartCoroutine(Some());
         }
+
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(inicialBau);
 
     }
 

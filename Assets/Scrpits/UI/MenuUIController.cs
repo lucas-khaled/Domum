@@ -74,4 +74,14 @@ public class MenuUIController : MonoBehaviour
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(selecionado);
     }
+
+    public void MudaBotaoSelecionado(GameObject selecionado)
+    {
+        if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(selecionado);
+        }
+
+    }
 }

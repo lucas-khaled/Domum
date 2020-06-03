@@ -78,7 +78,7 @@ public class Iovelik : Player
     {
         base.Update();
 
-        if (Input.GetMouseButtonDown(1) && esperaDanoArea <= 0 && status.QntColetavel > 0 && estadoPlayer == EstadoPlayer.COMBATE)
+        if ((Input.GetMouseButtonDown(1) || Input.GetButtonDown("AtkColetavel")) && esperaDanoArea <= 0 && status.QntColetavel > 0 && estadoPlayer == EstadoPlayer.COMBATE)
         {
             danoArea();
         }
