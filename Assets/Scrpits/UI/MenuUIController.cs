@@ -18,7 +18,7 @@ public class MenuUIController : MonoBehaviour
 
     private bool rodou;
 
-    public void setVolumeAudio()
+    public void SetVolumeAudio()
     {
         GameController.gameController.volumeGeral = volumeGeral.value;
         audioMixer.SetFloat("volumeMaster", volumeGeral.value);
@@ -28,7 +28,7 @@ public class MenuUIController : MonoBehaviour
         audioMixer.SetFloat("volumeMusica", volumeMusica.value);
     }
 
-    public void getVolumeAudio()
+    public void GetVolumeAudio()
     {
         float valor;
         audioMixer.GetFloat("volumeMaster",out valor);
@@ -42,7 +42,7 @@ public class MenuUIController : MonoBehaviour
 
     private void Start()
     {
-        getVolumeAudio();
+        GetVolumeAudio();
 
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
 

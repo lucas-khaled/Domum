@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class BauUI : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject fecharBau;
+    [SerializeField]
+    private GameObject posicaoItens;
+
+    public bool bauAberto = false;
     public static BauUI bauUI;
     private void Awake()
     {
@@ -15,8 +21,6 @@ public class BauUI : MonoBehaviour
 
     [SerializeField]
     private Vector2 offset;
-
-    public Button fecharBau;
 
     [SerializeField]
     private GameObject slot, panelBau, descricaoPanel;
@@ -39,7 +43,6 @@ public class BauUI : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
-
 
     private void ClearInstancias()
     {
@@ -80,14 +83,12 @@ public class BauUI : MonoBehaviour
     public void CloseBau()
     {
         //Debug.Log("Mommy shark");
-
-        bauAtual = null;
-        panelBau.gameObject.SetActive(false);
         Time.timeScale = 1;
-
         Cursor.visible = false;
-        CameraController.cameraInstance.Trava = false;
         Cursor.lockState = CursorLockMode.Locked;
+        CameraController.cameraInstance.Trava = false;
+        panelBau.gameObject.SetActive(false);
+        bauAtual = null;
     }
 
     public void ShowDescricao(Item item)
@@ -114,6 +115,26 @@ public class BauUI : MonoBehaviour
     private void SetDescriptionInMousePlace()
     {
         descricaoPanel.transform.position = new Vector3(Input.mousePosition.x + offset.x, Input.mousePosition.y + offset.y, Input.mousePosition.z);
+    }
+
+    public void AtualizaItem()
+    {
+        Debug.Log("ticuliro");
+
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(instancias[0]);
+
+        // verificar se o x está selecionado
+        if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == fecharBau && bauAberto)
+        {
+            Debug.Log(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject);
+            bauAberto = false;
+            CloseBau();
+        }
+        else
+        {
+            bauAberto = true;
+        }
     }
 
     public void CloseDescricao()

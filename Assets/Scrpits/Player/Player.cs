@@ -285,9 +285,13 @@ public class Player : MonoBehaviour, IVulnerable
             float y = Mathf.Lerp(animator.GetFloat("VetY"), Input.GetAxis("Vertical"), 0.4f);
             float x = Mathf.Lerp(animator.GetFloat("VetX"), Input.GetAxis("Horizontal"), 0.4f);
 
-            animator.SetFloat("VetX", x);
-            animator.SetFloat("VetY", y);
+            if (Time.timeScale != 0)
+            {
 
+                animator.SetFloat("VetX", x);
+                animator.SetFloat("VetY", y);
+
+            }
             rb.velocity = ((transform.forward * y) + (transform.right * x)) * velocidade;
         }
     }

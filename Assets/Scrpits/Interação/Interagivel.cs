@@ -45,25 +45,6 @@ public class Interagivel : MonoBehaviour
         {
             EventsController.onInteracao.Invoke(this);
         }
-
-        /*if (this.GetType() == typeof(Bau))
-        {
-            // verificar se o x está selecionado
-            if (EventSystem.current.currentSelectedGameObject == BauUI.bauUI.fecharBau)
-            {
-                Debug.Log("Nemo");
-                if (Input.GetButtonDown("Interact"))
-                {
-                    BauUI.bauUI.CloseBau();
-
-                }
-            }
-            else
-            {
-                Debug.Log("Tutubarao");
-            }
-        }*/
-
         if (isPartOfDialogue)
         {
             DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoCondicao[0]);

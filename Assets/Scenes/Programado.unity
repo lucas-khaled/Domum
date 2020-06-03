@@ -6891,7 +6891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 5.789917}
+  m_AnchoredPosition: {x: 0, y: 5.789978}
   m_SizeDelta: {x: 43.84796, y: 31.25468}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &566621110
@@ -10213,6 +10213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fb4fa0e73c893449199837c6c8bdc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fecharQuestLog: {fileID: 0}
   pauseInicio: {fileID: 1048722830}
   habilidadeIovelik: {fileID: 820233924}
   questAceitaTerminada: {fileID: 4209750547694974014, guid: cfbe1a720ee647a44b0285d246f941bb,
@@ -10376,8 +10377,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af01e855408c3d4581a31e4e779cbaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fecharBau: {fileID: 551598789}
+  posicaoItens: {fileID: 1236952896}
+  bauAberto: 0
   offset: {x: 100, y: 100}
-  fecharBau: {fileID: 551598791}
   slot: {fileID: 1202218283574695542, guid: 561d52914bc362c498d096871d9eda9c, type: 3}
   panelBau: {fileID: 2089341363}
   descricaoPanel: {fileID: 646203813}
@@ -10404,6 +10407,7 @@ MonoBehaviour:
   slotPrefab: {fileID: 4503985856709297215, guid: 137542f859ba5fc4580009ae4837211e,
     type: 3}
   painelLoja: {fileID: 1912480308}
+  primeiroSelecionadoLoja: {fileID: 1626259370}
   playerMoedas: {fileID: 664717756}
   playerFama: {fileID: 1545037939}
   inventarioPeso: {fileID: 597878905}
@@ -19321,6 +19325,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 762610160}
+        m_MethodName: setNavegacaoQuestAceitas
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1761330488843852585}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1328963031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24730,7 +24745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 1
+    m_Mode: 3
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -34785,7 +34800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -34994,7 +35009,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3191885749628576}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -40900,6 +40915,16 @@ PrefabInstance:
       propertyPath: inicialBau
       value: 
       objectReference: {fileID: 551598789}
+    - target: {fileID: 4006560453086054723, guid: 4666bf1932664a94fb8a0fca071abbbe,
+        type: 3}
+      propertyPath: fecharBau
+      value: 
+      objectReference: {fileID: 551598789}
+    - target: {fileID: 4006560453086054723, guid: 4666bf1932664a94fb8a0fca071abbbe,
+        type: 3}
+      propertyPath: posicaoItens
+      value: 
+      objectReference: {fileID: 1236952896}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4666bf1932664a94fb8a0fca071abbbe, type: 3}
 --- !u!222 &4012225596988965426

@@ -9,9 +9,6 @@ public class Bau : Interagivel
     [SerializeField]
     Animator anim;
 
-    [SerializeField]
-    private GameObject inicialBau;
-
     [Header("Audios")]
     [SerializeField]
     private AudioClip abrir;
@@ -33,9 +30,9 @@ public class Bau : Interagivel
         BauSave mySave = new BauSave(null, null);
         bool isThere = false;
 
-        foreach(BauSave bs in SaveSystem.data.inventarioData.baus)
+        foreach (BauSave bs in SaveSystem.data.inventarioData.baus)
         {
-            if(bs.nomeBau == this.name)
+            if (bs.nomeBau == this.name)
             {
                 isThere = true;
                 mySave = bs;
@@ -63,16 +60,14 @@ public class Bau : Interagivel
 
         BauUI.bauUI.SetBau(this);
 
-        if(someSeVazia)
+        if (someSeVazia)
         {
             StartCoroutine(Some());
         }
 
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(inicialBau);
+        BauUI.bauUI.AtualizaItem();
 
     }
-
     private IEnumerator Some()
     {
         yield return new WaitForSeconds(0.01f);

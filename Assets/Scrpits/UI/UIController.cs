@@ -8,6 +8,10 @@ using UnityEngine.EventSystems;
 
 public class UIController : MonoBehaviour
 {
+
+    [SerializeField]
+    private GameObject fecharQuestLog;
+
     [SerializeField]
     private GameObject pauseInicio;
     [SerializeField]
@@ -226,8 +230,8 @@ public class UIController : MonoBehaviour
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
-                Time.timeScale = 0;
             }
+            Time.timeScale = 0;
         }
 
     }

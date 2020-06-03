@@ -8,6 +8,9 @@ public class LojaUI : MonoBehaviour
     public Transform contentVendedor, contentPlayer;
     public GameObject slotPrefab, painelLoja;
 
+    [SerializeField]
+    private GameObject primeiroSelecionadoLoja;
+
     [Header("InfoPlayer")]
     [SerializeField]
     private Text playerMoedas;
@@ -77,6 +80,9 @@ public class LojaUI : MonoBehaviour
     {
         if (lojaAtual == null)
         {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(primeiroSelecionadoLoja);
+
             lojaAtual = loja;
 
             if (lojaAtual.gameObject.GetComponent<Kambim>())
