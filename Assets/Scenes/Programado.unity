@@ -10213,7 +10213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fb4fa0e73c893449199837c6c8bdc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fecharQuestLog: {fileID: 0}
+  novoSelecionado: {fileID: 3337777139008025016}
+  canvasAudio: {fileID: 8468041116831954517}
   pauseInicio: {fileID: 1048722830}
   habilidadeIovelik: {fileID: 820233924}
   questAceitaTerminada: {fileID: 4209750547694974014, guid: cfbe1a720ee647a44b0285d246f941bb,
@@ -10378,8 +10379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fecharBau: {fileID: 551598789}
-  posicaoItens: {fileID: 1236952896}
-  primeiroItem: {fileID: 0}
   bauAberto: 0
   offset: {x: 100, y: 100}
   slot: {fileID: 1202218283574695542, guid: 561d52914bc362c498d096871d9eda9c, type: 3}
@@ -34452,7 +34451,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Iovelik.................................................
+  m_Text: Iovelik..................................................................................................
 --- !u!1 &871489331209190137
 GameObject:
   m_ObjectHideFlags: 0
@@ -38106,7 +38105,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2443507031888985036}
   m_HandleRect: {fileID: 175398244531542693}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -38237,7 +38236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Humanos...........................................
+  m_Text: Humanos........................................................
 --- !u!1 &2483621473399180496
 GameObject:
   m_ObjectHideFlags: 0
@@ -44971,7 +44970,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Lider Mesti\xE7o..................................."
+  m_Text: "Lider Mesti\xE7o................................................."
 --- !u!1 &5725563645216720761
 GameObject:
   m_ObjectHideFlags: 0
@@ -48813,7 +48812,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Invas\xE3o humana............................."
+  m_Text: "Invas\xE3o humana......................................"
 --- !u!224 &8070354819830734779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49465,7 +49464,7 @@ GameObject:
   - component: {fileID: 837141604370650071}
   - component: {fileID: 4290072141288081563}
   m_Layer: 5
-  m_Name: Audio
+  m_Name: AudioConfig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50258,7 +50257,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ca\xE7a aos Mesti\xE7os........................."
+  m_Text: "Ca\xE7a aos Mesti\xE7os..................................."
 --- !u!1 &9007772327135953453
 GameObject:
   m_ObjectHideFlags: 0

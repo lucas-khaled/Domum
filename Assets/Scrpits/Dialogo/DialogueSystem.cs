@@ -19,7 +19,7 @@ public class DialogueSystem:MonoBehaviour
     [SerializeField]
     private Text dialogueText;
 
-    private float letterDelay = 0.1f;
+    private float letterDelay = 0.05f;
     private float letterMultiplier = 0.5f;
 
     public string Names;
@@ -134,13 +134,11 @@ public class DialogueSystem:MonoBehaviour
                     {
                         yield return new WaitForSeconds(letterDelay * letterMultiplier);
 
-                        if (audioClip) audioSource.PlayOneShot(audioClip, 0.5F);
                     }
                     else
                     {
                         yield return new WaitForSeconds(letterDelay);
 
-                        if (audioClip) audioSource.PlayOneShot(audioClip, 0.5F);
                     }
                 }
                 else

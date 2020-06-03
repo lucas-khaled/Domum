@@ -100,10 +100,8 @@ public class LojaUI : MonoBehaviour
 
             while (true)
             {
-                Debug.Log("Ainda n cusao");
                 if ((Input.GetButton("Interact")) && !DialogueSystem.sistemaDialogo.IsDialogEnded())
                 {
-                    Debug.Log("Ihaaaa");
                     break;
                 }
 

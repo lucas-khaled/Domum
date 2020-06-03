@@ -8,9 +8,10 @@ using UnityEngine.EventSystems;
 
 public class UIController : MonoBehaviour
 {
-
     [SerializeField]
-    private GameObject fecharQuestLog;
+    private GameObject novoSelecionado;
+    [SerializeField]
+    private GameObject canvasAudio;
 
     [SerializeField]
     private GameObject pauseInicio;
@@ -81,6 +82,11 @@ public class UIController : MonoBehaviour
 
     protected virtual void Update() {        
        PauseOn();
+
+       if (canvasAudio.activeInHierarchy && Input.GetButtonDown("Return"))
+       {
+           VoltarSelecao(novoSelecionado, canvasAudio);
+       }
     }
 
     #region WORLD CANVAS
@@ -114,6 +120,17 @@ public class UIController : MonoBehaviour
     public void LifeBar(float value)
     {
         playerLifeBar.fillAmount = value;
+    }
+
+    private void VoltarSelecao(GameObject novoSelecionado, GameObject atual)
+    {
+        if (Input.GetButtonDown("Return"))
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(novoSelecionado);
+
+            atual.SetActive(false);
+        }
     }
 
     public void AtualizarTextoGlossario(GameObject titulo, GameObject texto)

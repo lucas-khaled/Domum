@@ -16,7 +16,10 @@ public class MenuUIController : MonoBehaviour
     [SerializeField]
     private UnityEngine.Audio.AudioMixer audioMixer;
 
-    private bool rodou;
+    [SerializeField]
+    private GameObject novoSelecionado;
+    [SerializeField]
+    private GameObject canvasAudio;
 
     public void SetVolumeAudio()
     {
@@ -54,6 +57,14 @@ public class MenuUIController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (canvasAudio.activeInHierarchy && Input.GetButtonDown("Return"))
+        {
+            VoltarSelecao(novoSelecionado, canvasAudio);
+        }
+    }
+
     public void CarregaJogo()
     {
         GameController.gameController.LoadGame();
@@ -82,6 +93,15 @@ public class MenuUIController : MonoBehaviour
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(selecionado);
         }
+    }
+    private void VoltarSelecao(GameObject novoSelecionado, GameObject atual)
+    {
+        if (Input.GetButtonDown("Return"))
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(novoSelecionado);
 
+            atual.SetActive(false);
+        }
     }
 }

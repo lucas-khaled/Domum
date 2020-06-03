@@ -2839,6 +2839,8 @@ MonoBehaviour:
   volumeEfeitos: {fileID: 7846339608089875278}
   volumeMusica: {fileID: 6597682568816202216}
   audioMixer: {fileID: 24100000, guid: 554ace45f4b2e7b4ebb86de37a832cfa, type: 2}
+  novoSelecionado: {fileID: 6073352386661535477}
+  canvasAudio: {fileID: 1125422483905628440}
 --- !u!1 &1545723647
 GameObject:
   m_ObjectHideFlags: 0
@@ -4010,7 +4012,7 @@ GameObject:
   - component: {fileID: 8179896557017230490}
   - component: {fileID: 4725312500902655958}
   m_Layer: 5
-  m_Name: Audio
+  m_Name: AudioConfig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4220,6 +4222,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1516060433}
+        m_MethodName: selecionaBotaoEscolha
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 643270270}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
