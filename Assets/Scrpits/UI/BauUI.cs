@@ -7,8 +7,6 @@ public class BauUI : MonoBehaviour
 {
     [SerializeField]
     private GameObject fecharBau;
-    [SerializeField]
-    private GameObject posicaoItens;
 
     public bool bauAberto = false;
     public static BauUI bauUI;
@@ -34,14 +32,10 @@ public class BauUI : MonoBehaviour
 
     public void SetBau(Bau bau)
     {
+        UIController.uiController.PauseOn(true);
         bauAtual = bau;
         panelBau.gameObject.SetActive(true);
         AtualizaBau();
-        Time.timeScale = 0;
-
-        CameraController.cameraInstance.Trava = true;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
     }
 
     private void ClearInstancias()
@@ -69,6 +63,21 @@ public class BauUI : MonoBehaviour
                 instancias.Add(instancia);
             }
         }
+
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(fecharBau);
+
+        // verificar se o x está selecionado
+        if (Input.GetButtonDown("Interact") && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == fecharBau && bauAberto)
+        {
+            Debug.Log(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject);
+            bauAberto = false;
+            CloseBau();
+        }
+        else
+        {
+            bauAberto = true;
+        }
     }
 
     public void AddItemInventario(Item item)
@@ -82,13 +91,9 @@ public class BauUI : MonoBehaviour
 
     public void CloseBau()
     {
-        //Debug.Log("Mommy shark");
-        Time.timeScale = 1;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        CameraController.cameraInstance.Trava = false;
         panelBau.gameObject.SetActive(false);
         bauAtual = null;
+        UIController.uiController.PauseOff();
     }
 
     public void ShowDescricao(Item item)
@@ -106,35 +111,12 @@ public class BauUI : MonoBehaviour
         else {
             danoTexto.text = "--";
         }
-
-
-
         InvokeRepeating("SetDescriptionInMousePlace", 0, 0.1f);
     }
 
     private void SetDescriptionInMousePlace()
     {
         descricaoPanel.transform.position = new Vector3(Input.mousePosition.x + offset.x, Input.mousePosition.y + offset.y, Input.mousePosition.z);
-    }
-
-    public void AtualizaItem()
-    {
-        Debug.Log("ticuliro");
-
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(instancias[0]);
-
-        // verificar se o x está selecionado
-        if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == fecharBau && bauAberto)
-        {
-            Debug.Log(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject);
-            bauAberto = false;
-            CloseBau();
-        }
-        else
-        {
-            bauAberto = true;
-        }
     }
 
     public void CloseDescricao()

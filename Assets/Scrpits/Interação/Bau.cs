@@ -65,8 +65,6 @@ public class Bau : Interagivel
             StartCoroutine(Some());
         }
 
-        BauUI.bauUI.AtualizaItem();
-
     }
     private IEnumerator Some()
     {

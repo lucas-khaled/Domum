@@ -84,7 +84,6 @@ public class Holder_ItemBau : Button, ISelectHandler
         base.OnSubmit(eventData);
         BauUI.bauUI.AddItemInventario(item);
         BauUI.bauUI.CloseDescricao();
-        BauUI.bauUI.AtualizaItem();
     }
 
 }

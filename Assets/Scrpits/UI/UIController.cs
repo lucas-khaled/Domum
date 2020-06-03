@@ -77,32 +77,10 @@ public class UIController : MonoBehaviour
         InicializarPainelUsasveis();
         AtualizarPainelUsaveis();
         AtualizaRender();
-
-        /*float valor;
-        audioMixer.GetFloat("volumeMaster", out valor);
-        sliderJogo.value = valor;
-        audioMixer.GetFloat("volumeEfeitos", out valor);
-        sliderEfeitos.value = valor;
-        audioMixer.GetFloat("volumeMusica", out valor);
-        sliderMusica.value = valor;
-        */
-
     }
 
     protected virtual void Update() {        
        PauseOn();
-
-        /*if (Input.GetKey("J")) { //trocar para GetButtonDown("QuestLog") e setar o botão
-            // Pausar jogo
-            AbrirQuestLog();
-            questLogAberto = true;            
-        }
-
-        if (Input.GetKey("J") && questLogAberto == true) { //trocar para GetButtonDown("QuestLog") e setar o botão
-                FecharQuestLog();
-                questLogAberto = false;
-                // Retomar jogo
-            }*/
     }
 
     #region WORLD CANVAS
@@ -217,13 +195,15 @@ public class UIController : MonoBehaviour
         painelQuestLog.SetActive(false);
     }
 
-    public void PauseOn(){
+    public void PauseOn(bool mandeiPausar = false){
 
-        if(Input.GetButtonDown("Pause") && Player.player.estadoPlayer != EstadoPlayer.MORTO){
+        if(mandeiPausar || (Input.GetButtonDown("Pause") && Player.player.estadoPlayer != EstadoPlayer.MORTO)){
 
             MudaBotaoSelecionado(pauseInicio);
 
+            if (!mandeiPausar)
             Pause.SetActive(true);
+
             CameraController.cameraInstance.Trava = true;
 
             if (GameController.gameController.QualOrigemInput() == OrigemInput.MOUSE)
