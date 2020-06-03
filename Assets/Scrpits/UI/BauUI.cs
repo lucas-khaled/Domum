@@ -16,6 +16,8 @@ public class BauUI : MonoBehaviour
     [SerializeField]
     private Vector2 offset;
 
+    public Button fecharBau;
+
     [SerializeField]
     private GameObject slot, panelBau, descricaoPanel;
     [SerializeField]
@@ -77,6 +79,8 @@ public class BauUI : MonoBehaviour
 
     public void CloseBau()
     {
+        //Debug.Log("Mommy shark");
+
         bauAtual = null;
         panelBau.gameObject.SetActive(false);
         Time.timeScale = 1;

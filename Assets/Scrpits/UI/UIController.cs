@@ -215,7 +215,7 @@ public class UIController : MonoBehaviour
 
     public void PauseOn(){
 
-        if(Input.GetKey(KeyCode.Escape) && Player.player.estadoPlayer != EstadoPlayer.MORTO){
+        if(Input.GetButtonDown("Pause") && Player.player.estadoPlayer != EstadoPlayer.MORTO){
 
             MudaBotaoSelecionado(pauseInicio);
 
