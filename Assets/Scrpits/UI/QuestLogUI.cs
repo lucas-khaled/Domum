@@ -64,6 +64,7 @@ public class QuestLogUI : MonoBehaviour
     public static QuestLogUI questLogUI;
     private Quest questSelecionada;
     private SpriteRenderer iconeSpriteRenderer;
+    private LineRenderer iconeLineRenderer;
 
     void Awake() {
         EventsController.onQuestLogChange += AtualizarQuestLog;
@@ -75,6 +76,10 @@ public class QuestLogUI : MonoBehaviour
    {
         GameObject go = GameObject.Find("IconeMissao");
         iconeSpriteRenderer = go.GetComponent<SpriteRenderer>();
+
+        iconeLineRenderer = go.GetComponent<LineRenderer>();
+        iconeLineRenderer.enabled = false;
+
         go.SetActive(false);
         go.transform.position = Vector3.zero;
         go.transform.rotation = Quaternion.Euler(90, 180, 0);
@@ -212,8 +217,7 @@ public class QuestLogUI : MonoBehaviour
 
     void DrawIdaCircle()
     {
-        LineRenderer line = iconeSpriteRenderer.gameObject.GetComponent<LineRenderer>();
-        line.enabled = true;
+        iconeLineRenderer.enabled = true;
         float radius = questSelecionada.getCondicaoAtual().distanciaChegada / iconeSpriteRenderer.gameObject.transform.localScale.x;
 
         float segments = 30;
@@ -228,7 +232,7 @@ public class QuestLogUI : MonoBehaviour
             x = (Mathf.Sin(Mathf.Deg2Rad * angle) * radius);
             y = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
 
-            line.SetPosition(i, new Vector3(x, y, 0));
+            iconeLineRenderer.SetPosition(i, new Vector3(x, y, 0));
 
             angle += (360f / segments);
         }
