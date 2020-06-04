@@ -27,8 +27,13 @@ public class GetLODEditor : EditorWindow
             GUILayout.Space(30);
             if (GUILayout.Button("Ativar todos os renders de: " + Selection.activeObject.name))
             {
-                AtivarRenders(Selection.activeTransform);
+                AtivarRenders(Selection.activeTransform, true);
             }
+            if (GUILayout.Button("Desativar todos os renders de: " + Selection.activeObject.name))
+            {
+                AtivarRenders(Selection.activeTransform, false);
+            }
+
             GUILayout.Space(10);
             GUILayout.Label("Qnt de filhos de : " + Selection.activeGameObject.name + " = " + Selection.activeTransform.childCount);
 
@@ -119,19 +124,19 @@ public class GetLODEditor : EditorWindow
         }
     }
 
-    void AtivarRenders(Transform selecionado)
+    void AtivarRenders(Transform selecionado, bool liga)
     {
         Renderer renderer = selecionado.GetComponent<Renderer>();
         if(renderer != null)
         {
-            renderer.enabled = true;
+            renderer.enabled = liga;
         }
 
         if (selecionado.childCount > 0)
         {
             for(int i = 0; i<selecionado.childCount; i++)
             {
-                AtivarRenders(selecionado.GetChild(i));
+                AtivarRenders(selecionado.GetChild(i), liga);
             }
         }
     }
