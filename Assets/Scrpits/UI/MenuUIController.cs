@@ -33,13 +33,9 @@ public class MenuUIController : MonoBehaviour
 
     public void GetVolumeAudio()
     {
-        float valor;
-        audioMixer.GetFloat("volumeMaster",out valor);
-        volumeGeral.value = valor;
-        audioMixer.GetFloat("volumeEfeitos", out valor);
-        volumeEfeitos.value = valor;
-        audioMixer.GetFloat("volumeMusica", out valor);
-        volumeMusica.value = valor;
+        volumeGeral.value = GameController.gameController.volumeGeral;
+        volumeEfeitos.value = GameController.gameController.volumeGeral;
+        volumeMusica.value = GameController.gameController.volumeGeral;
 
     }
 
