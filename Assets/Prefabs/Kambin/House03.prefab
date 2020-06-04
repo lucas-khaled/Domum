@@ -111,6 +111,7 @@ Transform:
   - {fileID: 3359197928817495368}
   - {fileID: 3830646474102358927}
   - {fileID: 6635990638085909481}
+  - {fileID: 7601299928010614073}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 93.229004, z: 0}
@@ -141,6 +142,50 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23234150374404974}
   m_Enabled: 1
+--- !u!1 &5354803908424797281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7601299928010614073}
+  - component: {fileID: 2492968040211248725}
+  m_Layer: 0
+  m_Name: Colisor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7601299928010614073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5354803908424797281}
+  m_LocalRotation: {x: -0, y: -0.14916874, z: -0, w: 0.98881173}
+  m_LocalPosition: {x: 0.67, y: 0, z: -3.95}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2167595436312019581}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: -17.158, z: 0}
+--- !u!65 &2492968040211248725
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5354803908424797281}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.9785638, y: 1.1167265, z: 1.4507334}
+  m_Center: {x: -0.26374635, y: 0.6549704, z: -0.09807311}
 --- !u!1 &7361335149773863159
 GameObject:
   m_ObjectHideFlags: 0
