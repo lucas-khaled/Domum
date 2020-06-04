@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public enum EstadoPlayer { NORMAL, COMBATE, ATACANDO, DANO, RECARREGAVEL, MORTO, INTERAGINDO }
 
-[RequireComponent(typeof(Rigidbody))] [RequireComponent(typeof(Collider))] [RequireComponent(typeof(StatusPlayer))] [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(StatusPlayer))]
+[RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour, IVulnerable
 {
     protected Animator animator;
@@ -27,6 +30,8 @@ public class Player : MonoBehaviour, IVulnerable
     private float audioAux;
 
     [Header("Referências")]
+    [SerializeField]
+    private ParticleSystem particulaArma;
     public Transform posicaoHit;
     public GameObject CBTprefab;
 
@@ -59,6 +64,20 @@ public class Player : MonoBehaviour, IVulnerable
 
         set
         {
+            if (particulaArma != null)
+            {
+                if (value == EstadoPlayer.ATACANDO)
+                {
+                    particulaArma.gameObject.SetActive(true);
+                    particulaArma.Play();
+                }
+                else
+                {
+                    particulaArma.gameObject.SetActive(false);
+                    particulaArma.Stop();
+                }
+            }
+
             if (status.Vida <= 0)
             {
                 estado_player = EstadoPlayer.MORTO;
@@ -302,8 +321,8 @@ public class Player : MonoBehaviour, IVulnerable
     }
 
     private void Interagir()
-    {     
-        InteracaoController.instance.Interact();     
+    {
+        InteracaoController.instance.Interact();
     }
 
     void OnMorteInimigo(int xp)
