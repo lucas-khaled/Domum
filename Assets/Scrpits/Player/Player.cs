@@ -21,7 +21,7 @@ public class Player : MonoBehaviour, IVulnerable
     [SerializeField]
     private AudioClip movimento;
     [SerializeField]
-    private AudioClip ataque;
+    protected AudioClip ataque;
     [SerializeField]
     private AudioClip passos;
     [SerializeField]
@@ -137,14 +137,12 @@ public class Player : MonoBehaviour, IVulnerable
     {
         if (podeAtacar && numClick < status.NumAtaque)
         {
-            audioSource.PlayOneShot(ataque);
             numClick++;
         }
 
         if (numClick == 1)
         {
             animator.SetInteger("Ataque", 1);
-            audioSource.PlayOneShot(ataque);
             animator.applyRootMotion = true;
             estadoPlayer = EstadoPlayer.ATACANDO;
         }

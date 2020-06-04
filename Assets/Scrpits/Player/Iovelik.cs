@@ -78,9 +78,10 @@ public class Iovelik : Player
     {
         base.Update();
 
-        if ((Input.GetMouseButtonDown(1) || Input.GetButtonDown("AtkColetavel")) && esperaDanoArea <= 0 && status.QntColetavel > 0 && estadoPlayer == EstadoPlayer.COMBATE)
+        if ((Input.GetMouseButtonDown(1) || Input.GetButtonDown("AtkColetavel")) && esperaDanoArea <= 0 && status.QntColetavel > 0 && (estadoPlayer == EstadoPlayer.COMBATE || estadoPlayer == EstadoPlayer.NORMAL))
         {
             danoArea();
+            esperaDanoArea = coolDownDanoArea;
         }
 
         if(esperaDanoArea > 0)
@@ -150,16 +151,16 @@ public class Iovelik : Player
         foreach (Collider inimigoArea in hit)
         {
             distancia = Vector3.Distance(inimigoArea.gameObject.transform.position, this.gameObject.transform.position);
-            inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));
-            esperaDanoArea = coolDownDanoArea;
+            inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));   
         }
     }
 
     public void CheckCombo()
     {
-        podeAtacar = false; 
+        podeAtacar = false;
+        audioSource.PlayOneShot(ataque);
 
-        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick == 1)
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick == 1)
         {
             animator.SetInteger("Ataque", 0);
             numClick = 0;
