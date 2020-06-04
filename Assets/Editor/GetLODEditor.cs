@@ -178,8 +178,17 @@ public class GetLODEditor : EditorWindow
         if(renderer != null && numeroLOD == 0)
         {
             renderer.enabled = true;
+
+            Vector3 originPosition = renderer.gameObject.transform.position;
+            Quaternion originRotation = renderer.gameObject.transform.rotation;
+            Vector3 originScale = renderer.gameObject.transform.lossyScale;
+
             GameObject obj = Instantiate(renderer.gameObject);
             obj.transform.SetParent(origem.transform);
+
+            obj.transform.position = originPosition;
+            obj.transform.rotation = originRotation;
+            obj.transform.localScale = originScale;
             renderer.enabled = false;
         }
 
