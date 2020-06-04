@@ -27,7 +27,11 @@ public class NPCBase : Interagivel
     [SerializeField]
     private Dialogo dialogoFamaBaixa;
     [SerializeField]
+    private Dialogo dialogoFamaMedia;
+    [SerializeField]
     private Dialogo dialogoFamaAlta;
+
+    bool isQuestGiver = false;
 
     /*protected virtual void Update()
     {
@@ -58,6 +62,12 @@ public class NPCBase : Interagivel
     protected override void Start()
     {
         base.Start();
+
+        QuestGiver qg = GetComponent<QuestGiver>();
+
+        if (qg != null)
+            isQuestGiver = true;
+
         this.statusPl = Player.player.status;
         if (idleDuplo)
             StartCoroutine(Escolher());
@@ -66,13 +76,21 @@ public class NPCBase : Interagivel
     public override void Interact()
     {
         base.Interact();
-        if (fama < 200)
+
+        if (!isPartOfDialogue && isQuestGiver)
         {
-            DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoFamaBaixa);
-        }
-        else
-        {
-            DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoFamaAlta);
+            if (fama < 30)
+            {
+                DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoFamaBaixa);
+            }
+            else if (fama < 70) 
+            {
+                DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoFamaMedia);
+            }
+            else
+            {
+                DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoFamaAlta);
+            }
         }
     }
 
@@ -154,7 +172,7 @@ public class NPCBase : Interagivel
         {
             fama = statusPl.Fama;
             this.transform.LookAt(other.transform);
-            if (fama < 200)
+            if (fama < 60)
             {
                 anim.SetTrigger("InteracaoRuim");
             }

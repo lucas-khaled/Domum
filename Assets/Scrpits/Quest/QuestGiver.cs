@@ -91,13 +91,13 @@ public class QuestGiver : Interagivel
                         {
                             DialogueSystem.sistemaDialogo.IniciaDialogo(famaBaixa);
                         }
-                        else if (Player.player.status.Fama < 60)
+                        else if (Player.player.status.Fama < 70)
                         {
                             DialogueSystem.sistemaDialogo.IniciaDialogo(famaMedia);
                         }
                         else
                         {
-                            DialogueSystem.sistemaDialogo.IniciaDialogo(famaBaixa);
+                            DialogueSystem.sistemaDialogo.IniciaDialogo(famaAlta);
                         }
                     }
                     return;
