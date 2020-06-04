@@ -108,10 +108,7 @@ public class LojaUI : MonoBehaviour
                 yield return 0;
             }
 
-            Time.timeScale = 0;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            CameraController.cameraInstance.Trava = true;
+            UIController.uiController.PauseOn(true);
 
             painelLoja.SetActive(true);
 

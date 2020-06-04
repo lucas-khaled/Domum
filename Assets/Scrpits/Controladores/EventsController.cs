@@ -31,7 +31,7 @@ public static class EventsController
     public delegate void OnLinhaTerminada(Dialogo dialogo);
     public static OnLinhaTerminada onLinhaTerminada;
 
-    //public delegate void OnQuestConditionChange(Quest quest, List<Condicoes> condicoes);
-    //public static OnQuestConditionChange onQuestConditionChange;
+    public delegate void OnPausedGame();
+    public static OnPausedGame onPausedGame;
 }
 

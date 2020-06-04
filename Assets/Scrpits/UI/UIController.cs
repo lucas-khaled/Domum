@@ -216,6 +216,11 @@ public class UIController : MonoBehaviour
 
         if(mandeiPausar || (Input.GetButtonDown("Pause") && Player.player.estadoPlayer != EstadoPlayer.MORTO)){
 
+            if(EventsController.onPausedGame != null)
+            {
+                EventsController.onPausedGame.Invoke();
+            }
+
             MudaBotaoSelecionado(pauseInicio);
 
             if (!mandeiPausar)

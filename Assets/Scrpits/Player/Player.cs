@@ -103,6 +103,7 @@ public class Player : MonoBehaviour, IVulnerable
         rb = this.GetComponent<Rigidbody>();
         status = GetComponent<StatusPlayer>();
 
+        EventsController.onPausedGame += OnGamePaused;
         EventsController.onMorteInimigoCallback += OnMorteInimigo;
 
         player = this;
@@ -337,6 +338,10 @@ public class Player : MonoBehaviour, IVulnerable
         animator.SetFloat("VetX", 0);
     }
 
+    void OnGamePaused()
+    {
+        animator.SetInteger("Ataque", 0);
+    }
 
     private void OnDrawGizmosSelected()
     {
