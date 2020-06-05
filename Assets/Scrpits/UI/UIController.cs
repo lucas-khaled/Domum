@@ -9,6 +9,10 @@ using UnityEngine.EventSystems;
 public class UIController : MonoBehaviour
 {
     [SerializeField]
+    private GameObject tutorialJoystick;
+    [SerializeField]
+    private GameObject tutorialTeclado;
+    [SerializeField]
     private GameObject novoSelecionado;
     [SerializeField]
     private GameObject canvasAudio;
@@ -218,6 +222,17 @@ public class UIController : MonoBehaviour
         if(mandeiPausar || (Input.GetButtonDown("Pause") && Player.player.estadoPlayer != EstadoPlayer.MORTO)){
 
             isPaused = true;
+
+            if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
+            {
+                tutorialJoystick.SetActive(true);
+                tutorialTeclado.SetActive(false);
+            }
+            else
+            {
+                tutorialTeclado.SetActive(true);
+                tutorialJoystick.SetActive(false);
+            }
 
             if(EventsController.onPausedGame != null)
             {

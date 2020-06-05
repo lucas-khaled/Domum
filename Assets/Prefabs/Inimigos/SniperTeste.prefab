@@ -44,6 +44,7 @@ Transform:
   - {fileID: 8657180646188193612}
   - {fileID: 5228931203621817396}
   - {fileID: 3167939289672414792}
+  - {fileID: 5291320939060639676}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,8 +123,11 @@ MonoBehaviour:
   posicaoInicial: {x: 0, y: 0, z: 0}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
-  itensDropaveis: []
-  drop: {fileID: 0}
+  itensDropaveis:
+  - {fileID: 11400000, guid: a58d4b1b9818f8349aa5afb461303e85, type: 2}
+  - {fileID: 11400000, guid: 80c4ac6968a3c0547a0fb41a4854f209, type: 2}
+  - {fileID: 11400000, guid: a58d4b1b9818f8349aa5afb461303e85, type: 2}
+  drop: {fileID: 4501771150669755731, guid: 86901b452bd0d7f48bbb8654eefc0748, type: 3}
   audioSource: {fileID: 799847734002423744}
   passos: {fileID: 8300000, guid: 11d799fcff9ffea4ca2f7587f47a1de5, type: 3}
   hostil: 1
@@ -135,7 +139,7 @@ MonoBehaviour:
   velocidadeAtaque: 4
   velocidadeAnim: 0
   experienciaMorte: 20
-  hitPoint: {fileID: 0}
+  hitPoint: {fileID: 5291320939060639676}
   morto: 0
   tiro: {fileID: 8300000, guid: fca5741c0efd0464b8313d03089daa37, type: 3}
   imagemAlerta: {fileID: 7662658465596606365, guid: f80ad8d3422d0da4d9dfccdf2f8aac6f,
@@ -449,6 +453,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 428588748022927145}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1109405439996861256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5291320939060639676}
+  m_Layer: 8
+  m_Name: HitPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5291320939060639676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109405439996861256}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.001, y: 1.092, z: 0.861}
+  m_LocalScale: {x: 0.74627, y: 0.74627, z: 0.74627}
+  m_Children: []
+  m_Father: {fileID: 3923043976299050716}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1398235070361783276
 GameObject:
