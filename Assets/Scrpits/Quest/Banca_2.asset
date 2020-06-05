@@ -13,12 +13,102 @@ MonoBehaviour:
   m_Name: Banca_2
   m_EditorClassIdentifier: 
   principal: 0
-  nome: 
+  nome: Conhecendo Domum!
   dialogo:
-    dialogueLines: []
-  condicoes: []
+    dialogueLines:
+    - "Explore o planeta e conhe\xE7a seus moradores."
+    - "Sugiro come\xE7ar pelo acampamento Atriet! Converse com seus moradores e veja
+      se j\xE1 nos tratam melhor agora..."
+    - Depois disso, siga para o acampamento Kambin e converse com algum morador.
+    - "Por \xFAltimo, explore a cidade de Criviek e veja se algu\xE9m tem algo a
+      lhe dizer."
+  condicoes:
+  - tipoCondicao: 0
+    local: {x: 243.19373, y: 19.996338, z: 208.20055}
+    descricao: "V\xE1 ao acampamento Atriet"
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 50
+    interagivel: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 0, y: 0, z: 0}
+    descricao: Converse com um morador Atriet
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines: []
+    isOnScene: 1
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivel: {fileID: 0}
+  - tipoCondicao: 0
+    local: {x: 732.63904, y: 19.996338, z: 193.473}
+    descricao: "V\xE1 ao acampamento Kambin"
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 60
+    interagivel: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 0, y: 0, z: 0}
+    descricao: 
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivel: {fileID: 0}
+  - tipoCondicao: 0
+    local: {x: 495.8, y: 14.1, z: 880.6}
+    descricao: "V\xE1 at\xE9 a cidade de Criviek"
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 150
+    interagivel: {fileID: 0}
+  - tipoCondicao: 0
+    local: {x: 0, y: 0, z: 0}
+    descricao: 
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivel: {fileID: 0}
+  - tipoCondicao: 0
+    local: {x: 0, y: 0, z: 0}
+    descricao: 
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivel: {fileID: 0}
   reward:
     item: {fileID: 0}
-    qntDinheiro: 0
-    XP: 0
-    fama: 0
+    qntDinheiro: 60
+    XP: 80
+    fama: 40
