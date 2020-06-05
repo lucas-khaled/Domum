@@ -28,10 +28,11 @@ public class Condicoes
 
     public float distanciaChegada = 5;
 
-    public Interagivel interagivel;
+    public Interagivel interagivelPrefab;
 
     #endregion
 
+    private Interagivel interagivel;
     GameObject inimigoParent;
 
     public bool IsOnScene()
@@ -208,7 +209,7 @@ public class Condicoes
             interagiu = false;
             if (!isOnScene)
             {
-                GameObject interagivelObj = MonoBehaviour.Instantiate(interagivel.gameObject, local, interagivel.gameObject.transform.rotation);
+                GameObject interagivelObj = MonoBehaviour.Instantiate(interagivelPrefab.gameObject, local, interagivelPrefab.gameObject.transform.rotation);
                 interagivel = interagivelObj.GetComponent<Interagivel>();       
             }
             else

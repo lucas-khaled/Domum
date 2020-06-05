@@ -53,7 +53,7 @@ public class DrawQuesGizmo : MonoBehaviour
     {
         if (instanciados.Count == 0)
         {
-            if ((condHolder.tipoCondicao == Condicoes.TipoCondicao.INTERACAO || condHolder.tipoCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM) && condHolder.interagivel != null)
+            if ((condHolder.tipoCondicao == Condicoes.TipoCondicao.INTERACAO || condHolder.tipoCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM) && condHolder.interagivelPrefab != null)
             {
                 if (!condHolder.IsOnScene())
                 {

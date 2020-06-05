@@ -41,7 +41,7 @@ public class QuestGiver : Interagivel
             FindMeOnLoad();
         }
        DeAcceptQuests();
-       icone = transform.Find("IconeMissao").gameObject;
+       icone = transform.Find("IconeTemMissao").gameObject;
 
         if (questsAceitas > 0)
         {

@@ -9,7 +9,7 @@ public class Interagivel : MonoBehaviour
 {
     public GameObject worldCanvas;
 
-    protected bool isPartOfDialogue;
+    protected bool isPartOfDialogue = false;
 
     private List<Dialogo> dialogoCondicao = new List<Dialogo>();
 
@@ -21,8 +21,7 @@ public class Interagivel : MonoBehaviour
     }
 
     protected virtual void Start()
-    {
-        isPartOfDialogue = false;
+    {       
         worldCanvas.SetActive(false);
     }
 

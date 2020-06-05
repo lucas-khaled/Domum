@@ -98,12 +98,12 @@ public class Tyva : Player
     {
         base.Update();
 
-        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown("AtkColetavel"))
+        if (Input.GetButtonDown("AtkColetavel") && !UIController.uiController.isPaused)
         {
             Faca();
         }       
 
-        if (Input.GetButtonDown("Recarregavel"))
+        if (Input.GetButtonDown("Recarregavel") && !UIController.uiController.isPaused)
         {
             if (TempoDash >= status.tempoDashTotal)
             {

@@ -54,7 +54,7 @@ public class CameraController : MonoBehaviour
             CamControl(GameController.gameController.QualOrigemInput());
         }
         CamFolow();
-        CamObstruction();
+        //CamObstruction();
     }
 
     void CamFolow()

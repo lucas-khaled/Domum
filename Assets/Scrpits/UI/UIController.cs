@@ -62,6 +62,7 @@ public class UIController : MonoBehaviour
     bool questLogAberto = false;
     private List<Transform> listinha = new List<Transform>();
 
+    public bool isPaused { get; private set; }
 
     #region SINGLETON
 
@@ -216,6 +217,8 @@ public class UIController : MonoBehaviour
 
         if(mandeiPausar || (Input.GetButtonDown("Pause") && Player.player.estadoPlayer != EstadoPlayer.MORTO)){
 
+            isPaused = true;
+
             if(EventsController.onPausedGame != null)
             {
                 EventsController.onPausedGame.Invoke();
@@ -240,6 +243,7 @@ public class UIController : MonoBehaviour
 
     public void PauseOff(){
 
+        isPaused = false;
         Pause.SetActive(false);
         Cursor.visible = false;
         CameraController.cameraInstance.Trava = false;

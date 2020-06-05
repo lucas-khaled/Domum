@@ -34,9 +34,9 @@ MonoBehaviour:
     inimigosDaCondicao: []
     raioDeSpawn: 0
     distanciaChegada: 40
-    interagivel: {fileID: 0}
+    interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 243.19373, y: 19.996338, z: 208.20055}
+    local: {x: 247.14882, y: 19.996338, z: 207.66754}
     descricao: Converse com um morador Atriet
     "dialogoDaCondi\xE7\xE3o":
       dialogueLines:
@@ -46,8 +46,9 @@ MonoBehaviour:
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0
-    distanciaChegada: 0
-    interagivel: {fileID: 0}
+    distanciaChegada: 3
+    interagivelPrefab: {fileID: 3872440702417186981, guid: 6cea00783df0f0b47b790952bdefd0ea,
+      type: 3}
   - tipoCondicao: 0
     local: {x: 732.63904, y: 19.996338, z: 193.473}
     descricao: "V\xE1 ao acampamento Kambin"
@@ -59,9 +60,9 @@ MonoBehaviour:
     inimigosDaCondicao: []
     raioDeSpawn: 0
     distanciaChegada: 40
-    interagivel: {fileID: 0}
+    interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 743.0434, y: 20.007818, z: 528.35077}
+    local: {x: 722.86884, y: 19.996338, z: 183.02933}
     descricao: Converse com um morador Kambin
     "dialogoDaCondi\xE7\xE3o":
       dialogueLines:
@@ -71,8 +72,9 @@ MonoBehaviour:
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0
-    distanciaChegada: 0
-    interagivel: {fileID: 0}
+    distanciaChegada: 2
+    interagivelPrefab: {fileID: 5970805854404483211, guid: f95732d0ed6d0b7458d4f1a5cede1c5b,
+      type: 3}
   - tipoCondicao: 0
     local: {x: 556.3, y: 19.996338, z: 718.6}
     descricao: "V\xE1 at\xE9 a periferia de Criviek"
@@ -84,9 +86,9 @@ MonoBehaviour:
     inimigosDaCondicao: []
     raioDeSpawn: 0
     distanciaChegada: 40
-    interagivel: {fileID: 0}
+    interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 545.8026, y: 19.996338, z: 709}
     descricao: Converse com um morador da periferia de Criviek
     "dialogoDaCondi\xE7\xE3o":
       dialogueLines:
@@ -96,10 +98,11 @@ MonoBehaviour:
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0
-    distanciaChegada: 0
-    interagivel: {fileID: 0}
+    distanciaChegada: 3
+    interagivelPrefab: {fileID: 546479484137591639, guid: da7f11ea00efd474198e12f7d45d3af7,
+      type: 3}
   - tipoCondicao: 1
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 493.59, y: 20, z: 569.98}
     descricao: "Reporte sua explora\xE7\xE3o ao L\xEDder Mesti\xE7o"
     "dialogoDaCondi\xE7\xE3o":
       dialogueLines:
@@ -110,7 +113,7 @@ MonoBehaviour:
     inimigosDaCondicao: []
     raioDeSpawn: 0
     distanciaChegada: 0
-    interagivel: {fileID: 0}
+    interagivelPrefab: {fileID: 0}
   reward:
     item: {fileID: 0}
     qntDinheiro: 60

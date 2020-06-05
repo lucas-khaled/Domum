@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 5633656600546125247}
   - component: {fileID: 6541218437361916942}
   - component: {fileID: 3872440702417186981}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AtrietNPC1-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,6 +399,8 @@ MonoBehaviour:
     dialogueLines:
     - "Sai da minha frente mesti\xE7o."
     - "O que voc\xEA ta fazendo aqui ainda?"
+  dialogoFamaMedia:
+    dialogueLines: []
   dialogoFamaAlta:
     dialogueLines:
     - "Ol\xE1 senhor. Como vai?"

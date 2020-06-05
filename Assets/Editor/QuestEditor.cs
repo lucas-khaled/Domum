@@ -40,7 +40,7 @@ public class QuestEditor : Editor
         ShowConditions(obj.FindProperty("condicoes"));
         obj.ApplyModifiedProperties();
 
-        ClearConditions();
+        //ClearConditions();
     }
 
     void ClearConditions()
@@ -95,7 +95,7 @@ public class QuestEditor : Editor
                     }
                     else
                     {
-                        EditorGUILayout.PropertyField(p.FindPropertyRelative("interagivel"));
+                        EditorGUILayout.PropertyField(p.FindPropertyRelative("interagivelPrefab"));
                     }
                 }
 
