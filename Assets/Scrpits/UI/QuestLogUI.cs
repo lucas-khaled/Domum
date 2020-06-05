@@ -197,7 +197,7 @@ public class QuestLogUI : MonoBehaviour
         if (questSelecionada.getCondicaoAtual().tipoCondicao == Condicoes.TipoCondicao.COMBATE)
         {
             iconeSpriteRenderer.sprite = iconeInimigoMissao;
-            iconeSpriteRenderer.gameObject.GetComponent<LineRenderer>().enabled = false;
+            iconeLineRenderer.enabled = false;
         }
         else if (questSelecionada.getCondicaoAtual().tipoCondicao == Condicoes.TipoCondicao.IDA)
         {
@@ -207,7 +207,7 @@ public class QuestLogUI : MonoBehaviour
         else
         {
             iconeSpriteRenderer.sprite = iconeMissao;
-            iconeSpriteRenderer.gameObject.GetComponent<LineRenderer>().enabled = false;
+            iconeLineRenderer.enabled = false;
         }
 
         Vector3 pos = questSelecionada.getCondicaoAtual().local;
@@ -241,6 +241,7 @@ public class QuestLogUI : MonoBehaviour
 
     public void TrocarQuestHUD(Quest quest, GameObject bandeiraAtiva)
     {
+        iconeSpriteRenderer.gameObject.SetActive(true);
         if (this.bandeiraAtiva != null)
             this.bandeiraAtiva.SetActive(false);
 

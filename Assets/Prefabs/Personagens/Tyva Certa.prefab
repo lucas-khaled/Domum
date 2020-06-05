@@ -1011,6 +1011,7 @@ GameObject:
   - component: {fileID: 5357045472144315696}
   - component: {fileID: 6609269061531179808}
   - component: {fileID: 8977739183082086559}
+  - component: {fileID: 5760386564274247423}
   m_Layer: 9
   m_Name: Tyva Certa
   m_TagString: Player
@@ -1128,6 +1129,7 @@ MonoBehaviour:
   ataque: {fileID: 0}
   passos: {fileID: 8300000, guid: 546ce456d97ae2841b125361322e2099, type: 3}
   audioSource: {fileID: 8977739183082086559}
+  particulaArma: {fileID: 0}
   posicaoHit: {fileID: 3469711515040114650}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
@@ -1240,6 +1242,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &5760386564274247423
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2750437293865562616}
+  m_Enabled: 1
 --- !u!1 &2832071610322989574
 GameObject:
   m_ObjectHideFlags: 0

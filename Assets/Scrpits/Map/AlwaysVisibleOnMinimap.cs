@@ -20,6 +20,15 @@ public class AlwaysVisibleOnMinimap : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         lineRenderer = GetComponent<LineRenderer>();
+        StartCoroutine(SeDesliga());
+    }
+
+    IEnumerator SeDesliga()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        gameObject.SetActive(false);
+        if (instanciaVista != null)
+            Destroy(instanciaVista);
     }
 
     void Update()
@@ -37,7 +46,6 @@ public class AlwaysVisibleOnMinimap : MonoBehaviour
                 ShowIconInMinimap(lineRenderer);
                 return;
             }
-            
         }
     }
 

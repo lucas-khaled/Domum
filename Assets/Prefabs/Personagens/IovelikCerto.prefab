@@ -1831,6 +1831,7 @@ GameObject:
   - component: {fileID: 7739924227511663789}
   - component: {fileID: 7739924227511663788}
   - component: {fileID: 3443106083382854781}
+  - component: {fileID: 1842704961183157729}
   m_Layer: 9
   m_Name: IovelikCerto
   m_TagString: Player
@@ -2053,6 +2054,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &1842704961183157729
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7739924227511663791}
+  m_Enabled: 1
 --- !u!1 &7789462149736536273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,15 +2563,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2925e53f6ea232445b60cfabfdf0101f, type: 3}
---- !u!4 &2413124886657819704 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6610281638506801345, guid: 2925e53f6ea232445b60cfabfdf0101f,
-    type: 3}
-  m_PrefabInstance: {fileID: 8845443966831217913}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &7015783731120410506 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1989542435843031923, guid: 2925e53f6ea232445b60cfabfdf0101f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8845443966831217913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2413124886657819704 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6610281638506801345, guid: 2925e53f6ea232445b60cfabfdf0101f,
     type: 3}
   m_PrefabInstance: {fileID: 8845443966831217913}
   m_PrefabAsset: {fileID: 0}
