@@ -330,7 +330,8 @@ GameObject:
   - component: {fileID: 546479484137591639}
   - component: {fileID: 6924113045113970198}
   - component: {fileID: 3642941179558089413}
-  m_Layer: 0
+  - component: {fileID: 9185501686038260288}
+  m_Layer: 10
   m_Name: AtrietNPC2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,11 +409,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldCanvas: {fileID: 8434484250780958168}
   anim: {fileID: 4768199170270854471}
-  maxVida: 50
-  vida: 0
+  idleDuplo: 0
   dialogoFamaBaixa:
     dialogueLines:
     - SAI DAQUI SEU MERDA
+  dialogoFamaMedia:
+    dialogueLines: []
   dialogoFamaAlta:
     dialogueLines:
     - oie
@@ -442,6 +444,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7182213, y: 1.7963696, z: 0.5014686}
   m_Center: {x: -0.032512918, y: 0.875041, z: 0.010837585}
+--- !u!114 &9185501686038260288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944800742435725870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303aafae5c9b2494ea7b87cff4f61fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldCanvas: {fileID: 5402933830822475836, guid: ab7270489676aa14da017e9fc9234de0,
+    type: 3}
 --- !u!1 &2418883179788162535
 GameObject:
   m_ObjectHideFlags: 0

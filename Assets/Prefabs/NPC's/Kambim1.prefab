@@ -636,6 +636,7 @@ GameObject:
   - component: {fileID: 5970805854404483211}
   - component: {fileID: -3311051512192819201}
   - component: {fileID: 1832243048367042596}
+  - component: {fileID: 4858586277389639672}
   m_Layer: 10
   m_Name: Kambim1
   m_TagString: Untagged
@@ -697,6 +698,8 @@ MonoBehaviour:
   dialogoFamaBaixa:
     dialogueLines:
     - NAO AGUENTO MAAAAAAA
+  dialogoFamaMedia:
+    dialogueLines: []
   dialogoFamaAlta:
     dialogueLines:
     - OI
@@ -726,6 +729,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7575755, y: 1.8969703, z: 0.58787835}
   m_Center: {x: 0, y: 0.9090917, z: 0.03636366}
+--- !u!114 &4858586277389639672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2449251607936057728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303aafae5c9b2494ea7b87cff4f61fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldCanvas: {fileID: 5402933830822475836, guid: ab7270489676aa14da017e9fc9234de0,
+    type: 3}
 --- !u!1 &2668731354422034795
 GameObject:
   m_ObjectHideFlags: 0

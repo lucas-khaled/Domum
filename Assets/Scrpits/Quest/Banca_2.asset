@@ -20,8 +20,8 @@ MonoBehaviour:
     - "Sugiro come\xE7ar pelo acampamento Atriet! Converse com seus moradores e veja
       se j\xE1 nos tratam melhor agora..."
     - Depois disso, siga para o acampamento Kambin e converse com algum morador.
-    - "Por \xFAltimo, explore a cidade de Criviek e veja se algu\xE9m tem algo a
-      lhe dizer."
+    - "Por \xFAltimo, explore a periferia da cidade de Criviek e veja se algu\xE9m
+      tem algo a lhe dizer."
   condicoes:
   - tipoCondicao: 0
     local: {x: 243.19373, y: 19.996338, z: 208.20055}
@@ -33,14 +33,15 @@ MonoBehaviour:
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0
-    distanciaChegada: 50
+    distanciaChegada: 40
     interagivel: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 243.19373, y: 19.996338, z: 208.20055}
     descricao: Converse com um morador Atriet
     "dialogoDaCondi\xE7\xE3o":
-      dialogueLines: []
-    isOnScene: 1
+      dialogueLines:
+      - "O que voc\xEA quer, mesti\xE7o? Saia da nossa vila!"
+    isOnScene: 0
     nameOnScene: 
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
@@ -57,13 +58,39 @@ MonoBehaviour:
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0
-    distanciaChegada: 60
+    distanciaChegada: 40
+    interagivel: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 743.0434, y: 20.007818, z: 528.35077}
+    descricao: Converse com um morador Kambin
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines:
+      - "Aqui n\xE3o \xE9 lugar pra voc\xEA! Saia!"
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivel: {fileID: 0}
+  - tipoCondicao: 0
+    local: {x: 556.3, y: 19.996338, z: 718.6}
+    descricao: "V\xE1 at\xE9 a periferia de Criviek"
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 40
     interagivel: {fileID: 0}
   - tipoCondicao: 1
     local: {x: 0, y: 0, z: 0}
-    descricao: 
+    descricao: Converse com um morador da periferia de Criviek
     "dialogoDaCondi\xE7\xE3o":
-      dialogueLines: []
+      dialogueLines:
+      - "N\xE3o h\xE1 nada para voc\xEA aqui. V\xE1 embora, mesti\xE7o!"
     isOnScene: 0
     nameOnScene: 
     itemDaCondicao: {fileID: 0}
@@ -71,37 +98,14 @@ MonoBehaviour:
     raioDeSpawn: 0
     distanciaChegada: 0
     interagivel: {fileID: 0}
-  - tipoCondicao: 0
-    local: {x: 495.8, y: 14.1, z: 880.6}
-    descricao: "V\xE1 at\xE9 a cidade de Criviek"
-    "dialogoDaCondi\xE7\xE3o":
-      dialogueLines: []
-    isOnScene: 0
-    nameOnScene: 
-    itemDaCondicao: {fileID: 0}
-    inimigosDaCondicao: []
-    raioDeSpawn: 0
-    distanciaChegada: 150
-    interagivel: {fileID: 0}
-  - tipoCondicao: 0
+  - tipoCondicao: 1
     local: {x: 0, y: 0, z: 0}
-    descricao: 
+    descricao: "Reporte sua explora\xE7\xE3o ao L\xEDder Mesti\xE7o"
     "dialogoDaCondi\xE7\xE3o":
-      dialogueLines: []
-    isOnScene: 0
-    nameOnScene: 
-    itemDaCondicao: {fileID: 0}
-    inimigosDaCondicao: []
-    raioDeSpawn: 0
-    distanciaChegada: 0
-    interagivel: {fileID: 0}
-  - tipoCondicao: 0
-    local: {x: 0, y: 0, z: 0}
-    descricao: 
-    "dialogoDaCondi\xE7\xE3o":
-      dialogueLines: []
-    isOnScene: 0
-    nameOnScene: 
+      dialogueLines:
+      - "Pelo visto ainda n\xE3o somos benquistos em lugar nenhum..."
+    isOnScene: 1
+    nameOnScene: "Mesti\xE7o 5"
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0

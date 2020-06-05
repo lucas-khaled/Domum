@@ -20,28 +20,42 @@ MonoBehaviour:
     - "Esse monstro est\xE1 devorando a cria\xE7\xE3o de girafetes!"
     - Ajude-os a se livrar da criatura e mostre a eles como somos dignos!
   condicoes:
-  - tipoCondicao: 2
+  - tipoCondicao: 0
     local: {x: 358.51556, y: 19.996338, z: 326.2248}
-    descricao: "Derrote a fera que vive pr\xF3xima ao acampamento Atriet"
+    descricao: "Explore a floresta pr\xF3xima ao acampamento Atriet"
     "dialogoDaCondi\xE7\xE3o":
       dialogueLines: []
     isOnScene: 1
     nameOnScene: Kambim2_Quest1
     itemDaCondicao: {fileID: 0}
-    inimigosDaCondicao:
-    - {fileID: 719462188679275779, guid: 32d54487631aa4543bb77c96e27e68bf, type: 3}
+    inimigosDaCondicao: []
     raioDeSpawn: 80
-    distanciaChegada: 80
+    distanciaChegada: 95
     interagivel: {fileID: 0}
-  - tipoCondicao: 1
-    local: {x: 493.59, y: 20, z: 569.98}
-    descricao: "Converse com o L\xEDder Mesti\xE7o e conte a ele sobre seu sucesso!"
+  - tipoCondicao: 2
+    local: {x: 358.5156, y: 19.99634, z: 326.2248}
+    descricao: "Derrote a fera que vive pr\xF3xima ao acampamento Atriet"
     "dialogoDaCondi\xE7\xE3o":
       dialogueLines:
       - "Voc\xEA conseguiu! Eles deveriam ficar gratos, mas n\xE3o sei se vai ser
         o suficiente..."
     isOnScene: 1
     nameOnScene: "Mesti\xE7o 5"
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 719462188679275779, guid: 32d54487631aa4543bb77c96e27e68bf, type: 3}
+    raioDeSpawn: 80
+    distanciaChegada: 0
+    interagivel: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 493.59, y: 20, z: 569.98}
+    descricao: "Converse com o Anci\xE3o e conte a ele sobre seu sucesso!"
+    "dialogoDaCondi\xE7\xE3o":
+      dialogueLines:
+      - "Voc\xEA conseguiu! Eles deveriam ficar gratos, mas n\xE3o sei se vai ser
+        o suficiente..."
+    isOnScene: 1
+    nameOnScene: Anciao
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0
