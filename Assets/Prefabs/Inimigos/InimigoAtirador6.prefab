@@ -323,9 +323,10 @@ GameObject:
   - component: {fileID: 7191762600519909406}
   - component: {fileID: 7191762600519909407}
   - component: {fileID: 8629662303798638055}
-  m_Layer: 0
+  - component: {fileID: 5078657757859783092}
+  m_Layer: 8
   m_Name: InimigoAtirador6
-  m_TagString: Untagged
+  m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -561,6 +562,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &5078657757859783092
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220379760553793819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1273730452211420199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6590418340221530764}
   - component: {fileID: 6302443931114591636}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: IconeAtirador
   m_TagString: Untagged
   m_Icon: {fileID: 0}

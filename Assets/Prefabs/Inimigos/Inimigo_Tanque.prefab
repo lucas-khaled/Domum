@@ -460,7 +460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5968311359632941163}
   - component: {fileID: 3912321991975358561}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: IconeAtirador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,9 +637,10 @@ GameObject:
   - component: {fileID: 6565642853361571654}
   - component: {fileID: 6565642853361571653}
   - component: {fileID: 6919180594770385898}
-  m_Layer: 0
+  - component: {fileID: 576447703864494786}
+  m_Layer: 8
   m_Name: Inimigo_Tanque
-  m_TagString: Untagged
+  m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -710,8 +711,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.78430605, y: 1.7810524, z: 0.8844497}
+  m_Center: {x: 0.007703364, y: 0.83674634, z: 0.05777514}
 --- !u!195 &6565642853361571654
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -870,6 +871,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &576447703864494786
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2899249941039648320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.98
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3095258631507323388
 GameObject:
   m_ObjectHideFlags: 0
