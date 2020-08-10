@@ -41,7 +41,7 @@ public class QuestGiver : Interagivel
         {
             FindMeOnLoad();
         }
-        //DeAcceptQuests();
+        DeAcceptQuests();
         icone = FindChildByLayer("Icones");
 
         if (questsAceitas > 0)
@@ -97,7 +97,7 @@ public class QuestGiver : Interagivel
         {
             if (questsAceitas != 0)
             {
-                if (questsAceitas < quests.Length && !quests[questsAceitas - 1].IsRealizada())
+                if (questsAceitas < quests.Length - 1 && !quests[questsAceitas - 1].IsRealizada())
                 {
                     if (!quests[questsAceitas - 1].IsRealizada())
                     {
