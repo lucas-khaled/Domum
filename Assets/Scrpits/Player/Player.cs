@@ -111,7 +111,6 @@ public class Player : MonoBehaviour, IVulnerable
 
     protected virtual void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
         estadoPlayer = EstadoPlayer.NORMAL;
         hitCanvas = transform.Find("Hit_life");
     }

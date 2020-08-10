@@ -14,9 +14,6 @@ public class InteracaoController : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
-            Debug.Log("Heloooou");
-
         instance = this;
         EventsController.onPlayerStateChanged += onPlayerStateChanged;
     }
@@ -33,7 +30,12 @@ public class InteracaoController : MonoBehaviour
     private void onPlayerStateChanged(EstadoPlayer estadoPlayer)
     {
         if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
-            InvokeRepeating("InteragivelMaisProximo", 1f, 0.1f);
+        {
+            if (this != null)
+                InvokeRepeating("InteragivelMaisProximo", 1f, 0.1f);
+            else
+                Debug.Log("vai tomar no cu");
+        }
         else
         {
             CancelInvoke("InteragivelMaisProximo");
@@ -43,12 +45,6 @@ public class InteracaoController : MonoBehaviour
                 interagivelAtual = null;
             }
         }
-    }
-
-    private void Start()
-    {
-        if (Player.player.estadoPlayer == EstadoPlayer.NORMAL || Player.player.estadoPlayer == EstadoPlayer.COMBATE)
-            InvokeRepeating("InteragivelMaisProximo", 0, 0.1f);
     }
 
     private void InteragivelMaisProximo()

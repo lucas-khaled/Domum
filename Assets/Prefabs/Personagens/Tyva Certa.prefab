@@ -1059,7 +1059,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5fb8aa2930521634c9c651c731c0997c, type: 3}
   m_Controller: {fileID: 9100000, guid: 7d63c0f05b6b64e43bf2a5da6f08b8eb, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -3026,6 +3026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dano: 5
   mesh: {fileID: 9167557052146158465}
+  danoAux: 0
 --- !u!1 &7806269500878374827
 GameObject:
   m_ObjectHideFlags: 0
@@ -3533,3 +3534,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dano: 5
   mesh: {fileID: 9167557052146158465}
+  danoAux: 0

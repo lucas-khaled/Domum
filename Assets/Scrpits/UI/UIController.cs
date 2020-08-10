@@ -83,6 +83,8 @@ public class UIController : MonoBehaviour
         InicializarPainelUsasveis();
         AtualizarPainelUsaveis();
         AtualizaRender();
+        PauseOn(true);
+        PauseOff();
     }
 
     protected virtual void Update() {        
@@ -280,7 +282,7 @@ public class UIController : MonoBehaviour
 
     public void MudarCena(string cena)
     {
-        SceneManager.LoadScene(cena);
+        GameController.gameController.ChangeScene(cena, true);
     }
 
     public void SelecionaHabilidades(GameObject habilidade)

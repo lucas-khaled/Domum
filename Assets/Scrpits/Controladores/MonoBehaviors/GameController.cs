@@ -56,8 +56,11 @@ public class GameController : MonoBehaviour
         return qualPlayer;
     }
 
-    public void ChangeScene(string cena)
+    public void ChangeScene(string cena, bool clearDelegates = false)
     {
+        if(clearDelegates)
+            EventsController.ClearAll();
+
         SceneManager.LoadScene(cena);
     }
 
