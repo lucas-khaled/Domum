@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 using System.Reflection;
+using UnityEngine.SceneManagement;
 
 [CustomEditor(typeof(Quest))]
 public class QuestEditor : Editor
@@ -13,34 +14,95 @@ public class QuestEditor : Editor
     string[] options;
     List<GameObject> condHolders = new List<GameObject>();
     Transform placesRoot;
-
     SerializedObject obj;
+    SerializedProperty propertyToDraw = null;
+
+    public bool isPlacesDrawn { get; private set; }
 
     private void OnEnable()
     {
         obj = new SerializedObject(target);
         q = (Quest)target;
-        placesRoot = GameObject.Find("CondHolder").transform;
-        DrawPlaces(q);
+        
+        isPlacesDrawn = false;
     }
 
-    private void OnDisable()
-    {
-        UndrawPlaces();
-    }
 
     public override void OnInspectorGUI()
     {
+        FindCondHolder();
         q.nome = EditorGUILayout.TextField("Título: ", q.nome);
         q.principal = EditorGUILayout.Toggle("Principal: ", q.principal);
         EditorGUILayout.PropertyField(obj.FindProperty("reward"));
 
         EditorGUILayout.PropertyField(obj.FindProperty("dialogo"));
 
-        ShowConditions(obj.FindProperty("condicoes"));
+        //ShowConditions(obj.FindProperty("condicoes"));
+        DrawConditions(obj.FindProperty("condicoes"));
         obj.ApplyModifiedProperties();
 
-        //ClearConditions();
+        //base.OnInspectorGUI();
+
+    }
+
+    void FindCondHolder()
+    {
+        if(SceneManager.GetActiveScene().name == "Level" && placesRoot == null)
+            placesRoot = GameObject.Find("CondHolder").transform;
+    }   
+
+    void DrawConditions(SerializedProperty prop)
+    {
+        if (prop.isArray)
+        {
+            prop.arraySize = EditorGUILayout.IntField("Quantidade de Condições: ", prop.arraySize);
+        }
+
+        
+        if (prop.arraySize > 0)
+        {
+            int numOfButtons = 1;
+            int i = 0;
+            
+            foreach (SerializedProperty p in prop)
+            {
+                if (propertyToDraw == null)
+                    propertyToDraw = p;
+
+                if (numOfButtons == 1)
+                    GUILayout.BeginHorizontal("Buttons " + i+1%3);
+
+                GUIContent content = new GUIContent((i + 1).ToString());
+                content.tooltip = p.FindPropertyRelative("descricao").stringValue;
+
+                if (propertyToDraw.FindPropertyRelative("descricao").stringValue == p.FindPropertyRelative("descricao").stringValue)
+                {
+                    content.text = "Selcionada";
+                    if (GUILayout.Button(content))
+                    {
+
+                    }
+                }
+
+                else
+                {
+                    if (GUILayout.Button(content))
+                    {
+                        propertyToDraw = p;
+                    }
+                }
+
+                if (numOfButtons == 3 || i == prop.arraySize - 1)
+                    GUILayout.EndHorizontal();
+
+                numOfButtons = (numOfButtons == 3) ? 1 : numOfButtons + 1;
+                i++;
+         
+            }
+
+            EditorGUILayout.PropertyField(propertyToDraw);
+        }
+
     }
 
     void ClearConditions()
@@ -51,7 +113,7 @@ public class QuestEditor : Editor
         }
     }
 
-    void ShowConditions(SerializedProperty prop)
+    void ShowConditions(SerializedProperty prop, bool foldout = true)
     {
         if (prop.isArray)
         {
@@ -140,9 +202,10 @@ public class QuestEditor : Editor
         }
     }
 
-    private void DrawPlaces(Quest q)
+    public void DrawPlaces(Quest q)
     {
-        if (q.condicoes.Count > 0)
+        UndrawPlaces();
+        if (q.condicoes.Count > 0 && !isPlacesDrawn)
         {
             int i = 1;
             foreach (Condicoes c in q.condicoes)
@@ -155,10 +218,11 @@ public class QuestEditor : Editor
                 condHolders.Add(condicaoHolder);
                 i++;
             }
+            isPlacesDrawn = true;
         }
     }
 
-    private void UndrawPlaces()
+    void UndrawPlaces()
     {
         if (condHolders.Count > 0)
         {

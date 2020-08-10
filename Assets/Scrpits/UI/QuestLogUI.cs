@@ -117,16 +117,13 @@ public class QuestLogUI : MonoBehaviour
         GameObject questInstanciada = (GameObject)Instantiate(obj);
         slotQuests.Add(questInstanciada);
 
-        if (endQuest)
-        {
-            questInstanciada.transform.SetParent(contentFeitas);
-            questInstanciada.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
-            questInstanciada.transform.GetChild(1).gameObject.SetActive(false);
-        }
-        else
-            questInstanciada.transform.SetParent(contentAceitas);
-        
+        questInstanciada.transform.SetParent(contentAceitas);
         questInstanciada.transform.localScale = Vector3.one;
+
+        if(questSelecionada == null)
+        {
+            TrocarQuestHUD(quest, questInstanciada.GetComponent<Holder_Quest>().bandeiraAtiva);
+        }
     }
 
     public void AtualizarDescricao(Quest quest) {

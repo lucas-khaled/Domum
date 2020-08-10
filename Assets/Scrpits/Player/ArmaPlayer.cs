@@ -9,10 +9,19 @@ public class ArmaPlayer : MonoBehaviour
 
     public SkinnedMeshRenderer mesh;
 
+    public int danoAux;
+    public static ArmaPlayer armaPlayer;
+
     private void Awake()
     {
         if (gameObject.activeSelf)
             Inventario.inventario.armaMesh = mesh;
+    }
+
+    private void Start()
+    {
+        armaPlayer = this;
+        danoAux = 0;
     }
 
     private int CalculaDano()
@@ -21,17 +30,30 @@ public class ArmaPlayer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Inimigo" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO) && !other.isTrigger)
+        if (danoAux > 0)
         {
-            other.gameObject.GetComponent<Inimigo>().ReceberDano(CalculaDano());
-        }
-        if (other.gameObject.tag == "Girafa" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO) && !other.isTrigger)
-        {
-            StartCoroutine(other.gameObject.GetComponent<Girafa>().ReceberDano(CalculaDano()));
-        }
-        if (other.gameObject.tag == "Tigre" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO) && !other.isTrigger)
-        {
-            other.gameObject.GetComponent<Tigre>().ReceberDano(CalculaDano());
+            if (other.gameObject.tag == "Inimigo" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO) && !other.isTrigger)
+            {
+
+                Debug.Log("UIUI inimigo");
+                other.gameObject.GetComponent<Inimigo>().ReceberDano(CalculaDano());
+
+            }
+            if (other.gameObject.tag == "Girafa" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO) && !other.isTrigger)
+            {
+
+                Debug.Log("UIUI girafa");
+                other.gameObject.GetComponent<Girafa>().ReceberDano(CalculaDano());
+
+            }
+            if (other.gameObject.tag == "Tigre" && (Player.player.estadoPlayer == EstadoPlayer.ATACANDO) && !other.isTrigger)
+            {
+
+                Debug.Log("UIUI tigron");
+                other.gameObject.GetComponent<Tigre>().ReceberDano(CalculaDano());
+
+            }
+            danoAux--;
         }
     }
 }

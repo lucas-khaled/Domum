@@ -14,7 +14,9 @@ public class DialogueSystem:MonoBehaviour
     [SerializeField]
     private GameObject caixaTexto;
     [SerializeField]
-    private GameObject setaProximo;
+    private GameObject proximoJoystick;
+    [SerializeField]
+    private GameObject proximoMouse;
 
     [SerializeField]
     private Text dialogueText;
@@ -148,13 +150,17 @@ public class DialogueSystem:MonoBehaviour
                 }
             }
 
-            setaProximo.SetActive(true);
+            if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
+                proximoJoystick.SetActive(true);
+            else
+                proximoMouse.SetActive(true);
 
             while (true)
             {
                 if (Input.GetButtonDown("Interact"))
                 {
-                    setaProximo.SetActive(false);
+                    proximoJoystick.SetActive(false);
+                    proximoMouse.SetActive(false);
                     caixaTexto.SetActive(false);
                     break;
                 }

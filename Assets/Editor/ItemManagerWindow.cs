@@ -16,7 +16,7 @@ public class ItemManagerWindow : EditorWindow
 
     Vector2 scrollPosition = Vector2.zero;
 
-    [MenuItem("Window/Item Manager")]
+    [MenuItem("Window/Domum/Item Manager")]
     public static void ShowWindow()
     {
         GetWindow<ItemManagerWindow>("Manager de Itens");
@@ -83,7 +83,6 @@ public class ItemManagerWindow : EditorWindow
     void ChangeName(Item item, string newName)
     {
         AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(item), newName);
-        Debug.Log("Roooodeiiii");
     }
 
     private void OnGUI()

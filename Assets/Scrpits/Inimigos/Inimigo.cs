@@ -52,8 +52,12 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     protected float ataqueCooldown;
 
+    protected bool travaMovimento;
+
     [HideInInspector]
     public bool morto = false;
+
+
 
     public int Vida
     {
@@ -81,6 +85,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     private void Start()
     {
+        travaMovimento = false;
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
         posicaoInicial = this.transform.position;
@@ -89,21 +94,27 @@ public class Inimigo : MonoBehaviour, IVulnerable
     //realiza o ataque do inimigo
     protected virtual IEnumerator Atacar()
     {
+
         if (Player.player.estadoPlayer == EstadoPlayer.MORTO)
         {
             yield break;
         }
 
         canAttack = false;
+        travaMovimento = true;
 
         int escolha = Random.Range(1, 3);
         if (escolha == 1)
             anim.SetTrigger("Ataque 1");
         else
             anim.SetTrigger("Ataque 2");
-        
+
+        yield return new WaitForSeconds(0.5f);
+        travaMovimento = false;
+
         yield return new WaitForSeconds(velocidadeAtaque);
         canAttack = true;
+
     }
 
     public void DoDamage()
@@ -184,14 +195,19 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     protected void Movimentar(Vector3 destino, bool move = true)
     {
-        if (!move && NavMesh != null)
+        if (!travaMovimento)
         {
-            NavMesh.isStopped = true;
-            return;
-        }
+            if (!move && NavMesh != null)
+            {
+                NavMesh.isStopped = true;
+                return;
+            }
 
-        NavMesh.isStopped = false;
-        NavMesh.SetDestination(destino);
+            NavMesh.isStopped = false;
+            NavMesh.SetDestination(destino);
+        }
+        else
+            anim.SetBool("idle", false);
     }
 
     void FaceTarget()
@@ -207,8 +223,13 @@ public class Inimigo : MonoBehaviour, IVulnerable
         {
             float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
 
-            anim.SetBool("Idle", false);
+            if (distancia > distanciaAtaque)
+                anim.SetBool("Idle", false);
+            else
+                anim.SetBool("Idle", true);
+
             bool mover = true;
+            travaMovimento = false;
 
             if (audioAux <= 0 && distancia > distanciaAtaque)
             {
@@ -241,6 +262,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
         if (collider.gameObject.tag == "Player")
         {
             Movimentar(posicaoInicial);
+            travaMovimento = false;
             ataqueCooldown = 0;
             anim.SetBool("Idle", true);
         }

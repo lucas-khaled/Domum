@@ -196,7 +196,7 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void AtualizaRender()
+    void AtualizaRender()
     {
         if(GameController.gameController.GetPersonagemEscolhido() ==  TipoPlayer.TYVA)
         {

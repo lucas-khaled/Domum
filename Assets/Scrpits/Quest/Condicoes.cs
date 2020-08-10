@@ -14,7 +14,7 @@ public class Condicoes
 
     #region HIDDENVARIABLES
     [SerializeField]
-    private Dialogo dialogoDaCondição;
+    private Dialogo dialogoDaCondicao;
     [SerializeField]
     private bool isOnScene;
     [SerializeField]
@@ -223,8 +223,8 @@ public class Condicoes
         if(tipoCondicao == TipoCondicao.FALA)
         {
             falou = false;
-            dialogoDaCondição.whosDialog = this.descricao;
-            interagivel.SetDialogoCondicao(dialogoDaCondição);
+            dialogoDaCondicao.whosDialog = this.descricao;
+            interagivel.SetDialogoCondicao(dialogoDaCondicao);
             EventsController.onDialogoTerminado += OnFalaTerminada;
         }
 

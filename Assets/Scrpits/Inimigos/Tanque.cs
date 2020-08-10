@@ -23,19 +23,24 @@ public class Tanque : Inimigo
     protected override IEnumerator Atacar()
     {
         choose = false;
+        travaMovimento = true;
         Coroutine c = StartCoroutine(base.Atacar());
 
         yield return c;
+        travaMovimento = false;
 
         anim.SetBool("Idle", true);
+
         yield return new WaitForSeconds(cooldownGeral);
         choose = true;
+
     }
 
     IEnumerator Defender()
     {
         ataqueCooldown = velocidadeAtaque;
         anim.SetBool("Defendendo", true);
+        travaMovimento = true;
         choose = false;
         defendendo = true;
 
@@ -43,10 +48,12 @@ public class Tanque : Inimigo
 
         anim.SetBool("Defendendo", false);
         defendendo = false;
+        travaMovimento = false;
 
         yield return new WaitForSeconds(cooldownGeral);
 
         choose = true;
+
     }
 
     void EscolheAcao()

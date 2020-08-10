@@ -14,6 +14,9 @@ public class InteracaoController : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null)
+            Debug.Log("Heloooou");
+
         instance = this;
         EventsController.onPlayerStateChanged += onPlayerStateChanged;
     }

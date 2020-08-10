@@ -9,6 +9,9 @@ public class Quest : ScriptableObject
     public bool principal;
     public string nome;
 
+    [SerializeField]
+    private Recompensa reward;
+
     public Dialogo dialogo;
 
     public List<Condicoes> condicoes;
@@ -17,8 +20,7 @@ public class Quest : ScriptableObject
     bool realizada, aceita;
     int numCondicoes, condicaoAtualIndex;
 
-    [SerializeField]
-    private Recompensa reward;
+    
 
     private void Awake()
     {

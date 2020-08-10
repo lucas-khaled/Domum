@@ -15,6 +15,9 @@ public class Girafa : MonoBehaviour
     Collider maisPerto;
     Vector3 destino;
     NavMeshHit hit;
+    public Item[] itensDropaveis;
+    public Bau drop;
+    private GameObject respawnGirafa;
 
     [Header("Audios")]
     [SerializeField]
@@ -52,7 +55,7 @@ public class Girafa : MonoBehaviour
                 StartCoroutine(Escolher());
             }
         }
-        if (vaicomer)
+        /*if (vaicomer)
         {
             if ((Vector3.Distance(this.gameObject.transform.position, destino) < 5f))
             {
@@ -61,7 +64,7 @@ public class Girafa : MonoBehaviour
                 StartCoroutine(Comer());
             }
             vaicomer = false;
-        }
+        }*/
         if (correndo && corrida > 0)
         {
             if (Vector3.Distance(this.gameObject.transform.position, destino) < 1.5f)
@@ -78,6 +81,22 @@ public class Girafa : MonoBehaviour
             correndo = false;
         }
     }
+
+    void DroparLoot()
+    {
+        int numeroItens = Random.Range(0, 4);
+
+        Debug.Log(numeroItens);
+
+        Bau dropzera = Instantiate(drop.gameObject, transform.position, transform.rotation).GetComponent<Bau>();
+
+        for (int i = 0; i <= numeroItens; i++)
+        {
+            int itemEsc = Random.Range(0, itensDropaveis.Length);
+            dropzera.itens.Add(itensDropaveis[itemEsc]);
+        }
+    }
+
     private IEnumerator Escolher()
     {
         int escolha = Random.Range(0, 4);
@@ -92,7 +111,7 @@ public class Girafa : MonoBehaviour
         }
         else if (escolha == 3)
         {
-            Collider[] arvore = Physics.OverlapSphere(this.transform.position, 15f, LayerMask.GetMask("Arvore"));
+            /*Collider[] arvore = Physics.OverlapSphere(this.transform.position, 15f, LayerMask.GetMask("Arvore"));
             if (arvore.Length > 0)
             {
                 maisPerto = arvore[0];
@@ -109,9 +128,8 @@ public class Girafa : MonoBehaviour
             }
             else
             {
-                StopCoroutine(Escolher());
                 StartCoroutine(Escolher());
-            }
+            }*/
         }
         else if (escolha == 1)
         {
@@ -121,6 +139,7 @@ public class Girafa : MonoBehaviour
     }
     private void Start()
     {
+        respawnGirafa = GameObject.FindGameObjectWithTag("Girafa");
         StartCoroutine(Escolher());
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
@@ -138,6 +157,7 @@ public class Girafa : MonoBehaviour
     }
     public IEnumerator Deitado()
     {
+        animal.SetDestination(this.transform.position);
         anim.SetBool("Deitado", true);
         audioSource.PlayOneShot(deitar);
         yield return new WaitForSeconds(20f);
@@ -164,11 +184,24 @@ public class Girafa : MonoBehaviour
     }
     void Morrer()
     {
-        StopAllCoroutines();
+        Destroy(this.gameObject, 10);
+        anim.SetBool("Morreu", true);
+
+        Destroy(GetComponent<NavMeshAgent>());
+        Destroy(GetComponent<SphereCollider>());
+
+
+        foreach (FaceCamera destruir in GetComponentsInChildren(typeof(FaceCamera), true))
+        {
+            Destroy(destruir.gameObject);
+        }
+
         animal.isStopped = true;
-        Debug.Log("Morri");
+        DroparLoot();
+        respawnGirafa.GetComponent<Respawn>().numeroAnimais--;
+        StopAllCoroutines();
     }
-    public virtual IEnumerator ReceberDano(int danoRecebido)
+    public void ReceberDano(int danoRecebido)
     {
         Vida -= danoRecebido;
 
@@ -185,25 +218,37 @@ public class Girafa : MonoBehaviour
         else
         {
             anim.SetBool("Deitado", false);
-            yield return new WaitForSeconds(2f);
             anim.SetTrigger("Tomar dano");
             anim.SetFloat("Vida", vida);
-            yield return new WaitForSeconds(1f);
+            
+            if (vida > 30)
             Correr();
+            else
+            {
+                anim.SetBool("Caminhando", true);
+                correndo = true;
+                corrida = Random.Range(2, 6);
+                destino = RandomNavMeshGenerator(20f);
+                animal.SetDestination(destino);
+            }
+
         }
 
     }
     protected void Movimentar(Vector3 destino, bool move = true)
     {
-        anim.SetBool("Caminhando", true);
-        if (!move)
+        if (!anim.GetBool("Deitado"))
         {
-            animal.isStopped = true;
-            return;
-        }
+            anim.SetBool("Caminhando", true);
+            if (!move)
+            {
+                animal.isStopped = true;
+                return;
+            }
 
-        animal.isStopped = false;
-        animal.SetDestination(destino);
+            animal.isStopped = false;
+            animal.SetDestination(destino);
+        }
     }
     private void Awake()
     {

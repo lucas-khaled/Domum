@@ -30,12 +30,12 @@ public class GameController : MonoBehaviour
         if (gameController == null)
         {
             gameController = this;
+            DontDestroyOnLoad(this);
         }
         else if (GameController.gameController != this)
         {
-            Destroy(GameController.gameController.gameObject);
-        }
-        DontDestroyOnLoad(this);
+            Destroy(this);
+        }   
     }
 
     public void EscolherPersonagem(string personagem)

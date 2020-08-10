@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Distancia : Inimigo
 {
@@ -16,9 +17,11 @@ public class Distancia : Inimigo
     private GameObject alerta;
     protected override IEnumerator Atacar()
     {
+
         canAttack = false;
 
         Coroutine mira = StartCoroutine(Mirar());
+        travaMovimento = true;
 
         alerta = Instantiate(imagemAlerta, pontoAlerta);
         alerta.AddComponent<FaceCamera>();
@@ -32,6 +35,9 @@ public class Distancia : Inimigo
         anim.SetBool("Atacar", false);
         StopCoroutine(mira);
 
+        anim.ResetTrigger("Atirar");
+        travaMovimento = false;
+
         GameObject balaInstanciada = Instantiate(bala, pontoTiro.position, pontoTiro.transform.rotation);
         balaInstanciada.GetComponent<Bala>().SetCasterCollider(this.GetComponent<Collider>());
         
@@ -44,6 +50,7 @@ public class Distancia : Inimigo
     IEnumerator Mirar()
     {
         anim.SetBool("Atacar", true);
+        this.gameObject.GetComponent<NavMeshAgent>().SetDestination(this.transform.position);
 
         while (true)
         {

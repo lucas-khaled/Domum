@@ -33,6 +33,7 @@ public class QuestGiver : Interagivel
         questsAceitas = 0;
     }
 
+
     protected override void Start()
     {
         base.Start();
@@ -40,8 +41,8 @@ public class QuestGiver : Interagivel
         {
             FindMeOnLoad();
         }
-       DeAcceptQuests();
-       icone = transform.Find("IconeTemMissao").gameObject;
+        //DeAcceptQuests();
+        icone = FindChildByLayer("Icones");
 
         if (questsAceitas > 0)
         {
@@ -49,6 +50,19 @@ public class QuestGiver : Interagivel
         }
     }
 
+    GameObject FindChildByLayer(string layerName)
+    {
+        GameObject retorno = null;
+        for (int i = 0; i<transform.childCount; i++)
+        {
+            if (transform.GetChild(i).gameObject.layer == LayerMask.NameToLayer(layerName))
+            {
+                retorno = transform.GetChild(i).gameObject;
+            }
+        }
+
+        return retorno;
+    }
 
     void FindMeOnLoad()
     {
@@ -83,7 +97,7 @@ public class QuestGiver : Interagivel
         {
             if (questsAceitas != 0)
             {
-                if (questsAceitas < quests.Length - 1 && !quests[questsAceitas - 1].IsRealizada())
+                if (questsAceitas < quests.Length && !quests[questsAceitas - 1].IsRealizada())
                 {
                     if (!quests[questsAceitas - 1].IsRealizada())
                     {

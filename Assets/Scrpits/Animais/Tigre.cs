@@ -15,6 +15,8 @@ public class Tigre : MonoBehaviour
     Collider maisPerto;
     Vector3 destino;
     NavMeshHit hit;
+    public Item[] itensDropaveis;
+    public Bau drop;
 
     [Header("Audios")]
     [SerializeField]
@@ -51,6 +53,7 @@ public class Tigre : MonoBehaviour
     private Rigidbody rb;
     private bool morto;
 
+    private GameObject respawnTigre;
     private Transform hitCanvas;
 
     bool canAttack = true;
@@ -174,6 +177,7 @@ public class Tigre : MonoBehaviour
     }
     private void Start()
     {
+        respawnTigre = GameObject.FindGameObjectWithTag("Tigre");
         anim.SetBool("Idle", true);
         StartCoroutine(Escolher());
         Vida = maxVida;
@@ -212,6 +216,22 @@ public class Tigre : MonoBehaviour
 
         return finalPosition;
     }
+
+    void DroparLoot()
+    {
+        int numeroItens = Random.Range(0, 4);
+
+        Debug.Log(numeroItens);
+
+        Bau dropzera = Instantiate(drop.gameObject, transform.position, transform.rotation).GetComponent<Bau>();
+
+        for (int i = 0; i <= numeroItens; i++)
+        {
+            int itemEsc = Random.Range(0, itensDropaveis.Length);
+            dropzera.itens.Add(itensDropaveis[itemEsc]);
+        }
+    }
+
     void Morrer()
     {
         Destroy(this.gameObject, 10);
@@ -220,13 +240,17 @@ public class Tigre : MonoBehaviour
         Destroy(GetComponent<NavMeshAgent>());
         Destroy(GetComponent<SphereCollider>());
 
+
         foreach (FaceCamera destruir in GetComponentsInChildren(typeof(FaceCamera), true))
         {
             Destroy(destruir.gameObject);
         }
 
         morto = true;
+        DroparLoot();
         StopAllCoroutines();
+
+        respawnTigre.GetComponent<Respawn>().numeroAnimais--;
     }
     public void ReceberDano(int danoRecebido)
     {

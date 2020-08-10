@@ -138,6 +138,7 @@ public class Player : MonoBehaviour, IVulnerable
         if (podeAtacar && numClick < status.NumAtaque)
         {
             numClick++;
+            ArmaPlayer.armaPlayer.danoAux++;
         }
 
         if (numClick == 1)
@@ -310,7 +311,13 @@ public class Player : MonoBehaviour, IVulnerable
                 animator.SetFloat("VetY", y);
 
             }
-            rb.velocity = ((transform.forward * y) + (transform.right * x)) * velocidade;
+
+            Vector3 dir = (transform.forward * y) + (transform.right * x);
+            Vector3 clampedDir = dir;
+            if (dir.magnitude > 1)
+                clampedDir = dir.normalized;
+
+            transform.position += (clampedDir * velocidade) * Time.deltaTime;
         }
     }
 

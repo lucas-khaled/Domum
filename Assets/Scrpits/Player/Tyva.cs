@@ -9,11 +9,9 @@ public class Tyva : Player
 
     [Header("Valores Tyva")]
     [SerializeField]
-    private float velocidadeDash;
+    private float forcaDash;
     [SerializeField]
     private float timeFaca;
-    [SerializeField]
-    private float timeDash;
     [SerializeField]
     private float tempoRecarga = 1;
 
@@ -82,9 +80,6 @@ public class Tyva : Player
     protected override void Start()
     {
         base.Start();
-        //só para teste, deletar depois
-        moveHorizontal = Input.GetAxis("Horizontal");
-        moveVertical = Input.GetAxis("Vertical");
         facaLetal = false;
     }
 
@@ -107,13 +102,8 @@ public class Tyva : Player
         {
             if (TempoDash >= status.tempoDashTotal)
             {
-                Vector3 movimento = new Vector3(moveHorizontal, 0.0f, moveVertical);
                 StartCoroutine(Dash());
-                TempoDash = 0;
-            }
-            else
-            {            
-                rb.velocity = Vector3.zero;
+                TempoDash = -10;
             }
         }
 
@@ -132,16 +122,18 @@ public class Tyva : Player
         else
             estadoPlayer = EstadoPlayer.RECARREGAVEL;
 
-        float tempo = 0;
 
-        while (tempo < timeDash)
+        while (estadoPlayer == EstadoPlayer.RECARREGAVEL || estadoPlayer == EstadoPlayer.ATACANDO)
         {
-            rb.AddForce(transform.forward * velocidadeDash * Time.deltaTime, ForceMode.VelocityChange);
-            tempo += Time.deltaTime;
+            //rb.AddForce(transform.forward * forcaDash * Time.deltaTime, ForceMode.VelocityChange);
+            transform.position += transform.forward * forcaDash * Time.deltaTime;
             yield return null;
         }
+    }
 
-        estadoPlayer = EstadoPlayer.COMBATE;
+    void EndDash()
+    {
+        estadoPlayer = EstadoPlayer.NORMAL;
     }
 
     private void Faca()
