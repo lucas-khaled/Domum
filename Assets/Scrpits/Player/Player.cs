@@ -25,7 +25,7 @@ public class Player : MonoBehaviour, IVulnerable
     [SerializeField]
     private AudioClip passos;
     [SerializeField]
-    protected AudioSource audioSource;
+    public AudioSource audioSource;
 
     private float audioAux;
 
@@ -138,6 +138,7 @@ public class Player : MonoBehaviour, IVulnerable
         {
             numClick++;
             ArmaPlayer.armaPlayer.danoAux++;
+            Debug.Log(ArmaPlayer.armaPlayer.danoAux);
         }
 
         if (numClick == 1)
@@ -275,30 +276,6 @@ public class Player : MonoBehaviour, IVulnerable
     {
         if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
         {
-            if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
-            {
-                if (GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.TYVA)
-                {
-                    if (audioAux <= 0)
-                    {
-                        audioSource.volume = Random.Range(0.8f, 1);
-                        audioSource.pitch = Random.Range(0.8f, 1.1f);
-                        audioSource.PlayOneShot(passos);
-                        audioAux = 0.32f;
-                    }
-                }
-                else
-                {
-                    if (audioAux <= 0)
-                    {
-                        audioSource.volume = Random.Range(0.8f, 1);
-                        audioSource.pitch = Random.Range(0.8f, 1.1f);
-                        audioSource.PlayOneShot(passos);
-                        audioAux = 0.58f;
-                    }
-                }
-            }
-
             animator.applyRootMotion = false;
             float y = Mathf.Lerp(animator.GetFloat("VetY"), Input.GetAxis("Vertical"), 0.4f);
             float x = Mathf.Lerp(animator.GetFloat("VetX"), Input.GetAxis("Horizontal"), 0.4f);
@@ -352,6 +329,16 @@ public class Player : MonoBehaviour, IVulnerable
         Gizmos.DrawWireSphere(transform.position, raioPercepcao);
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, 2);
+
+        Gizmos.DrawWireSphere(pe1.transform.position, raiope);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, 2);
+
+        Gizmos.DrawWireSphere(pe2.transform.position, raiope);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, 2);
     }
+
+
 
 }

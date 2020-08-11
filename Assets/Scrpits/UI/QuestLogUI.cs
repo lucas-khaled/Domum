@@ -14,6 +14,8 @@ public class QuestLogUI : MonoBehaviour
     private AudioClip iniciaQuest;
     [SerializeField]
     private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip finalizaQuest;
 
     [Header("Texts HUD")]
     [SerializeField]
@@ -100,6 +102,7 @@ public class QuestLogUI : MonoBehaviour
         else
         {
             StartCoroutine(QuestAnimationFinalizar(quest));
+            audioSource.PlayOneShot(finalizaQuest);
         }
 
         if (endQuest)
