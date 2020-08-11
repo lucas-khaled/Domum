@@ -24,7 +24,7 @@ public class Condicoes
 
     public List<GameObject> inimigosDaCondicao;
     [SerializeField]
-    private float raioDeSpawn = 2;
+    public float raioDeSpawn = 2;
 
     public float distanciaChegada = 5;
 
@@ -33,7 +33,7 @@ public class Condicoes
     #endregion
 
     private Interagivel interagivel;
-    GameObject inimigoParent;
+    public GameObject inimigoParent { get; private set; }
 
     public bool IsOnScene()
     {

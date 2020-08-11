@@ -23,6 +23,8 @@ public class Interagivel : MonoBehaviour
     protected virtual void Start()
     {       
         worldCanvas.SetActive(false);
+        worldCanvas.transform.localPosition = new Vector3(0, worldCanvas.transform.localPosition.y, 0);
+        gameObject.layer = LayerMask.NameToLayer("Interagivel");
     }
 
     public void SwitchImagemInteracao(bool isActual)

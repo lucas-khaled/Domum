@@ -16,32 +16,39 @@ public class QuestEditor : Editor
     Transform placesRoot;
     SerializedObject obj;
     SerializedProperty propertyToDraw = null;
+    Condicoes selectedCondition = null;
 
     public bool isPlacesDrawn { get; private set; }
 
     private void OnEnable()
     {
+        placesRoot = GameObject.Find("CondHolder").transform;
         obj = new SerializedObject(target);
         q = (Quest)target;
         
         isPlacesDrawn = false;
     }
 
+    private void OnDisable()
+    {
+        UndrawPlaces();
+    }
 
     public override void OnInspectorGUI()
     {
-        FindCondHolder();
-        q.nome = EditorGUILayout.TextField("Título: ", q.nome);
-        q.principal = EditorGUILayout.Toggle("Principal: ", q.principal);
+        EditorGUILayout.PropertyField(obj.FindProperty("nome"));
+        EditorGUILayout.PropertyField(obj.FindProperty("principal"));
         EditorGUILayout.PropertyField(obj.FindProperty("reward"));
 
         EditorGUILayout.PropertyField(obj.FindProperty("dialogo"));
 
         //ShowConditions(obj.FindProperty("condicoes"));
         DrawConditions(obj.FindProperty("condicoes"));
-        obj.ApplyModifiedProperties();
 
-        //base.OnInspectorGUI();
+        if(selectedCondition != null)
+            DrawActiveConditionPlace();
+
+        obj.ApplyModifiedProperties();
 
     }
 
@@ -76,20 +83,12 @@ public class QuestEditor : Editor
                 content.tooltip = p.FindPropertyRelative("descricao").stringValue;
 
                 if (propertyToDraw.FindPropertyRelative("descricao").stringValue == p.FindPropertyRelative("descricao").stringValue)
-                {
                     content.text = "Selcionada";
-                    if (GUILayout.Button(content))
-                    {
-
-                    }
-                }
-
-                else
+                
+                if (GUILayout.Button(content))
                 {
-                    if (GUILayout.Button(content))
-                    {
-                        propertyToDraw = p;
-                    }
+                    propertyToDraw = p;
+                    selectedCondition = q.condicoes[i];
                 }
 
                 if (numOfButtons == 3 || i == prop.arraySize - 1)
@@ -101,6 +100,20 @@ public class QuestEditor : Editor
             }
 
             EditorGUILayout.PropertyField(propertyToDraw);
+
+            GUILayout.Space(10);
+
+            if (GUILayout.Button("Trazer Condição aqui"))
+            {
+                Camera cam = SceneView.lastActiveSceneView.camera;
+                Ray ray = cam.ScreenPointToRay(new Vector3(((float)(cam.pixelWidth - 1) / 2), ((float)(cam.pixelHeight - 1) / 2)));
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, 1000f, LayerMask.GetMask("Ground")))
+                {
+                    selectedCondition.local = hit.point;
+                }
+            }
         }
 
     }
@@ -113,7 +126,69 @@ public class QuestEditor : Editor
         }
     }
 
-    void ShowConditions(SerializedProperty prop, bool foldout = true)
+
+    public void DrawActiveConditionPlace()
+    {
+        if (condHolders.Count != 1)
+        {
+            UndrawPlaces();
+
+            GameObject condicaoHolder = new GameObject(selectedCondition.descricao, typeof(DrawQuesGizmo));
+            condicaoHolder.transform.SetParent(placesRoot);
+
+            condicaoHolder.GetComponent<DrawQuesGizmo>().SetCondicaoOnHolder(selectedCondition);
+
+            condHolders.Add(condicaoHolder);
+        }
+        else
+        {
+            condHolders[0].GetComponent<DrawQuesGizmo>().SetCondicaoOnHolder(selectedCondition);
+        }
+    }
+
+    public void DrawAllConditionPlaces(Quest q)
+    {
+        UndrawPlaces();
+        if (q.condicoes.Count > 0 && !isPlacesDrawn)
+        {
+            int i = 1;
+            foreach (Condicoes c in q.condicoes)
+            {
+                GameObject condicaoHolder = new GameObject("Cond"+i, typeof(DrawQuesGizmo));
+                condicaoHolder.transform.SetParent(placesRoot);
+
+                condicaoHolder.GetComponent<DrawQuesGizmo>().SetCondicaoOnHolder(c);
+
+                condHolders.Add(condicaoHolder);
+                i++;
+            }
+            isPlacesDrawn = true;
+        }
+    }
+
+    void UndrawPlaces()
+    {
+        if (condHolders.Count > 0)
+        {
+            foreach(GameObject go in condHolders)
+            {
+                go.GetComponent<DrawQuesGizmo>().Clean();
+                DestroyImmediate(go);
+                
+            }
+
+            condHolders.Clear();
+        }
+    }
+
+    void ToSceneInteractableEditor(SerializedProperty p)
+    {
+       p.FindPropertyRelative("interagivel").objectReferenceValue = GameObject.Find(p.FindPropertyRelative("nameOnScene").stringValue).GetComponent<Interagivel>();       
+       p.FindPropertyRelative("local").vector3Value = p.FindPropertyRelative("interagivel").FindPropertyRelative("transform").FindPropertyRelative("position").vector3Value;
+    }
+
+    //jeito antigo (sem o property drawer) de desenhar as condições
+    /*void ShowConditions(SerializedProperty prop, bool foldout = true)
     {
         if (prop.isArray)
         {
@@ -200,46 +275,5 @@ public class QuestEditor : Editor
                 }
             }          
         }
-    }
-
-    public void DrawPlaces(Quest q)
-    {
-        UndrawPlaces();
-        if (q.condicoes.Count > 0 && !isPlacesDrawn)
-        {
-            int i = 1;
-            foreach (Condicoes c in q.condicoes)
-            {
-                GameObject condicaoHolder = new GameObject("Cond"+i, typeof(DrawQuesGizmo));
-                condicaoHolder.transform.SetParent(placesRoot);
-
-                condicaoHolder.GetComponent<DrawQuesGizmo>().SetCondicaoOnHolder(c);
-
-                condHolders.Add(condicaoHolder);
-                i++;
-            }
-            isPlacesDrawn = true;
-        }
-    }
-
-    void UndrawPlaces()
-    {
-        if (condHolders.Count > 0)
-        {
-            foreach(GameObject go in condHolders)
-            {
-                go.GetComponent<DrawQuesGizmo>().Clean();
-                DestroyImmediate(go);
-                
-            }
-
-            condHolders.Clear();
-        }
-    }
-
-     void ToSceneInteractableEditor(SerializedProperty p)
-    {
-       p.FindPropertyRelative("interagivel").objectReferenceValue = GameObject.Find(p.FindPropertyRelative("nameOnScene").stringValue).GetComponent<Interagivel>();       
-       p.FindPropertyRelative("local").vector3Value = p.FindPropertyRelative("interagivel").FindPropertyRelative("transform").FindPropertyRelative("position").vector3Value;
-    }
+    }*/
 }

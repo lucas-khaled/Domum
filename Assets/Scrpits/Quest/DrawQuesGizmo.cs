@@ -8,17 +8,34 @@ public class DrawQuesGizmo : MonoBehaviour
 
     List<GameObject> instanciados = new List<GameObject>();
 
+    int times = 0;
+
     public void SetCondicaoOnHolder(Condicoes c)
     {
-        condHolder = c;
+        if (times < 1 || condHolder.descricao != c.descricao)
+        {
+            condHolder = c;
+            CondicaoInstatiantes();
+            times = 1;
+        }
     }
     private void OnDrawGizmos()
     {
         if (condHolder != null)
         {
             Gizmos.color = GizmoColor();
-            Gizmos.DrawWireSphere(condHolder.local, condHolder.distanciaChegada);
-            CondicaoInstatiantes();
+
+            float sphereSize = 10;
+            if(condHolder.tipoCondicao == Condicoes.TipoCondicao.COMBATE)
+            {
+                sphereSize = condHolder.raioDeSpawn;
+            }
+            else if(condHolder.tipoCondicao == Condicoes.TipoCondicao.IDA)
+            {
+                sphereSize = condHolder.distanciaChegada;
+            }
+
+            Gizmos.DrawWireSphere(condHolder.local, condHolder.distanciaChegada);      
         }
     }
 
@@ -51,35 +68,32 @@ public class DrawQuesGizmo : MonoBehaviour
 
     void CondicaoInstatiantes()
     {
-        if (instanciados.Count == 0)
+        if(instanciados.Count>0)
+            Clean();
+
+        if ((condHolder.tipoCondicao == Condicoes.TipoCondicao.INTERACAO || condHolder.tipoCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM) && condHolder.interagivelPrefab != null)
         {
-            if ((condHolder.tipoCondicao == Condicoes.TipoCondicao.INTERACAO || condHolder.tipoCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM) && condHolder.interagivelPrefab != null)
-            {
-                if (!condHolder.IsOnScene())
-                {
-                    instanciados.Add((GameObject)Instantiate(condHolder.itemDaCondicao.gameObject, condHolder.local, Quaternion.identity));
-                }
-                else
-                {
-                    Clean();
-                }
-            }
-
-            if (condHolder.tipoCondicao == Condicoes.TipoCondicao.COMBATE && condHolder.inimigosDaCondicao.Count>0)
-            {
-                foreach(GameObject inimigo in condHolder.inimigosDaCondicao)
-                {
-                    instanciados.Add(Instantiate(inimigo, condHolder.SpawnRandomico(), Quaternion.identity));
-                }
-            }           
-
-            if ((condHolder.tipoCondicao == Condicoes.TipoCondicao.PEGA_ITEM || condHolder.tipoCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM) && condHolder.itemDaCondicao != null)
+            if (!condHolder.IsOnScene())
             {
                 instanciados.Add((GameObject)Instantiate(condHolder.itemDaCondicao.gameObject, condHolder.local, Quaternion.identity));
-            }
-
-            AparentarInstanciados();
+            }           
         }
+
+        if (condHolder.tipoCondicao == Condicoes.TipoCondicao.COMBATE && condHolder.inimigosDaCondicao.Count>0)
+        {
+            foreach(GameObject inimigo in condHolder.inimigosDaCondicao)
+            {
+                if(inimigo != null)
+                    instanciados.Add(Instantiate(inimigo, condHolder.SpawnRandomico(), Quaternion.identity));
+            }
+        }           
+
+        if ((condHolder.tipoCondicao == Condicoes.TipoCondicao.PEGA_ITEM || condHolder.tipoCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM) && condHolder.itemDaCondicao != null)
+        {
+            instanciados.Add((GameObject)Instantiate(condHolder.itemDaCondicao.gameObject, condHolder.local, Quaternion.identity));
+        }
+
+        AparentarInstanciados();
     }
 
     void AparentarInstanciados()
@@ -96,6 +110,7 @@ public class DrawQuesGizmo : MonoBehaviour
         {
             DestroyImmediate(destruir);
         }
+        instanciados.Clear();
     }
 
     private void Awake()

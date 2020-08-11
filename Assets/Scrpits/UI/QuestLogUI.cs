@@ -62,14 +62,18 @@ public class QuestLogUI : MonoBehaviour
     private Sprite iconeInimigoMissao;
 
     public static QuestLogUI questLogUI;
+
     private Quest questSelecionada;
     private SpriteRenderer iconeSpriteRenderer;
     private LineRenderer iconeLineRenderer;
+    private List<SpriteRenderer> questEnemiesSprites = new List<SpriteRenderer>();
+    private Camera miniMapCam;
 
     void Awake() {
         EventsController.onQuestLogChange += AtualizarQuestLog;
         EventsController.onCondicaoTerminada += TerminaCondicao;
         questLogUI = this;
+        miniMapCam = GameObject.Find("Mini_map").GetComponent<Camera>();
     }
 
    private void Start()
@@ -193,11 +197,14 @@ public class QuestLogUI : MonoBehaviour
         iconeSpriteRenderer.gameObject.SetActive(true);
         if (questSelecionada.getCondicaoAtual().tipoCondicao == Condicoes.TipoCondicao.COMBATE)
         {
-            iconeSpriteRenderer.sprite = iconeInimigoMissao;
             iconeLineRenderer.enabled = false;
+            iconeSpriteRenderer.gameObject.SetActive(false);
+
+            DrawEnemiesIcons(questSelecionada.getCondicaoAtual().inimigoParent);
+            return;
         }
         else if (questSelecionada.getCondicaoAtual().tipoCondicao == Condicoes.TipoCondicao.IDA)
-        {
+        {      
             iconeSpriteRenderer.sprite = null;
             DrawIdaCircle();
         }
@@ -207,9 +214,34 @@ public class QuestLogUI : MonoBehaviour
             iconeLineRenderer.enabled = false;
         }
 
+        iconeSpriteRenderer.gameObject.SetActive(true);
+
         Vector3 pos = questSelecionada.getCondicaoAtual().local;
         pos.y = 25;
         iconeSpriteRenderer.gameObject.transform.position = pos;
+    }
+
+    void DrawEnemiesIcons(GameObject enemiesParent)
+    {
+        for(int i = 0; i< enemiesParent.transform.childCount; i++)
+        {
+            GameObject spr = new GameObject("QuestSprite", typeof(SpriteRenderer), typeof(AlwaysVisibleOnMinimap));
+            spr.GetComponent<SpriteRenderer>().sprite = iconeInimigoMissao;
+
+            GameObject prefabVisible = Instantiate(spr);
+            spr.GetComponent<AlwaysVisibleOnMinimap>().SetMinimapCameraAndIconPrefab(prefabVisible, miniMapCam);
+            spr.GetComponent<AlwaysVisibleOnMinimap>().SetRadius(12);
+
+            spr.transform.SetParent(enemiesParent.transform.GetChild(i), false);
+            spr.transform.localPosition = Vector3.up*25;
+            spr.transform.localScale = Vector3.one * 3;
+            spr.transform.Rotate(Vector3.right * 90);
+            spr.gameObject.SetActive(true);
+
+            spr.layer = LayerMask.NameToLayer("Icones");
+            prefabVisible.layer = LayerMask.NameToLayer("Icones");
+
+        }
     }
 
     void DrawIdaCircle()
@@ -273,6 +305,7 @@ public class QuestLogUI : MonoBehaviour
         
         
     }
+
     private IEnumerator QuestAnimationAceitar(Quest quest)
     {
         var animacaoQuest = Instantiate(UIController.uiController.questAceitaTerminada, UIController.uiController.posicao.transform);
@@ -282,6 +315,7 @@ public class QuestLogUI : MonoBehaviour
         yield return new WaitForSeconds(2.7f);
         Destroy(animacaoQuest.gameObject);
     }
+
     private IEnumerator QuestAnimationFinalizar(Quest quest)
     {
         var animacaoQuest = Instantiate(UIController.uiController.questAceitaTerminada, UIController.uiController.posicao.transform);

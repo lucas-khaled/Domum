@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Nova Quest", menuName = "Quest/Nova Quest")]
 public class Quest : ScriptableObject
 {
-    public bool principal;
     public string nome;
+    public bool principal;  
 
     [SerializeField]
     private Recompensa reward;
@@ -22,11 +22,11 @@ public class Quest : ScriptableObject
 
     
 
-    private void Awake()
+    /*private void Awake()
     {
         if (!GameController.gameController.IsLoadedGame())
             aceita = false;
-    }
+    }*/
 
     public Recompensa getRecompensaAtual()
     {

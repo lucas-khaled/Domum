@@ -15,12 +15,27 @@ public class AlwaysVisibleOnMinimap : MonoBehaviour
     Camera miniMapCamera;
     [SerializeField]
     GameObject prefabDeInstancia;
+    [SerializeField]
+    bool cutOff = false;
+
+    public void SetMinimapCameraAndIconPrefab(GameObject icon, Camera minimapCam)
+    {
+        miniMapCamera = minimapCam;
+        prefabDeInstancia = icon;
+    }
+
+    public void SetRadius(float radius)
+    {
+        this.radius = radius;
+    }
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         lineRenderer = GetComponent<LineRenderer>();
-        StartCoroutine(SeDesliga());
+
+        if(cutOff)
+            StartCoroutine(SeDesliga());
     }
 
     IEnumerator SeDesliga()
