@@ -324,7 +324,7 @@ public class Player : MonoBehaviour, IVulnerable
         animator.SetInteger("Ataque", 0);
     }
 
-    private void OnDrawGizmosSelected()
+    /*(private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, raioPercepcao);
         Gizmos.color = Color.black;
@@ -337,7 +337,7 @@ public class Player : MonoBehaviour, IVulnerable
         Gizmos.DrawWireSphere(pe2.transform.position, raiope);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, 2);
-    }
+    }*/
 
 
 

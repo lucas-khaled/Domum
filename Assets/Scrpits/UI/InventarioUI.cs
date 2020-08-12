@@ -20,6 +20,10 @@ public class InventarioUI : MonoBehaviour
     [SerializeField]
     private Text Peso_Atual;
     [SerializeField]
+    private Text Fama_Atual;
+    [SerializeField]
+    private Text Lvl_Atual;
+    [SerializeField]
     private Text Info;
     [SerializeField]
     private Text Valor_venda;
@@ -111,6 +115,8 @@ public class InventarioUI : MonoBehaviour
     {
         Dinheiro_Atual.text = Player.player.status.Dinheiro.ToString();
         Peso_Atual.text = Inventario.inventario.pesoInventario.ToString();
+        Fama_Atual.text = Player.player.status.Fama.ToString();
+        Lvl_Atual.text = Player.player.status.Level.ToString();
     }
 
     IEnumerator ApareceExcluirWait()

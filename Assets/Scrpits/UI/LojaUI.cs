@@ -27,6 +27,8 @@ public class LojaUI : MonoBehaviour
     [SerializeField]
     private Text itemPeso;
     [SerializeField]
+    private Text itemDano;
+    [SerializeField]
     private Text itemNome;
     [SerializeField]
     private Text itemDescricao;
@@ -191,6 +193,7 @@ public class LojaUI : MonoBehaviour
         if(holder.item.GetType() == typeof(Arma))
         {
             Arma arminha = (Arma)holder.item; 
+            itemDano.text = arminha.dano.ToString();
             itemFama.text = arminha.famaMinima.ToString();
         }
 
