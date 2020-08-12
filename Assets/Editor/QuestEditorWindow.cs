@@ -7,7 +7,7 @@ using System.IO;
 public class QuestEditorWindow : EditorWindow
 {
     List<Quest> existingQuests = new List<Quest>();
-    const string pathBase = "Assets/Quests";
+    const string PATHBASE = "Assets/Quests/";
 
     Quest questAtual;
     QuestEditor questEditorAtual;
@@ -26,6 +26,28 @@ public class QuestEditorWindow : EditorWindow
         existingQuests.Clear();
         Quest[] quests = GetAtPath<Quest>("Quests/");
         existingQuests.AddRange(quests);
+    }
+
+    public void MakeANewQuest()
+    {
+        Quest newQuest = new Quest();
+        newQuest.name = "Nova Quest " + (existingQuests.Count+1);
+        newQuest.nome = newQuest.name;
+        Condicoes c = new Condicoes();
+
+        string path = PATHBASE + newQuest.name + ".asset";
+
+        AssetDatabase.CreateAsset(newQuest, path);
+        existingQuests.Add(newQuest);
+    }
+
+    public void RemoveQuest(Quest q)
+    {
+        string path = AssetDatabase.GetAssetPath(q);
+        questAtual = null;
+
+        AssetDatabase.DeleteAsset(path);
+        existingQuests.Remove(q);
     }
 
     private void OnEnable()
@@ -59,11 +81,15 @@ public class QuestEditorWindow : EditorWindow
         GUILayout.BeginVertical();
         infoScrollPosition = GUILayout.BeginScrollView(infoScrollPosition);
 
-        Editor editor = Editor.CreateEditor(questAtual);
-        editor.OnInspectorGUI();
+        if (questEditorAtual == null || (Quest)questEditorAtual.target != questAtual)
+        {
+            Editor editor = Editor.CreateEditor(questAtual);
+            questEditorAtual = (QuestEditor)editor;
+        }
 
-        questEditorAtual = (QuestEditor)editor;
         //questEditor.DrawPlaces(questAtual);
+
+        questEditorAtual.OnInspectorGUI();
 
         GUILayout.EndScrollView();
         GUILayout.EndVertical();
@@ -71,6 +97,7 @@ public class QuestEditorWindow : EditorWindow
 
     private void OnGUI()
     {
+        GUILayout.BeginVertical();
         GUILayout.BeginHorizontal("Quests");
 
         DrawQuestSelection();
@@ -78,6 +105,30 @@ public class QuestEditorWindow : EditorWindow
         if(questAtual != null)
         {
             DrawSelectedQuest();
+        }
+
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(20);
+        DrawOptionsButtons();
+        GUILayout.EndVertical();
+    }
+
+    void DrawOptionsButtons()
+    {
+        GUILayout.BeginHorizontal("Options");
+
+        if(GUILayout.Button("Criar Quest"))
+        {
+            MakeANewQuest();
+        }
+
+        if(questAtual != null)
+        {
+            if(GUILayout.Button("Deletar Quest"))
+            {
+                RemoveQuest(questAtual);
+            }
         }
 
         GUILayout.EndHorizontal();

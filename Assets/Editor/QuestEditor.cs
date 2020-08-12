@@ -34,9 +34,23 @@ public class QuestEditor : Editor
         UndrawPlaces();
     }
 
+    void ChangeName(Quest quest, string newName)
+    {
+        AssetDatabase.RenameAsset(AssetDatabase.GetAssetPath(quest), newName);
+    }
+
     public override void OnInspectorGUI()
     {
+        EditorGUILayout.BeginHorizontal();
         EditorGUILayout.PropertyField(obj.FindProperty("nome"));
+        q.name = q.nome;
+
+        if(GUILayout.Button("Apply Name"))
+        {
+            ChangeName(q, q.nome);
+        }
+        EditorGUILayout.EndHorizontal();
+
         EditorGUILayout.PropertyField(obj.FindProperty("principal"));
         EditorGUILayout.PropertyField(obj.FindProperty("reward"));
 
@@ -60,6 +74,10 @@ public class QuestEditor : Editor
 
     void DrawConditions(SerializedProperty prop)
     {
+
+        GUILayout.Space(20);
+        var rect = EditorGUILayout.BeginVertical(); 
+
         if (prop.isArray)
         {
             prop.arraySize = EditorGUILayout.IntField("Quantidade de Condições: ", prop.arraySize);
@@ -114,6 +132,12 @@ public class QuestEditor : Editor
                     selectedCondition.local = hit.point;
                 }
             }
+
+            EditorGUILayout.EndVertical();
+
+            Color c = Color.black;
+            c.a = 0.1f;
+            EditorGUI.DrawRect(new Rect(rect.x, rect.y-10, rect.width, rect.height+20), c);
         }
 
     }
