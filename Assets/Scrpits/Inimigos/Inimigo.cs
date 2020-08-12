@@ -57,8 +57,6 @@ public class Inimigo : MonoBehaviour, IVulnerable
     [HideInInspector]
     public bool morto = false;
 
-
-
     public int Vida
     {
         get { return vida; }
@@ -89,6 +87,29 @@ public class Inimigo : MonoBehaviour, IVulnerable
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
         posicaoInicial = this.transform.position;
+        InvokeRepeating("CheckIfHitLifeMustBeActive", 0.5f, 1f);
+    }
+
+    void CheckIfHitLifeMustBeActive()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            if (hostil)
+            {
+                if (Vector3.Distance(Player.player.transform.position, transform.position) > 7)
+                {
+                    hitCanvas.gameObject.SetActive(false);
+                }
+                else
+                {
+                    hitCanvas.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                hitCanvas.gameObject.SetActive(false);
+            }
+        }
     }
 
     //realiza o ataque do inimigo
