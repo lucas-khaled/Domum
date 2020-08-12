@@ -8,19 +8,19 @@ public class Passos : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip passos;
-    [SerializeField]
-    private LayerMask layerChao;
     private void Start()
     {
         audioSource = Player.player.audioSource;
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == layerChao)
+        Debug.Log("AEO");
+        if (other.gameObject.tag == "Chao" && Player.player.estadoPlayer != EstadoPlayer.ATACANDO)
         {
             audioSource.volume = Random.Range(0.8f, 1);
             audioSource.pitch = Random.Range(0.8f, 1.1f);
             audioSource.PlayOneShot(passos);
+            Debug.Log("AIO");
         }
     }
 }

@@ -166,14 +166,13 @@ public class Tyva : Player
         status.QntColetavel--;
     }
 
-    Vector3 front = Vector3.zero;
     Vector3 FacaFrontTarget()
     {
         float rotY = transform.localEulerAngles.y * Mathf.Deg2Rad;
 
-        front = new Vector3(posicaoFaca.position.x + Mathf.Sin(rotY)*3,
-                                       posicaoFaca.position.y-1f,
-                                       posicaoFaca.position.z + Mathf.Cos(rotY)*3);
+        Vector3 front = new Vector3(posicaoFaca.position.x + Mathf.Sin(rotY),
+                                       posicaoFaca.position.y,
+                                       posicaoFaca.position.z + Mathf.Cos(rotY));
 
         return front;
     }
@@ -227,15 +226,6 @@ public class Tyva : Player
             animator.SetInteger("Ataque", 0);
             numClick = 0;
             estadoPlayer = EstadoPlayer.COMBATE;
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        if(front != Vector3.zero)
-        {
-            Gizmos.DrawWireSphere(front, 0.5f);
-            Debug.Log(front);
         }
     }
 }

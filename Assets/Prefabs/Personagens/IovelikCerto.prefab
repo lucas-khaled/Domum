@@ -947,6 +947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2685116964491993638}
   - component: {fileID: 4740388548607078702}
+  - component: {fileID: 278893061108696847}
   m_Layer: 0
   m_Name: Pe1
   m_TagString: Untagged
@@ -976,11 +977,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4139486077720738690}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.001396541, y: 0.0032663157, z: 0.0005827207}
-  m_Center: {x: -0.000077727665, y: -0.00017360925, z: -0.00025627887}
+  m_Size: {x: 0.001396541, y: 0.0032663157, z: 0.0008065851}
+  m_Center: {x: -0.000077727695, y: -0.00017360917, z: -0.00036821153}
+--- !u!114 &278893061108696847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139486077720738690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 3443106083382854781}
+  passos: {fileID: 8300000, guid: 8b512b671d0540b4b9dc0aa360a6e981, type: 3}
 --- !u!1 &4598898041665503396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,8 +2087,6 @@ MonoBehaviour:
   passos: {fileID: 8300000, guid: 8b512b671d0540b4b9dc0aa360a6e981, type: 3}
   audioSource: {fileID: 3443106083382854781}
   particulaArma: {fileID: 7015783731120410506}
-  pe1: {fileID: 4139486077720738690}
-  pe2: {fileID: 8366433934970398128}
   posicaoHit: {fileID: 5383999836798670414}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
@@ -2081,7 +2094,6 @@ MonoBehaviour:
   raioPercepcao: 10
   raioAtaque: 2
   espera: 0.3
-  raiope: 0.1
   martelada: {fileID: 8300000, guid: 0ea5b9465a873a544ac6988ae5643d8a, type: 3}
   escudoSom: {fileID: 8300000, guid: 2af9015ffa1c8f34eb6044cd4735f86a, type: 3}
   escudo: {fileID: 5383999835037671250}
@@ -2389,6 +2401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5327355915675362064}
   - component: {fileID: 5808688674529933987}
+  - component: {fileID: 7013549987178823711}
   m_Layer: 0
   m_Name: Pe2
   m_TagString: Untagged
@@ -2418,11 +2431,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8366433934970398128}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0014475678, y: 0.0032663157, z: 0.00058272056}
-  m_Center: {x: 0.00003761652, y: -0.00017360933, z: -0.00025627896}
+  m_Size: {x: 0.0014475678, y: 0.0032663157, z: 0.0008449681}
+  m_Center: {x: 0.000037616483, y: -0.00017360931, z: -0.00038740275}
+--- !u!114 &7013549987178823711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366433934970398128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 3443106083382854781}
+  passos: {fileID: 8300000, guid: 8b512b671d0540b4b9dc0aa360a6e981, type: 3}
 --- !u!1 &8546514044855736699
 GameObject:
   m_ObjectHideFlags: 0

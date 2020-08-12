@@ -7,6 +7,5 @@ public class FazerEscolha : MonoBehaviour
     public void Escolher(string personagem)
     {
         GameController.gameController.EscolherPersonagem(personagem);
-        GameController.gameController.ChangeScene("Level");
     }
 }
