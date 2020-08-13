@@ -13,7 +13,7 @@ public class Loading : MonoBehaviour
 
     private IEnumerator Carregamento()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         AsyncOperation level = SceneManager.LoadSceneAsync("Level");
         while (level.progress < 1)
         {
