@@ -22,10 +22,8 @@ public class Player : MonoBehaviour, IVulnerable
     private AudioClip movimento;
     [SerializeField]
     protected AudioClip ataque;
-    [SerializeField]
-    private AudioClip passos;
-    [SerializeField]
     public AudioSource audioSource;
+    public string audioNovo;
 
     private float audioAux;
 

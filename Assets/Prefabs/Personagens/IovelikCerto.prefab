@@ -994,8 +994,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 3443106083382854781}
-  passos: {fileID: 8300000, guid: 8b512b671d0540b4b9dc0aa360a6e981, type: 3}
+  audioSource: {fileID: 0}
+  passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
+  passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
+  passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
 --- !u!1 &4598898041665503396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,7 +1975,7 @@ GameObject:
   - component: {fileID: 7739924227511663794}
   - component: {fileID: 7739924227511663789}
   - component: {fileID: 7739924227511663788}
-  - component: {fileID: 3443106083382854781}
+  - component: {fileID: 5504370889686444593}
   - component: {fileID: 1842704961183157729}
   m_Layer: 9
   m_Name: IovelikCerto
@@ -2084,8 +2086,8 @@ MonoBehaviour:
   status: {fileID: 0}
   movimento: {fileID: 8300000, guid: 8b512b671d0540b4b9dc0aa360a6e981, type: 3}
   ataque: {fileID: 8300000, guid: dd9fc88e99eaaeb47ae9a1d86992dc2d, type: 3}
-  passos: {fileID: 8300000, guid: 8b512b671d0540b4b9dc0aa360a6e981, type: 3}
-  audioSource: {fileID: 3443106083382854781}
+  audioSource: {fileID: 0}
+  audioNovo: 
   particulaArma: {fileID: 7015783731120410506}
   posicaoHit: {fileID: 5383999836798670414}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
@@ -2101,7 +2103,7 @@ MonoBehaviour:
   valorDanoArea: 20
   raioDanoArea: 2
   coolDownDanoArea: 2
---- !u!82 &3443106083382854781
+--- !u!82 &5504370889686444593
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2448,8 +2450,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 3443106083382854781}
-  passos: {fileID: 8300000, guid: 8b512b671d0540b4b9dc0aa360a6e981, type: 3}
+  audioSource: {fileID: 0}
+  passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
+  passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
+  passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
 --- !u!1 &8546514044855736699
 GameObject:
   m_ObjectHideFlags: 0

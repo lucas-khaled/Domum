@@ -1128,8 +1128,8 @@ MonoBehaviour:
   status: {fileID: 0}
   movimento: {fileID: 8300000, guid: 546ce456d97ae2841b125361322e2099, type: 3}
   ataque: {fileID: 0}
-  passos: {fileID: 8300000, guid: 546ce456d97ae2841b125361322e2099, type: 3}
   audioSource: {fileID: 8977739183082086559}
+  audioNovo: 
   particulaArma: {fileID: 0}
   posicaoHit: {fileID: 3469711515040114650}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
@@ -2431,7 +2431,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8977739183082086559}
-  passos: {fileID: 8300000, guid: 546ce456d97ae2841b125361322e2099, type: 3}
+  passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
+  passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
+  passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
 --- !u!1 &5940187349500778775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,7 +2747,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8977739183082086559}
-  passos: {fileID: 8300000, guid: 546ce456d97ae2841b125361322e2099, type: 3}
+  passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
+  passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
+  passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
 --- !u!65 &2620590014430426573
 BoxCollider:
   m_ObjectHideFlags: 0
