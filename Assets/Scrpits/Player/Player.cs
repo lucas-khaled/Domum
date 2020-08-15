@@ -20,8 +20,7 @@ public class Player : MonoBehaviour, IVulnerable
     [Header("Audio Players")]
     [SerializeField]
     private AudioClip movimento;
-    [SerializeField]
-    protected AudioClip ataque;
+    public AudioClip ataque;
     public AudioSource audioSource;
     public string audioNovo;
 
@@ -51,8 +50,6 @@ public class Player : MonoBehaviour, IVulnerable
     private Transform hitCanvas;
 
     #region GETTERS & SETTERS
-
-
 
     public EstadoPlayer estadoPlayer
     {
@@ -133,8 +130,6 @@ public class Player : MonoBehaviour, IVulnerable
         if (podeAtacar && numClick < status.NumAtaque)
         {
             numClick++;
-            ArmaPlayer.armaPlayer.danoAux++;
-            Debug.Log(ArmaPlayer.armaPlayer.danoAux);
         }
 
         if (numClick == 1)
@@ -284,6 +279,11 @@ public class Player : MonoBehaviour, IVulnerable
 
             }
 
+            if (y != 0 || x != 0)
+                Passos.passos.caminhando = true;
+            else
+                Passos.passos.caminhando = false;
+
             Vector3 dir = (transform.forward * y) + (transform.right * x);
             Vector3 clampedDir = dir;
             if (dir.magnitude > 1)
@@ -320,20 +320,24 @@ public class Player : MonoBehaviour, IVulnerable
         animator.SetInteger("Ataque", 0);
     }
 
-    /*(private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, raioPercepcao);
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, 2);
 
-        Gizmos.DrawWireSphere(pe1.transform.position, raiope);
+        /*Gizmos.DrawWireSphere(pe1.transform.position, raiope);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, 2);
 
         Gizmos.DrawWireSphere(pe2.transform.position, raiope);
         Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, 2);*/
+
+        Gizmos.DrawWireSphere(posicaoHit.transform.position, 0.5f);
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, 2);
-    }*/
+    }
 
 
 

@@ -157,7 +157,7 @@ public class Iovelik : Player
     public void CheckCombo()
     {
         podeAtacar = false;
-        audioSource.PlayOneShot(ataque);
+        //audioSource.PlayOneShot(ataque);
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick == 1)
         {

@@ -1174,7 +1174,7 @@ GameObject:
   - component: {fileID: 5172853619039478827}
   m_Layer: 0
   m_Name: Martelao
-  m_TagString: Untagged
+  m_TagString: Martelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1220,7 +1220,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dano: 20
   mesh: {fileID: 1742987324863219066}
-  danoAux: 0
 --- !u!1 &5185568088487524419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,7 +2085,7 @@ MonoBehaviour:
   status: {fileID: 0}
   movimento: {fileID: 8300000, guid: 8b512b671d0540b4b9dc0aa360a6e981, type: 3}
   ataque: {fileID: 8300000, guid: dd9fc88e99eaaeb47ae9a1d86992dc2d, type: 3}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 5504370889686444593}
   audioNovo: 
   particulaArma: {fileID: 7015783731120410506}
   posicaoHit: {fileID: 5383999836798670414}

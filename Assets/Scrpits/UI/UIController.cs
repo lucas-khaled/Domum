@@ -92,7 +92,8 @@ public class UIController : MonoBehaviour
 
     protected virtual void Update() {        
         PauseOn();
-        //Voltar();
+        Voltar();
+
        if (canvasAudio.activeInHierarchy && Input.GetButtonDown("Return"))
        {
            VoltarSelecao(novoSelecionado, canvasAudio);
