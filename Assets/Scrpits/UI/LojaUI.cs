@@ -45,6 +45,8 @@ public class LojaUI : MonoBehaviour
 
     [HideInInspector]
     public int contCompraVenda;
+    [HideInInspector]
+    public bool ativo; 
 
     List<GameObject> listaVendedor = new List<GameObject>(), listaPlayer = new List<GameObject>();
     Holder_Item holderAtual;
@@ -58,6 +60,7 @@ public class LojaUI : MonoBehaviour
 
     public void FecharLoja()
     {
+        ativo = false;
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -82,6 +85,8 @@ public class LojaUI : MonoBehaviour
     {
         if (lojaAtual == null)
         {
+            ativo = true;
+
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(primeiroSelecionadoLoja);
 
@@ -95,6 +100,9 @@ public class LojaUI : MonoBehaviour
             {
                 lojaAtual.gameObject.GetComponent<Atriet>().Conversa();
             }
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
 
             contCompraVenda = 0;
 

@@ -62,6 +62,8 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject painelQuestLog;
 
+    private GameObject[] objetos;
+    private float auxPause;
 
     bool questLogAberto = false;
     private List<Transform> listinha = new List<Transform>();
@@ -85,15 +87,45 @@ public class UIController : MonoBehaviour
         AtualizaRender();
         PauseOn(true);
         PauseOff();
+        objetos = GameObject.FindGameObjectsWithTag("FecharEsc");
     }
 
     protected virtual void Update() {        
-       PauseOn();
-
+        PauseOn();
+        //Voltar();
        if (canvasAudio.activeInHierarchy && Input.GetButtonDown("Return"))
        {
            VoltarSelecao(novoSelecionado, canvasAudio);
        }
+    }
+
+    private void Voltar()
+    {
+        auxPause -= Time.deltaTime;
+        if (auxPause < -90000)
+            auxPause = 0;
+
+        if (Input.GetKeyDown("Pause") && auxPause <= 0)
+        {
+            Debug.Log("a");
+            if (isPaused)
+            {
+                PauseOff();
+            }
+            if (LojaUI.lojaUi.ativo)
+            {
+                LojaUI.lojaUi.FecharLoja();
+            }
+            if (BauUI.bauUI.bauAberto)
+            {
+                BauUI.bauUI.CloseBau();
+            }
+            for (int i = 0; i < objetos.Length; i++)
+            {
+                objetos[i].SetActive(false);
+            }
+                
+        }
     }
 
     #region WORLD CANVAS
@@ -221,51 +253,57 @@ public class UIController : MonoBehaviour
 
     public void PauseOn(bool mandeiPausar = false){
 
-        if(mandeiPausar || (Input.GetButtonDown("Pause") && Player.player.estadoPlayer != EstadoPlayer.MORTO)){
-
-            isPaused = true;
-
-            if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
+        if (mandeiPausar || (Input.GetButtonDown("Pause") && Player.player.estadoPlayer != EstadoPlayer.MORTO))
+        {
+            if (!LojaUI.lojaUi.ativo)
             {
-                tutorialJoystick.SetActive(true);
-                tutorialTeclado.SetActive(false);
+                isPaused = true;
+                auxPause = 0.5f;
+
+                if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
+                {
+                    tutorialJoystick.SetActive(true);
+                    tutorialTeclado.SetActive(false);
+                }
+                else
+                {
+                    tutorialTeclado.SetActive(true);
+                    tutorialJoystick.SetActive(false);
+                }
+
+                if (EventsController.onPausedGame != null)
+                {
+                    EventsController.onPausedGame.Invoke();
+                }
+
+                MudaBotaoSelecionado(pauseInicio);
+
+                if (!mandeiPausar)
+                    Pause.SetActive(true);
+
+                CameraController.cameraInstance.Trava = true;
+
+                if (GameController.gameController.QualOrigemInput() == OrigemInput.MOUSE)
+                {
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                Time.timeScale = 0;
             }
-            else
-            {
-                tutorialTeclado.SetActive(true);
-                tutorialJoystick.SetActive(false);
-            }
-
-            if(EventsController.onPausedGame != null)
-            {
-                EventsController.onPausedGame.Invoke();
-            }
-
-            MudaBotaoSelecionado(pauseInicio);
-
-            if (!mandeiPausar)
-            Pause.SetActive(true);
-
-            CameraController.cameraInstance.Trava = true;
-
-            if (GameController.gameController.QualOrigemInput() == OrigemInput.MOUSE)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            Time.timeScale = 0;
         }
-
     }
 
-    public void PauseOff(){
-
-        isPaused = false;
-        Pause.SetActive(false);
-        Cursor.visible = false;
-        CameraController.cameraInstance.Trava = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1;
+    public void PauseOff()
+    {
+        if (isPaused)
+        {
+            isPaused = false;
+            Pause.SetActive(false);
+            Cursor.visible = false;
+            CameraController.cameraInstance.Trava = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1;
+        }
     }
 
     public void PainelMorteOn()

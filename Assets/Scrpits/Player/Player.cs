@@ -25,8 +25,6 @@ public class Player : MonoBehaviour, IVulnerable
     public AudioSource audioSource;
     public string audioNovo;
 
-    private float audioAux;
-
     [Header("Referências")]
     [SerializeField]
     private ParticleSystem particulaArma;
@@ -257,7 +255,6 @@ public class Player : MonoBehaviour, IVulnerable
     protected virtual void Update()
     {
         Movimento();
-        audioAux -= Time.deltaTime;
 
         if (Input.GetButtonDown("Attack") && (estadoPlayer != EstadoPlayer.RECARREGAVEL && estadoPlayer != EstadoPlayer.MORTO) && podeAtacar && Time.timeScale != 0)
         {
@@ -268,6 +265,7 @@ public class Player : MonoBehaviour, IVulnerable
         {
             Interagir();
         }
+
     }
 
     void Movimento()

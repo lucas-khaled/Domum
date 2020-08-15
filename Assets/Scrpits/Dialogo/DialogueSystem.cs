@@ -22,7 +22,7 @@ public class DialogueSystem:MonoBehaviour
     private Text dialogueText;
 
     private float letterDelay = 0.05f;
-    private float letterMultiplier = 0.5f;
+    private float letterMultiplier = 0.0001f;
 
     public string Names;
 
@@ -132,20 +132,26 @@ public class DialogueSystem:MonoBehaviour
 
                 if (currentCharacterIndex < stringLength)
                 {
-                    if (Input.GetButtonDown("Interact"))
+                    if (Input.GetButtonDown("Interact") && currentCharacterIndex >= 2)
                     {
                         yield return new WaitForSeconds(letterDelay * letterMultiplier);
-
+                        if (caixaTexto.gameObject.activeInHierarchy)
+                        {
+                            while (currentCharacterIndex < stringLength)
+                            {
+                                dialogueText.text += stringToDisplay[currentCharacterIndex];
+                                currentCharacterIndex++;
+                            }
+                        }
                     }
                     else
                     {
                         yield return new WaitForSeconds(letterDelay);
-
                     }
                 }
                 else
                 {
-                    dialogueEnded = false;
+                    dialogueEnded = true;
                     break;
                 }
             }
