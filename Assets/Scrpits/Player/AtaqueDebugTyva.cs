@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AtaqueDebugIovelik : StateMachineBehaviour
+public class AtaqueDebugTyva : StateMachineBehaviour
 {
     private float auxSom;
-    private GameObject martelo;
+    private GameObject[] adagas;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.IsName("Attack1"))
+        
+        //Mudar quando colocar som
+        /*if (stateInfo.IsName("Attack1"))
         {
             auxSom = 0.5f;
             Debug.Log("1");
@@ -24,10 +26,13 @@ public class AtaqueDebugIovelik : StateMachineBehaviour
         {
             auxSom = 0.7f;
             Debug.Log("3");
-        }
+        }*/
 
-        martelo = GameObject.FindGameObjectWithTag("Martelo");
-        martelo.GetComponent<BoxCollider>().enabled = true;
+
+        //aa
+        adagas = GameObject.FindGameObjectsWithTag("Adaga");
+        adagas[0].GetComponent<BoxCollider>().enabled = true;
+        adagas[1].GetComponent<BoxCollider>().enabled = true;
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

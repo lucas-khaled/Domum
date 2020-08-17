@@ -2434,6 +2434,7 @@ MonoBehaviour:
   passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
   passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
   passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  caminhando: 0
 --- !u!1 &5940187349500778775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,6 +2751,7 @@ MonoBehaviour:
   passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
   passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
   passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  caminhando: 0
 --- !u!65 &2620590014430426573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3103,7 +3105,7 @@ GameObject:
   - component: {fileID: 1903533746297567552}
   m_Layer: 0
   m_Name: Weapon01.R
-  m_TagString: Untagged
+  m_TagString: Adaga
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3149,7 +3151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dano: 5
   mesh: {fileID: 9167557052146158465}
-  danoAux: 0
 --- !u!1 &7806269500878374827
 GameObject:
   m_ObjectHideFlags: 0
@@ -3612,7 +3613,7 @@ GameObject:
   - component: {fileID: 4035112789799984501}
   m_Layer: 0
   m_Name: Weapon01.L
-  m_TagString: Untagged
+  m_TagString: Adaga
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3658,4 +3659,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dano: 5
   mesh: {fileID: 9167557052146158465}
-  danoAux: 0

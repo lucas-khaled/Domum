@@ -84,7 +84,6 @@ public class Tanque : Inimigo
 
             float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
 
-            Debug.Log(distancia);
             if (distancia <= distanciaAtaque)
             {
                 anim.SetBool("PertoPlayer", true);

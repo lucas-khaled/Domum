@@ -998,6 +998,7 @@ MonoBehaviour:
   passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
   passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
   passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  caminhando: 0
 --- !u!1 &4598898041665503396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,7 +2034,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!114 &7739924227511663794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2453,6 +2454,7 @@ MonoBehaviour:
   passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
   passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
   passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  caminhando: 0
 --- !u!1 &8546514044855736699
 GameObject:
   m_ObjectHideFlags: 0
