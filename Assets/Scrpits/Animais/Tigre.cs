@@ -53,7 +53,7 @@ public class Tigre : MonoBehaviour
     private Rigidbody rb;
     private bool morto;
 
-    private GameObject respawnTigre;
+    private GameObject[] respawnTigre;
     private Transform hitCanvas;
 
     bool canAttack = true;
@@ -73,6 +73,17 @@ public class Tigre : MonoBehaviour
         canAttack = true;
     }
     #endregion
+
+    private void Start()
+    {
+        respawnTigre = GameObject.FindGameObjectsWithTag("RespawnTigre");
+        anim.SetBool("Idle", true);
+        StartCoroutine(Escolher());
+        Vida = maxVida;
+        hitCanvas = transform.Find("Hit_life");
+        anim.SetFloat("Vida", maxVida);
+        rb = this.gameObject.GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
@@ -175,16 +186,6 @@ public class Tigre : MonoBehaviour
             StartCoroutine(Escolher());
         }
     }
-    private void Start()
-    {
-        respawnTigre = GameObject.FindGameObjectWithTag("Tigre");
-        anim.SetBool("Idle", true);
-        StartCoroutine(Escolher());
-        Vida = maxVida;
-        hitCanvas = transform.Find("Hit_life");
-        anim.SetFloat("Vida", maxVida);
-        rb = this.gameObject.GetComponent<Rigidbody>();
-    }
     public int Vida
     {
         get { return vida; }
@@ -250,7 +251,7 @@ public class Tigre : MonoBehaviour
         DroparLoot();
         StopAllCoroutines();
 
-        respawnTigre.GetComponent<Respawn>().numeroAnimais--;
+        respawnTigre[Random.Range(0, 6)].GetComponent<Respawn>().numeroAnimais--;
     }
     public void ReceberDano(int danoRecebido)
     {

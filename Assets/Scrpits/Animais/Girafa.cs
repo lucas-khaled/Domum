@@ -17,7 +17,8 @@ public class Girafa : MonoBehaviour
     NavMeshHit hit;
     public Item[] itensDropaveis;
     public Bau drop;
-    private GameObject respawnGirafa;
+    [SerializeField]
+    private GameObject[] respawnGirafa;
 
     [Header("Audios")]
     [SerializeField]
@@ -55,19 +56,9 @@ public class Girafa : MonoBehaviour
                 StartCoroutine(Escolher());
             }
         }
-        /*if (vaicomer)
-        {
-            if ((Vector3.Distance(this.gameObject.transform.position, destino) < 5f))
-            {
-                animal.SetDestination(this.gameObject.transform.position);
-                this.gameObject.transform.LookAt(destino);
-                StartCoroutine(Comer());
-            }
-            vaicomer = false;
-        }*/
         if (correndo && corrida > 0)
         {
-            if (Vector3.Distance(this.gameObject.transform.position, destino) < 1.5f)
+            if (Vector3.Distance(this.gameObject.transform.position, destino) < 0.5f)
             {
                 destino = RandomNavMeshGenerator(20f);
                 animal.SetDestination(destino);
@@ -79,6 +70,8 @@ public class Girafa : MonoBehaviour
             GetComponent<NavMeshAgent>().speed = 0.8f;
             anim.SetBool("Correndo", false);
             correndo = false;
+            destino = RandomNavMeshGenerator(10f);
+            Movimentar(destino);
         }
     }
 
@@ -99,47 +92,24 @@ public class Girafa : MonoBehaviour
 
     private IEnumerator Escolher()
     {
-        int escolha = Random.Range(0, 4);
-        if (escolha == 0)
+        while (true)
         {
-            destino = RandomNavMeshGenerator(10f);
-            Movimentar(destino);
-        }
-        else if (escolha == 2)
-        {
-            StartCoroutine(Deitado());
-        }
-        else if (escolha == 3)
-        {
-            /*Collider[] arvore = Physics.OverlapSphere(this.transform.position, 15f, LayerMask.GetMask("Arvore"));
-            if (arvore.Length > 0)
+            int escolha = Random.Range(0, 4);
+            if (escolha == 0)
             {
-                maisPerto = arvore[0];
-                for (int i = 1; i < arvore.Length; i++)
-                {
-                    if (Vector3.Distance(maisPerto.transform.position, this.gameObject.transform.position) < Vector3.Distance(arvore[i].transform.position, this.gameObject.transform.position))
-                    {
-                        maisPerto = arvore[i];
-                    }
-                }
-                vaicomer = true;
-                destino = maisPerto.transform.position;
+                destino = RandomNavMeshGenerator(10f);
                 Movimentar(destino);
             }
-            else
+            else if (escolha == 2)
             {
-                StartCoroutine(Escolher());
-            }*/
-        }
-        else if (escolha == 1)
-        {
-            yield return new WaitForSeconds(13f);
-            StartCoroutine(Escolher());
+                yield return StartCoroutine(Deitado());
+            }
+            yield return new WaitForSeconds(13f);   
         }
     }
     private void Start()
     {
-        respawnGirafa = GameObject.FindGameObjectWithTag("Girafa");
+        respawnGirafa = GameObject.FindGameObjectsWithTag("RespawnGirafa");
         StartCoroutine(Escolher());
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
@@ -167,7 +137,6 @@ public class Girafa : MonoBehaviour
         destino = RandomNavMeshGenerator(10f);
         yield return new WaitForSeconds(0.5f);
         Movimentar(destino);
-        StartCoroutine(Escolher());
     }
     private Vector3 RandomNavMeshGenerator(float raioCaminhada)
     {
@@ -198,11 +167,12 @@ public class Girafa : MonoBehaviour
 
         animal.isStopped = true;
         DroparLoot();
-        respawnGirafa.GetComponent<Respawn>().numeroAnimais--;
+        respawnGirafa[Random.Range(0, 6)].GetComponent<Respawn>().numeroAnimais--;
         StopAllCoroutines();
     }
     public void ReceberDano(int danoRecebido)
     {
+        StopCoroutine(Escolher());
         Vida -= danoRecebido;
 
         //chama metodo do UIController para exibir o dano no worldCanvas
