@@ -10,18 +10,29 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     private float Sensibilidade_cam = 1;
-    [SerializeField]
-    private float baseOffset;
+
+    [Header("Target")]
     [SerializeField]
     private Transform Target;
     [SerializeField]
-    private float zoomSpeed;
+    private float targetOffset = 0.5f;
 
+    [Header("Zoom Values")]
+    [SerializeField]
+    [Range(0.05f, 3f)]
+    private float zoomSpeed = 1f;
+    [SerializeField]
+    [Range(0.5f, 2f)]
+    private float maxZoom = 0.5f;
+    [SerializeField]
+    private float zoomSmooth = 0.5f;
+
+    float zoomAmount = 0;
     float mouseX, mouseY, controleX, controleY;
     float controleXEsq, grauRotacao;
 
     [HideInInspector]
-    public bool Trava;
+    public bool Trava { get; set; }
     
 
     public Camera cam;
@@ -42,7 +53,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         obstrucao = Target;
-        baseOffset = Target.position.y - Player.player.transform.position.y; 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -54,13 +64,33 @@ public class CameraController : MonoBehaviour
             CamControl(GameController.gameController.QualOrigemInput());
         }
         CamFolow();
+
+        if (Input.mouseScrollDelta.y != 0)
+        {
+            Zoom();
+        }
+
         //CamObstruction();
+    }
+
+    void Zoom()
+    {
+        if (zoomAmount == maxZoom && Input.mouseScrollDelta.y > 0)
+            return;
+
+        if (zoomAmount == -maxZoom && Input.mouseScrollDelta.y < 0)
+            return;
+
+        float zoomDirection = (Input.mouseScrollDelta.y > 0) ? 0.3f : -0.3f;
+
+        zoomAmount = Mathf.Clamp(zoomAmount + transform.forward.magnitude * zoomSpeed * zoomDirection, -maxZoom, maxZoom);
+        transform.position = Vector3.Lerp(transform.position, transform.position + (transform.forward * zoomSpeed * zoomDirection), 1 / zoomSmooth);
     }
 
     void CamFolow()
     {
         float x = Mathf.Lerp(Target.position.x, Player.player.transform.position.x, Sensibilidade_cam);
-        float y = Mathf.Lerp(Target.position.y, Player.player.transform.position.y + baseOffset, Sensibilidade_cam);
+        float y = Mathf.Lerp(Target.position.y, Player.player.transform.position.y + targetOffset, Sensibilidade_cam);
         float z = Mathf.Lerp(Target.position.z, Player.player.transform.position.z, Sensibilidade_cam);
 
         Target.position = new Vector3(x,y,z);
@@ -105,7 +135,7 @@ public class CameraController : MonoBehaviour
 
    
 
-    MeshRenderer desliga = null;
+    /*MeshRenderer desliga = null;
     void CamObstruction()
     {
         RaycastHit hit;
@@ -161,6 +191,6 @@ public class CameraController : MonoBehaviour
 
         return volta;
             
-    }
+    }*/
 
 }
