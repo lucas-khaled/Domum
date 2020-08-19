@@ -55,13 +55,14 @@ public class UIController : MonoBehaviour
     private GameObject[] Bases;
 
     [SerializeField]
-    private GameObject Pause, painelMorte;
+    private GameObject Pause, painelMorte, pauseMenu;
 
     [SerializeField]
     private GameObject painelUsáveis;
     [SerializeField]
     private GameObject painelQuestLog;
 
+    [SerializeField]
     private GameObject[] objetos;
     private float auxPause;
 
@@ -87,14 +88,13 @@ public class UIController : MonoBehaviour
         AtualizaRender();
         PauseOn(true);
         PauseOff();
-        objetos = GameObject.FindGameObjectsWithTag("FecharEsc");
     }
 
     protected virtual void Update() {        
         PauseOn();
         Voltar();
 
-       if (canvasAudio.activeInHierarchy && Input.GetButtonDown("Return"))
+        if (canvasAudio.activeInHierarchy && Input.GetButtonDown("Return"))
        {
            VoltarSelecao(novoSelecionado, canvasAudio);
        }
@@ -102,30 +102,44 @@ public class UIController : MonoBehaviour
 
     private void Voltar()
     {
-        auxPause -= Time.deltaTime;
-        if (auxPause < -90000)
+        auxPause -= 0.1f;
+        if (auxPause < -9999)
             auxPause = 0;
 
-        if (Input.GetKeyDown("Pause") && auxPause <= 0)
+        if (Input.GetButtonDown("Pause") && auxPause <= 0)
         {
-            Debug.Log("a");
-            if (isPaused)
-            {
-                PauseOff();
-            }
-            if (LojaUI.lojaUi.ativo)
-            {
-                LojaUI.lojaUi.FecharLoja();
-            }
-            if (BauUI.bauUI.bauAberto)
-            {
-                BauUI.bauUI.CloseBau();
-            }
+            bool desativado = false;
             for (int i = 0; i < objetos.Length; i++)
             {
-                objetos[i].SetActive(false);
+                if (objetos[i].activeInHierarchy)
+                {
+                    pauseMenu.SetActive(true);
+                    objetos[i].SetActive(false);
+
+                    desativado = true;
+                }
             }
-                
+
+            if (!desativado)
+            {
+
+                if (LojaUI.lojaUi.ativo)
+                {
+                    LojaUI.lojaUi.FecharLoja();
+                }
+                else
+                if (BauUI.bauUI.bauAberto)
+                {
+                    BauUI.bauUI.CloseBau();
+                }
+                else
+                if (isPaused && !desativado)
+                {
+                    PauseOff();
+                    desativado = false;
+                }
+            }
+
         }
     }
 
@@ -258,8 +272,11 @@ public class UIController : MonoBehaviour
         {
             if (!LojaUI.lojaUi.ativo)
             {
-                isPaused = true;
-                auxPause = 0.5f;
+                if (!isPaused)
+                {
+                    isPaused = true;
+                    auxPause = 0.5f;
+                }
 
                 if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
                 {
