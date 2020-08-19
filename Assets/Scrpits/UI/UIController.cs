@@ -63,7 +63,6 @@ public class UIController : MonoBehaviour
     private GameObject painelQuestLog;
 
     private GameObject[] objetos;
-    private float auxPause;
 
     bool questLogAberto = false;
     private List<Transform> listinha = new List<Transform>();
@@ -92,7 +91,6 @@ public class UIController : MonoBehaviour
 
     protected virtual void Update() {        
         PauseOn();
-        Voltar();
 
        if (canvasAudio.activeInHierarchy && Input.GetButtonDown("Return"))
        {
@@ -102,30 +100,18 @@ public class UIController : MonoBehaviour
 
     private void Voltar()
     {
-        auxPause -= Time.deltaTime;
-        if (auxPause < -90000)
-            auxPause = 0;
-
-        if (Input.GetKeyDown("Pause") && auxPause <= 0)
+        PauseOff();
+        if (LojaUI.lojaUi.ativo)
         {
-            Debug.Log("a");
-            if (isPaused)
-            {
-                PauseOff();
-            }
-            if (LojaUI.lojaUi.ativo)
-            {
-                LojaUI.lojaUi.FecharLoja();
-            }
-            if (BauUI.bauUI.bauAberto)
-            {
-                BauUI.bauUI.CloseBau();
-            }
-            for (int i = 0; i < objetos.Length; i++)
-            {
-                objetos[i].SetActive(false);
-            }
-                
+            LojaUI.lojaUi.FecharLoja();
+        }
+        if (BauUI.bauUI.bauAberto)
+        {
+            BauUI.bauUI.CloseBau();
+        }
+        for (int i = 0; i < objetos.Length; i++)
+        {
+            objetos[i].SetActive(false);
         }
     }
 
@@ -254,12 +240,17 @@ public class UIController : MonoBehaviour
 
     public void PauseOn(bool mandeiPausar = false){
 
+        if(isPaused && Input.GetButtonDown("Pause"))
+        {
+            Voltar();
+            return;
+        }
+
         if (mandeiPausar || (Input.GetButtonDown("Pause") && Player.player.estadoPlayer != EstadoPlayer.MORTO))
         {
             if (!LojaUI.lojaUi.ativo)
             {
                 isPaused = true;
-                auxPause = 0.5f;
 
                 if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
                 {

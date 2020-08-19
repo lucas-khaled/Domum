@@ -182,50 +182,49 @@ public class Tyva : Player
         podeAtacar = false;
         audioSource.PlayOneShot(ataque);
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick == 1)
+        Debug.Log("Entrei");
+        if (/*animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")*/ animator.GetInteger("Ataque") == 1 && numClick <= 1)
         {
+            Debug.Log("Volta: "+numClick);
             animator.SetInteger("Ataque", 0);
             numClick = 0;
-            estadoPlayer = EstadoPlayer.COMBATE;
         }
 
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick >= 2)
+        else if (animator.GetInteger("Ataque") == 1 && numClick >= 2)
         {
+            Debug.Log("Tem que ir: " + numClick);
             animator.SetInteger("Ataque", 2);
             podeAtacar = true;
         }
 
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && numClick == 2)
+        else if (animator.GetInteger("Ataque") == 2 && numClick == 2)
         {
             animator.SetInteger("Ataque", 0);
             numClick = 0;
-            estadoPlayer = EstadoPlayer.COMBATE;
         }
 
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && numClick >= 3)
+        else if (animator.GetInteger("Ataque") == 2 && numClick >= 3)
         {
             animator.SetInteger("Ataque", 3);
             podeAtacar = true;
         }
 
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3") && numClick == 3)
+        else if (animator.GetInteger("Ataque") == 3 && numClick == 3)
         {
             animator.SetInteger("Ataque", 0);
             numClick = 0;
-            estadoPlayer = EstadoPlayer.COMBATE;
         }
 
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3") && numClick >= 4)
+        else if (animator.GetInteger("Ataque") == 3 && numClick >= 4)
         {
             animator.SetInteger("Ataque", 4);
             podeAtacar = true;
         }
 
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack4"))
+        else if (animator.GetInteger("Ataque") == 4)
         {
             animator.SetInteger("Ataque", 0);
             numClick = 0;
-            estadoPlayer = EstadoPlayer.COMBATE;
         }
     }
 }
