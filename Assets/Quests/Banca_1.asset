@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
+  m_Name: Banca_1
+  m_EditorClassIdentifier: 
+  nome: Mate a fera!
+  principal: 0
+  reward:
+    item: {fileID: 11400000, guid: a58d4b1b9818f8349aa5afb461303e85, type: 2}
+    qntDinheiro: 20
+    XP: 20
+    fama: 30
+  dialogo:
+    dialogueLines:
+    - "Dizem que um predador feroz vive na floresta pr\xF3xima ao acampamento Atriet..."
+    - "Esse monstro est\xE1 devorando a cria\xE7\xE3o de girafetes!"
+    - Ajude-os a se livrar da criatura e mostre a eles como somos dignos!
+  condicoes:
+  - tipoCondicao: 0
+    local: {x: 358.51556, y: 19.996338, z: 326.2248}
+    descricao: "Explore a floresta pr\xF3xima ao acampamento Atriet"
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 1
+    nameOnScene: Kambim2_Quest1
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 80
+    distanciaChegada: 95
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 2
+    local: {x: 358.5156, y: 19.99634, z: 326.2248}
+    descricao: "Derrote a fera que vive pr\xF3xima ao acampamento Atriet"
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 1
+    nameOnScene: "Mesti\xE7o 5"
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 719462188679275779, guid: 32d54487631aa4543bb77c96e27e68bf, type: 3}
+    raioDeSpawn: 80
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 493.59, y: 20, z: 569.98}
+    descricao: "Converse com o Anci\xE3o e conte a ele sobre seu sucesso!"
+    dialogoDaCondicao:
+      dialogueLines:
+      - "B\xE3o, mas falta muito pra eles gosta de nois"
+    isOnScene: 1
+    nameOnScene: Anciao
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
