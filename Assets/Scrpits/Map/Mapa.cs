@@ -8,16 +8,21 @@ public class Mapa : MonoBehaviour
     [SerializeField]
     Vector2 terrainDimesions;
     [SerializeField]
+    private GameObject telaMapa;
+
+    [Header("Marcador Values")]
+    [SerializeField]
     private Sprite marcador;
     [SerializeField]
     private GameObject marcadorCenaPrefab;
     [SerializeField]
-    private GameObject telaMapa;
+    private GameObject painelConfirmacaoMarcador;
 
     RectTransform rectTransform;
     GameObject marcadorAtual = null;
 
     GameObject marcadorCenaAtual = null;
+    Vector3 mousePosition;
 
     private void Start()
     {
@@ -28,13 +33,36 @@ public class Mapa : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && gameObject.activeInHierarchy)
         {
-            PutMarker();
+            MarkerOption();
         }
     }
 
-    void PutMarker()
+    void MarkerOption()
     {
-        Vector3 pos = Input.mousePosition;
+        mousePosition = Input.mousePosition;
+        if (marcadorAtual != null)
+            painelConfirmacaoMarcador.SetActive(true);
+
+        else           
+            PutMarker();
+
+    }
+
+    public void RemoveMarker()
+    {
+        if(marcadorAtual != null)
+        {
+            Destroy(marcadorAtual);
+            marcadorAtual = null;
+
+            Destroy(marcadorCenaAtual);
+            marcadorCenaAtual = null;
+        }
+    }
+
+    public void PutMarker()
+    {
+        Vector3 pos = mousePosition;
         GameObject marcador = new GameObject("Marcador", typeof(RectTransform), typeof(Image));
 
         RectTransform rectMarcador = marcador.GetComponent<RectTransform>();
@@ -47,18 +75,14 @@ public class Mapa : MonoBehaviour
         rectMarcador.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75);
         rectMarcador.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75);
 
-
         imageMarcador.sprite = this.marcador;
         imageMarcador.preserveAspect = true;
-
 
         rectMarcador.position = pos;
 
         marcador.transform.SetParent(gameObject.transform, true);
 
         rectMarcador.localScale = Vector3.one;
-
-        Debug.Log("Pos on 2D: " + rectMarcador.anchoredPosition);
 
         if (rectMarcador.anchoredPosition.x < rectTransform.rect.width && rectMarcador.anchoredPosition.y < rectTransform.rect.height)
         {
@@ -72,8 +96,6 @@ public class Mapa : MonoBehaviour
             Vector3 posCena = new Vector3(rectMarcador.anchoredPosition.x * (terrainDimesions.x / rectTransform.rect.width), 30f,
                 rectMarcador.anchoredPosition.y * (terrainDimesions.y / rectTransform.rect.height));
 
-            Debug.Log("Pos on 3D" + posCena);
-
             if (marcadorCenaAtual != null)
                 marcadorCenaAtual.transform.position = posCena;
             else
@@ -84,9 +106,6 @@ public class Mapa : MonoBehaviour
             Destroy(marcador);
         }
     }
-
-    Ray rayMan = new Ray(Vector3.zero, Vector3.zero);
-    Vector3 hitPos;
 
     public void FastTravel(RectTransform buttonTransform)
     {
@@ -100,22 +119,8 @@ public class Mapa : MonoBehaviour
 
         Physics.Raycast(ray, out hit, 100,LayerMask.GetMask("Ground"));
 
-        rayMan = ray;
-        hitPos = hit.point;
-
         Player.player.transform.position = hit.point;
         telaMapa.SetActive(false);
-    }
-
-    private void OnDrawGizmos()
-    {
-        if(rayMan.origin != Vector3.zero)
-        {
-            Gizmos.color = Color.grey;
-            Gizmos.DrawRay(rayMan);
-            Gizmos.DrawWireSphere(hitPos, 1);
-            Debug.Log(rayMan.origin);
-        }
     }
 
 }
