@@ -60,11 +60,7 @@ public class LojaUI : MonoBehaviour
 
     public void FecharLoja()
     {
-        ativo = false;
-        Time.timeScale = 1;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        CameraController.cameraInstance.Trava = false;
+        UIController.uiController.PauseOff();
 
         painelLoja.SetActive(false);
 
@@ -122,10 +118,9 @@ public class LojaUI : MonoBehaviour
 
             painelLoja.SetActive(true);
 
-            ClearLoja();
+            //ClearLoja();
 
             CarregaInfoPlayer();
-
             CarregaItensPlayer();
             CarregaItensVendedor(loja.itensAVenda);
         }
@@ -244,7 +239,7 @@ public class LojaUI : MonoBehaviour
 
     IEnumerator DeselectItemWait()
     {
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         painelInfoItem.SetActive(false);
 
