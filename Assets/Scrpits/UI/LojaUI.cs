@@ -18,6 +18,8 @@ public class LojaUI : MonoBehaviour
     private Text playerFama;
     [SerializeField]
     private Text inventarioPeso;
+    [SerializeField]
+    private Animator Dinherio_insu;
 
     [Header("InfoItem")]
     [SerializeField]
@@ -36,6 +38,7 @@ public class LojaUI : MonoBehaviour
     private GameObject painelInfoItem;
     [SerializeField]
     private Image spriteItem;
+
 
     [Header("Botões")]
     [SerializeField]
@@ -279,23 +282,28 @@ public class LojaUI : MonoBehaviour
     {
         if(Player.player.status.Dinheiro < holderAtual.item.custoMoeda)
         {
+            Dinherio_insu.SetTrigger("Dinheiro_insu");
+            Debug.Log("Entrei nessa porra");
             return;
         }
-        contCompraVenda++;
+        else
+        {
+            contCompraVenda++;
 
-        Item vendido = holderAtual.item;
-        lojaAtual.itensAVenda.Remove(vendido);
-        Inventario.inventario.AddItem(vendido);
+            Item vendido = holderAtual.item;
+            lojaAtual.itensAVenda.Remove(vendido);
+            Inventario.inventario.AddItem(vendido);
 
-        GameObject go = listaVendedor.Find(x => x.GetComponent<Holder_Item>() == holderAtual);
-        listaVendedor.Remove(go);
+            GameObject go = listaVendedor.Find(x => x.GetComponent<Holder_Item>() == holderAtual);
+            listaVendedor.Remove(go);
 
-        listaPlayer.Add(go);
-        go.transform.SetParent(contentPlayer);
-        go.transform.localScale = Vector3.one;
+            listaPlayer.Add(go);
+            go.transform.SetParent(contentPlayer);
+            go.transform.localScale = Vector3.one;
 
-        Player.player.status.Dinheiro -= vendido.custoMoeda;
-        CarregaInfoPlayer();
+            Player.player.status.Dinheiro -= vendido.custoMoeda;
+            CarregaInfoPlayer();
+        }
     }
 
 }
