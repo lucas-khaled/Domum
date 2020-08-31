@@ -170,9 +170,9 @@ public class Tyva : Player
     {
         float rotY = transform.localEulerAngles.y * Mathf.Deg2Rad;
 
-        Vector3 front = new Vector3(posicaoFaca.position.x + Mathf.Sin(rotY),
-                                       posicaoFaca.position.y,
-                                       posicaoFaca.position.z + Mathf.Cos(rotY));
+        Vector3 front = new Vector3(posicaoFaca.position.x + Mathf.Sin(rotY) * 3,
+                                       posicaoFaca.position.y - 1f,
+                                       posicaoFaca.position.z + Mathf.Cos(rotY) * 3);
 
         return front;
     }

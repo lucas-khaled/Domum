@@ -6,35 +6,47 @@ using UnityEngine.UI;
 public class InventarioUI : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Slot;
+    private GameObject slot;
     [SerializeField]
-    private GameObject Grid;
+    private GameObject grid;
+
+    [Header("Buttons")]
     [SerializeField]
-    private GameObject ExcluirB;
+    private GameObject excluirButton;
     [SerializeField]
-    private GameObject EquiparB;
+    private GameObject equiparButton;
     [SerializeField]
-    private GameObject UsarB;
+    private GameObject usarButton;
+
+    [Header("Texts")]
     [SerializeField]
-    private Text Dinheiro_Atual;
+    private Text dinheiro_atualText;
     [SerializeField]
-    private Text Peso_Atual;
+    private Text peso_atualText;
     [SerializeField]
-    private Text Fama_Atual;
+    private Text fama_atualText;
     [SerializeField]
-    private Text Lvl_Atual;
+    private Text lvl_atualText;
     [SerializeField]
-    private Text Info;
+    private Text infoText;
     [SerializeField]
-    private Text Valor_venda;
+    private Text valor_vendaText;
     [SerializeField]
-    private Text Titulo;
+    private Text tituloText;
     [SerializeField]
-    private Text peso;
+    private Text pesoText;
     [SerializeField]
-    private Text dano;
+    private Text danoText;
     [SerializeField]
-    private Image ArmaEq;
+    private Text danoEquipadaText;
+    [SerializeField]
+    private Text pesoEquipadaText;
+    [SerializeField]
+    private Text nomeEquipadaText;
+
+    [Header("Images")]
+    [SerializeField]
+    private Image armaEquipadaImage;
 
 
     [HideInInspector]
@@ -52,21 +64,21 @@ public class InventarioUI : MonoBehaviour
     void Start()
     {
         PegaValores();
-        ArmaEq.sprite = Inventario.inventario.armaEquipada.icone;  
+        armaEquipadaImage.sprite = Inventario.inventario.armaEquipada.icone;  
     }
 
     public void AttUI(Item item, bool mudanca)
     {
-        ArmaEq.sprite = Inventario.inventario.armaEquipada.icone;
+        armaEquipadaImage.sprite = Inventario.inventario.armaEquipada.icone;
         PegaValores();
         if (mudanca)
         {
 
-            GameObject Obj = Slot;
+            GameObject Obj = slot;
             Obj.GetComponent<Holder_Item>().item = item;
             Obj.GetComponent<Holder_Item>().isLoja = false;
             GameObject mundano = (GameObject)Instantiate(Obj);
-            mundano.transform.SetParent(Grid.transform);
+            mundano.transform.SetParent(grid.transform);
             mundano.transform.localScale = Vector3.one;
             Bag.Add(mundano);
 
@@ -84,8 +96,8 @@ public class InventarioUI : MonoBehaviour
     public void Excluir()
     {
         Inventario.inventario.RemoverItem(selecionado);
-        ExcluirB.SetActive(false);
-        EquiparB.SetActive(false);
+        excluirButton.SetActive(false);
+        equiparButton.SetActive(false);
 
     }
 
@@ -96,8 +108,8 @@ public class InventarioUI : MonoBehaviour
         if (selection.armaPlayer == GameController.gameController.GetPersonagemEscolhido())
         {
             Inventario.inventario.EquipArma((Arma)selecionado);
-            ExcluirB.SetActive(false);
-            EquiparB.SetActive(false);
+            excluirButton.SetActive(false);
+            equiparButton.SetActive(false);
         }
     }
 
@@ -113,16 +125,19 @@ public class InventarioUI : MonoBehaviour
 
     public void PegaValores()
     {
-        Dinheiro_Atual.text = Player.player.status.Dinheiro.ToString();
-        Peso_Atual.text = Inventario.inventario.pesoInventario.ToString();
-        Fama_Atual.text = Player.player.status.Fama.ToString();
-        Lvl_Atual.text = Player.player.status.Level.ToString();
+        dinheiro_atualText.text = Player.player.status.Dinheiro.ToString();
+        peso_atualText.text = Inventario.inventario.pesoInventario.ToString();
+        fama_atualText.text = Player.player.status.Fama.ToString();
+        lvl_atualText.text = Player.player.status.Level.ToString();
+        danoEquipadaText.text = Inventario.inventario.armaEquipada.dano.ToString();
+        nomeEquipadaText.text = Inventario.inventario.armaEquipada.nome.ToString();
+        pesoEquipadaText.text = Inventario.inventario.armaEquipada.peso.ToString();
     }
 
     IEnumerator ApareceExcluirWait()
     {
         yield return new WaitForSecondsRealtime(0.1f);
-        ExcluirB.SetActive(true);
+        excluirButton.SetActive(true);
     }
 
     public void ApareceExcluir()
@@ -133,7 +148,7 @@ public class InventarioUI : MonoBehaviour
     IEnumerator ApareceEquiparWait()
     {
         yield return new WaitForSecondsRealtime(0.1f);
-        EquiparB.SetActive(true);
+        equiparButton.SetActive(true);
     }
 
     public void ApareceEquipar()
@@ -149,24 +164,24 @@ public class InventarioUI : MonoBehaviour
     IEnumerator ApareceUsarWait()
     {
         yield return new WaitForSecondsRealtime(0.1f);
-        UsarB.SetActive(true);
+        usarButton.SetActive(true);
     }
 
     public void ClearOpcoes()
     {
         StartCoroutine(ClearBotoes());
-        Info.text = string.Empty;
-        Titulo.text = string.Empty;
-        peso.text = string.Empty;
-        Valor_venda.text = string.Empty;
+        infoText.text = string.Empty;
+        tituloText.text = string.Empty;
+        pesoText.text = string.Empty;
+        valor_vendaText.text = string.Empty;
     }
 
     IEnumerator ClearBotoes()
     {
         yield return new WaitForSecondsRealtime(0.1f);
-        ExcluirB.SetActive(false);
-        EquiparB.SetActive(false);
-        UsarB.SetActive(false);
+        excluirButton.SetActive(false);
+        equiparButton.SetActive(false);
+        usarButton.SetActive(false);
     }
 
     public void ShowInfo(Item item)
@@ -176,22 +191,22 @@ public class InventarioUI : MonoBehaviour
             Debug.Log("é o item");
         }
 
-        if(Info.text == null)
+        if(infoText.text == null)
         {
             Debug.Log("cu");
         }
 
-        Info.text = (item.descricao != null) ? item.descricao: string.Empty;
-        Titulo.text = item.nome;
-        peso.text = item.peso.ToString();
-        Valor_venda.text = item.custoMoeda.ToString();
+        infoText.text = (item.descricao != null) ? item.descricao: string.Empty;
+        tituloText.text = item.nome;
+        pesoText.text = item.peso.ToString();
+        valor_vendaText.text = item.custoMoeda.ToString();
 
         if (item.GetType() == typeof(Arma)) {
             Arma arma = (Arma)item;
-            dano.text = arma.dano.ToString();
+            danoText.text = arma.dano.ToString();
         }
         else {
-            dano.text = "---";
+            danoText.text = "---";
         }
 
         selecionado = item;
