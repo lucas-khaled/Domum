@@ -34,6 +34,8 @@ public class Player : MonoBehaviour, IVulnerable
     [SerializeField]
     private float velocidade = 2;
     [SerializeField]
+    private float turnSmooth = 0.3f;
+    [SerializeField]
     private float raioPercepcao;
     [SerializeField]
     private float raioAtaque = 2f;
@@ -46,7 +48,7 @@ public class Player : MonoBehaviour, IVulnerable
     protected bool podeAtacar = true;
     protected int numClick = 0;
 
-
+    float turnVelocity;
     private Transform hitCanvas;
 
     #region GETTERS & SETTERS
@@ -268,18 +270,13 @@ public class Player : MonoBehaviour, IVulnerable
         if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
         {
             animator.applyRootMotion = false;
-            float y = Mathf.Lerp(animator.GetFloat("VetY"), Input.GetAxis("Vertical"), 0.4f);
-            float x = Mathf.Lerp(animator.GetFloat("VetX"), Input.GetAxis("Horizontal"), 0.4f);
+            float yAxis = Input.GetAxis("Vertical");
+            float xAxis = Input.GetAxis("Horizontal");
 
-            if (Time.timeScale != 0)
-            {
+            float y = Mathf.Lerp(animator.GetFloat("VetY"), yAxis, 0.4f);
+            float x = Mathf.Lerp(animator.GetFloat("VetX"), xAxis, 0.4f);
 
-                animator.SetFloat("VetX", x);
-                animator.SetFloat("VetY", y);
-
-            }
-
-            if (y != 0 || x != 0)
+            if (yAxis != 0 || xAxis != 0)
                 Passos.passos.caminhando = true;
             else
                 Passos.passos.caminhando = false;
@@ -289,8 +286,40 @@ public class Player : MonoBehaviour, IVulnerable
             if (dir.magnitude > 1)
                 clampedDir = dir.normalized;
 
+            if(xAxis != 0 || yAxis != 0)
+            {
+                if (VerifyCamAlignment())
+                {
+                    Debug.Log(xAxis+ " - " + yAxis);
+                    TurnPlayer();
+                }
+            }
+
             transform.position += (clampedDir * velocidade) * Time.deltaTime;
+
+            animator.SetFloat("VetX", x);
+            animator.SetFloat("VetY", y);
         }
+    }
+
+    bool VerifyCamAlignment()
+    {
+        float camAngle = CameraController.cameraInstance.GetTarget().eulerAngles.y;
+        float playerAngle = transform.eulerAngles.y;
+        float difference = camAngle - playerAngle;
+
+        if(difference > 10 || difference < -10)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    void TurnPlayer()
+    {     
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, CameraController.cameraInstance.GetTarget().eulerAngles.y, ref turnVelocity, turnSmooth);
+        transform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 
     public void Curar(int cura)

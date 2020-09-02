@@ -58,6 +58,11 @@ public class CameraController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public Transform GetTarget()
+    {
+        return Target;
+    }
+
     void LateUpdate()
     {
         if (Player.player.estadoPlayer != EstadoPlayer.MORTO && !Trava)
@@ -127,7 +132,7 @@ public class CameraController : MonoBehaviour
             else
             {
                 Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-                Player.player.transform.rotation = Quaternion.Euler(0, mouseX, 0);
+                //Player.player.transform.rotation = Quaternion.Euler(0, mouseX, 0);
             }
 
         }
