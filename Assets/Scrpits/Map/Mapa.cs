@@ -6,9 +6,15 @@ using UnityEngine.UI;
 public class Mapa : MonoBehaviour
 {
     [SerializeField]
+    private GameObject telaMapa;
+
+    [Header("Dimensions Value")]
+    [SerializeField]
     Vector2 terrainDimesions;
     [SerializeField]
-    private GameObject telaMapa;
+    Vector2 maxMapSize = Vector2.one * 2000;
+    [SerializeField]
+    Vector2 minMapSize = Vector2.one * 1000;
 
     [Header("Marcador Values")]
     [SerializeField]
@@ -17,6 +23,8 @@ public class Mapa : MonoBehaviour
     private GameObject marcadorCenaPrefab;
     [SerializeField]
     private GameObject painelConfirmacaoMarcador;
+    [SerializeField]
+    private float zoomPercentage = 110;
 
     RectTransform rectTransform;
     GameObject marcadorAtual = null;
@@ -31,9 +39,60 @@ public class Mapa : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && gameObject.activeInHierarchy)
+        if (gameObject.activeInHierarchy) {
+            if (Input.GetMouseButtonDown(1))
+            {
+                MarkerOption();
+            }
+            if (Input.mouseScrollDelta.y != 0)
+            {
+                ScrollMap(Input.mouseScrollDelta.y);
+            }
+        }
+    }
+
+    void ScrollMap(float scrollValue)
+    {
+        bool isZoomIn = (scrollValue > 0) ? true : false;
+
+        if (isZoomIn)
         {
-            MarkerOption();
+            if (rectTransform.rect.height < maxMapSize.y && rectTransform.rect.width < maxMapSize.x)
+            {
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectTransform.rect.width * zoomPercentage / 100);
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rectTransform.rect.height * zoomPercentage / 100);
+            }
+            else return;
+        }
+
+        else
+        {
+            if (rectTransform.rect.height > minMapSize.y && rectTransform.rect.width > minMapSize.x)
+            {
+
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectTransform.rect.width * 100 / zoomPercentage);
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rectTransform.rect.height * 100 / zoomPercentage);
+            }
+            else return;
+        }
+
+        ScrollMapChildren(isZoomIn);
+    }
+
+    void ScrollMapChildren(bool isZoomIn)
+    {
+        for(int i = 1; i<transform.childCount; i++)
+        {
+            RectTransform childRect = transform.GetChild(i).GetComponent<RectTransform>();
+            childRect.anchorMax = childRect.anchorMin = Vector2.one / 2;
+
+            float translationPercentage = (isZoomIn) ? zoomPercentage / 100 : 100 / zoomPercentage;
+
+            childRect.anchoredPosition *= translationPercentage;
+            //new Vector2(childRect.anchoredPosition.x * translationPercentage, childRect.anchoredPosition.y * translationPercentage);
+
+            childRect.anchorMax = childRect.anchorMin = Vector2.zero;
+
         }
     }
 

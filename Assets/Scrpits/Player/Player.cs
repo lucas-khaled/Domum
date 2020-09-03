@@ -290,7 +290,6 @@ public class Player : MonoBehaviour, IVulnerable
             {
                 if (VerifyCamAlignment())
                 {
-                    Debug.Log(xAxis+ " - " + yAxis);
                     TurnPlayer();
                 }
             }
