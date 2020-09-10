@@ -38,11 +38,16 @@ public class InventarioUI : MonoBehaviour
     [SerializeField]
     private Text danoText;
     [SerializeField]
+    private Text famaText;
+    [SerializeField]
     private Text danoEquipadaText;
     [SerializeField]
     private Text pesoEquipadaText;
     [SerializeField]
     private Text nomeEquipadaText;
+    [SerializeField]
+    private Animator Dinherio_insu;
+
 
     [Header("Images")]
     [SerializeField]
@@ -107,9 +112,17 @@ public class InventarioUI : MonoBehaviour
 
         if (selection.armaPlayer == GameController.gameController.GetPersonagemEscolhido())
         {
-            Inventario.inventario.EquipArma((Arma)selecionado);
-            excluirButton.SetActive(false);
-            equiparButton.SetActive(false);
+            if(selection.famaMinima <= Player.player.status.Fama){
+
+                Inventario.inventario.EquipArma((Arma)selecionado);
+                excluirButton.SetActive(false);
+                equiparButton.SetActive(false);
+            }
+            else{
+
+                Dinherio_insu.SetTrigger("Dinheiro_insu");
+                return;
+            }
         }
     }
 
@@ -203,6 +216,7 @@ public class InventarioUI : MonoBehaviour
 
         if (item.GetType() == typeof(Arma)) {
             Arma arma = (Arma)item;
+            famaText.text = arma.famaMinima.ToString();
             danoText.text = arma.dano.ToString();
         }
         else {

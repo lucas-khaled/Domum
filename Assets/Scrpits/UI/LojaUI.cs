@@ -283,7 +283,6 @@ public class LojaUI : MonoBehaviour
         if(Player.player.status.Dinheiro < holderAtual.item.custoMoeda)
         {
             Dinherio_insu.SetTrigger("Dinheiro_insu");
-            Debug.Log("Entrei nessa porra");
             return;
         }
         else
