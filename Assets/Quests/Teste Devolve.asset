@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
+  m_Name: Teste Devolve
+  m_EditorClassIdentifier: 
+  nome: Teste Devolve
+  principal: 0
+  reward:
+    item: {fileID: 0}
+    qntDinheiro: 10
+    XP: 20
+    fama: 20
+  dialogo:
+    dialogueLines:
+    - Faz Viado
+    - Faz logo
+  condicoes:
+  - tipoCondicao: 4
+    local: {x: 503.72, y: 20, z: 569.98}
+    descricao: Pega Viado
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 1
+    nameOnScene: "Mesti\xE7o 5"
+    itemDaCondicao: {fileID: 9100806293854980319, guid: 0a8af845dae8f5a4e85ee7c055e899e7,
+      type: 3}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 10
+    interagivelPrefab: {fileID: 9100806293854980319, guid: 0a8af845dae8f5a4e85ee7c055e899e7,
+      type: 3}
+  - tipoCondicao: 5
+    local: {x: 493.59, y: 20, z: 569.98}
+    descricao: Devolve Viado
+    dialogoDaCondicao:
+      dialogueLines:
+      - valeu ze
+      - "\xE9 isso aiiiiiiii"
+    isOnScene: 1
+    nameOnScene: "Mesti\xE7o 5"
+    itemDaCondicao: {fileID: 9100806293854980319, guid: 0a8af845dae8f5a4e85ee7c055e899e7,
+      type: 3}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 10
+    interagivelPrefab: {fileID: 9100806293854980319, guid: 0a8af845dae8f5a4e85ee7c055e899e7,
+      type: 3}
+  - tipoCondicao: 1
+    local: {x: 523.15674, y: 19.996338, z: 569.3397}
+    descricao: aaaa
+    dialogoDaCondicao:
+      dialogueLines:
+      - Anem viu
+      - Teste do carai
+    isOnScene: 0
+    nameOnScene: "Mesti\xE7o 5"
+    itemDaCondicao: {fileID: 9100806293854980319, guid: 0a8af845dae8f5a4e85ee7c055e899e7,
+      type: 3}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 10
+    interagivelPrefab: {fileID: 6554615047795156272, guid: b1aeb361d7efb3347b08b0d703297c74,
+      type: 3}

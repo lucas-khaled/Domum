@@ -209,7 +209,8 @@ public class Condicoes
             interagiu = false;
             if (!isOnScene)
             {
-                GameObject interagivelObj = MonoBehaviour.Instantiate(interagivelPrefab.gameObject, local, interagivelPrefab.gameObject.transform.rotation);
+                Vector3 localization = new Vector3(local.x, local.y + interagivelPrefab.transform.lossyScale.y / 10, local.z);
+                GameObject interagivelObj = MonoBehaviour.Instantiate(interagivelPrefab.gameObject, localization, interagivelPrefab.gameObject.transform.rotation);
                 interagivel = interagivelObj.GetComponent<Interagivel>();       
             }
             else
@@ -220,12 +221,15 @@ public class Condicoes
             EventsController.onInteracao += OnInteracao;
         }
 
-        if(tipoCondicao == TipoCondicao.FALA)
+        if(tipoCondicao == TipoCondicao.FALA || tipoCondicao == TipoCondicao.DEVOLVE_ITEM)
         {
             falou = false;
-            dialogoDaCondicao.whosDialog = this.descricao;
-            interagivel.SetDialogoCondicao(dialogoDaCondicao);
-            EventsController.onDialogoTerminado += OnFalaTerminada;
+            if (dialogoDaCondicao.dialogueLines.Length > 0)
+            {
+                dialogoDaCondicao.whosDialog = this.descricao;
+                interagivel.SetDialogoCondicao(dialogoDaCondicao);
+                EventsController.onDialogoTerminado += OnFalaTerminada;
+            }
         }
 
         if(tipoCondicao == TipoCondicao.PEGA_ITEM)

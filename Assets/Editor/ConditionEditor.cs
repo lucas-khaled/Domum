@@ -72,7 +72,7 @@ public class ConditionEditor : PropertyDrawer
             EditorGUI.PropertyField(valuesRect,property.FindPropertyRelative("distanciaChegada"));
         }
 
-        if (qualCondicao == Condicoes.TipoCondicao.FALA)
+        if (qualCondicao == Condicoes.TipoCondicao.FALA || qualCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM)
         {
             valuesRect.y += 25;
             EditorGUI.PropertyField(valuesRect, property.FindPropertyRelative("dialogoDaCondicao"));
@@ -137,7 +137,7 @@ public class ConditionEditor : PropertyDrawer
                 valor = 50;
                 break;
             case Condicoes.TipoCondicao.DEVOLVE_ITEM:
-                valor = 75;
+                valor = 100;
                 break;
             case Condicoes.TipoCondicao.INTERACAO:
                 valor = 50;
