@@ -5,7 +5,7 @@ using UnityEngine;
 public class QuestGiver : Interagivel
 {
     [SerializeField]
-    Quest[] quests;
+    List<Quest> quests = new List<Quest>();
 
     [SerializeField]
     Dialogo famaBaixa;
@@ -23,6 +23,11 @@ public class QuestGiver : Interagivel
     public int GetQuestAceitas()
     {
         return questsAceitas;
+    }
+
+    public void AddQuestToBeNext(Quest quest)
+    {
+        quests.Insert(questsAceitas, quest);
     }
 
     private void Awake()
@@ -80,9 +85,9 @@ public class QuestGiver : Interagivel
 
     void DeAcceptQuests()
     {
-        if (quests.Length > 0 && questsAceitas < quests.Length)
+        if (quests.Count > 0 && questsAceitas < quests.Count)
         {
-            for (int i = questsAceitas; i<quests.Length;i++)
+            for (int i = questsAceitas; i<quests.Count;i++)
             {
                 quests[questsAceitas].SetQuestNaoAceita();
             }
@@ -97,7 +102,7 @@ public class QuestGiver : Interagivel
         {
             if (questsAceitas != 0)
             {
-                if (questsAceitas < quests.Length - 1 && !quests[questsAceitas - 1].IsRealizada())
+                if (questsAceitas < quests.Count - 1 && !quests[questsAceitas - 1].IsRealizada())
                 {
                     if (!quests[questsAceitas - 1].IsRealizada())
                     {
@@ -117,7 +122,7 @@ public class QuestGiver : Interagivel
                     return;
                 }
 
-                else if(questsAceitas >= quests.Length)
+                else if(questsAceitas >= quests.Count)
                 {
                     DialogueSystem.sistemaDialogo.IniciaDialogo(semQuest);
                 }
@@ -133,7 +138,7 @@ public class QuestGiver : Interagivel
 
     private void OnQuestLogChanged(Quest quest, bool endQuest = false)
     {       
-        if (questsAceitas >= quests.Length)
+        if (questsAceitas >= quests.Count)
         {
             if (questsAceitas != 0 && quest.nome == quests[questsAceitas - 1].nome && endQuest)
             {

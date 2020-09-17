@@ -7,7 +7,17 @@ using UnityEngine;
 public class Quest : ScriptableObject
 {
     public string nome;
-    public bool principal;  
+    public bool principal;
+
+    #region QuestAddition
+
+    public bool isQuestAdditioner = false;
+    [SerializeField]
+    private Quest questToAdd;
+    [SerializeField]
+    private string questGiverName;
+
+    #endregion
 
     [SerializeField]
     private Recompensa reward;
@@ -69,14 +79,27 @@ public class Quest : ScriptableObject
         return condicaoAtual;
     }
 
-    public void TerminaMissao()
+    public void TerminaMissao(bool isLoaded = false)
     {
         if (IsRealizada())
         {
             reward.DarRecompensa();
         }
+
         condicaoAtual = null;
         realizada = true;
+
+        if (isQuestAdditioner && !isLoaded)
+        {
+            AddQuestToQuestGiver();
+        }
+    }
+
+    private void AddQuestToQuestGiver()
+    {
+        GameObject questGiverGO = GameObject.Find(questGiverName);
+        QuestGiver questGiver = questGiverGO.GetComponent<QuestGiver>();
+        questGiver.AddQuestToBeNext(questToAdd);
     }
 
     public bool IsRealizada()

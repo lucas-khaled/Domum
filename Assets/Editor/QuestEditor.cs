@@ -51,7 +51,27 @@ public class QuestEditor : Editor
         }
         EditorGUILayout.EndHorizontal();
 
+        GUILayout.Space(5);
         EditorGUILayout.PropertyField(obj.FindProperty("principal"));
+
+        GUILayout.Space(5);
+        EditorGUILayout.PropertyField(obj.FindProperty("isQuestAdditioner"));
+
+        if (q.isQuestAdditioner)
+        {
+            GUILayout.Space(5);
+            EditorGUILayout.PropertyField(obj.FindProperty("questToAdd"));
+            EditorGUILayout.PropertyField(obj.FindProperty("questGiverName"));
+            
+
+            if(obj.FindProperty("questToAdd").objectReferenceValue.name == q.name)
+            {
+                GUILayout.Space(5);
+                EditorGUILayout.HelpBox("A quest Que você vai adicionar é a mesma quest que essa. Tem certeza disso?", MessageType.Warning);
+            }
+            GUILayout.Space(10);
+        }
+
         EditorGUILayout.PropertyField(obj.FindProperty("reward"));
 
         EditorGUILayout.PropertyField(obj.FindProperty("dialogo"));
