@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
-  m_Name: Banca_1
+  m_Name: Mate a fera!
   m_EditorClassIdentifier: 
   nome: Mate a fera!
   principal: 0
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
   reward:
     item: {fileID: 11400000, guid: a58d4b1b9818f8349aa5afb461303e85, type: 2}
     qntDinheiro: 20
@@ -28,18 +31,34 @@ MonoBehaviour:
   - tipoCondicao: 0
     local: {x: 358.51556, y: 19.996338, z: 326.2248}
     descricao: "Explore a floresta pr\xF3xima ao acampamento Atriet"
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 0}
+      local: {x: 493.59, y: 19.996338, z: 569.98}
+      rotacao: {x: -0, y: 164.99966, z: -0}
+      nome: 
+    - objetoPrefab: {fileID: 0}
+      local: {x: 470.24103, y: 19.99634, z: 559.2331}
+      rotacao: {x: -0, y: 147.87067, z: 0}
+      nome: Cu
+    objsToDestroy:
+    - 
     dialogoDaCondicao:
-      dialogueLines: []
+      dialogueLines:
+      - 
     isOnScene: 1
     nameOnScene: Kambim2_Quest1
     itemDaCondicao: {fileID: 0}
-    inimigosDaCondicao: []
+    inimigosDaCondicao:
+    - {fileID: 0}
+    - {fileID: 0}
     raioDeSpawn: 80
     distanciaChegada: 95
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 2
     local: {x: 358.5156, y: 19.99634, z: 326.2248}
     descricao: "Derrote a fera que vive pr\xF3xima ao acampamento Atriet"
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 1
@@ -53,6 +72,8 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 493.59, y: 20, z: 569.98}
     descricao: "Converse com o Anci\xE3o e conte a ele sobre seu sucesso!"
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines:
       - "B\xE3o, mas falta muito pra eles gosta de nois"

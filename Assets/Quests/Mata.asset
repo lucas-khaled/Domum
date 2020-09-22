@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
-  m_Name: Mata
+  m_Name: Mata tudo
   m_EditorClassIdentifier: 
   nome: Mata tudo
   principal: 0
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
   reward:
     item: {fileID: 0}
     qntDinheiro: 30
@@ -27,6 +30,8 @@ MonoBehaviour:
   - tipoCondicao: 2
     local: {x: 516.77423, y: 20.2, z: 552.6082}
     descricao: Mata eles
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -42,6 +47,8 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 459.73804, y: 19.996338, z: 555.5916}
     descricao: Volte e Fale com CubeCusao
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines:
       - Valeu viado

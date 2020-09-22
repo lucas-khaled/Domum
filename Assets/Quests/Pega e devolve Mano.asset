@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
-  m_Name: Pega e devolve Mano
+  m_Name: Pega e devolve mano
   m_EditorClassIdentifier: 
   nome: Pega e devolve mano
   principal: 0
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
   reward:
     item: {fileID: 0}
     qntDinheiro: 30
@@ -26,6 +29,8 @@ MonoBehaviour:
   - tipoCondicao: 4
     local: {x: 419.1, y: 21.2, z: 330.11438}
     descricao: Pega o item
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -39,6 +44,8 @@ MonoBehaviour:
   - tipoCondicao: 5
     local: {x: 0, y: 0, z: 0}
     descricao: Devolve o item
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 1

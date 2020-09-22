@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Teste Devolve
   principal: 0
   isQuestAdditioner: 1
-  questToAdd: {fileID: 11400000, guid: e7ed1d2535265ca498bdedf93ade3772, type: 2}
+  questToAdd: {fileID: 11400000, guid: e31763c600130774ebed7e1afe153cbd, type: 2}
   questGiverName: "Mesti\xE7o 5"
   reward:
     item: {fileID: 0}
@@ -30,6 +30,13 @@ MonoBehaviour:
   - tipoCondicao: 4
     local: {x: 503.72, y: 20, z: 569.98}
     descricao: Pega Viado
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 9100806293854980318, guid: 0a8af845dae8f5a4e85ee7c055e899e7,
+        type: 3}
+      local: {x: 511.93506, y: 20.49, z: 570.13}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: "Item miss\xE3o"
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 1
@@ -44,6 +51,9 @@ MonoBehaviour:
   - tipoCondicao: 5
     local: {x: 493.59, y: 20, z: 569.98}
     descricao: Devolve Viado
+    objsToInstantiate: []
+    objsToDestroy:
+    - "Item miss\xE3o"
     dialogoDaCondicao:
       dialogueLines:
       - valeu ze
@@ -60,6 +70,8 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 523.15674, y: 19.996338, z: 569.3397}
     descricao: aaaa
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines:
       - Anem viu

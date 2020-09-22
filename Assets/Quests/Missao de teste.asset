@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
-  m_Name: Missao de teste
+  m_Name: Testinhoo
   m_EditorClassIdentifier: 
-  principal: 0
   nome: Testinhoo
+  principal: 0
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
   reward:
     item: {fileID: 0}
     qntDinheiro: 34
@@ -26,6 +29,8 @@ MonoBehaviour:
   - tipoCondicao: 0
     local: {x: 458.87384, y: 19.996338, z: 333.51474}
     descricao: Vai ali
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -38,6 +43,8 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 448.29523, y: 20, z: 339.95468}
     descricao: "Fala com o mo\xE7o"
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 1
@@ -50,6 +57,8 @@ MonoBehaviour:
   - tipoCondicao: 4
     local: {x: 470.06195, y: 21.3, z: 324.10178}
     descricao: Pega o trem la
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0

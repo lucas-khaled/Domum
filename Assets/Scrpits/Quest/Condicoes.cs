@@ -12,7 +12,13 @@ public class Condicoes
     public Vector3 local;
     public string descricao;
 
+    [SerializeField]
+    private List<ConditionInstance> objsToInstantiate;
+    [SerializeField]
+    private List<string> objsToDestroy;
+
     #region HIDDENVARIABLES
+
     [SerializeField]
     private Dialogo dialogoDaCondicao;
     [SerializeField]
@@ -21,13 +27,9 @@ public class Condicoes
     private string nameOnScene;
 
     public ItemPickup itemDaCondicao;
-
     public List<GameObject> inimigosDaCondicao;
-    [SerializeField]
     public float raioDeSpawn = 2;
-
     public float distanciaChegada = 5;
-
     public Interagivel interagivelPrefab;
 
     #endregion
@@ -40,6 +42,27 @@ public class Condicoes
         return isOnScene;
     }
 
+    public void FinalizaCondicao()
+    {
+        if(objsToDestroy.Count > 0)
+        {
+            Transform pai = GameObject.Find("Objs de Condicao").transform;
+            if (pai == null)
+                return;
+
+            if(pai.childCount > 0)
+            {
+                foreach(string nome in objsToDestroy)
+                {
+                    Transform delete = pai.Find(nome);
+                    if(delete != null)
+                    {
+                        MonoBehaviour.Destroy(delete.gameObject);
+                    }
+                }
+            }
+        }
+    }
 
     public void CleanUnsusedConditions()
     {
@@ -193,6 +216,18 @@ public class Condicoes
 
     public void AtivarCondicao()
     {      
+        if(objsToInstantiate.Count > 0)
+        {
+            GameObject game = GameObject.Find("Objs de Condicao");
+            if(game == null)
+                game = new GameObject("Objs de Condicao");
+
+            foreach(ConditionInstance c in objsToInstantiate)
+            {
+                c.Instanciar(game.transform);
+            }
+        }
+
         if (inimigosDaCondicao.Count>0) {
 
             inimigoParent = new GameObject("InimigoHolder " + descricao);
@@ -239,5 +274,35 @@ public class Condicoes
             GameObject itemObj = MonoBehaviour.Instantiate(itemDaCondicao.gameObject);
             itemObj.transform.position = local;          
         }
+    }
+}
+
+[System.Serializable]
+public class ConditionInstance
+{
+    [SerializeField]
+    private GameObject objetoPrefab;
+    [SerializeField]
+    private Vector3 local;
+    [SerializeField]
+    private Vector3 rotacao;
+    [SerializeField]
+    private string nome;
+
+    GameObject objetoInstanciado;
+
+    public void Instanciar(Transform pai)
+    {
+        objetoInstanciado = MonoBehaviour.Instantiate(objetoPrefab, local, Quaternion.Euler(rotacao));
+        objetoInstanciado.name = nome;
+        objetoInstanciado.transform.parent = pai;
+    }
+
+    public void CopiarValores(Transform copia)
+    {
+        objetoPrefab = copia.gameObject;
+        local = copia.position;
+        rotacao = copia.rotation.eulerAngles;
+        nome = copia.name;
     }
 }

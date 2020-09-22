@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
-  m_Name: Missao Do Lipao
+  m_Name: "Miss\xE3o do Limp\xE3o "
   m_EditorClassIdentifier: 
   nome: "Miss\xE3o do Limp\xE3o "
   principal: 0
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
   reward:
     item: {fileID: 0}
     qntDinheiro: 40
@@ -28,6 +31,8 @@ MonoBehaviour:
   - tipoCondicao: 0
     local: {x: 446.6, y: 19, z: 346.7}
     descricao: "V\xE1 \xE0 Tenda"
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -40,6 +45,8 @@ MonoBehaviour:
   - tipoCondicao: 4
     local: {x: 454, y: 20.5, z: 362.3}
     descricao: Pegue o Item
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -53,6 +60,8 @@ MonoBehaviour:
   - tipoCondicao: 2
     local: {x: 445.8, y: 20.5, z: 363.72}
     descricao: Mate os Inimigos
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0

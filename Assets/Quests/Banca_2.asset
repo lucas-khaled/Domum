@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
-  m_Name: Banca_2
+  m_Name: Conhecendo Domum!
   m_EditorClassIdentifier: 
   nome: Conhecendo Domum!
   principal: 0
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
   reward:
     item: {fileID: 0}
     qntDinheiro: 60
@@ -31,6 +34,16 @@ MonoBehaviour:
   - tipoCondicao: 0
     local: {x: 243.19373, y: 19.996338, z: 208.20055}
     descricao: "V\xE1 ao acampamento Atriet"
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 0}
+      local: {x: 0, y: 0, z: 0}
+      rotacao: {x: 0, y: 0, z: 0}
+      nome: 
+    - objetoPrefab: {fileID: 0}
+      local: {x: 0, y: 0, z: 0}
+      rotacao: {x: 0, y: 0, z: 0}
+      nome: 
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -43,6 +56,8 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 247.14882, y: 19.996338, z: 207.66754}
     descricao: Converse com um morador Atriet
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -56,6 +71,8 @@ MonoBehaviour:
   - tipoCondicao: 0
     local: {x: 732.63904, y: 19.996338, z: 193.473}
     descricao: "V\xE1 ao acampamento Kambin"
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -68,6 +85,8 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 722.86884, y: 19.996338, z: 183.02933}
     descricao: Converse com um morador Kambin
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -81,6 +100,8 @@ MonoBehaviour:
   - tipoCondicao: 0
     local: {x: 556.3, y: 19.996338, z: 718.6}
     descricao: "V\xE1 at\xE9 a periferia de Criviek"
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -93,6 +114,8 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 545.8026, y: 19.996338, z: 709}
     descricao: Converse com um morador da periferia de Criviek
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 0
@@ -106,6 +129,8 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 493.59, y: 20, z: 569.98}
     descricao: "Reporte sua explora\xE7\xE3o ao L\xEDder Mesti\xE7o"
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 1

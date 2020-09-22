@@ -47,6 +47,7 @@ public class QuestChecker : MonoBehaviour
             //se for, ele cancela a checagem e e seta a nova condição
             EventsController.onCondicaoTerminada.Invoke(questHolder);
             CancelInvoke("CheckCondicaoHolder");
+            condHolder.FinalizaCondicao();
             SetCondicaoOnHolder(questHolder.ProximaCondicao());
         }
     }

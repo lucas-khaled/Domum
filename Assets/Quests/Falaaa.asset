@@ -30,6 +30,8 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 0, y: 0, z: 0}
     descricao: Fale com o comerciante Kambim
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines:
       - Maninhooooww
@@ -45,6 +47,8 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 0, y: 0, z: 0}
     descricao: Fale com o comerciante Atriet
+    objsToInstantiate: []
+    objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 1
