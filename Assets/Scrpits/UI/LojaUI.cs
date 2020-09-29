@@ -20,6 +20,8 @@ public class LojaUI : MonoBehaviour
     private Text inventarioPeso;
     [SerializeField]
     private Animator Dinherio_insu;
+    [SerializeField]
+    private Animator Fama_insu;
 
     [Header("InfoItem")]
     [SerializeField]
@@ -280,9 +282,14 @@ public class LojaUI : MonoBehaviour
 
     public void ComprarItem()
     {
-        if(Player.player.status.Dinheiro < holderAtual.item.custoMoeda)
+        if (Player.player.status.Dinheiro < holderAtual.item.custoMoeda)
         {
             Dinherio_insu.SetTrigger("Dinheiro_insu");
+            return;
+        }
+        else if (Player.player.status.Fama < int.Parse(itemFama.text))
+        {
+            Fama_insu.SetTrigger("Fama_insu");
             return;
         }
         else
