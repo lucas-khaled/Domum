@@ -76,7 +76,7 @@ public class Player : MonoBehaviour, IVulnerable
             if (status.Vida <= 0)
             {
                 estado_player = EstadoPlayer.MORTO;
-                UIController.uiController.PainelMorteOn();
+                //UIController.uiController.PainelMorteOn();
                 return;
             }
 
