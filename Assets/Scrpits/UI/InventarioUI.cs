@@ -158,25 +158,16 @@ public class InventarioUI : MonoBehaviour
         StartCoroutine(ApareceExcluirWait());
     }
 
-    IEnumerator ApareceEquiparWait()
-    {
-        yield return new WaitForSecondsRealtime(0.1f);
-        equiparButton.SetActive(true);
-    }
 
     public void ApareceEquipar()
     {
-        StartCoroutine(ApareceEquiparWait());
+        equiparButton.SetActive(true);
+        usarButton.SetActive(false);
     }
 
     public void ApareceUsar()
     {
-        StartCoroutine(ApareceUsarWait());
-    }
-
-    IEnumerator ApareceUsarWait()
-    {
-        yield return new WaitForSecondsRealtime(0.1f);
+        equiparButton.SetActive(false);
         usarButton.SetActive(true);
     }
 
@@ -189,12 +180,23 @@ public class InventarioUI : MonoBehaviour
         valor_vendaText.text = string.Empty;
     }
 
-    IEnumerator ClearBotoes()
+    public void SemEquip()
     {
-        yield return new WaitForSecondsRealtime(0.1f);
-        excluirButton.SetActive(false);
         equiparButton.SetActive(false);
         usarButton.SetActive(false);
+    }
+
+    IEnumerator ClearBotoes()
+    {
+        Debug.Log("vaaaaaaaaaaaaaaaai tiraaaaaaaaaar");
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        if (selecionado == null)
+        {
+            excluirButton.SetActive(false);
+            equiparButton.SetActive(false);
+            usarButton.SetActive(false);
+        }
     }
 
     public void ShowInfo(Item item)

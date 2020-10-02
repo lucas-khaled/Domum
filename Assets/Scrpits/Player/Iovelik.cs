@@ -159,33 +159,33 @@ public class Iovelik : Player
         podeAtacar = false;
         //audioSource.PlayOneShot(ataque);
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick == 1)
+        if (animator.GetInteger("Ataque") == 1 && numClick <= 1)
         {
             animator.SetInteger("Ataque", 0);
             numClick = 0;
             estadoPlayer = EstadoPlayer.COMBATE;
         }
 
-        else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick >= 2)
+        else if(animator.GetInteger("Ataque") == 1 && numClick >= 2)
         {
             animator.SetInteger("Ataque", 2);
             podeAtacar = true;
         }
 
-        else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && numClick == 2)
+        else if(animator.GetInteger("Ataque") == 2 && numClick == 2)
         {
             animator.SetInteger("Ataque", 0);
             numClick = 0;
             estadoPlayer = EstadoPlayer.COMBATE;
         }
         
-        else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && numClick >= 3)
+        else if(animator.GetInteger("Ataque") == 2 && numClick >= 3)
         {
             animator.SetInteger("Ataque", 3);
             podeAtacar = true;
         }
 
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3"))
+        else if (animator.GetInteger("Ataque") == 3)
         {
             animator.SetInteger("Ataque", 0);
             numClick = 0;
