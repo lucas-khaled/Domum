@@ -76,7 +76,7 @@ public class Player : MonoBehaviour, IVulnerable
             if (status.Vida <= 0)
             {
                 estado_player = EstadoPlayer.MORTO;
-                //UIController.uiController.PainelMorteOn();
+                UIController.uiController.PainelMorteOn();
                 return;
             }
 
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour, IVulnerable
     #endregion
 
     #region COMBATE
-    protected void MoverPlayerAtaque()
+    private void MoverPlayerAtaque()
     {
         //transform.LookAt((transform.forward * velocidade * Input.GetAxis("Vertical")) + (transform.right * velocidade * Input.GetAxis("Horizontal")) + player.transform.position);
         rb.velocity = (transform.forward * 5);
@@ -137,7 +137,7 @@ public class Player : MonoBehaviour, IVulnerable
         if (numClick == 1)
         {
             animator.SetInteger("Ataque", 1);
-            animator.applyRootMotion = false;
+            animator.applyRootMotion = true;
             estadoPlayer = EstadoPlayer.ATACANDO;
         }
     }
@@ -315,10 +315,9 @@ public class Player : MonoBehaviour, IVulnerable
         return false;
     }
 
-    void TurnPlayer(bool attack = false)
-    {
-        float realSmooth = (attack) ? turnSmooth * 100 : turnSmooth;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, CameraController.cameraInstance.GetTarget().eulerAngles.y, ref turnVelocity, realSmooth);
+    void TurnPlayer()
+    {     
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, CameraController.cameraInstance.GetTarget().eulerAngles.y, ref turnVelocity, turnSmooth);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 

@@ -36,8 +36,6 @@ public class Holder_Item : Button, ISelectHandler
                 {
                     InventarioUI.inventarioUI.ApareceEquipar();
                 }
-                else
-                    InventarioUI.inventarioUI.SemEquip();
             }
 
             else if (item.GetType() == typeof(Cura))
@@ -69,8 +67,6 @@ public class Holder_Item : Button, ISelectHandler
                     {
                         InventarioUI.inventarioUI.ApareceEquipar();
                     }
-                    else
-                        InventarioUI.inventarioUI.SemEquip();
                 }
 
                 else if (item.GetType() == typeof(Cura))
