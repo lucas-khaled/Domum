@@ -12,7 +12,7 @@ public class QuestEditor : Editor
     Quest q;
     int selecionado = 0;
     string[] options;
-    List<GameObject> condHolders = new List<GameObject>();
+    DrawQuesGizmo condHolder;
     Transform placesRoot;
     SerializedObject obj;
     SerializedProperty propertyToDraw = null;
@@ -57,18 +57,18 @@ public class QuestEditor : Editor
         GUILayout.Space(5);
         EditorGUILayout.PropertyField(obj.FindProperty("isQuestAdditioner"));
 
-        if (q.isQuestAdditioner)
+        if (obj.FindProperty("isQuestAdditioner").boolValue)
         {
             GUILayout.Space(5);
             EditorGUILayout.PropertyField(obj.FindProperty("questToAdd"));
             EditorGUILayout.PropertyField(obj.FindProperty("questGiverName"));
             
 
-            if(obj.FindProperty("questToAdd").objectReferenceValue.name == q.name)
+            /*if(obj.FindProperty("questToAdd").objectReferenceValue.name == q.name)
             {
                 GUILayout.Space(5);
                 EditorGUILayout.HelpBox("A quest Que você vai adicionar é a mesma quest que essa. Tem certeza disso?", MessageType.Warning);
-            }
+            }*/
             GUILayout.Space(10);
         }
 
@@ -149,7 +149,7 @@ public class QuestEditor : Editor
 
                 if (Physics.Raycast(ray, out hit, 1000f, LayerMask.GetMask("Ground")))
                 {
-                    selectedCondition.local = hit.point;
+                    propertyToDraw.FindPropertyRelative("local").vector3Value = hit.point;
                 }
             }
 
@@ -173,7 +173,7 @@ public class QuestEditor : Editor
 
     public void DrawActiveConditionPlace()
     {
-        if (condHolders.Count != 1)
+        if (condHolder == null || condHolder.condHolder.descricao != selectedCondition.descricao)
         {
             UndrawPlaces();
 
@@ -182,15 +182,11 @@ public class QuestEditor : Editor
 
             condicaoHolder.GetComponent<DrawQuesGizmo>().SetCondicaoOnHolder(selectedCondition);
 
-            condHolders.Add(condicaoHolder);
-        }
-        else
-        {
-            condHolders[0].GetComponent<DrawQuesGizmo>().SetCondicaoOnHolder(selectedCondition);
+            condHolder = condicaoHolder.GetComponent<DrawQuesGizmo>();
         }
     }
 
-    public void DrawAllConditionPlaces(Quest q)
+    /*public void DrawAllConditionPlaces(Quest q)
     {
         UndrawPlaces();
         if (q.condicoes.Count > 0 && !isPlacesDrawn)
@@ -208,21 +204,13 @@ public class QuestEditor : Editor
             }
             isPlacesDrawn = true;
         }
-    }
+    }*/
 
     void UndrawPlaces()
     {
-        if (condHolders.Count > 0)
-        {
-            foreach(GameObject go in condHolders)
-            {
-                go.GetComponent<DrawQuesGizmo>().Clean();
-                DestroyImmediate(go);
-                
-            }
-
-            condHolders.Clear();
-        }
+        if(placesRoot.childCount>0)
+            DestroyImmediate(placesRoot.GetChild(0).gameObject);
+        condHolder = null;
     }
 
     void ToSceneInteractableEditor(SerializedProperty p)

@@ -1,0 +1,225 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
+  m_Name: Quest Principal 01
+  m_EditorClassIdentifier: 
+  nome: Quest Principal 01
+  principal: 0
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
+  reward:
+    item: {fileID: 0}
+    qntDinheiro: 0
+    XP: 30
+    fama: 100
+  dialogo:
+    dialogueLines:
+    - "L\xEDder Mesti\xE7o: Iovelik, preciso de voc\xEA."
+    - "Iovelik: Do que precisa, L\xEDder?"
+    - "L\xEDder Mesti\xE7o: Um carregamento de comida dos humanos foi roubado por
+      um de nossos agentes. Como sabe, esses carregamentos s\xE3o importantes para
+      alimentarmos os pobres da periferia."
+    - "Iovelik: Em troca de boa visibilidade para a rebeli\xE3o. Bem populista...
+      e nada nobre."
+    - "L\xEDder Mesti\xE7o: N\xE3o podemos nos dar o luxo de sermos nobres. Temos
+      uma revolu\xE7\xE3o a fazer e n\xE3o temos nenhum apoio da popula\xE7\xE3o."
+    - "Mas n\xE3o te chamei para discutir isso agora, preciso de voc\xEA."
+    - "Iovelik: Sabe que eu fa\xE7o qualquer coisa pela causa."
+    - "L\xEDder Mesti\xE7o: Sim, e n\xE3o duvido de voc\xEA. \xC9 o nosso melhor
+      soldado e este carregamento de comida \xE9 extremamente importante."
+    - 'Iovelik: Quer que eu o roube?'
+    - "L\xEDder Mesti\xE7o: N\xE3o, ele j\xE1 foi roubado. Mandei tr\xEAs agentes
+      para essa tarefa, eles estar\xE3o te esperando. Quero que o proteja at\xE9
+      nossos carregadores chegarem."
+    - "Voc\xEA os encontrar\xE1 na floresta, na clareira mais pr\xF3xima."
+    - "Iovelik: Sim, L\xEDder. Protegerei o carregamento com minha vida."
+  condicoes:
+  - tipoCondicao: 1
+    local: {x: 392.45, y: 19.996546, z: 418.89917}
+    descricao: 'Fale com os agentes que roubaram o carregamento '
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 1089170096765210998, guid: 7f85715e1dbb5ad469d448906276c40a,
+        type: 3}
+      local: {x: 392.45, y: 19.996546, z: 418.89917}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: Agentes
+    - objetoPrefab: {fileID: 5199235676967809283, guid: 4db79c747351cbc46bc6428b94f7cdc0,
+        type: 3}
+      local: {x: 391, y: 21, z: 423.2}
+      rotacao: {x: -0, y: 14.498521, z: -0}
+      nome: Carregamento de Comida
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "Iovelik: Ent\xE3o foram voc\xEAs que mandaram para roubar o carregamento...,
+        mas me disseram que haviam 3. Onde est\xE1 o terceiro?"
+      - "Agente #1: Sua irm\xE3? Ela n\xE3o veio."
+      - 'Iovelik: Tyva?? O que aconteceu com ela? Fale!!'
+      - "Agente #1: N\xE3o nos acompanhou, foi ajudar um cidad\xE3o Kambin que estava
+        sendo atacado por uns guardas humanos."
+      - "Iovelik: E voc\xEAs a deixaram ir sozinha?? Por que n\xE3o a acompanharam?
+        Idiotas!!"
+      - "Agente #2: T\xEDnhamos uma miss\xE3o a cumprir! N\xE3o pod\xEDamos deixar
+        o carregamento sozinho."
+      - "Iovelik: Ent\xE3o cumpra a miss\xE3o de novo, fique com o carregamento,
+        vou atr\xE1s da Tyva."
+      - Que droga!
+    isOnScene: 1
+    nameOnScene: Agentes
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 10
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 322.4, y: 21.229637, z: 415}
+    descricao: Encontre Tyva e fale com ela
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 7418285471231419908, guid: 6d182e3a366ca6c4f8b9040427eca453,
+        type: 3}
+      local: {x: 322.4, y: 21.229637, z: 415}
+      rotacao: {x: -0, y: 43.23323, z: -0}
+      nome: Tyva Teste
+    objsToDestroy:
+    - Tyva Teste
+    dialogoDaCondicao:
+      dialogueLines:
+      - "Iovelik: Tyva! O que voc\xEA tem na cabe\xE7a? Sair da miss\xE3o assim e
+        enfrentar humanos, sozinha?! Voc\xEA tem problema??"
+      - "Tyva: Se ajudar algu\xE9m que precisa de ajuda \xE9 problema, ent\xE3o eu
+        tenho."
+      - "Por falar em sair da miss\xE3o, suponho que te mandaram para proteger o
+        carregamento... t\xE1 fazendo o que aqui? Saindo da miss\xE3o?"
+      - "Iovelik: N\xE3o fale assim comigo! Vim ajud\xE1-la. N\xE3o teria desviado
+        se tivesse seguido o plano do L\xEDder."
+      - 'Tyva: Grande ajuda essa sua em (Tyva olha em volta). Se eu tivesse seguido
+        o plano, um Kambin inocente estaria morto agora!'
+      - "Iovelik: Essa revolu\xE7\xE3o \xE9 exatamente para evitar isso! E se n\xE3o
+        seguir o plano, n\xE3o haver\xE1 revolu\xE7\xE3o. Muitos ainda ir\xE3o morrer
+        neste processo."
+      - "Tyva: Voc\xEA est\xE1 errado!! N\xE3o quero saber mais dessa miss\xE3o,
+        cumpri as minhas tarefas. S\xF3 fa\xE7a as suas."
+    isOnScene: 1
+    nameOnScene: Tyva Teste
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 10
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 2
+    local: {x: 334.37875, y: 19.996338, z: 407.13983}
+    descricao: Mate os Inimigos que apareceram!
+    objsToInstantiate: []
+    objsToDestroy:
+    - Agentes
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    raioDeSpawn: 20
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 0
+    local: {x: 390.2436, y: 19.996338, z: 423.56662}
+    descricao: "Volte at\xE9 o carregamento"
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 3374832473217757048, guid: 010b1d83e833dfb469ac4cc71fdb8364,
+        type: 3}
+      local: {x: 392.45, y: 19.996546, z: 418.89917}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: Agentes Mortos
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 30
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 2
+    local: {x: 389.53073, y: 19.996338, z: 422.60968}
+    descricao: Mate os humanos que querem recuperar o carregamento
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    raioDeSpawn: 10
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 3
+    local: {x: 391, y: 21, z: 423.2}
+    descricao: Pegue o carregamento de comida
+    objsToInstantiate: []
+    objsToDestroy:
+    - Carregamento de Comida
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 1
+    nameOnScene: Carregamento de Comida
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 493.59, y: 20, z: 569.98}
+    descricao: "Fale Com o L\xEDder Mesti\xE7o"
+    objsToInstantiate: []
+    objsToDestroy:
+    - Agentes Mortos
+    dialogoDaCondicao:
+      dialogueLines:
+      - "L\xEDder Mesti\xE7o: Voc\xEA trouxe o carregamento sozinho? O que houve?
+        Onde est\xE3o os outros agentes?"
+      - "Iovelik: Tyva est\xE1 bem, mas os outros dois... droga, est\xE3o mortos!!"
+      - "L\xEDder Mesti\xE7o: Merda! Humanos?"
+      - "Iovelik: Sim. Apareceram no local. Os agentes n\xE3o conseguiram dar conta
+        deles."
+      - "L\xEDder Mesti\xE7o: E sua irm\xE3? Onde est\xE1?"
+      - "Iovelik: Ela... ela n\xE3o estava no local quando os humanos chegaram...
+        na verdade eu tamb\xE9m n\xE3o."
+      - "L\xEDder Mesti\xE7o: Como assim??"
+      - "Iovelik: Tyva foi ajudar um cidad\xE3o em perigo. Quando soube disso fui
+        atr\xE1s dela. Chegando, ela j\xE1 havia matado os humanos que a atacaram. "
+      - "Assim que voltei ao carregamento tive que matar os humanos que estavam l\xE1.
+        Os meninos j\xE1 estavam... pe\xE7o desculpas."
+      - "L\xEDder Mesti\xE7o: Voc\xEAs dois mataram um grupo de inimigos sozinho?
+        Isso \xE9 impressionante."
+      - 'Iovelik: Acha mesmo?'
+      - "L\xEDder Mesti\xE7o: Sim, mas n\xE3o se empolgue. Os dois foram imprudentes
+        e isso custou a vida de dois dos nossos!"
+      - "Ainda sim, voc\xEA salvou o carregamento. Sem voc\xEA n\xE3o ter\xEDamos
+        ele, ent\xE3o obrigado. N\xE3o haver\xE1 puni\xE7\xE3o alguma."
+      - "Obrigado, L\xEDder Mesti\xE7o. E quanto \xE0 Tyva?"
+      - "N\xE3o a punirei tamb\xE9m, mas eu e ela teremos que ter uma conversa..."
+    isOnScene: 1
+    nameOnScene: "Mesti\xE7o 5"
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}

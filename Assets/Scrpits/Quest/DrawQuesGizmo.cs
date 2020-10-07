@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DrawQuesGizmo : MonoBehaviour
 {
-    Condicoes condHolder;
+    public Condicoes condHolder;
 
     List<GameObject> instanciados = new List<GameObject>();
 

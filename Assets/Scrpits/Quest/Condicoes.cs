@@ -300,7 +300,7 @@ public class ConditionInstance
 
     public void CopiarValores(Transform copia)
     {
-        objetoPrefab = copia.gameObject;
+        //objetoPrefab = copia.gameObject;
         local = copia.position;
         rotacao = copia.rotation.eulerAngles;
         nome = copia.name;

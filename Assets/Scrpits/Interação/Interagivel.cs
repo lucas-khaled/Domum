@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class Interagivel : MonoBehaviour
 {
     public GameObject worldCanvas;
+    public bool isComposedObject = false;
 
     protected bool isPartOfDialogue = false;
 
