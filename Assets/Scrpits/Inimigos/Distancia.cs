@@ -14,7 +14,6 @@ public class Distancia : Inimigo
     public Transform pontoTiro;
     public Transform pontoAlerta;
 
-    private GameObject alerta;
     protected override IEnumerator Atacar()
     {
 
@@ -22,14 +21,11 @@ public class Distancia : Inimigo
 
         Coroutine mira = StartCoroutine(Mirar());
         travaMovimento = true;
-
-        alerta = Instantiate(imagemAlerta, pontoAlerta);
-        alerta.AddComponent<FaceCamera>();
-        alerta.transform.SetParent(transform);
-
+        imagemAlerta.SetActive(true);
+        
         yield return new WaitForSeconds(3f);
 
-        Destroy(alerta);
+        imagemAlerta.SetActive(false);
         anim.SetTrigger("Atirar");
         audioSource.PlayOneShot(tiro);
         anim.SetBool("Atacar", false);
