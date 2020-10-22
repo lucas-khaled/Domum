@@ -303,6 +303,5 @@ public class ConditionInstance
         //objetoPrefab = copia.gameObject;
         local = copia.position;
         rotacao = copia.rotation.eulerAngles;
-        nome = copia.name;
     }
 }
