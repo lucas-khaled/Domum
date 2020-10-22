@@ -69,7 +69,7 @@ public class InventarioUI : MonoBehaviour
     void Start()
     {
         PegaValores();
-        armaEquipadaImage.sprite = Inventario.inventario.armaEquipada.icone;  
+          
     }
 
     public void AttUI(Item item, bool mudanca)
@@ -138,6 +138,12 @@ public class InventarioUI : MonoBehaviour
 
     public void PegaValores()
     {
+        StartCoroutine(PegaValoresWait());
+    }
+
+    IEnumerator PegaValoresWait()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
         dinheiro_atualText.text = Player.player.status.Dinheiro.ToString();
         peso_atualText.text = Inventario.inventario.pesoInventario.ToString();
         fama_atualText.text = Player.player.status.Fama.ToString();
@@ -145,6 +151,7 @@ public class InventarioUI : MonoBehaviour
         danoEquipadaText.text = Inventario.inventario.armaEquipada.dano.ToString();
         nomeEquipadaText.text = Inventario.inventario.armaEquipada.nome.ToString();
         pesoEquipadaText.text = Inventario.inventario.armaEquipada.peso.ToString();
+        armaEquipadaImage.sprite = Inventario.inventario.armaEquipada.icone;
     }
 
     IEnumerator ApareceExcluirWait()

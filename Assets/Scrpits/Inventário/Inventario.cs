@@ -10,21 +10,20 @@ public class Inventario : MonoBehaviour
     public static Inventario inventario;
     private void Awake()
     {
-        inventario = this;
-        
+        inventario = this;     
     }
 
     #endregion
 
     [HideInInspector]
-    public SkinnedMeshRenderer armaMesh;
+    public SkinnedMeshRenderer armaMesh = null;
 
     public float pesoMaximo;   
     public Arma armaDefaultIovelik;
     public Arma armaDefautTyva;
 
     [HideInInspector]
-    public Arma armaEquipada;
+    public Arma armaEquipada = null;
 
     List<Item> itens = new List<Item>();
     public float pesoInventario { get; private set; }

@@ -9,7 +9,11 @@ public class CameraController : MonoBehaviour
 {
     [Header("Camera Values")]
     [SerializeField]
-    private float Sensibilidade_cam = 1;
+    private float sensibilidade_cam = 1;
+    [SerializeField]
+    private float maxVerticalMovement = 60;
+    [SerializeField]
+    private float minVerticalMovement = -25;
 
     [Header("Target Values")]
     [SerializeField]
@@ -95,9 +99,9 @@ public class CameraController : MonoBehaviour
 
     void CamFolow()
     {
-        float x = Mathf.Lerp(Target.position.x, Player.player.transform.position.x, Sensibilidade_cam);
-        float y = Mathf.Lerp(Target.position.y, Player.player.transform.position.y + targetOffset, Sensibilidade_cam);
-        float z = Mathf.Lerp(Target.position.z, Player.player.transform.position.z, Sensibilidade_cam);
+        float x = Mathf.Lerp(Target.position.x, Player.player.transform.position.x, sensibilidade_cam);
+        float y = Mathf.Lerp(Target.position.y, Player.player.transform.position.y + targetOffset, sensibilidade_cam);
+        float z = Mathf.Lerp(Target.position.z, Player.player.transform.position.z, sensibilidade_cam);
 
         Target.position = new Vector3(x,y,z);
     }
@@ -107,9 +111,9 @@ public class CameraController : MonoBehaviour
         if (origemInput == OrigemInput.JOYSTICK)
         {
 
-            controleX += Input.GetAxis("RightStickHorizontal") * Sensibilidade_cam;
-            controleY += Input.GetAxisRaw("RightStickVertical") * Sensibilidade_cam;
-            controleY = Mathf.Clamp(controleY, -35, 120);
+            controleX += Input.GetAxis("RightStickHorizontal") * sensibilidade_cam;
+            controleY += Input.GetAxisRaw("RightStickVertical") * sensibilidade_cam;
+            controleY = Mathf.Clamp(controleY, minVerticalMovement, maxVerticalMovement);
 
             transform.LookAt(Target);
             Target.rotation = Quaternion.Euler(controleY, controleX, 0);
@@ -119,9 +123,9 @@ public class CameraController : MonoBehaviour
 
         else
         {
-            mouseX += Input.GetAxis("Mouse X") * Sensibilidade_cam;
-            mouseY += Input.GetAxis("Mouse Y") * Sensibilidade_cam;
-            mouseY = Mathf.Clamp(mouseY, -25, 60);
+            mouseX += Input.GetAxis("Mouse X") * sensibilidade_cam;
+            mouseY += Input.GetAxis("Mouse Y") * sensibilidade_cam;
+            mouseY = Mathf.Clamp(mouseY, minVerticalMovement, maxVerticalMovement);
 
             transform.LookAt(Target);
 

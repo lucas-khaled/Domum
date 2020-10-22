@@ -16,14 +16,14 @@ public class ArmaPlayer : MonoBehaviour
 
     private void Awake()
     {
-        if (gameObject.activeSelf)
-            Inventario.inventario.armaMesh = mesh;
+        armaPlayer = this;
     }
 
     private void Start()
-    {
-        armaPlayer = this;
+    {      
         colisor = this.GetComponent<BoxCollider>();
+        if (gameObject.activeSelf)
+            Inventario.inventario.armaMesh = mesh;
     }
 
     public int CalculaDano()

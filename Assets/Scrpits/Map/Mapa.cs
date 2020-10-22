@@ -143,7 +143,7 @@ public class Mapa : MonoBehaviour
 
         rectMarcador.localScale = Vector3.one;
 
-        if (rectMarcador.anchoredPosition.x < rectTransform.rect.width && rectMarcador.anchoredPosition.y < rectTransform.rect.height)
+        if (rectMarcador.anchoredPosition.x < rectTransform.rect.width && rectMarcador.anchoredPosition.x > 0 && rectMarcador.anchoredPosition.y < rectTransform.rect.height && rectMarcador.anchoredPosition.y > 0)
         {
             if (marcadorAtual != null)
             {
@@ -154,6 +154,9 @@ public class Mapa : MonoBehaviour
 
             Vector3 posCena = new Vector3(rectMarcador.anchoredPosition.x * (terrainDimesions.x / rectTransform.rect.width), 30f,
                 rectMarcador.anchoredPosition.y * (terrainDimesions.y / rectTransform.rect.height));
+
+            Debug.Log("Posição Mapa: " + rectMarcador.anchoredPosition.x + " - " + rectMarcador.anchoredPosition.y);
+            Debug.Log("Posição Cena: " + posCena.x + " - " + posCena.z);
 
             if (marcadorCenaAtual != null)
                 marcadorCenaAtual.transform.position = posCena;

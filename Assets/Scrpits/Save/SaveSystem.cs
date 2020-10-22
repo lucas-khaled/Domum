@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 [System.Serializable]
-public class Data
+public class SaveData
 {
     public PlayerData playerData;
     public InventarioData inventarioData;
@@ -15,7 +15,7 @@ public class Data
 public static class SaveSystem
 {
 
-    public static Data data;
+    public static SaveData data;
 
     static void SaveQuestData()
     {
@@ -61,7 +61,7 @@ public static class SaveSystem
 
     public static void Save()
     {
-        data = new Data();
+        data = new SaveData();
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/gameSave.SAVE";
         FileStream stream = File.Create(path);
@@ -87,7 +87,7 @@ public static class SaveSystem
     }
 
 
-    public static Data Load()
+    public static SaveData Load()
     {
         string path = Application.persistentDataPath + "/gameSave.SAVE";
         if (File.Exists(path))
@@ -97,7 +97,7 @@ public static class SaveSystem
 
             string json = (string)formatter.Deserialize(stream);
             json = Descriptografa(json);
-            data = JsonUtility.FromJson<Data>(json);
+            data = JsonUtility.FromJson<SaveData>(json);
             stream.Close();
             LoadQuestData();
             return data;

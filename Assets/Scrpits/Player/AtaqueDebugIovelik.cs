@@ -12,18 +12,15 @@ public class AtaqueDebugIovelik : StateMachineBehaviour
         if (stateInfo.IsName("Attack1"))
         {
             auxSom = 0.5f;
-            Debug.Log("1");
 
         }
         else if (stateInfo.IsName("Attack2"))
         {
             auxSom = 0.4f;
-            Debug.Log("2");
         }
         else if (stateInfo.IsName("Attack3"))
         {
             auxSom = 0.7f;
-            Debug.Log("3");
         }
 
         martelo = GameObject.FindGameObjectWithTag("Martelo");
@@ -37,7 +34,6 @@ public class AtaqueDebugIovelik : StateMachineBehaviour
         if (auxSom <= 0 && auxSom != -999)
         {
             auxSom = -999;
-            Debug.Log(auxSom);
             animator.gameObject.GetComponent<Player>().audioSource.PlayOneShot(Player.player.ataque);
         }
     }

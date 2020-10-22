@@ -66,12 +66,12 @@ public class GameController : MonoBehaviour
 
     public void LoadGame()
     {
-        Data data = SaveSystem.Load();
+        SaveData data = SaveSystem.Load();
         if (data != null)
         {
             isLoadedGame = true;
             qualPlayer = (TipoPlayer)data.playerData.qualPlayer;
-            ChangeScene("Level");
+            ChangeScene("Fase_PrincipalBLOQUING");
         }
     }
 
