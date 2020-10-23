@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 1716722213318873562}
   - component: {fileID: 7676389408583183340}
   - component: {fileID: 4158100181937559317}
-  m_Layer: 0
+  - component: {fileID: 4201456967719958874}
+  - component: {fileID: 7058773031326081755}
+  m_Layer: 10
   m_Name: Carregamento
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,3 +81,30 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4201456967719958874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2416282462686684105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07496261, y: 0.026603287, z: 0.036312956}
+  m_Center: {x: -0.010866889, y: -1.5447881e-17, z: 0.018144479}
+--- !u!114 &7058773031326081755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2416282462686684105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303aafae5c9b2494ea7b87cff4f61fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldCanvas: {fileID: 0}
+  isComposedObject: 0

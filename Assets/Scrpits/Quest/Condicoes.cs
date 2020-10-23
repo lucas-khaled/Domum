@@ -246,10 +246,20 @@ public class Condicoes
             {
                 Vector3 localization = new Vector3(local.x, local.y + interagivelPrefab.transform.lossyScale.y / 10, local.z);
                 GameObject interagivelObj = MonoBehaviour.Instantiate(interagivelPrefab.gameObject, localization, interagivelPrefab.gameObject.transform.rotation);
-                interagivel = interagivelObj.GetComponent<Interagivel>();       
+                interagivel = interagivelObj.GetComponent<Interagivel>();
+
+                GameObject game = GameObject.Find("Objs de Condicao");
+                if (game == null)
+                    game = new GameObject("Objs de Condicao");
+
+                interagivelObj.transform.SetParent(game.transform);
             }
             else
             {
+                GameObject game = GameObject.Find("Objs de Condicao");
+                if (game == null)
+                    game = new GameObject("Objs de Condicao");
+
                 interagivel = GameObject.Find(nameOnScene).GetComponent<Interagivel>();
                 local = interagivel.transform.position;
             }
