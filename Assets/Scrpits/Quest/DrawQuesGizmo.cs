@@ -35,7 +35,7 @@ public class DrawQuesGizmo : MonoBehaviour
                 sphereSize = condHolder.distanciaChegada;
             }
 
-            Gizmos.DrawWireSphere(condHolder.local, condHolder.distanciaChegada);      
+            Gizmos.DrawWireSphere(condHolder.local, sphereSize);      
         }
     }
 

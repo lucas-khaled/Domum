@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
-  m_Name: Quest Principal 01
+  m_Name: "O Pre\xE7o do Hero\xEDsmo"
   m_EditorClassIdentifier: 
-  nome: Quest Principal 01
-  principal: 0
+  nome: "O Pre\xE7o do Hero\xEDsmo"
+  principal: 1
   isQuestAdditioner: 0
   questToAdd: {fileID: 0}
   questGiverName: 
@@ -45,19 +45,19 @@ MonoBehaviour:
     - "Iovelik: Sim, L\xEDder. Protegerei o carregamento com minha vida."
   condicoes:
   - tipoCondicao: 1
-    local: {x: 392.45, y: 19.996546, z: 418.89917}
+    local: {x: 162.6, y: 22.968, z: 297.9}
     descricao: 'Fale com os agentes que roubaram o carregamento '
     objsToInstantiate:
     - objetoPrefab: {fileID: 1089170096765210998, guid: 7f85715e1dbb5ad469d448906276c40a,
         type: 3}
-      local: {x: 392.45, y: 19.996546, z: 418.89917}
+      local: {x: 162.6, y: 22.968, z: 297.9}
       rotacao: {x: -0, y: 0, z: 0}
       nome: Agentes
     - objetoPrefab: {fileID: 5199235676967809283, guid: 4db79c747351cbc46bc6428b94f7cdc0,
         type: 3}
-      local: {x: 391, y: 21, z: 423.2}
-      rotacao: {x: -0, y: 14.498521, z: -0}
-      nome: Carregamento de Comida
+      local: {x: 164.8, y: 24.46, z: 309.6}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: Carregamento
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines:
@@ -82,13 +82,13 @@ MonoBehaviour:
     distanciaChegada: 10
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 322.4, y: 21.229637, z: 415}
+    local: {x: 102.9, y: 26.34, z: 262.3}
     descricao: Encontre Tyva e fale com ela
     objsToInstantiate:
     - objetoPrefab: {fileID: 7418285471231419908, guid: 6d182e3a366ca6c4f8b9040427eca453,
         type: 3}
-      local: {x: 322.4, y: 21.229637, z: 415}
-      rotacao: {x: -0, y: 43.23323, z: -0}
+      local: {x: 102.9, y: 26.34, z: 262.3}
+      rotacao: {x: -0, y: 0, z: 0}
       nome: Tyva Teste
     objsToDestroy:
     - Tyva Teste
@@ -117,7 +117,7 @@ MonoBehaviour:
     distanciaChegada: 10
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 2
-    local: {x: 334.37875, y: 19.996338, z: 407.13983}
+    local: {x: 101.33, y: 27.86, z: 265.2}
     descricao: Mate os Inimigos que apareceram!
     objsToInstantiate: []
     objsToDestroy:
@@ -135,12 +135,12 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 0
-    local: {x: 390.2436, y: 19.996338, z: 423.56662}
+    local: {x: 164.8, y: 19.99634, z: 309.6}
     descricao: "Volte at\xE9 o carregamento"
     objsToInstantiate:
     - objetoPrefab: {fileID: 3374832473217757048, guid: 010b1d83e833dfb469ac4cc71fdb8364,
         type: 3}
-      local: {x: 392.45, y: 19.996546, z: 418.89917}
+      local: {x: 162.6, y: 22.5, z: 297.9}
       rotacao: {x: -0, y: 0, z: 0}
       nome: Agentes Mortos
     objsToDestroy: []
@@ -154,7 +154,7 @@ MonoBehaviour:
     distanciaChegada: 30
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 2
-    local: {x: 389.53073, y: 19.996338, z: 422.60968}
+    local: {x: 164.8, y: 24.3, z: 309}
     descricao: Mate os humanos que querem recuperar o carregamento
     objsToInstantiate: []
     objsToDestroy: []
@@ -171,22 +171,22 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 3
-    local: {x: 391, y: 21, z: 423.2}
+    local: {x: 164.8, y: 24.46, z: 309.6}
     descricao: Pegue o carregamento de comida
     objsToInstantiate: []
     objsToDestroy:
-    - Carregamento de Comida
+    - Carregamento
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 1
-    nameOnScene: Carregamento de Comida
+    nameOnScene: Carregamento
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 493.59, y: 20, z: 569.98}
+    local: {x: 246.999, y: 23.437595, z: 355.9416}
     descricao: "Fale Com o L\xEDder Mesti\xE7o"
     objsToInstantiate: []
     objsToDestroy:

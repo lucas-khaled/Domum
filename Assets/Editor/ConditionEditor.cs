@@ -119,7 +119,7 @@ public class ConditionEditor : PropertyDrawer
                     object obj = GetParent(prop);
                     ConditionInstance cond = obj as ConditionInstance;
                     cond.CopiarValores(Selection.activeGameObject.transform);
-                    Debug.Log("Cliqueeiiii: " +Selection.activeGameObject.transform.position);
+                    prop.serializedObject.ApplyModifiedProperties();
                 }
                 valuesRect.y += 25;
             }
