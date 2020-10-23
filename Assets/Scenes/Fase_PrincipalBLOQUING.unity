@@ -1708,6 +1708,85 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114861279}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &117029821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 117029822}
+  - component: {fileID: 117029823}
+  m_Layer: 0
+  m_Name: Encontre Tyva e fale com ela
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &117029822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117029821}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 69.76623, y: -28.605583, z: 104.01868}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5075974572283777003}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &117029823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117029821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a81af9abdda4434bba42b8fdb2e3918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condHolder:
+    tipoCondicao: 1
+    local: {x: 102.9, y: 26.34, z: 262.3}
+    descricao: Encontre Tyva e fale com ela
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 2750437293865562616, guid: 8d5073e3527a0ff468a0f65fe883f9dc,
+        type: 3}
+      local: {x: 102.9, y: 26.34, z: 262.3}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: Tyva Teste
+    objsToDestroy:
+    - Tyva Teste
+    dialogoDaCondicao:
+      dialogueLines:
+      - "Iovelik: Tyva! O que voc\xEA tem na cabe\xE7a? Sair da miss\xE3o assim e
+        enfrentar humanos, sozinha?! Voc\xEA tem problema??"
+      - "Tyva: Se ajudar algu\xE9m que precisa de ajuda \xE9 problema, ent\xE3o eu
+        tenho."
+      - "Por falar em sair da miss\xE3o, suponho que te mandaram para proteger o
+        carregamento... t\xE1 fazendo o que aqui? Saindo da miss\xE3o?"
+      - "Iovelik: N\xE3o fale assim comigo! Vim ajud\xE1-la. N\xE3o teria desviado
+        se tivesse seguido o plano do L\xEDder."
+      - 'Tyva: Grande ajuda essa sua em (Tyva olha em volta). Se eu tivesse seguido
+        o plano, um Kambin inocente estaria morto agora!'
+      - "Iovelik: Essa revolu\xE7\xE3o \xE9 exatamente para evitar isso! E se n\xE3o
+        seguir o plano, n\xE3o haver\xE1 revolu\xE7\xE3o. Muitos ainda ir\xE3o morrer
+        neste processo."
+      - "Tyva: Voc\xEA est\xE1 errado!! N\xE3o quero saber mais dessa miss\xE3o,
+        cumpri as minhas tarefas. S\xF3 fa\xE7a as suas."
+    isOnScene: 1
+    nameOnScene: Tyva Teste
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 10
+    interagivelPrefab: {fileID: 0}
 --- !u!1 &118579989
 GameObject:
   m_ObjectHideFlags: 0
@@ -23187,12 +23266,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9212701604891945851, guid: 33b099fc567827a4598ba8e386d7600f,
         type: 3}
+      propertyPath: quests.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212701604891945851, guid: 33b099fc567827a4598ba8e386d7600f,
+        type: 3}
       propertyPath: quests.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: ae9ae523266daae498f56266269c7e44,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33b099fc567827a4598ba8e386d7600f, type: 3}
+--- !u!114 &1146306522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9212701604891945851, guid: 33b099fc567827a4598ba8e386d7600f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1146306521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831d95b6eeed8f04e9aab337bf8bd763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1151798381 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2121115777601841395, guid: e334e6614ad50f749b0a37528784c614,
@@ -27100,6 +27196,66 @@ Transform:
   m_Father: {fileID: 1688563307}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1361088469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1361088470}
+  - component: {fileID: 1361088471}
+  m_Layer: 0
+  m_Name: NavMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1361088470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361088469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6794496352856682094}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1361088471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361088469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df27b9289d1e8c4fb82e0df4f4673ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 23800000, guid: 03a0e2cb64e1cae4c85d22a3990fed40, type: 2}
 --- !u!1 &1362827083
 GameObject:
   m_ObjectHideFlags: 0
@@ -34575,87 +34731,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815408082}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1816386562
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1816386563}
-  - component: {fileID: 1816386564}
-  m_Layer: 0
-  m_Name: Converse com os Agentes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1816386563
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816386562}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 69.76623, y: -28.605583, z: 104.01868}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5075974572283777003}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1816386564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816386562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a81af9abdda4434bba42b8fdb2e3918, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condHolder:
-    tipoCondicao: 1
-    local: {x: 65.83995, y: 26.894, z: 216.08165}
-    descricao: Converse com os Agentes
-    objsToInstantiate:
-    - objetoPrefab: {fileID: 2416282462686684105, guid: e9a03b5d566c0e449b330f96f99dc183,
-        type: 3}
-      local: {x: 110.0524, y: 27.4, z: 233.1059}
-      rotacao: {x: 0, y: 0, z: 0}
-      nome: Carregamento de Comida
-    objsToDestroy: []
-    dialogoDaCondicao:
-      dialogueLines:
-      - "Tyva: Ent\xE3o foi voc\xEAs que enviaram. O que podem me dizer sobre o local?"
-      - "Agente #1: O local est\xE1 cheio de guardas senhora. Tem pelo menos uns
-        10 deles."
-      - "Agente #2: Vai ser imposs\xEDvel passar por eles sem sermos mortos!"
-      - "Tyva: Nada \xE9 imposs\xEDvel e eu tenho um plano. Mas preciso de voc\xEAs."
-      - "Agente #1: O que precisa que fa\xE7amos?"
-      - "Tyva: Quero que criem uma distra\xE7\xE3o. Voc\xEAs s\xE3o jovens, finjam
-        que s\xE3o apenas alguns arruaceiros e fa\xE7am alguns dos guardas seguirem
-        voc\xEAs."
-      - "Se algum de voc\xEAs forem pegos n\xE3o digam nada sobre a Rebeli\xE3o e
-        ficar\xE3o bem... talvez s\xF3 um pouco surrados."
-      - 'Agente #2: Como sabe que ficaremos bem?'
-      - "Tyva: Experi\xEAncia pr\xF3pria. J\xE1 fui pega algumas vezes na idade de
-        voc\xEAs."
-      - "Agente #1: E voc\xEA, vai pra l\xE1 sozinha?"
-      - "Tyva: Sim, pode deixar que enfrento os guardas que ficarem para tr\xE1s.
-        Vejo voc\xEAs no ponto de encontro. Agora v\xE3o!"
-    isOnScene: 0
-    nameOnScene: 
-    itemDaCondicao: {fileID: 0}
-    inimigosDaCondicao: []
-    raioDeSpawn: 0
-    distanciaChegada: 0
-    interagivelPrefab: {fileID: 8726431896383282290, guid: 7f85715e1dbb5ad469d448906276c40a,
-      type: 3}
 --- !u!1 &1824003879
 GameObject:
   m_ObjectHideFlags: 0
@@ -58182,6 +58257,9 @@ MonoBehaviour:
   tyva: {fileID: 2750437293865562616, guid: 0cbd1b4b958c1534a9694dbeaf5cb6ac, type: 3}
   iovelik: {fileID: 6308435232091227313, guid: 2c3e31146829b93498181744c7fd9bdc, type: 3}
   posicaoInicio: {fileID: 5075974572132569257}
+  firstQuestGiver: {fileID: 1146306522}
+  firstQuestTyva: {fileID: 11400000, guid: ae9ae523266daae498f56266269c7e44, type: 2}
+  firstQuestIovelik: {fileID: 11400000, guid: b3dc9d1c41f251a4297bd8b6ebb7f37d, type: 2}
 --- !u!114 &5075974571822309849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62016,7 +62094,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5075974572132569256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 251.63, y: 24.17, z: 354}
+  m_LocalPosition: {x: 251.63, y: 24.17, z: 338.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6794496352856682094}
@@ -63269,7 +63347,7 @@ Transform:
   m_LocalPosition: {x: -69.76623, y: 28.605583, z: -104.01868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1816386563}
+  - {fileID: 117029822}
   m_Father: {fileID: 6794496352856682094}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75699,6 +75777,7 @@ Transform:
   - {fileID: 5075974571087737455}
   - {fileID: 8157574844699140278}
   - {fileID: 8157574843916559978}
+  - {fileID: 1361088470}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78436,6 +78515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8157574843916559978}
   - component: {fileID: 8157574843916559976}
+  - component: {fileID: 8157574843916559980}
   m_Layer: 0
   m_Name: CameraMapa
   m_TagString: Untagged
@@ -78443,6 +78523,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8157574843916559980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157574843916559979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!222 &8157574843938478649
 CanvasRenderer:
   m_ObjectHideFlags: 0

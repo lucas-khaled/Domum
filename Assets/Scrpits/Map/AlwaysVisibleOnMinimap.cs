@@ -44,6 +44,8 @@ public class AlwaysVisibleOnMinimap : MonoBehaviour
         gameObject.SetActive(false);
         if (instanciaVista != null)
             Destroy(instanciaVista);
+
+        Debug.Log("Desliguei memo");
     }
 
     void Update()

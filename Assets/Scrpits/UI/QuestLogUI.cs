@@ -86,7 +86,7 @@ public class QuestLogUI : MonoBehaviour
         iconeLineRenderer = go.GetComponent<LineRenderer>();
         iconeLineRenderer.enabled = false;
 
-        go.SetActive(false);
+        //go.SetActive(false);
         go.transform.position = Vector3.zero;
         go.transform.rotation = Quaternion.Euler(90, 180, 0);
         go.transform.localScale = Vector3.one * 3f;
