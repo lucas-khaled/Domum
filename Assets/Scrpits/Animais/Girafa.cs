@@ -240,6 +240,11 @@ public class Girafa : MonoBehaviour
         {
             GetComponent<Rigidbody>().isKinematic = true;
         }
+        else
+        {
+            destino = RandomNavMeshGenerator(20f);
+            animal.SetDestination(destino);
+        }
     }
     private void Correr()
     {
