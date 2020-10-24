@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -53,6 +54,7 @@ public class Girafa : MonoBehaviour
             if (Vector3.Distance(this.gameObject.transform.position, destino) < 1f)
             {
                 anim.SetBool("Caminhando", false);
+                animal.SetDestination(this.transform.position);
                 StartCoroutine(Escolher());
             }
         }
