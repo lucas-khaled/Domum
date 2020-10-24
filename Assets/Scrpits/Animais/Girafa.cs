@@ -169,7 +169,7 @@ public class Girafa : MonoBehaviour
 
         animal.isStopped = true;
         DroparLoot();
-        respawnGirafa[Random.Range(0, 6)].GetComponent<Respawn>().numeroAnimais--;
+        respawnGirafa[Random.Range(0, respawnGirafa.Length)].GetComponent<Respawn>().numeroAnimais--;
         StopAllCoroutines();
     }
     public void ReceberDano(int danoRecebido)

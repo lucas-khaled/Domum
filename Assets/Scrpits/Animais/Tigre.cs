@@ -251,7 +251,7 @@ public class Tigre : MonoBehaviour
         DroparLoot();
         StopAllCoroutines();
 
-        respawnTigre[Random.Range(0, 6)].GetComponent<Respawn>().numeroAnimais--;
+        respawnTigre[Random.Range(0, respawnTigre.Length)].GetComponent<Respawn>().numeroAnimais--;
     }
     public void ReceberDano(int danoRecebido)
     {
