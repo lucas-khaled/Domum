@@ -259,6 +259,8 @@ MonoBehaviour:
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   animal: {fileID: 1580358912395863444}
+  itensDropaveis: []
+  drop: {fileID: 0}
   garrada: {fileID: 8300000, guid: 8fddeb9fbfb9bbf49979cf4015ebd995, type: 3}
   mordida: {fileID: 8300000, guid: 67228f95f4ec61d46a2e243937058f46, type: 3}
   ataquePulo: {fileID: 8300000, guid: 67228f95f4ec61d46a2e243937058f46, type: 3}
@@ -297,7 +299,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.74
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 0
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0

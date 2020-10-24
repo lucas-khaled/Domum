@@ -659,6 +659,9 @@ MonoBehaviour:
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   animal: {fileID: 7901259816296430807}
+  itensDropaveis: []
+  drop: {fileID: 0}
+  respawnGirafa: []
   deitar: {fileID: 0}
   comer: {fileID: 8300000, guid: 3ee1fa4c8c33f0f40a9c63159615c97e, type: 3}
   audioSource: {fileID: 82468387531282776}
@@ -705,8 +708,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.8
-  m_Acceleration: 8
+  m_Speed: 2
+  m_Acceleration: 1
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
