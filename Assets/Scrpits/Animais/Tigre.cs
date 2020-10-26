@@ -10,7 +10,7 @@ public class Tigre : MonoBehaviour
     public Image lifeBar;
     public Animator anim;
     public GameObject CBTprefab;
-    public NavMeshAgent animal;
+    private NavMeshAgent animal;
     Vector3 finalPosition;
     Collider maisPerto;
     Vector3 destino;
@@ -50,8 +50,8 @@ public class Tigre : MonoBehaviour
     private int distanciaAtaque;
     [SerializeField]
     private int cooldown;
-    private Rigidbody rb;
     private bool morto;
+    private bool aux;
 
     private GameObject[] respawnTigre;
     private Transform hitCanvas;
@@ -76,24 +76,25 @@ public class Tigre : MonoBehaviour
 
     private void Start()
     {
+        animal = this.GetComponent<NavMeshAgent>();
         respawnTigre = GameObject.FindGameObjectsWithTag("RespawnTigre");
         anim.SetBool("Idle", true);
         StartCoroutine(Escolher());
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
         anim.SetFloat("Vida", maxVida);
-        rb = this.gameObject.GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        if (anim.GetBool("Caminhando"))
+        //Debug.Log(Vector3.Distance(this.gameObject.transform.position, destino));
+        if (Vector3.Distance(this.gameObject.transform.position, destino) < 1f )
         {
-            if (Vector3.Distance(this.gameObject.transform.position, destino) < 1f)
-            {
-                anim.SetBool("Caminhando", false);
-                StartCoroutine(Escolher());
-            }
+            Debug.Log("Tico e teco");
+            animal.isStopped = true;
+            anim.SetBool("Caminhando", false);
+            anim.SetBool("Idle", true);
+            aux = false;
         }
     }
     protected virtual void OnTriggerStay(Collider collider)
@@ -163,29 +164,48 @@ public class Tigre : MonoBehaviour
     }
     private IEnumerator Escolher()
     {
-        int escolha = Random.Range(0, 100);
-        if (escolha <= 70)
+        while (true)
         {
-            if (anim.GetBool("Idle"))
+            int escolha = Random.Range(0, 100);
+            if (escolha <= 70)
             {
                 anim.SetBool("Idle", false);
                 destino = RandomNavMeshGenerator(10f);
                 animal.speed = 1.5f;
-                Movimentar(destino);
-                anim.SetBool("Idle",true);
+                yield return StartCoroutine(Movimentar());
+            }
+            else if (escolha <= 100)
+            {
+                yield return StartCoroutine(Farejar());
+            }
+            yield return new WaitForSeconds(6f);
+        }
+        /*
+        int escolha = Random.Range(0, 100);
+        if (escolha <= 60)
+        {
+            if (anim.GetBool("Idle") && !anim.GetBool("Farejar"))
+            {
+                anim.SetBool("Idle", false);
+                destino = RandomNavMeshGenerator(10f);
+                animal.speed = 1.5f;
+                Movimentar();
+                //anim.SetBool("Idle",true);
             }
         }
-        else if(escolha <= 80)
+        else if (escolha <= 75)
         {
             StartCoroutine(Farejar());
+            yield return new WaitForSeconds(10f);
         }
         else
         {
-            yield return new WaitForSeconds(4f);
-            //StopCoroutine(Escolher());
+            yield return new WaitForSeconds(10f);
             StartCoroutine(Escolher());
-        }
+        }*/
     }
+    
+    
     public int Vida
     {
         get { return vida; }
@@ -200,7 +220,7 @@ public class Tigre : MonoBehaviour
     {
         anim.SetTrigger("Farejar");
         anim.SetBool("Idle", false);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(6f);
         anim.SetBool("Idle", true);
         StartCoroutine(Escolher());
     }
@@ -275,18 +295,21 @@ public class Tigre : MonoBehaviour
         }
 
     }
-    protected void Movimentar(Vector3 destino, bool move = true)
+    protected IEnumerator Movimentar(bool move = true)
     {
-        GetComponent<NavMeshAgent>().speed = 0.8f;
-        anim.SetBool("Caminhando", true);
-        if (!move)
-        {
-            animal.isStopped = true;
-            return;
-        }
+            anim.SetBool("Idle", false);
+            anim.SetBool("Caminhando", true);
 
-        animal.isStopped = false;
-        animal.SetDestination(destino);
+            if (!move)
+            {
+                animal.isStopped = true;
+                yield return 0;
+            }
+
+            this.transform.LookAt(destino);
+            animal.isStopped = false;
+            animal.SetDestination(destino);
+            yield return 0;
     }
     private void Awake()
     {
@@ -306,10 +329,21 @@ public class Tigre : MonoBehaviour
         {
             GetComponent<Rigidbody>().isKinematic = true;
         }
+        else if (!collision.gameObject.CompareTag("Chao"))
+        {
+            destino = RandomNavMeshGenerator(20f);
+            animal.SetDestination(destino);
+        }
     }
     private void OnCollisionExit(Collision collision)
     {
         GetComponent<Rigidbody>().isKinematic = false;
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(destino, 0.5f);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(destino, 0.5f);
+    }
 }
