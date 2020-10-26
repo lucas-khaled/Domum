@@ -54,7 +54,7 @@ public class Girafa : MonoBehaviour
             if (Vector3.Distance(this.gameObject.transform.position, destino) < 1f)
             {
                 anim.SetBool("Caminhando", false);
-                animal.isStopped = true;
+                animal.SetDestination(this.transform.position);
                 StartCoroutine(Escolher());
             }
         }
@@ -69,7 +69,7 @@ public class Girafa : MonoBehaviour
         }
         else if (correndo && corrida <= 0)
         {
-            GetComponent<NavMeshAgent>().speed = 0.5f;
+            GetComponent<NavMeshAgent>().speed = 0.8f;
             anim.SetBool("Correndo", false);
             correndo = false;
             destino = RandomNavMeshGenerator(10f);
@@ -129,8 +129,7 @@ public class Girafa : MonoBehaviour
     }
     public IEnumerator Deitado()
     {
-        animal.isStopped = true;
-
+        animal.SetDestination(this.transform.position);
         anim.SetBool("Deitado", true);
         audioSource.PlayOneShot(deitar);
         yield return new WaitForSeconds(20f);
@@ -219,7 +218,6 @@ public class Girafa : MonoBehaviour
                 return;
             }
 
-            this.transform.LookAt(destino);
             animal.isStopped = false;
             animal.SetDestination(destino);
         }
@@ -242,7 +240,7 @@ public class Girafa : MonoBehaviour
         {
             GetComponent<Rigidbody>().isKinematic = true;
         }
-        else if (!collision.gameObject.CompareTag("Chao"))
+        else
         {
             destino = RandomNavMeshGenerator(20f);
             animal.SetDestination(destino);
