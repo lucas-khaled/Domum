@@ -77,7 +77,7 @@ public class Tigre : MonoBehaviour
     private void Start()
     {
         animal = this.GetComponent<NavMeshAgent>();
-        respawnTigre = GameObject.FindGameObjectsWithTag("RespawnTigre");
+        respawnTigre = GameObject.FindGameObjectsWithTag("RespawnT");
         anim.SetBool("Idle", true);
         StartCoroutine(Escolher());
         Vida = maxVida;

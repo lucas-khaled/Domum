@@ -111,7 +111,7 @@ public class Girafa : MonoBehaviour
     }
     private void Start()
     {
-        respawnGirafa = GameObject.FindGameObjectsWithTag("RespawnGirafa");
+        respawnGirafa = GameObject.FindGameObjectsWithTag("RespawnG");
         StartCoroutine(Escolher());
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");

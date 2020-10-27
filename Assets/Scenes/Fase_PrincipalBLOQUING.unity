@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -831,6 +831,7 @@ GameObject:
   - component: {fileID: 24896613}
   - component: {fileID: 24896612}
   - component: {fileID: 24896611}
+  - component: {fileID: 24896614}
   m_Layer: 0
   m_Name: Floresta
   m_TagString: Untagged
@@ -860,7 +861,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24896609}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 175.0684, y: 20, z: 129.41528}
@@ -873,7 +874,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24896609}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 173.98692, y: 20, z: 54.023132}
@@ -886,11 +887,33 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24896609}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 176.89018, y: 10, z: 432.47006}
   m_Center: {x: -36.86277, y: 0, z: 146.56804}
+--- !u!114 &24896614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24896609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d47472de15ce040ab00bd37e0865b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 5075974571082276614}
+  - {fileID: 5075974571082276613}
+  - {fileID: 5075974571082276612}
+  - {fileID: 5075974571082276611}
+  - {fileID: 5075974571082276610}
+  - {fileID: 5075974571082276609}
+  - {fileID: 5075974571082276608}
+  audioAtual: {fileID: 5075974571082276614}
+  audioPassos: Terra
 --- !u!1001 &25145052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2983,6 +3006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 108302341}
   - component: {fileID: 108302342}
+  - component: {fileID: 108302343}
   m_Layer: 0
   m_Name: Rochosa
   m_TagString: Untagged
@@ -3012,11 +3036,33 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108302340}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 183.1641, y: 20, z: 215.59442}
   m_Center: {x: 79.73839, y: 0, z: 29.613068}
+--- !u!114 &108302343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108302340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d47472de15ce040ab00bd37e0865b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 5075974571082276614}
+  - {fileID: 5075974571082276613}
+  - {fileID: 5075974571082276612}
+  - {fileID: 5075974571082276611}
+  - {fileID: 5075974571082276610}
+  - {fileID: 5075974571082276609}
+  - {fileID: 5075974571082276608}
+  audioAtual: {fileID: 5075974571082276611}
+  audioPassos: Terra
 --- !u!1001 &109394620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14433,6 +14479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 506599138}
   - component: {fileID: 506599139}
+  - component: {fileID: 506599140}
   m_Layer: 0
   m_Name: Atriet
   m_TagString: Untagged
@@ -14462,11 +14509,33 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506599137}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 59.98629
   m_Center: {x: -0.00015258789, y: 0, z: -3.2055283}
+--- !u!114 &506599140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506599137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d47472de15ce040ab00bd37e0865b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 5075974571082276614}
+  - {fileID: 5075974571082276613}
+  - {fileID: 5075974571082276612}
+  - {fileID: 5075974571082276611}
+  - {fileID: 5075974571082276610}
+  - {fileID: 5075974571082276609}
+  - {fileID: 5075974571082276608}
+  audioAtual: {fileID: 5075974571082276608}
+  audioPassos: Terra
 --- !u!1 &507562739
 GameObject:
   m_ObjectHideFlags: 0
@@ -22764,6 +22833,7 @@ Transform:
   - {fileID: 506599138}
   - {fileID: 1416799334}
   - {fileID: 1827426403}
+  - {fileID: 1938970563}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43065,6 +43135,7 @@ GameObject:
   - component: {fileID: 1416799334}
   - component: {fileID: 1416799336}
   - component: {fileID: 1416799335}
+  - component: {fileID: 1416799337}
   m_Layer: 0
   m_Name: Deserto
   m_TagString: Untagged
@@ -43094,7 +43165,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416799333}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 127.4328, y: 20, z: 91.48993}
@@ -43107,11 +43178,33 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416799333}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 182.99945, y: 20, z: 139.63861}
   m_Center: {x: 26.579803, y: 0, z: 115.685486}
+--- !u!114 &1416799337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416799333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d47472de15ce040ab00bd37e0865b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 5075974571082276614}
+  - {fileID: 5075974571082276613}
+  - {fileID: 5075974571082276612}
+  - {fileID: 5075974571082276611}
+  - {fileID: 5075974571082276610}
+  - {fileID: 5075974571082276609}
+  - {fileID: 5075974571082276608}
+  audioAtual: {fileID: 5075974571082276612}
+  audioPassos: Areia
 --- !u!1001 &1419259664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54650,6 +54743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1827426403}
   - component: {fileID: 1827426404}
+  - component: {fileID: 1827426405}
   m_Layer: 0
   m_Name: Lago
   m_TagString: Untagged
@@ -54679,11 +54773,33 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827426402}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 174.51517, y: 20, z: 195.54051}
   m_Center: {x: 2.3674774, y: 0, z: 22.464424}
+--- !u!114 &1827426405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827426402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d47472de15ce040ab00bd37e0865b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 5075974571082276614}
+  - {fileID: 5075974571082276613}
+  - {fileID: 5075974571082276612}
+  - {fileID: 5075974571082276611}
+  - {fileID: 5075974571082276610}
+  - {fileID: 5075974571082276609}
+  - {fileID: 5075974571082276608}
+  audioAtual: {fileID: 5075974571082276613}
+  audioPassos: Terra
 --- !u!1001 &1829392952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58345,6 +58461,73 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1934253952}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938970562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938970563}
+  - component: {fileID: 1938970565}
+  - component: {fileID: 1938970564}
+  m_Layer: 0
+  m_Name: Kambim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1938970563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938970562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 436, y: 0, z: 149}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 758156282}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1938970564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938970562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d47472de15ce040ab00bd37e0865b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 5075974571082276614}
+  - {fileID: 5075974571082276613}
+  - {fileID: 5075974571082276612}
+  - {fileID: 5075974571082276611}
+  - {fileID: 5075974571082276610}
+  - {fileID: 5075974571082276609}
+  - {fileID: 5075974571082276608}
+  audioAtual: {fileID: 5075974571082276609}
+  audioPassos: Terra
+--- !u!135 &1938970565
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938970562}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 49.700516
+  m_Center: {x: 6.824112, y: 0, z: -1.7224655}
 --- !u!1001 &1940458531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75977,6 +76160,48 @@ PrefabInstance:
 --- !u!224 &5075974571082276607 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6336050154858224127, guid: d624c7189086fbc4db8a0405571f7662,
+    type: 3}
+  m_PrefabInstance: {fileID: 5075974571082276606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5075974571082276608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336050154663789194, guid: d624c7189086fbc4db8a0405571f7662,
+    type: 3}
+  m_PrefabInstance: {fileID: 5075974571082276606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5075974571082276609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336050154423046615, guid: d624c7189086fbc4db8a0405571f7662,
+    type: 3}
+  m_PrefabInstance: {fileID: 5075974571082276606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5075974571082276610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336050154373266411, guid: d624c7189086fbc4db8a0405571f7662,
+    type: 3}
+  m_PrefabInstance: {fileID: 5075974571082276606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5075974571082276611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336050154269310671, guid: d624c7189086fbc4db8a0405571f7662,
+    type: 3}
+  m_PrefabInstance: {fileID: 5075974571082276606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5075974571082276612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336050154291762863, guid: d624c7189086fbc4db8a0405571f7662,
+    type: 3}
+  m_PrefabInstance: {fileID: 5075974571082276606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5075974571082276613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336050153772172799, guid: d624c7189086fbc4db8a0405571f7662,
+    type: 3}
+  m_PrefabInstance: {fileID: 5075974571082276606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5075974571082276614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336050154236663741, guid: d624c7189086fbc4db8a0405571f7662,
     type: 3}
   m_PrefabInstance: {fileID: 5075974571082276606}
   m_PrefabAsset: {fileID: 0}
