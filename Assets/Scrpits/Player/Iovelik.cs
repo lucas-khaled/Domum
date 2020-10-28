@@ -13,7 +13,7 @@ public class Iovelik : Player
 
     [Header("Valores Iovelik")]
     [SerializeField]
-    private ParticleSystem EspecialVFX;
+    private GameObject EspecialVFX;
     public GameObject escudo;
     
 
@@ -164,7 +164,9 @@ public class Iovelik : Player
             inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));   
         }
         EspecialVFX.transform.position = posicaoHit.position;
-        EspecialVFX.Play();
+
+        Debug.Log(EspecialVFX.transform.position + " - " + posicaoHit.position);
+        EspecialVFX.GetComponent<ParticleSystem>().Play();
     }
 
     public void CheckCombo()

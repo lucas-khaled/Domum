@@ -1147,7 +1147,7 @@ MonoBehaviour:
   lancarFaca: {fileID: 8300000, guid: 6acbbc2f73ea0c54394e0ebeb6defe2b, type: 3}
   posicaoFaca: {fileID: 564895143741459867}
   faca: {fileID: 7640702850495185563, guid: 3c5481346045a9b4a92900030e5a9462, type: 3}
-  dashVFX: {fileID: 8946529573408389081}
+  dashVFX: {fileID: 8946529573408389086}
 --- !u!82 &8977739183082086559
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3796,15 +3796,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33aa75bf70e16ba4fab7762701309058, type: 3}
---- !u!4 &8946529573408389087 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+--- !u!1 &8946529573408389086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7116959791783217232, guid: 33aa75bf70e16ba4fab7762701309058,
     type: 3}
   m_PrefabInstance: {fileID: 2228419824847077262}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &8946529573408389081 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7116959791783217239, guid: 33aa75bf70e16ba4fab7762701309058,
+--- !u!4 &8946529573408389087 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
     type: 3}
   m_PrefabInstance: {fileID: 2228419824847077262}
   m_PrefabAsset: {fileID: 0}

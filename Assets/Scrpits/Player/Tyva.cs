@@ -74,7 +74,7 @@ public class Tyva : Player
     private Transform pointerPosition;
     public GameObject faca;
     [SerializeField]
-    private ParticleSystem dashVFX;
+    private GameObject dashVFX;
 
     private float contadorFaca;
     
@@ -126,7 +126,7 @@ public class Tyva : Player
         else
             estadoPlayer = EstadoPlayer.RECARREGAVEL;
 
-        dashVFX.Play();
+        dashVFX.GetComponent<ParticleSystem>().Play();
 
         while (estadoPlayer == EstadoPlayer.RECARREGAVEL || estadoPlayer == EstadoPlayer.ATACANDO)
         {
@@ -138,7 +138,7 @@ public class Tyva : Player
 
     void EndDash()
     {
-        dashVFX.Stop();
+        dashVFX.GetComponent<ParticleSystem>().Stop();
         estadoPlayer = EstadoPlayer.NORMAL;
     }
 
