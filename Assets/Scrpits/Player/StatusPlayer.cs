@@ -68,7 +68,7 @@ public class StatusPlayer : MonoBehaviour
             part2.duration = tempoEscudo;
             part3.duration = tempoEscudo;
 
-            part1.startLifetime = tempoEscudo - 1;
+            part1.startLifetime = tempoEscudo;
         }
     }
 
