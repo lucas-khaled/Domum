@@ -12,6 +12,8 @@ public class Iovelik : Player
     private AudioClip escudoSom;
 
     [Header("Valores Iovelik")]
+    [SerializeField]
+    private ParticleSystem EspecialVFX;
     public GameObject escudo;
     
 
@@ -161,6 +163,8 @@ public class Iovelik : Player
             distancia = Vector3.Distance(inimigoArea.gameObject.transform.position, this.gameObject.transform.position);
             inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));   
         }
+        EspecialVFX.transform.position = posicaoHit.position;
+        EspecialVFX.Play();
     }
 
     public void CheckCombo()
