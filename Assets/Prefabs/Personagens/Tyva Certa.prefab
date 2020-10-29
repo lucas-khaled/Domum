@@ -1007,6 +1007,7 @@ GameObject:
   - component: {fileID: 1184690783282856939}
   - component: {fileID: 3530798394593846843}
   - component: {fileID: 8377527222197378792}
+  - component: {fileID: 8726208171629936170}
   - component: {fileID: 7431777298352792774}
   - component: {fileID: 5357045472144315696}
   - component: {fileID: 6609269061531179808}
@@ -1045,6 +1046,7 @@ Transform:
   - {fileID: 564895143741459867}
   - {fileID: 399127570302249404}
   - {fileID: 6100961041717334503}
+  - {fileID: 8946529573408389087}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1084,6 +1086,23 @@ MonoBehaviour:
   tempoEscudo: 3
   tempoDashTotal: 2
   maxVida: 100
+--- !u!114 &8726208171629936170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2750437293865562616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  passosTerra: {fileID: 8300000, guid: e22f97da113621a4b99b8efa9aed2bb8, type: 3}
+  passosAreia: {fileID: 0}
+  passosCascalho: {fileID: 0}
+  caminhando: 0
 --- !u!65 &7431777298352792774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1146,6 +1165,7 @@ MonoBehaviour:
   lancarFaca: {fileID: 8300000, guid: 6acbbc2f73ea0c54394e0ebeb6defe2b, type: 3}
   posicaoFaca: {fileID: 564895143741459867}
   faca: {fileID: 7640702850495185563, guid: 3c5481346045a9b4a92900030e5a9462, type: 3}
+  dashVFX: {fileID: 8946529573408389086}
 --- !u!82 &8977739183082086559
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2426,13 +2446,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5892339980900264951}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8977739183082086559}
-  passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
+  passosTerra: {fileID: 8300000, guid: e22f97da113621a4b99b8efa9aed2bb8, type: 3}
   passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
   passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
   caminhando: 0
@@ -2743,13 +2763,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6591258489947605242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8977739183082086559}
-  passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
+  passosTerra: {fileID: 8300000, guid: e22f97da113621a4b99b8efa9aed2bb8, type: 3}
   passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
   passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
   caminhando: 0
@@ -3660,3 +3680,149 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dano: 5
   mesh: {fileID: 9167557052146158465}
+--- !u!1001 &2228419824847077262
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1184690783282856939}
+    m_Modifications:
+    - target: {fileID: 2754008727076539182, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900690588337763193, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.57930756
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900690588337763193, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900690588337763193, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.39337844
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900690588337763193, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217232, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_Name
+      value: DashParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.044
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.796
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217239, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217239, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959791783217239, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959792317567919, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.32039872
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959792317567919, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959792317567919, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.3381406
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959792317567919, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116959792986414739, guid: 33aa75bf70e16ba4fab7762701309058,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 33aa75bf70e16ba4fab7762701309058, type: 3}
+--- !u!1 &8946529573408389086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7116959791783217232, guid: 33aa75bf70e16ba4fab7762701309058,
+    type: 3}
+  m_PrefabInstance: {fileID: 2228419824847077262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8946529573408389087 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7116959791783217233, guid: 33aa75bf70e16ba4fab7762701309058,
+    type: 3}
+  m_PrefabInstance: {fileID: 2228419824847077262}
+  m_PrefabAsset: {fileID: 0}

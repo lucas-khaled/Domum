@@ -57,7 +57,18 @@ public class StatusPlayer : MonoBehaviour
 
         set
         {
-            tempoEscudo = value;
+
+            Iovelik iovelik = GameObject.FindObjectOfType<Iovelik>();
+
+            var part1 = iovelik.escudo.transform.GetChild(0).GetComponent<ParticleSystem>().main;
+            var part2 = iovelik.escudo.transform.GetChild(1).GetComponent<ParticleSystem>().main;
+            var part3 = iovelik.escudo.transform.GetChild(2).GetComponent<ParticleSystem>().main;
+
+            part1.duration = tempoEscudo;
+            part2.duration = tempoEscudo;
+            part3.duration = tempoEscudo;
+
+            part1.startLifetime = tempoEscudo;
         }
     }
 
@@ -170,6 +181,9 @@ public class StatusPlayer : MonoBehaviour
             maxColetavel = 3;
             XPRequisito = 100;
             qntColetavel = 3;
+
+            if(GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
+                TempoEscudo = tempoEscudo;
         }
     }
 
@@ -178,7 +192,7 @@ public class StatusPlayer : MonoBehaviour
         PlayerData playerData = SaveSystem.data.playerData;
         maxColetavel = playerData.maxColetavel;
         numAtaque = playerData.numAtaque;
-        tempoEscudo = playerData.tempoEscudo;
+        TempoEscudo = playerData.tempoEscudo;
         tempoDashTotal = playerData.tempoDashTotal;
         maxVida = playerData.maxVida;
         dinheiro = playerData.dinheiro;

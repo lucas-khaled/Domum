@@ -23,8 +23,21 @@ public class Passos : MonoBehaviour
         passos = this;
         audioSource = Player.player.audioSource;
         playerRef = Player.player;
+        playerRef.audioNovo = "Terra";
     }
-    private void OnTriggerEnter(Collider other)
+    public void Passo()
+    {
+        Debug.Log("Yet");
+        audioSource.volume = Random.Range(0.8f, 1);
+        audioSource.pitch = Random.Range(0.8f, 1.1f);
+        if (playerRef.audioNovo == "Terra")
+            audioSource.PlayOneShot(passosTerra);
+        else if (playerRef.audioNovo == "Areia")
+            audioSource.PlayOneShot(passosAreia);
+        else
+            audioSource.PlayOneShot(passosCascalho);
+    }
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Chao" && Player.player.estadoPlayer != EstadoPlayer.ATACANDO && caminhando)
         {
@@ -37,5 +50,5 @@ public class Passos : MonoBehaviour
             else
                 audioSource.PlayOneShot(passosCascalho);
         }
-    }
+    }*/
 }

@@ -12,6 +12,8 @@ public class Iovelik : Player
     private AudioClip escudoSom;
 
     [Header("Valores Iovelik")]
+    [SerializeField]
+    private GameObject EspecialVFX;
     public GameObject escudo;
     
 
@@ -62,6 +64,7 @@ public class Iovelik : Player
         }
     }
 
+    private bool escudoAtivo = false;
     private bool escudoCarregado = true;
 
     protected override void Start()
@@ -88,18 +91,16 @@ public class Iovelik : Player
         {
             esperaDanoArea -= Time.deltaTime;
         }
-        RecarregaEscudo = (escudo.activeSelf) ? RecarregaEscudo-Time.deltaTime : RecarregaEscudo + tempoRecargaEscudo * Time.deltaTime;
+        RecarregaEscudo = (escudoAtivo) ? RecarregaEscudo-Time.deltaTime : RecarregaEscudo + tempoRecargaEscudo * Time.deltaTime;
 
 
         if (Input.GetButtonDown("Recarregavel") && escudoCarregado && recarregaEscudo > 0 && (estadoPlayer == EstadoPlayer.COMBATE || estadoPlayer == EstadoPlayer.ATACANDO))
         {
-            animator.SetBool("Escudo", true);
             AtivarEscudo(true);
             return;
         }
         if(Input.GetButtonUp("Recarregavel"))
         {
-            animator.SetBool("Escudo", false);
             AtivarEscudo(false);
             escudoCarregado = false;
         }
@@ -107,7 +108,7 @@ public class Iovelik : Player
 
     public override void ReceberDano(int danoRecebido, Inimigo inim = null)
     {
-        if (!escudo.activeSelf)
+        if (!escudoAtivo)
         {
             if (status.QntColetavel > 0 && status.Vida - danoRecebido <= 0 && habilidadeCura)
             {
@@ -129,7 +130,17 @@ public class Iovelik : Player
     private void AtivarEscudo(bool ativo)
     {
         audioSource.PlayOneShot(escudoSom);
-        escudo.SetActive(ativo);
+        animator.SetBool("Escudo", ativo);
+        escudoAtivo = ativo;
+
+        if (ativo)
+            escudo.GetComponent<ParticleSystem>().Play();
+        else
+        {
+            escudo.transform.GetChild(0).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+            escudo.GetComponent<ParticleSystem>().Stop();
+        }
+
         estadoPlayer = ativo ? EstadoPlayer.RECARREGAVEL : EstadoPlayer.COMBATE;
     }
 
@@ -152,6 +163,10 @@ public class Iovelik : Player
             distancia = Vector3.Distance(inimigoArea.gameObject.transform.position, this.gameObject.transform.position);
             inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));   
         }
+        EspecialVFX.transform.position = posicaoHit.position;
+
+        Debug.Log(EspecialVFX.transform.position + " - " + posicaoHit.position);
+        EspecialVFX.GetComponent<ParticleSystem>().Play();
     }
 
     public void CheckCombo()

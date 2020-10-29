@@ -20,7 +20,7 @@ public class Tyva : Player
     private AudioClip dash;
     [SerializeField]
     private AudioClip lancarFaca;
-
+    
     private bool dashEspecial = false;
 
     public bool facaLetal { get; set; }
@@ -73,7 +73,11 @@ public class Tyva : Player
     public Transform posicaoFaca;
     private Transform pointerPosition;
     public GameObject faca;
+    [SerializeField]
+    private GameObject dashVFX;
+
     private float contadorFaca;
+    
 
     #region PreSettings
 
@@ -122,6 +126,7 @@ public class Tyva : Player
         else
             estadoPlayer = EstadoPlayer.RECARREGAVEL;
 
+        dashVFX.GetComponent<ParticleSystem>().Play();
 
         while (estadoPlayer == EstadoPlayer.RECARREGAVEL || estadoPlayer == EstadoPlayer.ATACANDO)
         {
@@ -133,6 +138,7 @@ public class Tyva : Player
 
     void EndDash()
     {
+        dashVFX.GetComponent<ParticleSystem>().Stop();
         estadoPlayer = EstadoPlayer.NORMAL;
     }
 

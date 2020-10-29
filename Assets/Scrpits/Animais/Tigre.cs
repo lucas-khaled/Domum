@@ -52,6 +52,7 @@ public class Tigre : MonoBehaviour
     private int cooldown;
     private bool morto;
     private bool aux;
+    private bool playerperto;
 
     private GameObject[] respawnTigre;
     private Transform hitCanvas;
@@ -90,7 +91,6 @@ public class Tigre : MonoBehaviour
         //Debug.Log(Vector3.Distance(this.gameObject.transform.position, destino));
         if (Vector3.Distance(this.gameObject.transform.position, destino) < 1f )
         {
-            Debug.Log("Tico e teco");
             animal.isStopped = true;
             anim.SetBool("Caminhando", false);
             anim.SetBool("Idle", true);
@@ -101,6 +101,8 @@ public class Tigre : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player" && Player.player.estadoPlayer != EstadoPlayer.MORTO)
         {
+            playerperto = true;
+            this.transform.LookAt(collider.transform);
             anim.SetBool("Caminhando", false);
 
             float distancia = Vector3.Distance(collider.transform.position, this.transform.position);
@@ -329,7 +331,7 @@ public class Tigre : MonoBehaviour
         {
             GetComponent<Rigidbody>().isKinematic = true;
         }
-        else if (!collision.gameObject.CompareTag("Chao"))
+        else if (!collision.gameObject.CompareTag("Chao") && !collision.gameObject.CompareTag("Player") || !playerperto)
         {
             destino = RandomNavMeshGenerator(20f);
             animal.SetDestination(destino);
