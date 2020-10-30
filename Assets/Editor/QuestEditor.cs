@@ -76,6 +76,14 @@ public class QuestEditor : Editor
 
         EditorGUILayout.PropertyField(obj.FindProperty("dialogo"));
 
+        if (obj.FindProperty("dialogo").isExpanded)
+        {
+            if (GUILayout.Button("Quebra de Linha Automática"))
+            {
+                QuebraDeLinhasDialogo(obj.FindProperty("dialogo").FindPropertyRelative("dialogueLines"));
+            }
+        }
+
         //ShowConditions(obj.FindProperty("condicoes"));
         DrawConditions(obj.FindProperty("condicoes"));
 
@@ -83,6 +91,36 @@ public class QuestEditor : Editor
             DrawActiveConditionPlace();
 
         obj.ApplyModifiedProperties();
+
+    }
+
+    public static void QuebraDeLinhasDialogo(SerializedProperty dialogueLinesProperty)
+    {
+        
+        string dialogoCompleto = dialogueLinesProperty.GetArrayElementAtIndex(0).stringValue;
+        if (dialogoCompleto == null)
+            return;
+
+        List<string> linhas = new List<string>();
+        int lastIndex = 0;
+
+        for(int i = 0; i<dialogoCompleto.Length; i++)
+        {
+            if (dialogoCompleto[i] == '*')
+            {
+                string novaLinha = dialogoCompleto.Substring(lastIndex, i - lastIndex);
+                lastIndex = i+1;
+                linhas.Add(novaLinha);
+            }
+        }
+
+        dialogueLinesProperty.ClearArray();
+        dialogueLinesProperty.arraySize = linhas.Count;
+
+        for (int i = 0; i< linhas.Count; i++)
+        {
+            dialogueLinesProperty.GetArrayElementAtIndex(i).stringValue = linhas[i];
+        }
 
     }
 

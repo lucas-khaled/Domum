@@ -113,6 +113,7 @@ public class QuestLogUI : MonoBehaviour
                 goExists.transform.SetParent(contentFeitas);
                 goExists.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
                 goExists.transform.GetChild(1).gameObject.SetActive(false);
+                questSelecionada = null;
 
                 return;
             }

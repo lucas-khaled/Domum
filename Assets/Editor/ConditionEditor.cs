@@ -85,6 +85,16 @@ public class ConditionEditor : PropertyDrawer
             valuesRect.y += 25;
             EditorGUI.PropertyField(valuesRect, property.FindPropertyRelative("dialogoDaCondicao"));
             arrayLines += DrawDialog(ref valuesRect, property.FindPropertyRelative("dialogoDaCondicao"));
+
+            if (property.FindPropertyRelative("dialogoDaCondicao").isExpanded)
+            {
+                arrayLines += 25;
+                valuesRect.y += 25;
+                if (GUI.Button(valuesRect, "Quebra de Linhas Automática"))
+                {
+                    QuestEditor.QuebraDeLinhasDialogo(property.FindPropertyRelative("dialogoDaCondicao").FindPropertyRelative("dialogueLines"));
+                }
+            }
         }
 
         EditorGUI.EndProperty();
