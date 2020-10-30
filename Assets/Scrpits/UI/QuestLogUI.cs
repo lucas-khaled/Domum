@@ -62,6 +62,8 @@ public class QuestLogUI : MonoBehaviour
     private Sprite iconeMissao;
     [SerializeField]
     private Sprite iconeInimigoMissao;
+    [SerializeField]
+    private GameObject iconeInimigoSempreVisivel;
 
     public static QuestLogUI questLogUI;
 
@@ -76,6 +78,11 @@ public class QuestLogUI : MonoBehaviour
         EventsController.onCondicaoTerminada += TerminaCondicao;
         questLogUI = this;
         miniMapCam = GameObject.Find("Mini_map").GetComponent<Camera>();
+
+        if (miniMapCam == null)
+            Debug.Log("Vai se fuder");
+        else
+            Debug.Log("Não vai se fuder "+miniMapCam.name);
     }
 
    private void Start()
@@ -229,12 +236,12 @@ public class QuestLogUI : MonoBehaviour
     {
         for(int i = 0; i< enemiesParent.transform.childCount; i++)
         {
-            GameObject spr = new GameObject("QuestSprite", typeof(SpriteRenderer), typeof(AlwaysVisibleOnMinimap));
+            GameObject spr = new GameObject("QuestInimigoSprite "+i, typeof(SpriteRenderer), typeof(AlwaysVisibleOnMinimap));
             spr.GetComponent<SpriteRenderer>().sprite = iconeInimigoMissao;
 
-            GameObject prefabVisible = Instantiate(spr);
-            spr.GetComponent<AlwaysVisibleOnMinimap>().SetMinimapCameraAndIconPrefab(prefabVisible, miniMapCam);
+            spr.GetComponent<AlwaysVisibleOnMinimap>().SetMinimapCameraAndIconPrefab(iconeInimigoSempreVisivel, miniMapCam);
             spr.GetComponent<AlwaysVisibleOnMinimap>().SetRadius(12);
+            spr.GetComponent<AlwaysVisibleOnMinimap>().faceObjective = true;
 
             spr.transform.SetParent(enemiesParent.transform.GetChild(i), false);
             spr.transform.localPosition = Vector3.up*25;
@@ -243,7 +250,6 @@ public class QuestLogUI : MonoBehaviour
             spr.gameObject.SetActive(true);
 
             spr.layer = LayerMask.NameToLayer("Icones");
-            prefabVisible.layer = LayerMask.NameToLayer("Icones");
 
         }
     }

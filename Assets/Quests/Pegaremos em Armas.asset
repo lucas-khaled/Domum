@@ -10,18 +10,115 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
-  m_Name: Nova Quest 4
+  m_Name: Pegaremos em Armas
   m_EditorClassIdentifier: 
-  nome: Nova Quest 4
-  principal: 0
+  nome: Pegaremos em Armas
+  principal: 1
   isQuestAdditioner: 0
   questToAdd: {fileID: 0}
   questGiverName: 
   reward:
     item: {fileID: 0}
-    qntDinheiro: 0
-    XP: 0
-    fama: 0
+    qntDinheiro: 40
+    XP: 40
+    fama: 200
   dialogo:
-    dialogueLines: []
-  condicoes: []
+    dialogueLines:
+    - "L\xEDder Mesti\xE7o: Que bom que est\xE1 aqui, a resist\xEAncia precisa de
+      voc\xEA novamente. "
+    - "Player: Diga L\xEDder, estou \xE0 sua disposi\xE7\xE3o. "
+    - "L\xEDder Mesti\xE7o: J\xE1 pegamos de volta suprimentos suficientes e somos
+      gratos a voc\xEA por isso. "
+    - "Player: \xC9 o meu trabalho. Fico grato em ajudar a resist\xEAncia. Mesmo
+      que seja roubando... "
+    - "L\xEDder Mesti\xE7o: Infelizmente n\xE3o h\xE1 nobreza no que fazemos, mas
+      a causa \xE9 o que importa.  "
+    - "E para que possamos alcan\xE7ar nossos objetivos, n\xE3o poderemos nos contentar
+      apenas em roubar os humanos. "
+    - "Player: O que quer dizer com isso, l\xEDder? N\xE3o sei se gosto do que irei
+      ouvir. "
+    - "L\xEDder Mesti\xE7o: Precisamos de armas. "
+    - "Player: Isso causar\xE1 uma guerra, n\xE3o acho que estamos prontos para isso. "
+    - "L\xEDder Mesti\xE7o: \xC9 exatamente por isso que precisamos das armas, temos
+      que nos defender... e se poss\xEDvel atacar. "
+    - "Al\xE9m disso, se n\xE3o tivermos equipamento o suficiente, os L\xEDderes
+      das vilas n\xE3o se uniram a n\xF3s. "
+    - "Player: Ent\xE3o agora roubaremos armas. Os humanos n\xE3o s\xE3o bobos, eles
+      n\xE3o as deixam por a\xED.  "
+    - "Elas ficam nos acampamentos, \xE9 imposs\xEDvel ataca-los com nossos n\xFAmeros
+      e recursos. "
+    - "L\xEDder Mesti\xE7o: Estou ciente. N\xE3o pretendo cometer suic\xEDdio. Interceptamos
+      uma caravana que est\xE1 levando armas de um dos acampamentos para Criviek. "
+    - "Ao que parece, nosso \xFAltimo ataque os preocupou e est\xE3o planejando algo
+      contra n\xF3s. "
+    - 'Player: Sabia que iriam contra-atacar! Isso significa que nos encontraram? '
+    - "L\xEDder Mesti\xE7os: Ainda n\xE3o. Mas desconfiam que estamos em algum lugar
+      pr\xF3ximo \xE0 periferia.  "
+    - "Player: E infelizmente nisso est\xE3o certos. "
+    - "L\xEDder Mesti\xE7o: Agora v\xEA a necessidade das armas? "
+    - 'Player: Nunca duvidei da utilidade delas, apenas temo o que podem fazer '
+    - "L\xEDder Mesti\xE7o: Portanto \xE9 melhor que estejam nas nossas m\xE3os e
+      n\xE3o nas deles. "
+  condicoes:
+  - tipoCondicao: 3
+    local: {x: 124.630615, y: 24.2, z: 372.3596}
+    descricao: Roube o comboio de armas
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d,
+        type: 3}
+      local: {x: 119.95, y: 25.58, z: 372.5}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: InimigoQuest01
+    - objetoPrefab: {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d,
+        type: 3}
+      local: {x: 122.93, y: 24.887768, z: 376.57}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: InimigoQuest02
+    - objetoPrefab: {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d,
+        type: 3}
+      local: {x: 128.12, y: 24.887768, z: 374.97}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: InimigoQuest03
+    - objetoPrefab: {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d,
+        type: 3}
+      local: {x: 119.618065, y: 24.887768, z: 368.24908}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: InimigoQuest04
+    objsToDestroy:
+    - Carregamento(Clone)
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 7058773031326081755, guid: e9a03b5d566c0e449b330f96f99dc183,
+      type: 3}
+  - tipoCondicao: 1
+    local: {x: 249.93692, y: 22.875662, z: 347.6481}
+    descricao: "Fale com o L\xEDder Mesti\xE7o"
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "Player: Trouxe o comboio dos humanos, L\xEDder. "
+      - "L\xEDder Mesti\xE7o: \xD3timo! Grande Trabalho! Merece uma recompensa. "
+      - "Player: Agrade\xE7o, mas causar uma revolu\xE7\xE3o e ver todos livres \xE9
+        recompensa o suficiente. "
+      - "L\xEDder Mesti\xE7o: N\xE3o seja tolo. J\xE1 nos ajudou a nos alimentarmos,
+        a nos curarmos e agora a nos defendermos. "
+      - "H\xE1 algumas poucas finan\xE7as da resist\xEAncia que est\xE3o em sobra,
+        quero que fique com um pouco. Novamente, n\xE3o esque\xE7a de se equipar
+        bem e estar preparado. "
+      - "Player: N\xE3o sei como retribuir, L\xEDder. "
+      - "L\xEDder Mesti\xE7o: Na verdade, eu sei. Para sua pr\xF3xima miss\xE3o,
+        v\xE1 \xE0 Vila dos Kambin e conven\xE7a seu l\xEDder a lutar do nosso lado. "
+    isOnScene: 1
+    nameOnScene: "Mesti\xE7o 5"
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}

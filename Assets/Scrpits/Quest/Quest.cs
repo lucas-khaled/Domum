@@ -81,11 +81,7 @@ public class Quest : ScriptableObject
 
     public void TerminaMissao(bool isLoaded = false)
     {
-        if (IsRealizada())
-        {
-            reward.DarRecompensa();
-        }
-
+        reward.DarRecompensa();
         condicaoAtual = null;
         realizada = true;
 

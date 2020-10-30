@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: "N\xE3o Somos Anti-Vacina"
   principal: 1
-  isQuestAdditioner: 0
-  questToAdd: {fileID: 0}
-  questGiverName: 
+  isQuestAdditioner: 1
+  questToAdd: {fileID: 11400000, guid: df203bbefe14fdb4a80f1faafb529224, type: 2}
+  questGiverName: "Mesti\xE7o 5"
   reward:
     item: {fileID: 0}
     qntDinheiro: 20
@@ -74,7 +74,7 @@ MonoBehaviour:
     distanciaChegada: 10
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 3
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 318.42596, y: 21.81, z: 416.01498}
     descricao: Pegue as  caixas de suprimentos
     objsToInstantiate: []
     objsToDestroy:
@@ -89,17 +89,12 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 249.93692, y: 22.875662, z: 347.6481}
     descricao: "Fale novamente com o L\xEDder Mesti\xE7o"
     objsToInstantiate: []
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines:
-      - "L\xEDder Mesti\xE7o: Vi que trouxe os suprimentos. Muito bem! Fez um \xF3timo
-        trabalho! *Player: Muito obrigado, L\xEDder. Tamb\xE9m havia algum dinheiro
-        no local, mas n\xE3o era muito. Aqui est\xE1. *L\xEDder Mesti\xE7o: Fique
-        com ele, vai precisar. Compre algum equipamento na loja. Logo haver\xE1 mais
-        miss\xF5es que ser\xE3o mais complicadas. *Player: Obrigado! "
       - "L\xEDder Mesti\xE7o: Vi que trouxe os suprimentos. Muito bem! Fez um \xF3timo
         trabalho! "
       - "Player: Muito obrigado, L\xEDder. Tamb\xE9m havia algum dinheiro no local,

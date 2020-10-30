@@ -43,6 +43,7 @@ public class Recompensa
 
         Player.player.status.Dinheiro += qntDinheiro;
         Player.player.status.Experiencia += XP;
+        Player.player.status.Fama += fama;
     }
 
 }

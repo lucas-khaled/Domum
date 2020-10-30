@@ -17,6 +17,7 @@ public class AlwaysVisibleOnMinimap : MonoBehaviour
     GameObject prefabDeInstancia;
     [SerializeField]
     bool cutOff = false;
+    public bool faceObjective = false;
 
     public void SetMinimapCameraAndIconPrefab(GameObject icon, Camera minimapCam)
     {
@@ -44,8 +45,6 @@ public class AlwaysVisibleOnMinimap : MonoBehaviour
         gameObject.SetActive(false);
         if (instanciaVista != null)
             Destroy(instanciaVista);
-
-        Debug.Log("Desliguei memo");
     }
 
     void Update()
@@ -84,6 +83,12 @@ public class AlwaysVisibleOnMinimap : MonoBehaviour
             {
                 instanciaVista = Instantiate(prefabDeInstancia, RendererExtensions.GetMinimimapPosition(miniMapCamera, transform.position,radius), transform.rotation);
                 instanciaVista.transform.localScale = this.transform.localScale;
+            }
+
+            if (faceObjective)
+            {
+                instanciaVista.transform.LookAt(new Vector3(transform.position.x, instanciaVista.transform.position.y, transform.position.z));
+                instanciaVista.transform.Rotate(Vector3.right * 90);
             }
         }
     }

@@ -27,7 +27,6 @@ public class Passos : MonoBehaviour
     }
     public void Passo()
     {
-        Debug.Log("Yet");
         audioSource.volume = Random.Range(0.8f, 1);
         audioSource.pitch = Random.Range(0.8f, 1.1f);
         if (playerRef.audioNovo == "Terra")
