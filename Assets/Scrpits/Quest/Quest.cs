@@ -95,6 +95,7 @@ public class Quest : ScriptableObject
     {
         GameObject questGiverGO = GameObject.Find(questGiverName);
         QuestGiver questGiver = questGiverGO.GetComponent<QuestGiver>();
+        questToAdd.SetQuestNaoAceita();
         questGiver.AddQuestToBeNext(questToAdd);
     }
 
@@ -111,5 +112,6 @@ public class Quest : ScriptableObject
     public void SetQuestNaoAceita()
     {
         aceita = false;
+        realizada = false;
     }
 }

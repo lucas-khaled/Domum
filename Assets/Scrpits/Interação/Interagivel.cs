@@ -51,6 +51,8 @@ public class Interagivel : MonoBehaviour
         {
             DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoCondicao[0]);
         }
+
+        Debug.Log("Interagiu com " + name);
     }
 
     void OnDialogoTerminado(Dialogo dialogo)
