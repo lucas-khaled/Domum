@@ -8,6 +8,7 @@ public class ItemPickup : Interagivel
 
     public override void Interact()
     {
+        base.Interact();
         if (Inventario.inventario.AddItem(item)) 
             Destroy(gameObject);
     }
