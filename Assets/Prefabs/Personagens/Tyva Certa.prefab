@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2750437293865562616}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
   m_Name: 
@@ -1102,6 +1102,13 @@ MonoBehaviour:
   passosTerra: {fileID: 8300000, guid: e22f97da113621a4b99b8efa9aed2bb8, type: 3}
   passosAreia: {fileID: 0}
   passosCascalho: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  tamanhoRayCast: 0
+  podeTocar: 0
+  outroPe: {fileID: 0}
+  delayTempo: 0
   caminhando: 0
 --- !u!65 &7431777298352792774
 BoxCollider:
@@ -1153,6 +1160,9 @@ MonoBehaviour:
   posicaoHit: {fileID: 3469711515040114650}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
+  pe:
+  - {fileID: 6591258489947605242}
+  - {fileID: 5892339980900264951}
   velocidade: 8
   turnSmooth: 0.15
   raioPercepcao: 10
@@ -2446,7 +2456,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5892339980900264951}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
   m_Name: 
@@ -2455,6 +2465,13 @@ MonoBehaviour:
   passosTerra: {fileID: 8300000, guid: e22f97da113621a4b99b8efa9aed2bb8, type: 3}
   passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
   passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  tamanhoRayCast: 0.61
+  podeTocar: 0
+  outroPe: {fileID: 6591258489947605242}
+  delayTempo: 0.4
   caminhando: 0
 --- !u!1 &5940187349500778775
 GameObject:
@@ -2763,7 +2780,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6591258489947605242}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
   m_Name: 
@@ -2772,6 +2789,13 @@ MonoBehaviour:
   passosTerra: {fileID: 8300000, guid: e22f97da113621a4b99b8efa9aed2bb8, type: 3}
   passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
   passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  tamanhoRayCast: 0.68
+  podeTocar: 0
+  outroPe: {fileID: 5892339980900264951}
+  delayTempo: 0.4
   caminhando: 0
 --- !u!65 &2620590014430426573
 BoxCollider:

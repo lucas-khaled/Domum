@@ -2146,6 +2146,9 @@ MonoBehaviour:
   posicaoHit: {fileID: 8540473493451769983}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
+  pe:
+  - {fileID: 8131104001625274197}
+  - {fileID: 8953753710552666787}
   velocidade: 7
   turnSmooth: 0.2
   raioPercepcao: 10
@@ -2681,6 +2684,13 @@ MonoBehaviour:
   passosTerra: {fileID: 8300000, guid: 2a27e486b0d141f40933b6535a6f0a20, type: 3}
   passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
   passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  tamanhoRayCast: 0.61
+  podeTocar: 0
+  outroPe: {fileID: 8953753710552666787}
+  delayTempo: 0.7
   caminhando: 0
 --- !u!1 &8183446735862761328
 GameObject:
@@ -3105,6 +3115,13 @@ MonoBehaviour:
   passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
   passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
   passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  tamanhoRayCast: 0.61
+  podeTocar: 0
+  outroPe: {fileID: 8131104001625274197}
+  delayTempo: 0.7
   caminhando: 0
 --- !u!1 &9079316140820122196
 GameObject:

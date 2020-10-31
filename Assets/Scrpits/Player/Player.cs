@@ -29,6 +29,8 @@ public class Player : MonoBehaviour, IVulnerable
     private ParticleSystem particulaArma;
     public Transform posicaoHit;
     public GameObject CBTprefab;
+    [SerializeField]
+    private GameObject[] pe;
 
     [Header("Valores")]
     [SerializeField]
@@ -108,6 +110,7 @@ public class Player : MonoBehaviour, IVulnerable
     {
         estadoPlayer = EstadoPlayer.NORMAL;
         hitCanvas = transform.Find("Hit_life");
+        pe[0].GetComponent<Passos>().podeTocar = true;
     }
     #endregion
 
@@ -276,10 +279,15 @@ public class Player : MonoBehaviour, IVulnerable
             float x = Mathf.Lerp(animator.GetFloat("VetX"), xAxis, 0.4f);
 
             if (yAxis != 0 || xAxis != 0)
-                Passos.passos.caminhando = true;
+            {
+                pe[0].GetComponent<Passos>().caminhando = true;
+                pe[1].GetComponent<Passos>().caminhando = true;
+            }
             else
-                Passos.passos.caminhando = false;
-
+            {
+                pe[0].GetComponent<Passos>().caminhando = false;
+                pe[1].GetComponent<Passos>().caminhando = false;
+            }
             Vector3 dir = (transform.forward * y) + (transform.right * x);
             Vector3 clampedDir = dir;
             if (dir.magnitude > 1)
