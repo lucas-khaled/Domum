@@ -244,7 +244,7 @@ public class Condicoes
             interagiu = false;
             if (!isOnScene)
             {
-                Vector3 localization = new Vector3(local.x, local.y + interagivelPrefab.transform.lossyScale.y / 10, local.z);
+                Vector3 localization = new Vector3(local.x, local.y, local.z);
                 GameObject interagivelObj = MonoBehaviour.Instantiate(interagivelPrefab.gameObject, localization, interagivelPrefab.gameObject.transform.rotation);
                 interagivel = interagivelObj.GetComponent<Interagivel>();
 

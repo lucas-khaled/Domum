@@ -57,7 +57,11 @@ public class InteracaoController : MonoBehaviour
 
             foreach(Collider colisor in hit)
             {
-                if (!colisor.isTrigger || colisor.GetComponent<Interagivel>().isComposedObject)
+                if (colisor.GetComponent<Interagivel>().isComposedObject)
+                {
+                    break;
+                }
+                else if (!colisor.isTrigger)
                 {
                     break;
                 }
