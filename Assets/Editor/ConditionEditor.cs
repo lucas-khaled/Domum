@@ -68,7 +68,20 @@ public class ConditionEditor : PropertyDrawer
                 EditorGUI.PropertyField(valuesRect, property.FindPropertyRelative("interagivelPrefab"));
         }
 
-        if(qualCondicao == Condicoes.TipoCondicao.PEGA_ITEM || qualCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM)
+        if(qualCondicao == Condicoes.TipoCondicao.PEGA_ITEM)
+        {
+            valuesRect.y += 25;
+            EditorGUI.PropertyField(valuesRect, property.FindPropertyRelative("isOnScene"));
+            bool isOnScene = property.FindPropertyRelative("isOnScene").boolValue;
+
+            valuesRect.y += 25;
+            if (isOnScene)
+                EditorGUI.PropertyField(valuesRect, property.FindPropertyRelative("nameOnScene"));
+            else
+                EditorGUI.PropertyField(valuesRect, property.FindPropertyRelative("itemDaCondicao"));
+        }
+
+        if(qualCondicao == Condicoes.TipoCondicao.DEVOLVE_ITEM)
         {
             valuesRect.y += 25;
             EditorGUI.PropertyField(valuesRect, property.FindPropertyRelative("itemDaCondicao"));
@@ -119,6 +132,9 @@ public class ConditionEditor : PropertyDrawer
 
             valuesRect.y += 45;
             EditorGUI.PropertyField(valuesRect, prop.FindPropertyRelative("local"));
+
+            valuesRect.y += 45;
+            EditorGUI.PropertyField(valuesRect, prop.FindPropertyRelative("qualPlayer"));
 
             valuesRect.y += 45;
 
@@ -267,7 +283,7 @@ public class ConditionEditor : PropertyDrawer
                 valor = 75;
                 break;
             case Condicoes.TipoCondicao.PEGA_ITEM:
-                valor = 25;
+                valor = 50;
                 break;
             case Condicoes.TipoCondicao.IDA:
                 valor = 25;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TipoPlayer { TYVA, IOVELIK };
+public enum TipoPlayer { TYVA, IOVELIK, BOTH };
 
 [CreateAssetMenu(fileName = "Nova Arma", menuName = "Inventário/Arma")] 
 public class Arma : Item

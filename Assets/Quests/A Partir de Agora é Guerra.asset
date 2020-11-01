@@ -19,9 +19,9 @@ MonoBehaviour:
   questGiverName: 
   reward:
     item: {fileID: 0}
-    qntDinheiro: 0
-    XP: 0
-    fama: 0
+    qntDinheiro: 40
+    XP: 50
+    fama: 350
   dialogo:
     dialogueLines:
     - "Player: L\xEDder, conversei com o chefe da vila Kambin... eles estar\xE3o
@@ -76,7 +76,7 @@ MonoBehaviour:
     distanciaChegada: 10
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 249.93692, y: 22.875662, z: 347.6481}
     descricao: "Volte e fale com o L\xEDder Mesti\xE7o"
     objsToInstantiate: []
     objsToDestroy: []
