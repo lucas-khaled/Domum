@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
+  m_Name: Quebre Nossas Correntes
+  m_EditorClassIdentifier: 
+  nome: Quebre Nossas Correntes
+  principal: 1
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
+  reward:
+    item: {fileID: 0}
+    qntDinheiro: 0
+    XP: 500
+    fama: 400
+  dialogo:
+    dialogueLines:
+    - "Anci\xE3o: Venha c\xE1, meu jovem. Preciso falar com voc\xEA. "
+    - "Player: Grande anci\xE3o, \xE9 uma honra poder falar com voc\xEA. "
+    - "Anci\xE3o: Levante, seu idiota. N\xE3o h\xE1 honras em ouvir as balb\xFArdias
+      de um velho. "
+    - "Player: Nada disso, grande anci\xE3o! Sua sabedoria \xE9 bem conhecida entre
+      ambos os povos de Domum. "
+    - "Anci\xE3o: Ah, gostaria de me tornar cada vez mais rico em vez de me tornar
+      mais s\xE1bio \xE0 medida que envelhe\xE7o. "
+    - "Player: Infelizmente, sabedoria \xE9 a \xFAnica coisa que os humanos nos t\xEAm
+      proporcionado. "
+    - "Anci\xE3o: De fato. Me recordo vagamente de uma \xE9poca em que n\xF3s, Atriet,
+      possu\xEDamos igrejas suntuosas e os Kambin ex\xE9rcitos fortes. "
+    - "Agora o que vejo \xE9 apenas fome, doen\xE7as e correntes. "
+    - "Player: Quando fizermos a revolu\xE7\xE3o voc\xEA ver\xE1 esses tempos novamente. "
+    - "Anci\xE3o: Est\xE1 errado, meu caro. N\xE3o acho que viverei o suficiente.
+      Quero ainda ver a revolu\xE7\xE3o acontecer, mas n\xE3o sou tolo de pensar
+      que tudo voltar\xE1 a ser flores... se \xE9 que um dia j\xE1 foi. "
+    - "Mas minha miss\xE3o \xE9 ajudar voc\xEAs, jovens, a verem este mundo de liberdade
+      novamente. "
+    - "Player: Estamos lutando para isso, anci\xE3o. E vamos conseguir. "
+    - "Anci\xE3o: Gosto da sua garra, garoto. Ela te ajudar\xE1 a fazer essa rebeli\xE3o
+      acontecer.  "
+    - "Player: Acho que j\xE1 nos ajudou. "
+    - "Anci\xE3o: Voc\xEA tem raz\xE3o. Pelo que vejo, voc\xEA j\xE1 combateu a fome
+      e a doen\xE7a de nosso povo, embora ela ainda n\xE3o tenha passado completamente. "
+    - "O que quero que fa\xE7a \xE9 que me ajude a quebrar as correntes. "
+    - "Player: Como posso ajuda-lo com isso, anci\xE3o? "
+    - "Anci\xE3o: Voc\xEA se disp\xF5e r\xE1pido para ajudar seu povo... vejo que
+      estaremos em boas m\xE3os. "
+    - "Quero que liberte prisioneiros que foram feitos durante a \xFAltima investida.
+      Eles est\xE3o em um acampamento humano a oeste. "
+    - "Se n\xE3o forem resgatados, ser\xE3o executados em pra\xE7a p\xFAblica, para
+      servirem de exemplo para os demais. "
+    - "Player: Resgat\xE1-los de um acampamento? N\xE3o ser\xE1 f\xE1cil, senhor.
+      S\xE3o tempos de guerra e muitos prisioneiros ainda ser\xE3o feitos. "
+    - "Anci\xE3o: N\xE3o me confunda com um velho caduco e sentimental! Sei que prisioneiros
+      s\xE3o feitos, mas s\xE3o nossos homens.  "
+    - "Alguns, inclusive, possuem informa\xE7\xF5es valiosas sobre nossa posi\xE7\xE3o.
+      Os humanos n\xE3o podem obter essas informa\xE7\xF5es. "
+    - "Player: Eu entendi, s\xE3o mais valiosos do que pensei. "
+    - "Anci\xE3o: O que importa, de verdade, \xE9 que s\xE3o jovens que perder\xE3o
+      a chance de ver uma Domum melhor, se n\xE3o os resgatarmos. "
+    - "Player: Tem raz\xE3o, grande anci\xE3o. Irei resgat\xE1-los imediatamente."
+  condicoes:
+  - tipoCondicao: 2
+    local: {x: 260.49756, y: 25.1, z: 345.5491}
+    descricao: Encontre e derrote os humanos do acampamento a oeste.
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 1089170096765210998, guid: 7f85715e1dbb5ad469d448906276c40a,
+        type: 3}
+      local: {x: 262.41, y: 24.47, z: 355.51}
+      rotacao: {x: 0, y: 0, z: 0}
+      nome: Cadeia
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    raioDeSpawn: 8.76
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 262.41, y: 24.47, z: 355.51}
+    descricao: Liberte os agentes
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "Prisioneiro #1: Voc\xEA veio mesmo! Achei que n\xE3o viria ningu\xE9m para
+        nos resgatar. "
+      - "Prisioneiro #2: Falaram que iriam nos executar amanh\xE3 cedo. Chegou bem
+        na hora. Obrigado "
+      - "Player: N\xE3o h\xE1 de que. O que fizeram com voc\xEAs? "
+      - "Prisioneiro #2: Nos torturaram, os filhos da puta. Tentaram nos fazer dizer
+        onde \xE9 a sede da resist\xEAncia. "
+      - "Player: E voc\xEAs disseram? "
+      - "Prisioneiro #1: Claro que n\xE3o! Embora tenham oferecido nos libertar caso
+        diss\xE9ssemos. "
+      - "Prisioneiro #3: N\xE3o acho que ter\xEDamos resistido muito mais se n\xE3o
+        tivesse chegado. "
+      - "Player: Matariam voc\xEAs depois que contassem. Fizeram muito bem soldados.
+        Agora est\xE3o livres, podem ir, voltem para suas casas e descansem. "
+      - "Prisioneiro #1: Achei que n\xE3o veria meu filho novamente! "
+    isOnScene: 1
+    nameOnScene: Cadeia
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
