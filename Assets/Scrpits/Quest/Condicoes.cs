@@ -281,8 +281,17 @@ public class Condicoes
         {
             itemPego = false;
             EventsController.onItemPego += OnItemPego;
-            GameObject itemObj = MonoBehaviour.Instantiate(itemDaCondicao.gameObject);
-            itemObj.transform.position = local;          
+            if (!isOnScene)
+            { 
+                GameObject itemObj = MonoBehaviour.Instantiate(itemDaCondicao.gameObject);
+                itemObj.transform.position = local;
+            }
+            else
+            {
+                GameObject itemObj = GameObject.Find(nameOnScene);
+                local = itemObj.transform.position;
+                itemDaCondicao = itemObj.GetComponent<ItemPickup>();
+            }
         }
     }
 }
@@ -290,6 +299,7 @@ public class Condicoes
 [System.Serializable]
 public class ConditionInstance
 {
+
     [SerializeField]
     private GameObject objetoPrefab;
     [SerializeField]
@@ -298,14 +308,19 @@ public class ConditionInstance
     private Vector3 rotacao;
     [SerializeField]
     private string nome;
+    [SerializeField]
+    private TipoPlayer qualPlayer = TipoPlayer.BOTH;
 
     GameObject objetoInstanciado;
 
     public void Instanciar(Transform pai)
     {
-        objetoInstanciado = MonoBehaviour.Instantiate(objetoPrefab, local, Quaternion.Euler(rotacao));
-        objetoInstanciado.name = nome;
-        objetoInstanciado.transform.parent = pai;
+        if (qualPlayer == TipoPlayer.BOTH || qualPlayer == GameController.gameController.GetPersonagemEscolhido())
+        {
+            objetoInstanciado = MonoBehaviour.Instantiate(objetoPrefab, local, Quaternion.Euler(rotacao));
+            objetoInstanciado.name = nome;
+            objetoInstanciado.transform.parent = pai;
+        }
     }
 
     public void CopiarValores(Transform copia)
