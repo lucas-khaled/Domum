@@ -157,7 +157,7 @@ public class StatusPlayer : MonoBehaviour
         set
         {
             level = value;
-            XPRequisito += 50 + 10 * level;
+            XPRequisito += 10 + 10 * level;
             DanoMedio += Mathf.CeilToInt(1*(level%2));
 
             maxVida += 10 + 5 * level;

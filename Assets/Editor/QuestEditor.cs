@@ -114,6 +114,9 @@ public class QuestEditor : Editor
             }
         }
 
+        string ultimaLinha = dialogoCompleto.Substring(lastIndex, dialogoCompleto.Length - lastIndex);
+        linhas.Add(ultimaLinha);
+
         dialogueLinesProperty.ClearArray();
         dialogueLinesProperty.arraySize = linhas.Count;
 
