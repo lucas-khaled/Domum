@@ -168,6 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8566603571354653071}
   - component: {fileID: 6363981765317119942}
+  - component: {fileID: 2518912473377595749}
   m_Layer: 0
   m_Name: Caixa2
   m_TagString: Untagged
@@ -215,3 +216,16 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
+--- !u!65 &2518912473377595749
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4664015451636442012}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.9524841, y: 2.1537075, z: 2.0211487}
+  m_Center: {x: 0.055496216, y: 1.0649595, z: -0.022201538}

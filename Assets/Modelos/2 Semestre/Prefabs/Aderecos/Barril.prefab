@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3062312440763282222}
   - component: {fileID: 6858529440516586315}
+  - component: {fileID: 981699435640894369}
   m_Layer: 0
   m_Name: Barril
   m_TagString: Untagged
@@ -58,6 +59,20 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
+--- !u!136 &981699435640894369
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027988897323188541}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.9472656
+  m_Height: 3.3188705
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.1594353, z: 0}
 --- !u!1 &3260274225906578529
 GameObject:
   m_ObjectHideFlags: 0

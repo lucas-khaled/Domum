@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5624953473914541458}
   - component: {fileID: 3698827341976940452}
   - component: {fileID: 6946897762768278365}
+  - component: {fileID: 8747050005211564757}
   m_Layer: 0
   m_Name: Cerca2
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8747050005211564757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8670696715546814337}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0012674809, y: 0.018944401, z: 0.019277751}
+  m_Center: {x: -0.0004139948, y: 0.0009335427, z: 0.009558586}

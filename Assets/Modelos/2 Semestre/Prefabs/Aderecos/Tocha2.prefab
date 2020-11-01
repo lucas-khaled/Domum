@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1423312871321485807}
   - component: {fileID: 3176748461454401614}
+  - component: {fileID: 2331822090666131186}
   m_Layer: 0
   m_Name: Tocha2
   m_TagString: Untagged
@@ -138,6 +139,20 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
+--- !u!136 &2331822090666131186
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2709977695421019132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.123558044
+  m_Height: 2.5292473
+  m_Direction: 1
+  m_Center: {x: -0.0047836304, y: 0.76462364, z: -0.005191803}
 --- !u!1 &7416623651929022957
 GameObject:
   m_ObjectHideFlags: 0

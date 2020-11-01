@@ -247,6 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6556286790487508704}
   - component: {fileID: 8343837919672353943}
+  - component: {fileID: 3047348318634870505}
   m_Layer: 0
   m_Name: "Po\xE7o"
   m_TagString: Untagged
@@ -295,3 +296,17 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
+--- !u!136 &3047348318634870505
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829443912192161011}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.90759087
+  m_Height: 4.3950577
+  m_Direction: 1
+  m_Center: {x: -0.045288086, y: 1.4031181, z: -0.022642136}
