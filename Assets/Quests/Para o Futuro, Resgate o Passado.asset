@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Para o Futuro, Resgate o Passado
   principal: 1
-  isQuestAdditioner: 0
-  questToAdd: {fileID: 0}
-  questGiverName: 
+  isQuestAdditioner: 1
+  questToAdd: {fileID: 11400000, guid: b0165f1769af51347907256507513612, type: 2}
+  questGiverName: "Mesti\xE7o"
   reward:
     item: {fileID: 0}
     qntDinheiro: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 5
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 444.01752, y: 20.213778, z: 130.16805}
     descricao: Devolva o Anel Perrdido para o Lider Kambin
     objsToInstantiate: []
     objsToDestroy:
