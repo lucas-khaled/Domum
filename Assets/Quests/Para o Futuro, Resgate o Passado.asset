@@ -80,6 +80,7 @@ MonoBehaviour:
       estar inteiro e \xE9 a \xFAnica lembran\xE7a que terei de minha esposa. "
     - "Player: Eu o encontrarei senhor, tem minha palavra. E ent\xE3o o senhor saber\xE1
       que juntar-se a n\xF3s \xE9 o certo a se fazer. "
+    - "L\xEDder Kambin: Veremos se \xE9 digno. "
   condicoes:
   - tipoCondicao: 4
     local: {x: 380.21213, y: 28.452208, z: 62.863663}
@@ -90,16 +91,19 @@ MonoBehaviour:
       local: {x: 380.04257, y: 28.33, z: 63.584}
       rotacao: {x: 288.3356, y: 0, z: 0}
       nome: EsposaKambin
+      qualPlayer: 2
     - objetoPrefab: {fileID: 719462188679275779, guid: 32d54487631aa4543bb77c96e27e68bf,
         type: 3}
       local: {x: 377.90897, y: 29.086445, z: 64.421555}
       rotacao: {x: -0, y: 0, z: 0}
       nome: Tigre01
+      qualPlayer: 2
     - objetoPrefab: {fileID: 719462188679275779, guid: 32d54487631aa4543bb77c96e27e68bf,
         type: 3}
       local: {x: 382.56, y: 29.086445, z: 64.421555}
       rotacao: {x: -0, y: 302.14697, z: 0}
       nome: Tigre02
+      qualPlayer: 2
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
@@ -132,6 +136,8 @@ MonoBehaviour:
       - 'Player: O que seria, senhor? '
       - "L\xEDder Kambin: Que n\xE3o deixarei que mais mortes como a da minha esposa
         ocorram por causa dos humanos. Me juntarei \xE0 rebeli\xE3o. "
+      - "Player: N\xE3o ir\xE1 se arrepender, senhor. Juntos tomaremos de volta nosso
+        planeta! "
     isOnScene: 1
     nameOnScene: ChefeKambin
     itemDaCondicao: {fileID: 5277665622528500049, guid: 83a92bb2a9d2d5944ab7530fb3f7b034,

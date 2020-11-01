@@ -53,11 +53,13 @@ MonoBehaviour:
       local: {x: 162.6, y: 22.968, z: 297.9}
       rotacao: {x: -0, y: 0, z: 0}
       nome: Agentes
+      qualPlayer: 2
     - objetoPrefab: {fileID: 2416282462686684105, guid: e9a03b5d566c0e449b330f96f99dc183,
         type: 3}
       local: {x: 162.9, y: 24.19, z: 313.79}
       rotacao: {x: 276.85065, y: 194.99997, z: -0.0000071576474}
       nome: Carregamento
+      qualPlayer: 2
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines:
@@ -90,6 +92,7 @@ MonoBehaviour:
       local: {x: 102.9, y: 26.34, z: 262.3}
       rotacao: {x: -0, y: 0, z: 0}
       nome: Tyva Teste
+      qualPlayer: 2
     objsToDestroy:
     - Tyva Teste
     dialogoDaCondicao:
@@ -143,6 +146,7 @@ MonoBehaviour:
       local: {x: 162.6, y: 23.01, z: 297.9}
       rotacao: {x: -0, y: 0, z: 0}
       nome: Agentes Mortos
+      qualPlayer: 2
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []

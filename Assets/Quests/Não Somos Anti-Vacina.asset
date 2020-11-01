@@ -34,9 +34,9 @@ MonoBehaviour:
       alguns soldados que patrulham nas periferias. "
     - "L\xEDder Mesti\xE7o: Exato. Enquanto isso, v\xE1rios dos nossos morrem de
       doen\xE7as e ferimentos causados por esses guardas. "
-    - "Depois que os humanos chegaram aqui, v\xE1rias doen\xE7as que n\xE3o conheciam
+    - " Depois que os humanos chegaram aqui, v\xE1rias doen\xE7as que n\xE3o conheciam
       nos assolam. "
-    - "Doen\xE7as cujos humanos possuem vacina, mas dividem apenas com os escravos
+    - " Doen\xE7as cujos humanos possuem vacina, mas dividem apenas com os escravos
       dos campos, para que possam trabalhar mais. "
     - "Player: Ent\xE3o, essa \xE9 outra miss\xE3o de roubo. "
     - "L\xEDder Mesti\xE7o: N\xE3o, agora ser\xE1 um assalto. Quero que use a for\xE7a
@@ -44,12 +44,13 @@ MonoBehaviour:
     - "Player: Isso n\xE3o chamar\xE1 aten\xE7\xE3o dos humanos para n\xF3s? "
     - "L\xEDder Mesti\xE7o: \xC9 isso que quero. Chamar a aten\xE7\xE3o deles para
       n\xF3s significar\xE1 chamar aten\xE7\xE3o das demais ra\xE7as. "
-    - "Quando Atriet e Kambin verem que estamos incomodando os humanos, estar\xE3o
+    - " Quando Atriet e Kambin verem que estamos incomodando os humanos, estar\xE3o
       mais prop\xEDcios a nos ajudar. "
     - "Player: Entendo. Mas se os humanos recha\xE7arem, n\xE3o seremos capazes de
       nos defender. "
     - "L\xEDder Mesti\xE7o: N\xE3o se preocupe, n\xE3o recha\xE7ar\xE3o agora. Quando
       for a hora estaremos preparados. "
+    - " Agora v\xE1 e cumpra sua miss\xE3o. "
   condicoes:
   - tipoCondicao: 2
     local: {x: 317.6579, y: 23.7, z: 411.38586}
@@ -60,6 +61,7 @@ MonoBehaviour:
       local: {x: 318.42596, y: 21.81, z: 416.01498}
       rotacao: {x: -0, y: 0, z: 0}
       nome: Caixa de Suprimentos
+      qualPlayer: 2
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
@@ -101,6 +103,7 @@ MonoBehaviour:
         mas n\xE3o era muito. Aqui est\xE1. "
       - "L\xEDder Mesti\xE7o: Fique com ele, vai precisar. Compre algum equipamento
         na loja. Logo haver\xE1 mais miss\xF5es que ser\xE3o mais complicadas. "
+      - 'Player: Obrigado! '
     isOnScene: 1
     nameOnScene: "Mesti\xE7o 5"
     itemDaCondicao: {fileID: 0}
