@@ -21,7 +21,7 @@ public class DialogueSystem:MonoBehaviour
     [SerializeField]
     private Text dialogueText;
 
-    private float letterDelay = 0.05f;
+    private float letterDelay = 0.005f;
     private float letterMultiplier = 0.0001f;
 
     public string Names;

@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
+  m_Name: O Que For Preciso
+  m_EditorClassIdentifier: 
+  nome: O Que For Preciso
+  principal: 0
+  isQuestAdditioner: 1
+  questToAdd: {fileID: 0}
+  questGiverName: 
+  reward:
+    item: {fileID: 0}
+    qntDinheiro: 40
+    XP: 300
+    fama: 400
+  dialogo:
+    dialogueLines:
+    - "Anci\xE3o: Meu jovem, bom que est\xE1 aqui. "
+    - "#Tyva|Iovelik#: Precisa de mim, grande Anci\xE3o? "
+    - "Anci\xE3o: Quem de n\xF3s n\xE3o est\xE1 precisando de voc\xEA nos \xFAltimos
+      tempos, meu jovem? Sua lenda est\xE1 crescendo por Domum e j\xE1 est\xE1 consolidada
+      entre n\xF3s da rebeli\xE3o. "
+    - "#Tyva|Iovelik#: Me sinto honrado, senhor. Mas ainda n\xE3o alcan\xE7amos a
+      revolu\xE7\xE3o. Ainda h\xE1 muito o que... "
+    - "Anci\xE3o: Ei, esque\xE7a seus deveres por algum momento. Desfrute o que j\xE1
+      conquistou.  "
+    - "Voc\xEA ainda \xE9 jovem, e se n\xE3o relaxar de vez em quando, s\xF3 vai
+      amargurar sua mente. Deixe que a idade far\xE1 isso para voc\xEA. "
+    - "#Tyva|Iovelik#: Se eu relaxar, meu povo continuar\xE1 a ser escravizado e
+      meu planeta imprudentemente explorado. "
+    - 'Se eu relaxar, nunca verei um mundo livre dos humanos e meu povo... '
+    - "Anci\xE3o: Meu povo! \xC9 muita nobreza de sua parte considerar os genocidas
+      de sua ra\xE7a como seu povo. "
+    - "#Tyva|Iovelik#: Sou filho tanto de Atriet quanto de Kambin, portanto os dois
+      s\xE3o minha ra\xE7a.  "
+    - "Quanto ao que ocorreu com os mesti\xE7os no passado... foi um erro, que n\xE3o
+      voltar\xE1 a acontecer depois que ganharmos. "
+    - "Anci\xE3o: Ent\xE3o \xE9 isso que procura no fundo, soldado? Reden\xE7\xE3o
+      por sua ra\xE7a? Acha que pode conseguir? "
+    - "#Tyva|Iovelik#: N\xE3o \xE9 o objetivo principal. Mas j\xE1 n\xE3o cospem
+      no ch\xE3o ou me xingam quando passo nas ruas. "
+    - "Anci\xE3o: Ahh sim, voc\xEA mata humanos e eles te agradecem. O inimigo do
+      meu inimigo \xE9 meu amigo, principalmente quando ele \xE9 mais r\xE1pido e
+      mais forte do que eu. "
+    - "Deixe-o lutar minhas batalhas. Se um deles vencer, estar\xE1 quebrado o suficiente
+      para n\xE3o resistir ao nosso ataque. "
+    - "Por isso me pergunto, meu amigo: At\xE9 onde ir\xE1 essa admira\xE7\xE3o? "
+    - "#Tyva|Iovelik#: F\xE1cil n\xE3o ser\xE1, eu sei disso. Mas os habitantes desse
+      planeta ver\xE3o al\xE9m de seus preconceitos. "
+    - "Se n\xE3o n\xF3s respondermos seu \xF3dio com amor, gradualmente saber\xE3o
+      que n\xE3o somos amea\xE7a. Que podem conviver conosco. "
+    - "Anci\xE3o: Um belo discurso glich\xEA de her\xF3i! Bem, veremos se est\xE1
+      correto. Para isso devemos traz\xEA-los para o nosso lado. "
+    - "Como deve saber, os Atriets t\xEAm grande respeito por seus Anci\xF5es. Apesar
+      de eu ser o mais velho, n\xE3o sou o mais querido, gra\xE7as \xE0s minhas opini\xF5es
+      controversas "
+    - "Ainda sim reservo alguma influ\xEAncia sobre meu povo. Dito isso, o chefe
+      da Vila Atriet concordou em lhe receber para ouvir nossa proposta. "
+    - '#Tyva|Iovelik#: Imagino que as armas que coletamos os abriram para uma conversa. '
+    - "Anci\xE3o: Voc\xEA tem raz\xE3o. Enviamos algumas a eles. Hesitaram um pouco
+      em usar armas humanas, mas devido \xE0 iminente guerra, est\xE3o considerando
+      nossa proposta. "
+    - "#Tyva|Iovelik#: \xD3timo, precisamos de aliados. Irei conversar com o chefe
+      da Vila e o convencerei a se aliar a n\xF3s. "
+  condicoes:
+  - tipoCondicao: 1
+    local: {x: 114.899994, y: 23.346252, z: 123.66}
+    descricao: "V\xE1 at\xE9 a Vila Atriet e converse com o L\xEDder."
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "#Tyva|Iovelik#: Sauda\xE7\xF5es, meu senhor. Sou o enviado do grande Anci\xE3o. "
+      - "L\xEDder Atriet: Ah, ent\xE3o \xE9 voc\xEA. Espera muitas coisas do grande
+        anci\xE3o, todos sabemos o qu\xE3o pol\xEAmico s\xE3o suas atitudes. Mas... "
+      - "#Tyva|Iovelik#: N\xE3o esperava que ele enviasse um mesti\xE7o. "
+      - "L\xEDder Atriet: Na verdade, jamais imaginei tal disparate! Me enviar um
+        mesti\xE7o herege para me convencer a usar armas blasf\xEAmicas! "
+      - "Se n\xE3o fosse um anci\xE3o t\xE3o antigo, jamais consideraria este despaut\xE9rio! "
+      - "#Tyva|Iovelik#: Se n\xE3o fosse a imin\xEAncia de patrulhas humanas invadindo
+        sua vila e matando seus cidad\xE3os, voc\xEA n\xE3o estaria considerando
+        igualar suas for\xE7as \xE0s deles. "
+      - "L\xEDder Atriet: Cuidado com o que fala, mesti\xE7o. Meu respeito a seu
+        superior que te mant\xE9m vivo aqui, mas posso ouvir Domum chorar com o improp\xE9rio
+        que ocorre aqui. "
+      - "#Tyva|Iovelik#: Em algo concordamos, senhor. Domum chora. Mas n\xE3o por
+        que estou aqui, mas porque os humanos est\xE3o. "
+      - "E a \xFAnica coisa que quero \xE9 expuls\xE1-los, pois sua presen\xE7a destr\xF3i
+        Domum e seu povo. Sabe o que estes bastardos fizeram com o pr\xF3prio planeta,
+        senhor. "
+      - "L\xEDder Atriet: Eu sei. De fato n\xE3o podemos deixar que fa\xE7am o mesmo
+        neste mundo. Destruir seu pr\xF3prio lar, da maneira que fazem, \xE9 destruir
+        seu pr\xF3prio criador. "
+      - '#Tyva|Iovelik#: E agora querem destruir o nosso. '
+      - "L\xEDder Atriet: Ainda sim... Usar as armas que eles usam para nos oprimir
+        s\xF3 nos tornar\xE1 iguais a eles. "
+      - '#Tyva|Iovelik#: Jamais seremos iguais a eles! Eles destroem, dominam e escravizam
+        um mundo que antes havia paz e harmonia. '
+      - "L\xEDder Atriet: Quem voc\xEA se refere como \u201Cn\xF3s\u201D, mesti\xE7o?
+        Sua ra\xE7a est\xE1 dizimada. Voc\xEA deve ser um dos primeiros em s\xE9culos! "
+      - "#Tyva|Iovelik#: Sou produto tanto de seu povo quanto dos Kambin, senhor.
+        Enquanto eu viver, ambos ser\xE3o meu povo. "
+      - "E eu nasci vendo meu povo sendo escravizado e vivendo na mis\xE9ria. Cresci
+        ouvindo hist\xF3rias de uma \xE9poca em que havia prosperidade e justi\xE7a. "
+      - "N\xE3o quero apenas imaginar como foi, senhor. Quero v\xEA-la acontecer
+        diante meus olhos. "
+      - "No entanto, os humanos jamais deixariam isso acontecer. A \xFAnica coisa
+        que conhecem \xE9 a domina\xE7\xE3o. Tudo que desejam \xE9 que sejamos subjulgados. "
+      - "L\xEDder Atriet: E eles far\xE3o de tudo para que isso aconte\xE7a. "
+      - "#Tyva|Iovelik#: Por isso temos que fazer de tudo para que isso n\xE3o aconte\xE7a,
+        senhor. Mesmo que inclua empunhar suas armas. Sabe que \xE9 a \xFAnica forma
+        de fazermos frente a eles. "
+      - "L\xEDder Atriet: Hmnn... Voc\xEA fala bem, mesti\xE7o. Se os humanos nos
+        atacarem, como provavelmente o far\xE3o em breve, n\xE3o poderemos det\xEA-los.
+        A menos que usemos as armas.  "
+      - "#Tyva|Iovelik#: Os humanos n\xE3o sabem da exist\xEAncia delas, senhor.
+        Portanto estar\xE3o despreparados para enfrenta-las. \xC9 mais uma vantagem
+        para quando a hora chegar. "
+      - "L\xEDder Atriet: Me juntarei a sua rebeli\xE3o, mesti\xE7o. Com uma condi\xE7\xE3o.
+        Dever\xE1s me ajudar a resgatar algu\xE9m.  "
+      - "H\xE1 um dias atr\xE1s, alguns humanos vieram. Achavam que, assim como os
+        Kambin, est\xE1vamos envolvidos com voc\xEAs. "
+      - "Exigiram que cont\xE1ssemos onde voc\xEAs se localizavam. Dissemos a verdade:
+        que n\xE3o sab\xEDamos. Mesmo assim, apesar das s\xFAplicas, levaram nosso
+        maior curandeiro como ref\xE9m. "
+      - "#Tyva|Iovelik#: Droga, s\xF3 o soltar\xE3o se contarem nossa posi\xE7\xE3o.
+        Talvez nem assim... Onde ele se encontra agora. "
+      - "L\xEDder Atriet: Eles est\xE3o em um acampamento na floresta, n\xE3o muito
+        longe daqui. Marcarei em seu mapa. "
+      - '#Tyva|Iovelik#: Eu o trarei de volta, senhor. '
+    isOnScene: 1
+    nameOnScene: ChefeAtriet
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 2
+    local: {x: 68.7, y: 35.5, z: 296.5}
+    descricao: Derrote todos os inimigos no acampamento.
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 1944800742435725870, guid: da7f11ea00efd474198e12f7d45d3af7,
+        type: 3}
+      local: {x: 57.82, y: 34.84, z: 298.03}
+      rotacao: {x: 0, y: 0, z: 0}
+      nome: Curandeiro
+      qualPlayer: 2
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    raioDeSpawn: 8
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 57.80172, y: 34.652767, z: 298.0105}
+    descricao: Converse com o Curandeiro libertado.
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - 
+      - '#Tyva|Iovelik#: Fique tranquilo, estou aqui para te libertar. O chefe da
+        sua vila me enviou. '
+      - "Curandeiro: Obrigado! Mas o chefe lhe enviou? N\xE3o pensei que ele cogitaria... "
+      - "#Tyva|Iovelik#: Pedir ajuda a um mesti\xE7o? Sim eu sei. Volte para a vila,
+        est\xE1 a salvo afora. "
+    isOnScene: 1
+    nameOnScene: Curandeiro
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 114.899994, y: 23.346252, z: 123.66}
+    descricao: "Retorne \xE0 Vila Atriet e converse com o L\xEDder."
+    objsToInstantiate: []
+    objsToDestroy:
+    - Curandeiro
+    dialogoDaCondicao:
+      dialogueLines:
+      - "L\xEDder Atriet: Tenho de agradec\xEA-lo por traz\xEA-lo de volta, mesti\xE7o.
+        Afinal, n\xE3o podemos nos unir a voc\xEAs sem m\xE9dicos parar curar nossos
+        feridos. "
+      - "#Tyva|Iovelik#: Eu que fico feliz em ouvir isso, senhor. N\xE3o se arrepender\xE1
+        dessa decis\xE3o. "
+      - "L\xEDder Atriet: Sei que n\xE3o, pois n\xE3o a tomarei por voc\xEA, mesti\xE7o.
+        A tomarei por Domum. "
+    isOnScene: 1
+    nameOnScene: ChefeAtriet
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
