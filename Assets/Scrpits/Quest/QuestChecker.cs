@@ -52,6 +52,14 @@ public class QuestChecker : MonoBehaviour
         }
     }
 
+    public void PulaCondicao()
+    {
+        EventsController.onCondicaoTerminada.Invoke(questHolder);
+        CancelInvoke("CheckCondicaoHolder");
+        condHolder.FinalizaCondicao();
+        SetCondicaoOnHolder(questHolder.ProximaCondicao());
+    }
+
     private void OnDrawGizmos()
     {
         if (condHolder != null)

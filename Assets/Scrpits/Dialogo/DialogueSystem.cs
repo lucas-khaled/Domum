@@ -50,7 +50,7 @@ public class DialogueSystem:MonoBehaviour
     }
     public void IniciaDialogo(Dialogo dialogo)
     {
-        this.dialogo = dialogo;
+        this.dialogo = dialogo.DefinePlayerDialog();
         this.dialogo.whosDialog = dialogo.whosDialog;
         outOfRange = false;
         if (!dialogueActive)

@@ -265,6 +265,10 @@ public class Player : MonoBehaviour, IVulnerable
             Interagir();
         }
 
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            QuestLog.questLog.PulaCondAtual();
+        }
     }
 
     void Movimento()
