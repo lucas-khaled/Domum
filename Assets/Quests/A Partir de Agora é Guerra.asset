@@ -24,38 +24,39 @@ MonoBehaviour:
     fama: 350
   dialogo:
     dialogueLines:
-    - "Player: L\xEDder, conversei com o chefe da vila Kambin... eles estar\xE3o
+    - "#Tyva|Iovelik#: L\xEDder, conversei com o chefe da vila Kambin... eles estar\xE3o
       do nosso lado. "
     - "L\xEDder Mesti\xE7o: Recebi o recado de um mensageiro da vila. Fez um \xF3timo
       trabalho, soldado! "
-    - "Player: Obrigado L\xEDder. Agora que estamos mais fortes, qual ser\xE1 nosso
-      pr\xF3ximo passo? "
+    - "#Tyva|Iovelik#: Obrigado L\xEDder. Agora que estamos mais fortes, qual ser\xE1
+      nosso pr\xF3ximo passo? "
     - "L\xEDder Mesti\xE7o: Vamos atacar esses malditos! "
-    - "Player: N\xE3o sei se era o que esperava ouvir, mas... no fundo gosto da ideia
-      de enfrenta-los de frente! "
+    - "#Tyva|Iovelik#: N\xE3o sei se era o que esperava ouvir, mas... no fundo gosto
+      da ideia de enfrenta-los de frente! "
     - "L\xEDder Mesti\xE7o: Sim, vamos mostrar que podemos ganhar, que tamb\xE9m
       podemos machuc\xE1-los. Vamos come\xE7ar a igualar essa disputa. "
-    - "Player: Ent\xE3o quer dizer que a partir de agora \xE9 guerra. "
+    - "#Tyva|Iovelik#: Ent\xE3o quer dizer que a partir de agora \xE9 guerra. "
     - "L\xEDder Mesti\xE7o: A partir de agora \xE9 guerra. E nossa primeira disputa
       por local estrat\xE9gico come\xE7a hoje, com sua miss\xE3o. "
-    - "Player: Diga o que devo fazer, l\xEDder. "
+    - "#Tyva|Iovelik#: Diga o que devo fazer, l\xEDder. "
     - "L\xEDder Mesti\xE7o: Tomaremos o campo de minera\xE7\xE3o mais pr\xF3ximos
       deles, que por valiosa coincid\xEAncia \xE9 tamb\xE9m o maior. "
-    - "Player: Muito bom, creio que as tropas Kambin j\xE1 foram designadas para
-      o local. "
+    - "#Tyva|Iovelik#: Muito bom, creio que as tropas Kambin j\xE1 foram designadas
+      para o local. "
     - "L\xEDder Mesti\xE7o: Sim, mas ainda est\xE3o a caminho. O que preciso que
       fa\xE7a \xE9 que abra caminho para os Kambin. "
-    - 'Player: Sozinho? '
+    - '#Tyva|Iovelik#: Sozinho? '
     - "L\xEDder Mesti\xE7o: Sozinho. Quando os batedores do local virem um ex\xE9rcito
       se aproximando, pedir\xE3o refor\xE7os e ter\xE3o a vantagem de estarem atr\xE1s
       das defesas do local. "
-    - "Player: Mas se virem apenas um inimigo achar\xE3o que d\xE3o conta por si
-      mesmos. "
+    - "#Tyva|Iovelik#: Mas se virem apenas um inimigo achar\xE3o que d\xE3o conta
+      por si mesmos. "
     - "L\xEDder Mesti\xE7o: Exato, mas sei que n\xE3o dar\xE3o, pois estou enviando
       voc\xEA.  "
     - "Depois que limpar o campo, os homens ocupar\xE3o o lugar e ter\xE3o suas defesas
       como vantagem para acabar com qualquer refor\xE7o humano "
-    - "Player: \xC9 um bom plano. Dar\xE1 certo? "
+    - "#Tyva|Iovelik#: \xC9 um bom plano. Dar\xE1 certo? "
+    - "L\xEDder Mesti\xE7o: Tenho f\xE9 que sim. "
   condicoes:
   - tipoCondicao: 2
     local: {x: 455.4, y: 19.8, z: 353.25}
@@ -82,12 +83,12 @@ MonoBehaviour:
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines:
-      - "Player: O campo de minera\xE7\xE3o est\xE1 limpo e nossas tropas ocupam
-        o local, L\xEDder. "
+      - "#Tyva|Iovelik#: O campo de minera\xE7\xE3o est\xE1 limpo e nossas tropas
+        ocupam o local, L\xEDder. "
       - "L\xEDder Mesti\xE7o: Incr\xEDvel!! Hoje, soldado, voc\xEA nos ajudou a dar
         o primeiro grande passo para a revolu\xE7\xE3o! "
       - "Voc\xEA merece todas as honras poss\xEDveis! Pois, logo, estaremos arrebentando
-        os port\xF5es de Criviek e tomando o que \xE9 nosso por direito!"
+        os port\xF5es de Criviek e tomando o que \xE9 nosso por direito! "
     isOnScene: 1
     nameOnScene: "Mesti\xE7o 5"
     itemDaCondicao: {fileID: 0}
