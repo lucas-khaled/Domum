@@ -1007,7 +1007,6 @@ GameObject:
   - component: {fileID: 1184690783282856939}
   - component: {fileID: 3530798394593846843}
   - component: {fileID: 8377527222197378792}
-  - component: {fileID: 8726208171629936170}
   - component: {fileID: 7431777298352792774}
   - component: {fileID: 5357045472144315696}
   - component: {fileID: 6609269061531179808}
@@ -1086,30 +1085,6 @@ MonoBehaviour:
   tempoEscudo: 3
   tempoDashTotal: 2
   maxVida: 100
---- !u!114 &8726208171629936170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2750437293865562616}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba6f0beaa83d4945a87a73283698b3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  passosTerra: {fileID: 8300000, guid: e22f97da113621a4b99b8efa9aed2bb8, type: 3}
-  passosAreia: {fileID: 0}
-  passosCascalho: {fileID: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  tamanhoRayCast: 0
-  podeTocar: 0
-  outroPe: {fileID: 0}
-  delayTempo: 0
-  caminhando: 0
 --- !u!65 &7431777298352792774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1152,8 +1127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 0}
-  movimento: {fileID: 8300000, guid: 546ce456d97ae2841b125361322e2099, type: 3}
-  ataque: {fileID: 0}
+  movimento: {fileID: 8300000, guid: c14c94bf66a67d23c9295bfd1f203fa4, type: 3}
+  ataque: {fileID: 8300000, guid: a8f51ca995881b66891ad15089554238, type: 3}
   audioSource: {fileID: 8977739183082086559}
   audioNovo: 
   particulaArma: {fileID: 0}
@@ -1168,12 +1143,11 @@ MonoBehaviour:
   raioPercepcao: 10
   raioAtaque: 2
   espera: 0.2
-  distanciaDash: 10
+  forcaDash: 0
   timeFaca: 2
   tempoRecarga: 1
-  dashRate: 100
-  dash: {fileID: 8300000, guid: 31167c830f6c2cd4db3407cac5a41fae, type: 3}
-  lancarFaca: {fileID: 8300000, guid: 6acbbc2f73ea0c54394e0ebeb6defe2b, type: 3}
+  dash: {fileID: 8300000, guid: 97779831116c099fa9dad611a72b440b, type: 3}
+  lancarFaca: {fileID: 8300000, guid: 4b92e28eeead1f797b2ba8bee5a18ce7, type: 3}
   posicaoFaca: {fileID: 564895143741459867}
   faca: {fileID: 7640702850495185563, guid: 3c5481346045a9b4a92900030e5a9462, type: 3}
   dashVFX: {fileID: 8946529573408389086}
@@ -2463,9 +2437,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8977739183082086559}
-  passosTerra: {fileID: 8300000, guid: e22f97da113621a4b99b8efa9aed2bb8, type: 3}
-  passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
-  passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  passosTerra: {fileID: 8300000, guid: c14c94bf66a67d23c9295bfd1f203fa4, type: 3}
+  passosAreia: {fileID: 8300000, guid: abff237e81f6d0ef4a168a045499c8e7, type: 3}
+  passosCascalho: {fileID: 8300000, guid: 106733e007da3db9fa85778955cbb228, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -2787,9 +2761,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8977739183082086559}
-  passosTerra: {fileID: 8300000, guid: e22f97da113621a4b99b8efa9aed2bb8, type: 3}
-  passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
-  passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  passosTerra: {fileID: 8300000, guid: c14c94bf66a67d23c9295bfd1f203fa4, type: 3}
+  passosAreia: {fileID: 8300000, guid: abff237e81f6d0ef4a168a045499c8e7, type: 3}
+  passosCascalho: {fileID: 8300000, guid: 106733e007da3db9fa85778955cbb228, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 4096

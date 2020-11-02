@@ -2138,8 +2138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 0}
-  movimento: {fileID: 8300000, guid: 8b512b671d0540b4b9dc0aa360a6e981, type: 3}
-  ataque: {fileID: 8300000, guid: dd9fc88e99eaaeb47ae9a1d86992dc2d, type: 3}
+  movimento: {fileID: 8300000, guid: 2d7142ea449da75b8bb9cffdae646965, type: 3}
+  ataque: {fileID: 8300000, guid: 43f28a878af1d75b793b5c6a91cd1428, type: 3}
   audioSource: {fileID: 3775085133992931399}
   audioNovo: 
   particulaArma: {fileID: 7171398865409848546}
@@ -2154,8 +2154,8 @@ MonoBehaviour:
   raioPercepcao: 10
   raioAtaque: 2
   espera: 0.3
-  martelada: {fileID: 8300000, guid: 0ea5b9465a873a544ac6988ae5643d8a, type: 3}
-  escudoSom: {fileID: 8300000, guid: 2af9015ffa1c8f34eb6044cd4735f86a, type: 3}
+  martelada: {fileID: 8300000, guid: 0a2530bca248c1644a7ecdf3fdaae4d6, type: 3}
+  escudoSom: {fileID: 8300000, guid: a5a444610e5f7a25c8a0dff32806ea3b, type: 3}
   EspecialVFX: {fileID: 258479221367766780}
   escudo: {fileID: 7242412694009457443}
   tempoRecargaEscudo: 1.5
@@ -2681,16 +2681,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  passosTerra: {fileID: 8300000, guid: 2a27e486b0d141f40933b6535a6f0a20, type: 3}
-  passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
-  passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  passosTerra: {fileID: 8300000, guid: 2d7142ea449da75b8bb9cffdae646965, type: 3}
+  passosAreia: {fileID: 8300000, guid: 73afc8783d719eae8a9c79d38241dfdf, type: 3}
+  passosCascalho: {fileID: 8300000, guid: 2e4104d161fc5bfb18d8aec30e283a92, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 4096
   tamanhoRayCast: 0.61
   podeTocar: 0
   outroPe: {fileID: 8953753710552666787}
-  delayTempo: 0.7
+  delayTempo: 0.68
   caminhando: 0
 --- !u!1 &8183446735862761328
 GameObject:
@@ -3112,16 +3112,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  passosTerra: {fileID: 8300000, guid: aa6882f3693f50a4ab91f555e500f484, type: 3}
-  passosAreia: {fileID: 8300000, guid: 48402003f8ee8bf408b6afa8dbaf51a6, type: 3}
-  passosCascalho: {fileID: 8300000, guid: 19eff6bc211d29844bad441d1b02acac, type: 3}
+  passosTerra: {fileID: 8300000, guid: 2d7142ea449da75b8bb9cffdae646965, type: 3}
+  passosAreia: {fileID: 8300000, guid: 73afc8783d719eae8a9c79d38241dfdf, type: 3}
+  passosCascalho: {fileID: 8300000, guid: 2e4104d161fc5bfb18d8aec30e283a92, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 4096
   tamanhoRayCast: 0.61
   podeTocar: 0
   outroPe: {fileID: 8131104001625274197}
-  delayTempo: 0.7
+  delayTempo: 0.68
   caminhando: 0
 --- !u!1 &9079316140820122196
 GameObject:

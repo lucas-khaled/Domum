@@ -145,7 +145,8 @@ public class Iovelik : Player
     }
 
     private void danoArea()
-    {      
+    {
+        audioSource.PlayOneShot(martelada);
         estadoPlayer = EstadoPlayer.ATACANDO;
         animator.SetTrigger(ataqueEspecialNome);
         canAttack = false;
@@ -157,7 +158,7 @@ public class Iovelik : Player
     public void AreaAttack()
     {
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioDanoArea, LayerMask.GetMask("Inimigo"));
-        audioSource.PlayOneShot(martelada);
+
         foreach (Collider inimigoArea in hit)
         {
             distancia = Vector3.Distance(inimigoArea.gameObject.transform.position, this.gameObject.transform.position);

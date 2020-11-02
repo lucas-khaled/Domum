@@ -29,7 +29,7 @@ public class Passos : MonoBehaviour
 
     private void Start()
     {
-        delayTempo = delay;
+        delay = delayTempo;
         passos = this;
         audioSource = Player.player.audioSource;
         playerRef = Player.player;
