@@ -21,6 +21,11 @@ public class QuestLog : MonoBehaviour
 
     List<QuestChecker> activeQuestCheckers = new List<QuestChecker>();
 
+    public void PulaCondAtual()
+    {
+        activeQuestCheckers[0].PulaCondicao();
+    }
+
     private void Start()
     {
         if (GameController.gameController.IsLoadedGame())
