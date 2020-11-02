@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c071d95526eb014c8a59aedca1055a1, type: 3}
+  m_Name: "A\xE7o rastejante"
+  m_EditorClassIdentifier: 
+  nome: "A\xE7o rastejante"
+  descricao: Adagas lendarias forjadas pelo agente Daniboy com veneno para aumentar
+    o dano e impedir que os ferimentos se curem sem antidoto.
+  isItemMissao: 1
+  custoMoeda: 500
+  peso: 6
+  icone: {fileID: 21300000, guid: b88ecc4c97579c0478627b01e220ecd3, type: 3}
+  armaPlayer: 0
+  dano: 35
+  nivelMinimo: 5
+  famaMinima: 100
+  armaMesh: {fileID: -6072678315788730161, guid: 09adb9a071c6cd048b8d0f9db2dae10a,
+    type: 3}

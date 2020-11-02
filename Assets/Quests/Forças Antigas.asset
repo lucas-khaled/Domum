@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
+  m_Name: "For\xE7as Antigas"
+  m_EditorClassIdentifier: 
+  nome: "For\xE7as Antigas"
+  principal: 1
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
+  reward:
+    item: {fileID: 0}
+    qntDinheiro: 0
+    XP: 200
+    fama: 400
+  dialogo:
+    dialogueLines:
+    - "Player: Grande Anci\xE3o, os prisioneiros foram soltos. "
+    - "Anci\xE3o: Que prisioneiros? "
+    - 'Player: Os que me pediu para libertar, senhor. '
+    - "Anci\xE3o: Eu te pedi?... Ahh sim! Os da \xFAltima investida. Por que n\xE3o
+      disse logo? "
+    - "Player: Mas eu... o que importa \xE9 que est\xE3o livres agora. "
+    - "Anci\xE3o: Sim, meu jovem. Fizeste um \xF3timo trabalho. Obrigado.  "
+    - "Pe\xE7o perd\xE3o por olvidar por alguns segundos, mas mem\xF3rias do passado
+      me afligem enquanto falamos. "
+    - "Player: N\xE3o podemos nos ater ao passado, senhor. O foco deve ser o futuro.
+      O nosso futuro e o de Domum. "
+    - "Anci\xE3o: Tolice. Olhar para o passado nos mostra os erros que podemos cometer
+      no futuro. Um mesti\xE7o deveria saber disso melhor que qualquer outro: "
+    - "O passado nos d\xE1 poder, meu caro. Por isso seu L\xEDder me chamou aqui. "
+    - "Player: Entendo a import\xE2ncia do passado senhor, mas n\xE3o temos tempo
+      para contempl\xE1-lo. "
+    - 'Precisamos nos preocupar em nos fortalecer contra os humanos. '
+    - "Anci\xE3o: Acho que o superestimei. Pensei que j\xE1 entenderia que n\xE3o
+      sou pragm\xE1tico antes de me mergulhar em reflex\xF5es que parecem a de um
+      velho carente. "
+    - "Escute o que digo, meu caro. O passado nos dar\xE1 for\xE7as. O passado nos
+      dar\xE1 armas. "
+    - "Player: Imagino que a tarefa que est\xE1 prestes a me designar tenha haver
+      com isso. "
+    - "Anci\xE3o: Isso! N\xE3o me desapontou dessa vez garoto. Quando os humanos
+      invadiram este planeta, h\xE1 muito tempo, minha unidade de combate conseguiu
+      roubar algumas armas humanas. "
+    - "Por pura tolice, os antigos anci\xF5es Atriets haviam nos proibido de us\xE1-las,
+      por acharem que blasfemariamos Domum caso as empunh\xE1ssemos. "
+    - "Player: Mas isso colocaria seu pelot\xE3o em p\xE9 de igualdade com os humanos! "
+    - "Anci\xE3o: Tem raz\xE3o. N\xF3s sab\xEDamos disso, mas n\xE3o d\xE1vamos as
+      ordens. A ordem era pra destruirmos as armas, mas felizmente fomos s\xE1bios
+      o suficiente em pensarmos que olhar\xEDamos para o passado um dia. "
+    - 'Player: O que quer dizer com isso? '
+    - "Anci\xE3o: N\xF3s enterramos as armas no deserto. Era um lugar que nem os
+      anci\xE3os nem os humanos iam querer ficar procurando. "
+    - "Player: Essas armas est\xE3o l\xE1 s\xF3 esperando para que sejam pegas. Isso
+      pode nos ajudar muito, grande anci\xE3o! Me diga que se lembra de onde as enterraram. "
+    - "Anci\xE3o: Que estranho... parece que deu uma grande import\xE2ncia para relembrar
+      o passado agora, meu caro. "
+    - "Player: Eu estava errado, anci\xE3o. Sua sabedoria \xE9 mesmo grande demais
+      pro meu entendimento. "
+    - "Anci\xE3o: N\xE3o venha puxar meu saco agora! Lhe direi onde est\xE3o as armas,
+      apesar de sua falsidade.  "
+    - "Anci\xE3o: Tem sorte por ter salvo aqueles prisioneiros e eu gostar de voc\xEA!
+      Agora me d\xEA esse mapa que marcarei a localiza\xE7\xE3o das armas."
+  condicoes:
+  - tipoCondicao: 0
+    local: {x: 502.50208, y: 4.562437, z: 437.2028}
+    descricao: Encontre as armas enterradas
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 8730576018508596719, guid: 20f67df8f45800547a44bb0cb17c37b7,
+        type: 3}
+      local: {x: 503.35135, y: 5.58891, z: 443.9091}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: Terra
+      qualPlayer: 2
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 15
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 2
+    local: {x: 459.49, y: 26.4, z: 451.2826}
+    descricao: Mate as criauras que surgiram
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 719462188679275779, guid: 32d54487631aa4543bb77c96e27e68bf, type: 3}
+    - {fileID: 719462188679275779, guid: 32d54487631aa4543bb77c96e27e68bf, type: 3}
+    - {fileID: 719462188679275779, guid: 32d54487631aa4543bb77c96e27e68bf, type: 3}
+    - {fileID: 719462188679275779, guid: 32d54487631aa4543bb77c96e27e68bf, type: 3}
+    raioDeSpawn: 15
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 3
+    local: {x: 0, y: 0, z: 0}
+    descricao: Desenterre as Armas
+    objsToInstantiate: []
+    objsToDestroy:
+    - Terra
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 1
+    nameOnScene: Terra
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 4
+    local: {x: 0, y: 0, z: 0}
+    descricao: Pegue a Arma para voce
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 3545448506696258184, guid: 92fbe900fa54c4cbfb87df22aae9fb4d,
+        type: 3}
+      local: {x: 490.6472, y: 8.358346, z: 431.10495}
+      rotacao: {x: 270, y: 0, z: 0}
+      nome: Arma
+      qualPlayer: 1
+    - objetoPrefab: {fileID: 4697620221891120004, guid: aaa82760109a85e408326c6387785862,
+        type: 3}
+      local: {x: 490.6472, y: 8.358346, z: 431.10495}
+      rotacao: {x: 270, y: 0, z: 0}
+      nome: Arma
+      qualPlayer: 0
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 1
+    nameOnScene: Arma
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 0, y: 0, z: 0}
+    descricao: Informe ao Anciao de seu sucesso
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "Anci\xE3o: Vejo que encontrou as armas. "
+      - "Player: Sim, as encontrei. Encontrei essa em espec\xEDfico. N\xE3o parece
+        que era dos humanos, mas \xE9 poderosa. "
+      - "Anci\xE3o: De fato nunca vi os humanos usarem nenhuma dessas. \xC9 magnifica,
+        sim. Fique com ela, meu jovem. \xC9 merecido pelo bom trabalho que fez at\xE9
+        aqui1 "
+      - "Player: Obrigado, grande anci\xE3o. Creio que o passado tenha me fortalecido
+        de fato."
+    isOnScene: 1
+    nameOnScene: Anciao
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}

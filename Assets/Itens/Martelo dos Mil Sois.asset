@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c071d95526eb014c8a59aedca1055a1, type: 3}
+  m_Name: Martelo dos Mil Sois
+  m_EditorClassIdentifier: 
+  nome: Martelo dos Mil Sois
+  descricao: Poderoso martelo antigo forjado pelas maos de um grande ditador Kambim
+    Kartofell.
+  isItemMissao: 1
+  custoMoeda: 500
+  peso: 15
+  icone: {fileID: -5140666298925833542, guid: 4d35c75adf5d17246862f4555deb8d4f, type: 3}
+  armaPlayer: 1
+  dano: 55
+  nivelMinimo: 5
+  famaMinima: 100
+  armaMesh: {fileID: 4840716529398130629, guid: df7b910d2b5f1854986d086b10435ea8,
+    type: 3}
