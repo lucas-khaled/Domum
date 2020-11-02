@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
+  m_Name: "\xC9 Pessoal"
+  m_EditorClassIdentifier: 
+  nome: "\xC9 Pessoal"
+  principal: 1
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
+  reward:
+    item: {fileID: 0}
+    qntDinheiro: 0
+    XP: 700
+    fama: -400
+  dialogo:
+    dialogueLines:
+    - "L\xEDder Mesti\xE7o: Tenho algo a lhe dizer. "
+    - "#Tyva|Iovelik#: Voc\xEA n\xE3o est\xE1 com uma cara boa, L\xEDder. Temo que
+      seja uma not\xEDcia ruim. "
+    - "L\xEDder Mesti\xE7o: Voc\xEA est\xE1 certo. N\xE3o sei como lhe dizer isso,
+      na verdade... "
+    - "#Seu irm\xE3o|Sua irma# foi #capturado|capturada#. "
+    - "#Tyva|Iovelik#: #Iovelik?|Tyva?# ,n\xE3o \xE9 poss\xEDvel!! Eu n\xE3o acredito
+      nisso! "
+    - "L\xEDder Mesti\xE7o: Tamb\xE9m queria que n\xE3o fosse real. Os humanos #o|a#
+      capturaram durante uma miss\xE3o. "
+    - "#Tyva|Iovelik#: Que merda, eles v\xE3o execut\xE1-#lo|la#. Onde #ele|ela#
+      est\xE1?? Tenho que salv\xE1-#lo|la#!! "
+    - "L\xEDder Mesti\xE7o: Um dos agentes disse que viu os humanos #o|a# levarem
+      para oeste da periferia. "
+    - '#Tyva|Iovelik#: Droga, irei imediatamente. '
+    - "L\xEDder Mesti\xE7o: N\xE3o lhe dei a ordem para ir. "
+    - "#Tyva|Iovelik#: Que se foda sua ordem, #meu irm\xE3o|minha irm\xE3# est\xE1
+      em perigo! "
+  condicoes:
+  - tipoCondicao: 2
+    local: {x: 166.9, y: 23.8, z: 452.42145}
+    descricao: Combata os inimigos a oeste da Periferia.
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    raioDeSpawn: 15
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 0, y: 0, z: 0}
+    descricao: O que aconteceu...?
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "#Tyva|Iovelik#: #Iovelik|Tyva#!! Voc\xEA esta! Bem?? "
+      - "Por favor, me responda #irm\xE3o|irm\xE3# "
+      - "N\xE3o acredito... POR FAVOR, ACORDE!! "
+      - "N\xC3AAAAAAOO! N\xC3O MORRA ASSIM, POR FAVOR!! "
+      - '... '
+      - "Humanos malditos, desgra\xE7ados. Eu os farei pagar por isso. "
+      - "Matarei at\xE9 o \xFAltimo humano neste planeta, eu juro. Juro que te vingarei,
+        #Tyva|Iovelik# "
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}

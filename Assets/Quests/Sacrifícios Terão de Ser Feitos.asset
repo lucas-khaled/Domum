@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
+  m_Name: "Sacrif\xEDcios Ter\xE3o de Ser Feitos"
+  m_EditorClassIdentifier: 
+  nome: "Sacrif\xEDcios Ter\xE3o de Ser Feitos"
+  principal: 1
+  isQuestAdditioner: 1
+  questToAdd: {fileID: 11400000, guid: 7c9c65faa25e4aa4a96a080a96a867c8, type: 2}
+  questGiverName: "Mesti\xE7o 5"
+  reward:
+    item: {fileID: 0}
+    qntDinheiro: 0
+    XP: 600
+    fama: -300
+  dialogo:
+    dialogueLines:
+    - "Anci\xE3o: Jovem, o seu L\xEDder deve ter lhe dado as \xFAltimas not\xEDcias. "
+    - "#Tyva|Iovelik#: Ainda n\xE3o fui informado, Grande Anci\xE3o. Anci\xE3o: Ainda
+      com a baboseira de \u201Cgrande\u201D? Quem est\xE1 se tornando grande aqui
+      \xE9 voc\xEA, tolo. "
+    - "#Tyva|Iovelik#: Me sinto lisonjeado, anci\xE3o, mas fiz apenas o que pude
+      fazer pela rebeli\xE3o. Anci\xE3o: Esse \u201CTudo o que pode fazer\u201D \xE9
+      enorme, filho. \xC9 nobre querer ser humilde, mas nunca podemos esquecer do
+      poder que temos. "
+    - "E voc\xEA tem bastante. Bastante o suficiente para fazer com os humanos se
+      caguem de medo e se tranquem dentro de Criviek. Essa \xE9 a not\xEDcia que
+      queria te dar. Os humanos ordenaram a retirada de quase toda sua restante ap\xF3s
+      a surra que levaram. "
+    - "#Tyva|Iovelik#: \xC9 verdade?? Isso significa que sabem que podemos vencer,
+      que as chances est\xE3o do nosso lado agora. Anci\xE3o: Sim, e eles est\xE3o
+      se borrando de medo, mas n\xE3o s\xE3o est\xFApidos. Est\xE3o sendo prudentes,
+      defendendo a cidade, que \xE9 o ponto mais estrat\xE9gico. No entanto, \xE9
+      a primeira vez que vejo um recuo das tropas humanas. Nunca pensei que viveria
+      para ver isso; j\xE1 posso sentir a vit\xF3ria pr\xF3xima. "
+    - "#Tyva|Iovelik#: Voc\xEA \xE9 grande parte disso, Anci\xE3o. Sem seus conselhos
+      e sabedoria, jamais ter\xEDamos conseguido tudo isso. Anci\xE3o: Nah! Sou apenas
+      um velho desbocado, que sonha ver Criviek em paz novamente. Voc\xEA quem deve
+      levar toda gl\xF3ria. "
+    - "#Tyva|Iovelik#: Agrade\xE7o, anci\xE3o, mas s\xF3 desfrutarei de qualquer
+      prazer quando os humanos estiverem longe deste planeta. Anci\xE3o: Hmnn, de
+      fato ainda n\xE3o acabou. E para isso temos de fazer uma \xFAltima coisa antes
+      de dar o ataque final. "
+    - 'Devemos desligar com os geradores de energia nos arredores de Criviek '
+    - "#Tyva|Iovelik#: Os geradores? Mas eles n\xE3o alimentam a periferia tamb\xE9m?
+      Anci\xE3o: Sim, infelizmente. Mas tamb\xE9m alimentam grande parte da cidade.  "
+    - "Criviek tem geradores dentro, mas eles sozinhos n\xE3o conseguir\xE3o abastecer
+      suas defesas e seus equipamentos ao mesmo tempo. "
+    - "#Tyva|Iovelik#: Entendo, os humanos n\xE3o conseguem respirar nosso ar, portanto
+      precisam de seus equipamentos para respirar. "
+    - "Ter\xE3o de escolher entre se defender ou viver Anci\xE3o: Como criaturas
+      inteligentes, escolher\xE3o viver. Est\xE3o agarrados a isso desesperadamente.  "
+    - "Est\xE3o t\xE3o amedrontados que criaram essa chance para n\xF3s. O resto
+      de suas tropas que n\xE3o est\xE3o em Criviek est\xE3o defendendo os geradores,
+      mas n\xE3o s\xE3o suficientes. "
+    - "#Tyva|Iovelik#: Podemos acabar com eles. E devemos fazer isso r\xE1pido, enquanto
+      ainda est\xE3o atordoados. "
+    - "Mas, anci\xE3o, isso acabar\xE1 com a \xFAnica fonte de energia que abastece
+      nossa ra\xE7a. Vale mesmo a pena? Anci\xE3o: Valer\xE1, soldado. Infelizmente,
+      sacrif\xEDcios ter\xE3o de serem feitos para que a revolu\xE7\xE3o aconte\xE7a
+      e a oportunidade \xE9 boa demais "
+    - "Mas n\xE3o se engane, sei que faremos valer quando acabarmos com esses humanos. "
+    - "#Tyva|Iovelik#: Assim espero. Anci\xE3o: Eu tamb\xE9m, jovem. Agora v\xE1,
+      voc\xEA tem a miss\xE3o de destruir 3 geradores de energia. "
+  condicoes:
+  - tipoCondicao: 2
+    local: {x: 457.7, y: 20.5, z: 350.5}
+    descricao: "V\xE1 at\xE9 o acampamento do Deserto e derrote os inimigos."
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    raioDeSpawn: 6
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 3
+    local: {x: 0, y: 0, z: 0}
+    descricao: Interaja com o primeiro gerador.
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 1
+    nameOnScene: Gerador 1
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 2
+    local: {x: 262.3, y: 24.4, z: 339.7}
+    descricao: "V\xE1 at\xE9 o acampamento pr\xF3ximo ao lago e derrote os inimigos."
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    raioDeSpawn: 8
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 3
+    local: {x: 0, y: 0, z: 0}
+    descricao: Interaja com o segundo gerador.
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 1
+    nameOnScene: Gerador 2
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 2
+    local: {x: 76.3, y: 31.2, z: 299.7}
+    descricao: "V\xE1 at\xE9 o acampamento na floresta e derrote os inimigos."
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    raioDeSpawn: 8
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 3
+    local: {x: 0, y: 0, z: 0}
+    descricao: "Interaja com o terceiro e \xFAltimo gerador."
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 1
+    nameOnScene: Gerador 3
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 0, y: 0, z: 0}
+    descricao: "Reporte o sucesso da miss\xE3o ao Anci\xE3o."
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "#Tyva|Iovelik#: Os geradores foram destru\xEDdos. "
+      - "Anci\xE3o: \xC9 uma pena, mas necess\xE1rio. Fez bem, soldado. N\xE3o e
+        preocupe, pois tudo melhorar\xE1 ap\xF3s a revolu\xE7\xE3o. "
+    isOnScene: 1
+    nameOnScene: Anciao
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}

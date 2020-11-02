@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
+  m_Name: Os Erros do Inimigo
+  m_EditorClassIdentifier: 
+  nome: Os Erros do Inimigo
+  principal: 1
+  isQuestAdditioner: 1
+  questToAdd: {fileID: 11400000, guid: 857997feb2075d14faf5f3f2de4bb94d, type: 2}
+  questGiverName: Anciao
+  reward:
+    item: {fileID: 0}
+    qntDinheiro: 50
+    XP: 400
+    fama: 500
+  dialogo:
+    dialogueLines:
+    - "L\xEDder Mesti\xE7o: Soldado, devo parabeniz\xE1-lo por trazer os Atriets
+      para o nosso lado. N\xE3o conseguir\xEDamos chegar onde chegamos sem voc\xEA."
+    - "#Tyva|Iovelik#: Agrade\xE7o, L\xEDder! Para mim \xE9 uma honra saber que ajudei
+      a alcan\xE7ar a liberdade.  "
+    - "L\xEDder Mesti\xE7o: Ainda n\xE3o alcan\xE7amos, mas estamos quase l\xE1.
+      A popula\xE7\xE3o se revolta e as ruas da periferia est\xE3o cada vez mais
+      tensas. "
+    - "#Tyva|Iovelik#: Eles sabem que podem perder, principalmente agora que os Atriets
+      se juntaram a n\xF3s. "
+    - "L\xEDder Mesti\xE7o: N\xE3o acho que saibam disso, mas com certeza desconfiam.
+      Eles atacar\xE3o de qualquer forma, pois n\xE3o querem que tenhamos um poss\xEDvel
+      aliado. "
+    - "Est\xE3o certos de que n\xE3o estamos preparados para um poss\xEDvel ataque
+      \xE0 Vila Atriet. "
+    - "#Tyva|Iovelik#: A\xED que se enganam. N\xE3o s\xF3 estamos prontos como possu\xEDmos
+      equipamento o suficiente para bater de frente com eles! "
+    - "L\xEDder Mesti\xE7o: Exatamente! Temos que tirar o m\xE1ximo proveito dos
+      erros do nosso inimigo. "
+    - "Pela l\xF3gica, o ataque dos humanos partir\xE1 da sua base militar na floresta,
+      pois \xE9 mais pr\xF3xima da vila. "
+    - "Assim que enviarem seu ex\xE9rcito, sobrar\xE3o poucos guardas para defende-la
+      e estar\xE3o expostos a um ataque. "
+    - "Quando baterem em retirada ao notar que estamos preparados para a investida
+      na Vila, voltar\xE3o correndo pra base. "
+    - "#Tyva|Iovelik#: Espera, se tomarmos ela antes que voltem, encontrar\xE3o nossos
+      agentes l\xE1... "
+    - "L\xEDder Mesti\xE7o: Exatamente. Quando voltarem para base, buscando seguran\xE7a,
+      v\xE3o notar que n\xE3o est\xE3o t\xE3o seguros assim. "
+    - "Vamos mostrar pra eles um pouco do gosto de como \xE9 ter seu lar tomado e
+      se sentir amea\xE7ado dentro dele. "
+    - "#Tyva|Iovelik#: Tomar\xE3o do pr\xF3prio veneno. \xC9 um \xF3timo plano, L\xEDder.
+      Acabaremos com um ex\xE9rcito inteiro deles e ao mesmo tempo tomaremos uma
+      de suas bases. "
+    - "L\xEDder Mesti\xE7o: Correto de novo, meu caro. Mas para que isso funcione,
+      o ex\xE9rcito n\xE3o pode saber o que est\xE1 acontecendo na base, portanto
+      enviar muitos soldados chamaria aten\xE7\xE3o. "
+    - "#Tyva|Iovelik#: Teremos de ser inc\xF3gnitos para que isso funcione. Devo
+      ir sozinho novamente? "
+    - "L\xEDder Mesti\xE7o: Funcionou da \xFAltima vez e n\xE3o vejo porque n\xE3o
+      funcionaria novamente. S\xF3 voc\xEA possui a habilidade para completar tal
+      miss\xE3o. "
+    - "#Tyva|Iovelik#: E eu a completarei, L\xEDder.  "
+    - "L\xEDder Mesti\xE7o: Sei que ir\xE1, soldado. Tem toda minha confian\xE7a
+      com voc\xEA. "
+    - "Nossos batedores j\xE1 nos avisaram da sa\xEDda do ex\xE9rcito. Se for agora,
+      eles j\xE1 estar\xE3o longe o bastante para saber o que est\xE1 acontecendo
+      em casa. "
+    - '#Tyva|Iovelik#: Irei imediatamente! '
+    - "L\xEDder Mesti\xE7o: Boa sorte, soldado! "
+  condicoes:
+  - tipoCondicao: 2
+    local: {x: 68.7, y: 35.5, z: 296.5}
+    descricao: "V\xE1 at\xE9 a base e derrote todos os inimigos."
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    raioDeSpawn: 8
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 0, y: 0, z: 0}
+    descricao: "Reporte ao L\xEDder Mesti\xE7o o sucesso da miss\xE3o."
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "#Tyva|Iovelik#: A base foi tomada, L\xEDder. "
+      - "L\xEDder Mesti\xE7o: \xF3timo! Acabei de ser informado de que a investida
+        humana foi recha\xE7ada. O que restou do ex\xE9rcito deles est\xE1 marchando
+        de volta a base sem desconfiar de nada! "
+      - "#Tyva|Iovelik#: Ser\xE3o massacrados ao retornar. "
+      - "L\xEDder Mesti\xE7o: Como planejado. Fez um grande trabalho soldado! "
+    isOnScene: 1
+    nameOnScene: "Mesti\xE7o 5"
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
