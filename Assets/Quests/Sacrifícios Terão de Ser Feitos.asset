@@ -95,7 +95,13 @@ MonoBehaviour:
   - tipoCondicao: 3
     local: {x: 0, y: 0, z: 0}
     descricao: Interaja com o primeiro gerador.
-    objsToInstantiate: []
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 3140915007002893456, guid: 4657aa568ec5be043979e5902cc9965a,
+        type: 3}
+      local: {x: 52.44, y: 146.79, z: 85.98}
+      rotacao: {x: 0, y: 0, z: 0}
+      nome: "Gerador1_Interag\xEDvel"
+      qualPlayer: 2
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
@@ -128,7 +134,13 @@ MonoBehaviour:
   - tipoCondicao: 3
     local: {x: 0, y: 0, z: 0}
     descricao: Interaja com o segundo gerador.
-    objsToInstantiate: []
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 3140915007002893456, guid: 4657aa568ec5be043979e5902cc9965a,
+        type: 3}
+      local: {x: -143.0569, y: 151.3173, z: 107.1667}
+      rotacao: {x: 0, y: 0, z: 0}
+      nome: "Gerador2_Interag\xEDvel"
+      qualPlayer: 2
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
@@ -162,7 +174,13 @@ MonoBehaviour:
   - tipoCondicao: 3
     local: {x: 0, y: 0, z: 0}
     descricao: "Interaja com o terceiro e \xFAltimo gerador."
-    objsToInstantiate: []
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 3140915007002893456, guid: 4657aa568ec5be043979e5902cc9965a,
+        type: 3}
+      local: {x: -343.3539, y: 159.6509, z: 63.57571}
+      rotacao: {x: 0, y: 0, z: 0}
+      nome: "Gerador3_Interag\xEDvel"
+      qualPlayer: 2
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
