@@ -93,12 +93,12 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 3
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 460.9439, y: 19.70905, z: 336.9143}
     descricao: Interaja com o primeiro gerador.
     objsToInstantiate:
     - objetoPrefab: {fileID: 3140915007002893456, guid: 4657aa568ec5be043979e5902cc9965a,
         type: 3}
-      local: {x: 52.44, y: 146.79, z: 85.98}
+      local: {x: 460.9439, y: 19.70905, z: 336.9143}
       rotacao: {x: 0, y: 0, z: 0}
       nome: "Gerador1_Interag\xEDvel"
       qualPlayer: 2
@@ -106,7 +106,7 @@ MonoBehaviour:
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 1
-    nameOnScene: Gerador 1
+    nameOnScene: "Gerador1_Interag\xEDvel"
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0
@@ -132,12 +132,12 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 3
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 265.4471, y: 24.23637, z: 358.101}
     descricao: Interaja com o segundo gerador.
     objsToInstantiate:
     - objetoPrefab: {fileID: 3140915007002893456, guid: 4657aa568ec5be043979e5902cc9965a,
         type: 3}
-      local: {x: -143.0569, y: 151.3173, z: 107.1667}
+      local: {x: 265.4471, y: 24.23637, z: 358.101}
       rotacao: {x: 0, y: 0, z: 0}
       nome: "Gerador2_Interag\xEDvel"
       qualPlayer: 2
@@ -145,7 +145,7 @@ MonoBehaviour:
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 1
-    nameOnScene: Gerador 2
+    nameOnScene: "Gerador2_Interag\xEDvel"
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
     objsToInstantiate:
     - objetoPrefab: {fileID: 3140915007002893456, guid: 4657aa568ec5be043979e5902cc9965a,
         type: 3}
-      local: {x: -343.3539, y: 159.6509, z: 63.57571}
+      local: {x: 67.59393, y: 32.01906, z: 314.51}
       rotacao: {x: 0, y: 0, z: 0}
       nome: "Gerador3_Interag\xEDvel"
       qualPlayer: 2
@@ -185,7 +185,7 @@ MonoBehaviour:
     dialogoDaCondicao:
       dialogueLines: []
     isOnScene: 1
-    nameOnScene: Gerador 3
+    nameOnScene: "Gerador3_Interag\xEDvel"
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
     raioDeSpawn: 0
