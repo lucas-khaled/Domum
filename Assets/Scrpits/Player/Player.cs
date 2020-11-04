@@ -202,6 +202,10 @@ public class Player : MonoBehaviour, IVulnerable
     protected Vector3 ProcuraInimigo()
     {
         Collider[] hit = Physics.OverlapSphere(posicaoHit.position, raioPercepcao, LayerMask.GetMask("Inimigo"));
+        
+        foreach (Collider inimigoA in hit)
+            if (!inimigoA.CompareTag("Inimigo"))
+                return Vector3.zero;
 
         if (hit.Length > 0)
         {

@@ -162,7 +162,13 @@ public class Iovelik : Player
         foreach (Collider inimigoArea in hit)
         {
             distancia = Vector3.Distance(inimigoArea.gameObject.transform.position, this.gameObject.transform.position);
-            inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));   
+            
+            if (inimigoArea.gameObject.CompareTag("Inimigo"))
+                inimigoArea.gameObject.GetComponent<Inimigo>().ReceberDano((int)(valorDanoArea / distancia));
+            if (inimigoArea.gameObject.CompareTag("Tigre"))
+                inimigoArea.gameObject.GetComponent<Tigre>().ReceberDano((int)(valorDanoArea / distancia));
+            if (inimigoArea.gameObject.CompareTag("Girafa"))
+                inimigoArea.gameObject.GetComponent<Girafa>().ReceberDano((int)(valorDanoArea / distancia));
         }
         EspecialVFX.transform.position = posicaoHit.position;
 

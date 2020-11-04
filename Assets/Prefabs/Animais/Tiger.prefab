@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 5085280387424692028}
   - component: {fileID: 8049311981465013656}
   - component: {fileID: -3779011840405001386}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tiger
   m_TagString: Tigre
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ MonoBehaviour:
   danoMedio: 15
   boca: {fileID: 6524988730121674360}
   pata: {fileID: 5712279805999038358}
-  distanciaAtaque: 0
+  distanciaAtaque: 2
   cooldown: 2
 --- !u!135 &5085280387424692028
 SphereCollider:

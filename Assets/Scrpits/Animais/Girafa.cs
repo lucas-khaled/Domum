@@ -51,23 +51,18 @@ public class Girafa : MonoBehaviour
 
     private void Update()
     {
-        if (anim.GetBool("Caminhando"))
+        if (anim.GetBool("Caminhando") && !anim.GetBool("Correndo"))
          {
-            Debug.Log("Sto de boa");
-
             if (Vector3.Distance(this.gameObject.transform.position, destino) < 1.2f)
             {
                 anim.SetBool("Caminhando", false);
-                animal.isStopped = true;
             }
         }
         if (anim.GetBool("Correndo") && corrida > 0)
         {
-            Debug.Log("Corre kraio");
-
+            this.transform.LookAt(destino);
             if (Vector3.Distance(this.gameObject.transform.position, destino) < 1.2f)
             {
-                Debug.Log("Escolhi1");
                 destino = RandomNavMeshGenerator(20f);
                 animal.SetDestination(destino);
                 corrida--;
@@ -75,11 +70,9 @@ public class Girafa : MonoBehaviour
         }
         else if (anim.GetBool("Correndo") && corrida <= 0)
         {
-            Debug.Log("Canse");
             GetComponent<NavMeshAgent>().speed = 0.5f;
             anim.SetBool("Correndo", false);
             correndo = false;
-            Debug.Log("Escolhi2");
             destino = RandomNavMeshGenerator(10f);
             Movimentar(destino);
         }
@@ -88,9 +81,6 @@ public class Girafa : MonoBehaviour
     void DroparLoot()
     {
         int numeroItens = UnityEngine.Random.Range(0, 4);
-
-        Debug.Log(numeroItens);
-
         Bau dropzera = Instantiate(drop.gameObject, transform.position, transform.rotation).GetComponent<Bau>();
 
         for (int i = 0; i <= numeroItens; i++)
@@ -109,7 +99,6 @@ public class Girafa : MonoBehaviour
                 int escolha = UnityEngine.Random.Range(0, 4);
                 if (escolha == 0)
                 {
-                    Debug.Log("Escolhi3");
                     destino = RandomNavMeshGenerator(10f);
                     Movimentar(destino);
                 }
@@ -143,7 +132,7 @@ public class Girafa : MonoBehaviour
     {
         if (!anim.GetBool("Caminhando") && !anim.GetBool("Caminhando"))
         {
-        animal.isStopped = true;
+            animal.isStopped = true;
         anim.SetBool("Caminhando", false);
 
         anim.SetBool("Deitado", true);
@@ -152,7 +141,6 @@ public class Girafa : MonoBehaviour
         anim.SetTrigger("Levantar");
         anim.SetBool("Deitado", false);
         yield return new WaitForSeconds(3f);
-            Debug.Log("Escolhi4");
             destino = RandomNavMeshGenerator(10f);
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("Caminhando", true);
@@ -220,7 +208,6 @@ public class Girafa : MonoBehaviour
                 anim.SetBool("Caminhando", true);
                 correndo = true;
                 corrida = UnityEngine.Random.Range(2, 6);
-                Debug.Log("Escolhi6");
                 destino = RandomNavMeshGenerator(20f);
                 animal.SetDestination(destino);
             }
@@ -264,8 +251,6 @@ public class Girafa : MonoBehaviour
         }
         else if (!collision.gameObject.CompareTag("Chao"))
         {
-            Debug.Log("chao do kralho");
-            Debug.Log("Escolhi5");
             destino = RandomNavMeshGenerator(20f);
             animal.SetDestination(destino);
         }
@@ -276,7 +261,6 @@ public class Girafa : MonoBehaviour
         correndo = true;
         corrida = UnityEngine.Random.Range(2, 6);
         GetComponent<NavMeshAgent>().speed = 4;
-        Debug.Log("Escolhi7");
         destino = RandomNavMeshGenerator(20f);
         animal.SetDestination(destino);
     }
@@ -296,7 +280,7 @@ public class Girafa : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(destino, 2f);
-        Gizmos.color = Color.black;
+        Gizmos.color = Color.black; 
         Gizmos.DrawWireSphere(destino, 2);
     }
 }

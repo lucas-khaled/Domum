@@ -91,11 +91,14 @@ public class Tigre : MonoBehaviour
         //Debug.Log(Vector3.Distance(this.gameObject.transform.position, destino));
         if (Vector3.Distance(this.gameObject.transform.position, destino) < 1f )
         {
+            if (!playerperto)
             animal.isStopped = true;
             anim.SetBool("Caminhando", false);
             anim.SetBool("Idle", true);
             aux = false;
         }
+        if (playerperto && this.GetComponent<NavMeshAgent>())
+            animal.isStopped = false;
     }
     protected virtual void OnTriggerStay(Collider collider)
     {
@@ -119,7 +122,7 @@ public class Tigre : MonoBehaviour
             if (Vector3.Distance(this.gameObject.transform.position, collider.transform.position) > 2.5f)
                     animal.SetDestination(collider.transform.position);
 
-            if (distancia <= 3f && anim.GetBool("Correndo") && distancia > 2 && canAttack)
+            if (distancia <= 2.5f && anim.GetBool("Correndo") && distancia > 2 && canAttack)
             {
                 StartCoroutine(jumpAttack());
                 audioSource.PlayOneShot(mordida);
@@ -301,13 +304,6 @@ public class Tigre : MonoBehaviour
     {
             anim.SetBool("Idle", false);
             anim.SetBool("Caminhando", true);
-
-            if (!move)
-            {
-                animal.isStopped = true;
-                yield return 0;
-            }
-
             this.transform.LookAt(destino);
             animal.isStopped = false;
             animal.SetDestination(destino);
