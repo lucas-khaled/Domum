@@ -13,7 +13,6 @@ public class Distancia : Inimigo
     public GameObject imagemAlerta;
     public GameObject bala;
     public Transform pontoTiro;
-    public Transform pontoAlerta;
     [SerializeField]
     private float miraTime = 2;
 

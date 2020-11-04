@@ -120,7 +120,6 @@ MonoBehaviour:
   lifeBar: {fileID: 4174654720461483270}
   anim: {fileID: 6411842154043202470}
   NavMesh: {fileID: 11868605152789747}
-  posicaoInicial: {x: 0, y: 0, z: 0}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   itensDropaveis:
@@ -134,7 +133,7 @@ MonoBehaviour:
   maxVida: 80
   danoMedio: 25
   velocidade: 4
-  distanciaAtaque: 10
+  distanciaAtaque: 20
   vida: 0
   velocidadeAtaque: 4
   velocidadeAnim: 0
@@ -143,9 +142,9 @@ MonoBehaviour:
   morto: 0
   tiro: {fileID: 8300000, guid: fca5741c0efd0464b8313d03089daa37, type: 3}
   imagemAlerta: {fileID: 6313487266234491018}
-  bala: {fileID: 1779981273043796429, guid: 165146131202b4945ac99992bcf42f52, type: 3}
+  bala: {fileID: 6513812446696126456, guid: 2a622db4a17cfd24198ae09594e7d968, type: 3}
   pontoTiro: {fileID: 8657180646188193612}
-  pontoAlerta: {fileID: 5228931203621817396}
+  miraTime: 2
 --- !u!65 &11868605152789709
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -170,7 +169,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8.59
+  m_Radius: 23
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &799847734002423744
 AudioSource:
@@ -1229,7 +1228,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4174654720198884324}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.0000002533197}
-  m_LocalPosition: {x: 0, y: 0, z: -0.152}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.00918, y: 0.00918, z: 0.00918}
   m_Children:
   - {fileID: 4174654722017913131}
@@ -1239,7 +1238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.08, y: 2.33}
+  m_AnchoredPosition: {x: 0, y: 2.33}
   m_SizeDelta: {x: 278.968, y: 156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4174654720198884320
@@ -1980,7 +1979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &701221706079740887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1989,15 +1988,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6313487266234491018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 0.78172, y: 0.78172, z: 0.78172}
   m_Children: []
   m_Father: {fileID: 4174654720198884325}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &904407888102450309
@@ -2029,7 +2028,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 4a2df3e0fed35b540a615f92093f3490, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
