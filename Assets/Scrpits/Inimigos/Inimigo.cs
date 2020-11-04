@@ -11,7 +11,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
     public Image lifeBar;
     public Animator anim;
     public NavMeshAgent NavMesh;
-    public Vector3 posicaoInicial;
+    
     public GameObject CBTprefab;
     public Item[] itensDropaveis;
     public Bau drop;
@@ -23,6 +23,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
     private AudioClip passos;
 
     private double audioAux;
+    private Vector3 posicaoInicial;
 
     //Criar Array de Itens para ele dropar
     [Header("Valores")]
@@ -52,7 +53,9 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     protected float ataqueCooldown;
 
-    protected bool travaMovimento;
+    protected bool goHome = false;
+
+    protected bool move;
 
     [HideInInspector]
     public bool morto = false;
@@ -83,7 +86,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     private void Start()
     {
-        travaMovimento = false;
+        //travaMovimento = false;
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
         posicaoInicial = this.transform.position;
@@ -122,7 +125,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
         }
 
         canAttack = false;
-        travaMovimento = true;
+       // travaMovimento = true;
 
         int escolha = Random.Range(1, 3);
         if (escolha == 1)
@@ -130,8 +133,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
         else
             anim.SetTrigger("Ataque 2");
 
-        yield return new WaitForSeconds(0.5f);
-        travaMovimento = false;
+        //yield return new WaitForSeconds(0.5f);
+       // travaMovimento = false;
 
         yield return new WaitForSeconds(velocidadeAtaque);
         canAttack = true;
@@ -216,8 +219,8 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
     protected void Movimentar(Vector3 destino, bool move = true)
     {
-        if (!travaMovimento)
-        {
+        //if (!travaMovimento)
+        //{
             if (!move && NavMesh != null)
             {
                 NavMesh.isStopped = true;
@@ -226,12 +229,12 @@ public class Inimigo : MonoBehaviour, IVulnerable
 
             NavMesh.isStopped = false;
             NavMesh.SetDestination(destino);
-        }
-        else
-            anim.SetBool("idle", false);
+       // }
+        //else
+            //anim.SetBool("Idle", false);
     }
 
-    void FaceTarget()
+    protected void FaceTarget()
     {
         Vector3 direcao = (Player.player.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direcao.x, 0, direcao.z));
@@ -244,13 +247,10 @@ public class Inimigo : MonoBehaviour, IVulnerable
         {
             float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
 
-            if (distancia > distanciaAtaque)
-                anim.SetBool("Idle", false);
-            else
-                anim.SetBool("Idle", true);
+            anim.SetBool("Idle", false);
 
-            bool mover = true;
-            travaMovimento = false;
+            move = true;
+            goHome = false;
 
             if (audioAux <= 0 && distancia > distanciaAtaque)
             {
@@ -264,7 +264,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
             if (distancia <= distanciaAtaque)
             {
                 anim.SetBool("PertoPlayer", true);
-                mover = false;
+                move = false;
                 FaceTarget();
                 if (canAttack)
                   StartCoroutine(Atacar());        
@@ -274,7 +274,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
                 anim.SetBool("PertoPlayer", false);
             }
 
-            Movimentar(collider.transform.position, mover);
+            Movimentar(collider.transform.position, move);
         }
 
     }
@@ -283,10 +283,25 @@ public class Inimigo : MonoBehaviour, IVulnerable
         if (collider.gameObject.tag == "Player")
         {
             Movimentar(posicaoInicial);
-            travaMovimento = false;
+            //travaMovimento = false;
             ataqueCooldown = 0;
-            anim.SetBool("Idle", true);
+            StartCoroutine(SetIdle());
+
         }
+    }
+
+    IEnumerator SetIdle()
+    {
+        goHome = true;
+        while (Vector3.Distance(transform.position, posicaoInicial) > 0.5f)
+        {
+            if (!goHome)
+                yield break;
+
+            yield return new WaitForSeconds(0.3f);
+        }
+        anim.SetBool("Idle", true);
+
     }
 
     private void OnCollisionEnter(Collision collision)

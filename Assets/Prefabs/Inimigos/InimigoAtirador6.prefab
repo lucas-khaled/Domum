@@ -380,7 +380,6 @@ MonoBehaviour:
   lifeBar: {fileID: 5050804978467039896}
   anim: {fileID: 7191762600519909407}
   NavMesh: {fileID: 7191762600519909406}
-  posicaoInicial: {x: 0, y: 0, z: 0}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   itensDropaveis:
@@ -395,7 +394,7 @@ MonoBehaviour:
   maxVida: 80
   danoMedio: 25
   velocidade: 4
-  distanciaAtaque: 5
+  distanciaAtaque: 12
   vida: 0
   velocidadeAtaque: 4
   velocidadeAnim: 0
@@ -408,6 +407,7 @@ MonoBehaviour:
   bala: {fileID: 1779981273043796429, guid: 165146131202b4945ac99992bcf42f52, type: 3}
   pontoTiro: {fileID: 7191762599752568071}
   pontoAlerta: {fileID: 0}
+  miraTime: 2
 --- !u!54 &7191762600519909401
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -573,7 +573,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8.5
+  m_Radius: 14
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1273730452211420199
 GameObject:

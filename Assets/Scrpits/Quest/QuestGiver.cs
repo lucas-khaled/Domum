@@ -28,6 +28,7 @@ public class QuestGiver : Interagivel
     public void AddQuestToBeNext(Quest quest)
     {
         quests.Insert(questsAceitas, quest);
+        icone.SetActive(true);
     }
 
     private void Awake()
@@ -52,6 +53,11 @@ public class QuestGiver : Interagivel
         if (questsAceitas > 0)
         {
             OnQuestLogChanged(quests[questsAceitas - 1], true);
+        }
+
+        if(questsAceitas >= quests.Count)
+        {
+            icone.SetActive(false);
         }
     }
 

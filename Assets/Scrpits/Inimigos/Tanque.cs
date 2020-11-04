@@ -23,11 +23,11 @@ public class Tanque : Inimigo
     protected override IEnumerator Atacar()
     {
         choose = false;
-        travaMovimento = true;
+        //travaMovimento = true;
         Coroutine c = StartCoroutine(base.Atacar());
 
         yield return c;
-        travaMovimento = false;
+        //travaMovimento = false;
 
         anim.SetBool("Idle", true);
 
@@ -40,7 +40,7 @@ public class Tanque : Inimigo
     {
         ataqueCooldown = velocidadeAtaque;
         anim.SetBool("Defendendo", true);
-        travaMovimento = true;
+        //travaMovimento = true;
         choose = false;
         defendendo = true;
 
@@ -48,7 +48,7 @@ public class Tanque : Inimigo
 
         anim.SetBool("Defendendo", false);
         defendendo = false;
-        travaMovimento = false;
+        //travaMovimento = false;
 
         yield return new WaitForSeconds(cooldownGeral);
 
@@ -75,19 +75,15 @@ public class Tanque : Inimigo
         if (collider.gameObject.tag == "Player" && hostil && Player.player.estadoPlayer != EstadoPlayer.MORTO)
         {
             anim.SetBool("Idle", false);
-            bool mover = false;
-
-            if (!defendendo)
-            {
-                mover = true;
-            }
+            move = !defendendo;
+            goHome = false;
 
             float distancia = Vector3.Distance(collider.gameObject.transform.position, gameObject.transform.position);
 
             if (distancia <= distanciaAtaque)
             {
                 anim.SetBool("PertoPlayer", true);
-                mover = false;
+                move = false;
                 if (ataqueCooldown <= 0 && choose)
                     EscolheAcao();
             }
@@ -97,7 +93,7 @@ public class Tanque : Inimigo
             }
 
             ataqueCooldown -= Time.deltaTime * 1;
-            Movimentar(collider.transform.position, mover);
+            Movimentar(collider.transform.position, move);
         }
     }
 }

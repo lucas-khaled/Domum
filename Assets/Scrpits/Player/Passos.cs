@@ -42,7 +42,6 @@ public class Passos : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, tamanhoRayCast, layerMask) && caminhando && podeTocar && delay <= 0)
         {
-            Debug.Log("A");
             delay = delayTempo;
 
             outroPe.GetComponent<Passos>().podeTocar = true;

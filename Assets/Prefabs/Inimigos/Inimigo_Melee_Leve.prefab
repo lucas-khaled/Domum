@@ -952,7 +952,6 @@ MonoBehaviour:
   lifeBar: {fileID: 732953660717379080}
   anim: {fileID: 8829005254618127664}
   NavMesh: {fileID: 5869978736398375767}
-  posicaoInicial: {x: 0, y: 0, z: 0}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   itensDropaveis:
@@ -969,7 +968,7 @@ MonoBehaviour:
   velocidade: 5
   distanciaAtaque: 1.8
   vida: 0
-  velocidadeAtaque: 5
+  velocidadeAtaque: 3
   velocidadeAnim: 0
   experienciaMorte: 20
   hitPoint: {fileID: 732953660625071798}
