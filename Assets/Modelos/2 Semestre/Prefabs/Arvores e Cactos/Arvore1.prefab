@@ -124,9 +124,9 @@ MeshCollider:
   m_GameObject: {fileID: 1023916982853514011}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9042820132775719052, guid: 943eebe8655922f489a6d832d69ca16f, type: 3}
 --- !u!1 &1458305069693921424
@@ -139,6 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3740543402600086841}
   - component: {fileID: 4321376918401576247}
+  - component: {fileID: 3379925478108690542}
   m_Layer: 0
   m_Name: Arvre
   m_TagString: Untagged
@@ -187,6 +188,20 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
+--- !u!64 &3379925478108690542
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458305069693921424}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9042820132775719052, guid: 89d81aa8864f72c4d98635c8ec4a7a25, type: 3}
 --- !u!1 &2125520019713405662
 GameObject:
   m_ObjectHideFlags: 0

@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6279944155034285957}
   - component: {fileID: 5038504921734154668}
-  - component: {fileID: 5709934801379227686}
+  - component: {fileID: 8666033144316294299}
   m_Layer: 0
   m_Name: Cacto2
   m_TagString: Untagged
@@ -216,8 +216,8 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
---- !u!64 &5709934801379227686
-MeshCollider:
+--- !u!136 &8666033144316294299
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -226,7 +226,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1815021238715657238, guid: 0d3d1ed04ba36fc408536a85f6d01028, type: 3}
+  m_Radius: 0.006280665
+  m_Height: 0.09490603
+  m_Direction: 2
+  m_Center: {x: 0.00030563353, y: -0.0004395342, z: 0.040391788}
