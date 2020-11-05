@@ -9,11 +9,13 @@ public class Tyva : Player
 
     [Header("Valores Tyva")]
     [SerializeField]
-    private float forcaDash;
+    private float distanciaDash = 6;
     [SerializeField]
     private float timeFaca;
     [SerializeField]
     private float tempoRecarga = 1;
+    [SerializeField]
+    private float dashRate = 10;
 
     [Header("Audio Tyva")]
     [SerializeField]
@@ -75,6 +77,7 @@ public class Tyva : Player
     public GameObject faca;
     [SerializeField]
     private GameObject dashVFX;
+    
 
     private float contadorFaca;
     
@@ -128,18 +131,47 @@ public class Tyva : Player
 
         dashVFX.GetComponent<ParticleSystem>().Play();
 
-        while (estadoPlayer == EstadoPlayer.RECARREGAVEL || estadoPlayer == EstadoPlayer.ATACANDO)
+        RaycastHit hit;
+        bool chao = false;
+        Vector3 desiredPoint = posicaoHit.position + transform.forward * distanciaDash;
+        if(Physics.Linecast(posicaoHit.position, desiredPoint, out hit))
         {
-            //rb.AddForce(transform.forward * forcaDash * Time.deltaTime, ForceMode.VelocityChange);
-            transform.position += transform.forward * forcaDash * Time.deltaTime;
-            yield return null;
+            if (hit.transform.CompareTag("Chao"))
+            {
+                chao = true;
+                Debug.Log("Vai tomar no cu");
+            }
+
+            if (!hit.transform.CompareTag("Player") && !hit.transform.CompareTag("Inimigo"))        
+                desiredPoint = hit.point;
         }
+
+
+        desiredPoint.y = (!chao) ? transform.position.y : desiredPoint.y;
+
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Rigidbody>().useGravity = false;
+
+        float safetyTime = 2f;
+
+        while (Vector3.Distance(transform.position, desiredPoint)>1 && safetyTime>0)
+        {
+            //transform.position += transform.forward * forcaDash * Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, desiredPoint, (dashRate) * Time.deltaTime);
+            safetyTime -= 0.01f;
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        EndDash();
     }
+
 
     void EndDash()
     {
         dashVFX.GetComponent<ParticleSystem>().Stop();
         estadoPlayer = EstadoPlayer.NORMAL;
+        GetComponent<Collider>().enabled = true;
+        GetComponent<Rigidbody>().useGravity = true;
     }
 
     private void Faca()

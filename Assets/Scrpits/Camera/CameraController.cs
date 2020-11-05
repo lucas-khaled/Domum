@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum OrigemInput { MOUSE, JOYSTICK }
 
-[RequireComponent(typeof(Camera))]
+[RequireComponent(typeof(Camera))] [RequireComponent(typeof(CameraCollision))]
 public class CameraController : MonoBehaviour
 {
     [Header("Camera Values")]
@@ -26,8 +26,11 @@ public class CameraController : MonoBehaviour
     [Range(0.05f, 3f)]
     private float zoomSpeed = 1f;
     [SerializeField]
-    [Range(0.5f, 2f)]
-    private float maxZoom = 0.5f;
+    [Range(2f, 10f)]
+    private float maxZoom = 8f;
+    [SerializeField]
+    [Range(2f, 10f)]
+    private float minZoom = 2f;
     [SerializeField]
     private float zoomSmooth = 0.5f;
 
@@ -35,6 +38,8 @@ public class CameraController : MonoBehaviour
 
     float mouseX, mouseY, controleX, controleY;
     float controleXEsq, grauRotacao;
+
+    CameraCollision camCollision;
 
     [HideInInspector]
     public bool Trava { get; set; }
@@ -58,6 +63,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         obstrucao = Target;
+        camCollision = GetComponent<CameraCollision>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -85,16 +91,17 @@ public class CameraController : MonoBehaviour
 
     void Zoom()
     {
-        if (zoomAmount == maxZoom && Input.mouseScrollDelta.y > 0)
+        if (zoomAmount == maxZoom && Input.mouseScrollDelta.y < 0)
             return;
 
-        if (zoomAmount == -maxZoom && Input.mouseScrollDelta.y < 0)
+        if (zoomAmount == minZoom && Input.mouseScrollDelta.y > 0)
             return;
 
-        float zoomDirection = (Input.mouseScrollDelta.y > 0) ? 0.3f : -0.3f;
+        float zoomDirection = (Input.mouseScrollDelta.y > 0) ? -0.3f : 0.3f;
 
-        zoomAmount = Mathf.Clamp(zoomAmount + transform.forward.magnitude * zoomSpeed * zoomDirection, -maxZoom, maxZoom);
-        transform.position = Vector3.Lerp(transform.position, transform.position + (transform.forward * zoomSpeed * zoomDirection), 1 / zoomSmooth);
+        zoomAmount = Mathf.Clamp(zoomAmount + transform.forward.magnitude * zoomSpeed * zoomDirection, minZoom, maxZoom);
+        camCollision.maxDistance = zoomAmount;
+        //transform.position = Vector3.Lerp(transform.position, transform.position + (transform.forward * zoomSpeed * zoomDirection), 1 / zoomSmooth);
     }
 
     void CamFolow()

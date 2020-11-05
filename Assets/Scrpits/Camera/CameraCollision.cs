@@ -9,7 +9,6 @@ public class CameraCollision : MonoBehaviour
     public float maxDistance = 4.0f;
     public float smooth = 10.0f;
     Vector3 dollyDir;
-    public Vector3 dollyDirAdjusted;
     public float distance;
 
     void Awake()
@@ -25,7 +24,8 @@ public class CameraCollision : MonoBehaviour
 
         if (Physics.Linecast (transform.parent.position, desiredCameraPos, out hit))
         {
-            distance = Mathf.Clamp (hit.distance * 0.75f, minDistance, maxDistance);
+            if(!hit.transform.CompareTag("Player"))
+                distance = Mathf.Clamp (hit.distance * 0.75f, minDistance, maxDistance);
         }
         else
         {
