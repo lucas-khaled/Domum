@@ -65,12 +65,10 @@ public class Player : MonoBehaviour, IVulnerable
             {
                 if (value == EstadoPlayer.ATACANDO)
                 {
-                    particulaArma.gameObject.SetActive(true);
                     particulaArma.Play();
                 }
                 else
                 {
-                    particulaArma.gameObject.SetActive(false);
                     particulaArma.Stop();
                 }
             }
