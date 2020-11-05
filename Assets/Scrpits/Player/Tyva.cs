@@ -1,6 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Tyva : Player
 {
@@ -22,8 +23,9 @@ public class Tyva : Player
     private AudioClip dash;
     [SerializeField]
     private AudioClip lancarFaca;
-    
+
     private bool dashEspecial = false;
+    private Volume globalVolume;
 
     public bool facaLetal { get; set; }
 
@@ -66,7 +68,7 @@ public class Tyva : Player
 
             if (value >= 0 && value <= status.tempoDashTotal)
             {
-                UIController.uiController.SkillCD((float)tempoDash/status.tempoDashTotal);//Controlador UI da recarga
+                UIController.uiController.SkillCD((float)tempoDash / status.tempoDashTotal);//Controlador UI da recarga
             }
         }
     }
@@ -77,10 +79,10 @@ public class Tyva : Player
     public GameObject faca;
     [SerializeField]
     private GameObject dashVFX;
-    
+
 
     private float contadorFaca;
-    
+
 
     #region PreSettings
 
@@ -88,6 +90,7 @@ public class Tyva : Player
     {
         base.Start();
         facaLetal = false;
+        globalVolume = GameObject.FindObjectOfType<Volume>();
     }
 
     protected override void Awake()
@@ -103,7 +106,7 @@ public class Tyva : Player
         if (Input.GetButtonDown("AtkColetavel") && !UIController.uiController.isPaused)
         {
             Faca();
-        }       
+        }
 
         if (Input.GetButtonDown("Recarregavel") && !UIController.uiController.isPaused)
         {
@@ -114,7 +117,7 @@ public class Tyva : Player
             }
         }
 
-        TempoDash += Time.deltaTime*tempoRecarga;
+        TempoDash += Time.deltaTime * tempoRecarga;
         contadorFaca += Time.deltaTime;
     }
 
@@ -134,27 +137,29 @@ public class Tyva : Player
         RaycastHit hit;
         bool chao = false;
         Vector3 desiredPoint = posicaoHit.position + transform.forward * distanciaDash;
-        if(Physics.Linecast(posicaoHit.position, desiredPoint, out hit))
+        if (Physics.Linecast(posicaoHit.position, desiredPoint, out hit))
         {
             if (hit.transform.CompareTag("Chao"))
             {
                 chao = true;
-                Debug.Log("Vai tomar no cu");
             }
 
-            if (!hit.transform.CompareTag("Player") && !hit.transform.CompareTag("Inimigo"))        
+            if (!hit.transform.CompareTag("Player") && !hit.transform.CompareTag("Inimigo") && !hit.collider.isTrigger)
                 desiredPoint = hit.point;
         }
 
 
-        desiredPoint.y = (!chao) ? transform.position.y : desiredPoint.y;
+        desiredPoint.y = (!chao) ? transform.position.y : desiredPoint.y+0.5f;
 
         GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
 
+        SetDashVolumeSettings();
+        
+
         float safetyTime = 2f;
 
-        while (Vector3.Distance(transform.position, desiredPoint)>1 && safetyTime>0)
+        while (Vector3.Distance(transform.position, desiredPoint) > 1 && safetyTime > 0)
         {
             //transform.position += transform.forward * forcaDash * Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, desiredPoint, (dashRate) * Time.deltaTime);
@@ -172,6 +177,63 @@ public class Tyva : Player
         estadoPlayer = EstadoPlayer.NORMAL;
         GetComponent<Collider>().enabled = true;
         GetComponent<Rigidbody>().useGravity = true;
+
+        StartCoroutine(DashVolumeSettings());
+    }
+
+    [SerializeField]
+    float iterationDash = 0.1f;
+    Vector4 midtones;
+    bool isLoad = false;
+
+    void SetDashVolumeSettings()
+    {
+        ChromaticAberration cA = (ChromaticAberration)globalVolume.profile.components[4];
+        PaniniProjection pN = (PaniniProjection)globalVolume.profile.components[5];
+        ShadowsMidtonesHighlights shadow = (ShadowsMidtonesHighlights)globalVolume.profile.components[6];
+
+        cA.intensity.value = 1;
+        pN.distance.value = 1;
+
+        if (isLoad)       
+            shadow.midtones.value = midtones;
+        
+
+        cA.active = true;
+        pN.active = true;
+        shadow.active = true;
+
+    }
+
+    IEnumerator DashVolumeSettings()
+    {
+        float value = 1;
+ 
+
+        ChromaticAberration cA = (ChromaticAberration)globalVolume.profile.components[4];
+        PaniniProjection pN = (PaniniProjection)globalVolume.profile.components[5];
+        ShadowsMidtonesHighlights shadow = (ShadowsMidtonesHighlights)globalVolume.profile.components[6];
+
+        if (!isLoad)
+        {
+            midtones = shadow.midtones.value;
+            isLoad = true;
+        }
+
+        while (value>0)
+        {
+            cA.intensity.value = value;
+            pN.distance.value = value;
+            value -= iterationDash;
+
+            shadow.midtones.value -= midtones*iterationDash/2;
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        cA.active = false;
+        pN.active = false;
+        shadow.active = false;
     }
 
     private void Faca()
