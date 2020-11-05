@@ -184,6 +184,8 @@ public class Tyva : Player
     [SerializeField]
     float iterationDash = 0.1f;
     Vector4 midtones;
+    float cAValue;
+    float pNValue;
     bool isLoad = false;
 
     void SetDashVolumeSettings()
@@ -208,7 +210,6 @@ public class Tyva : Player
     IEnumerator DashVolumeSettings()
     {
         float value = 1;
- 
 
         ChromaticAberration cA = (ChromaticAberration)globalVolume.profile.components[4];
         PaniniProjection pN = (PaniniProjection)globalVolume.profile.components[5];
@@ -216,15 +217,17 @@ public class Tyva : Player
 
         if (!isLoad)
         {
+            cAValue = cA.intensity.value;
+            pNValue = pN.distance.value;
             midtones = shadow.midtones.value;
             isLoad = true;
         }
 
         while (value>0)
         {
-            cA.intensity.value = value;
-            pN.distance.value = value;
             value -= iterationDash;
+            cA.intensity.value -= pNValue * iterationDash;
+            pN.distance.value -= cAValue * iterationDash;
 
             shadow.midtones.value -= midtones*iterationDash/2;
 
