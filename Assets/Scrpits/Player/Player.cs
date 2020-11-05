@@ -26,7 +26,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     [Header("Referências")]
     [SerializeField]
-    private ParticleSystem particulaArma;
+    private ParticleSystem[] particulaArma;
     public Transform posicaoHit;
     public GameObject CBTprefab;
     [SerializeField]
@@ -61,15 +61,23 @@ public class Player : MonoBehaviour, IVulnerable
 
         set
         {
-            if (particulaArma != null)
+            if (particulaArma.Length > 0)
             {
                 if (value == EstadoPlayer.ATACANDO)
                 {
-                    particulaArma.Play();
+                    foreach (ParticleSystem particula in particulaArma)
+                    {
+                        if (particula != null)
+                            particula.Play();
+                    }
                 }
                 else
                 {
-                    particulaArma.Stop();
+                    foreach (ParticleSystem particula in particulaArma)
+                    {
+                        if (particula != null)
+                            particula.Stop();
+                    }
                 }
             }
 

@@ -190,6 +190,7 @@ public class Iovelik : Player
         else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick >= 2)
         {
             animator.SetInteger("Ataque", 2);
+            estadoPlayer = EstadoPlayer.ATACANDO;
             podeAtacar = true;
         }
 
@@ -202,6 +203,7 @@ public class Iovelik : Player
         else if(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && numClick >= 3)
         {
             animator.SetInteger("Ataque", 3);
+            estadoPlayer = EstadoPlayer.ATACANDO;
             podeAtacar = true;
         }
 

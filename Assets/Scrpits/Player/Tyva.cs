@@ -149,7 +149,7 @@ public class Tyva : Player
         }
 
 
-        desiredPoint.y = (!chao) ? transform.position.y : desiredPoint.y+0.5f;
+        desiredPoint.y = (!chao) ? transform.position.y : desiredPoint.y+1f;
 
         GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
@@ -294,6 +294,7 @@ public class Tyva : Player
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && numClick >= 2)
         {
             animator.SetInteger("Ataque", 2);
+            estadoPlayer = EstadoPlayer.ATACANDO;
             podeAtacar = true;
         }
 
@@ -306,6 +307,7 @@ public class Tyva : Player
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && numClick >= 3)
         {
             animator.SetInteger("Ataque", 3);
+            estadoPlayer = EstadoPlayer.ATACANDO;
             podeAtacar = true;
         }
 
@@ -318,6 +320,7 @@ public class Tyva : Player
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3") && numClick >= 4)
         {
             animator.SetInteger("Ataque", 4);
+            estadoPlayer = EstadoPlayer.ATACANDO;
             podeAtacar = true;
         }
 
