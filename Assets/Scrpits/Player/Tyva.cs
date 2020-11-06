@@ -17,6 +17,9 @@ public class Tyva : Player
     private float tempoRecarga = 1;
     [SerializeField]
     private float dashRate = 10;
+    [SerializeField]
+    private LayerMask dashLayers;
+
 
     [Header("Audio Tyva")]
     [SerializeField]
@@ -145,24 +148,31 @@ public class Tyva : Player
         dashVFX.GetComponent<ParticleSystem>().Play();
 
         RaycastHit hit;
-        bool chao = false;
         desiredPoint = posicaoHit.position + transform.forward * distanciaDash;
-        if (Physics.Linecast(posicaoHit.position, desiredPoint, out hit))
+
+        if (Physics.Linecast(posicaoHit.position, desiredPoint, out hit, dashLayers, QueryTriggerInteraction.Ignore))
         {
+            Debug.Log(hit.collider.name);
             if (hit.transform.gameObject.CompareTag("Chao") || hit.transform.gameObject.layer == LayerMask.GetMask("Ground"))
-            {
-                Debug.Log("aaaaaaaaaaaaaaaaaaaaaa eu vou mataaaaaaaaaaaaaaaaaaaarrrrrr");
-                chao = true;
-            }
-
-            Debug.Log("colidiu porra");
-
-            if (!hit.transform.CompareTag("Player") && !hit.transform.CompareTag("Inimigo") && !hit.collider.isTrigger)
                 desiredPoint = hit.point;
+            
+
+            else if (!hit.transform.CompareTag("Player") && !hit.transform.CompareTag("Inimigo") && !hit.collider.isTrigger)
+            {
+                desiredPoint = hit.point;
+                desiredPoint.y = transform.position.y;
+            }
+        }
+        else
+        {
+            if (Physics.Linecast(desiredPoint, new Vector3(desiredPoint.x, transform.position.y, desiredPoint.z), out hit, dashLayers, QueryTriggerInteraction.Ignore))
+                desiredPoint = hit.point;
+
+            else
+                desiredPoint.y = transform.position.y;
         }
 
-
-        desiredPoint.y = (!chao) ? transform.position.y : desiredPoint.y;
+        //desiredPoint.y = (!chao) ? transform.position.y : desiredPoint.y;
 
         GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
@@ -172,7 +182,7 @@ public class Tyva : Player
 
         float safetyTime = 2f;
 
-        while (Vector3.Distance(transform.position, desiredPoint) > 3 && safetyTime > 0)
+        while (Vector3.Distance(transform.position, desiredPoint) > 1 && safetyTime > 0)
         {
             //transform.position += transform.forward * forcaDash * Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, desiredPoint, (dashRate) * Time.deltaTime);
