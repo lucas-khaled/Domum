@@ -121,6 +121,16 @@ public class Tyva : Player
         contadorFaca += Time.deltaTime;
     }
 
+    Vector3 desiredPoint;
+    Vector3 beforeWanted;
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawSphere(desiredPoint, 0.4f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(beforeWanted, 0.5f);
+    }
+
     IEnumerator Dash()
     {
         animator.SetTrigger("Dash");
@@ -136,20 +146,23 @@ public class Tyva : Player
 
         RaycastHit hit;
         bool chao = false;
-        Vector3 desiredPoint = posicaoHit.position + transform.forward * distanciaDash;
+        desiredPoint = posicaoHit.position + transform.forward * distanciaDash;
         if (Physics.Linecast(posicaoHit.position, desiredPoint, out hit))
         {
-            if (hit.transform.CompareTag("Chao"))
+            if (hit.transform.gameObject.CompareTag("Chao") || hit.transform.gameObject.layer == LayerMask.GetMask("Ground"))
             {
+                Debug.Log("aaaaaaaaaaaaaaaaaaaaaa eu vou mataaaaaaaaaaaaaaaaaaaarrrrrr");
                 chao = true;
             }
+
+            Debug.Log("colidiu porra");
 
             if (!hit.transform.CompareTag("Player") && !hit.transform.CompareTag("Inimigo") && !hit.collider.isTrigger)
                 desiredPoint = hit.point;
         }
 
 
-        desiredPoint.y = (!chao) ? transform.position.y : desiredPoint.y+1f;
+        desiredPoint.y = (!chao) ? transform.position.y : desiredPoint.y;
 
         GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
@@ -159,7 +172,7 @@ public class Tyva : Player
 
         float safetyTime = 2f;
 
-        while (Vector3.Distance(transform.position, desiredPoint) > 1 && safetyTime > 0)
+        while (Vector3.Distance(transform.position, desiredPoint) > 3 && safetyTime > 0)
         {
             //transform.position += transform.forward * forcaDash * Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, desiredPoint, (dashRate) * Time.deltaTime);

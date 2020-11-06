@@ -109,7 +109,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4216688393345297860}
-  - {fileID: 7455265948352852593}
+  - {fileID: 8372026327599074013}
   - {fileID: 2354790266511235624}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldCanvas: {fileID: 6902440303065878112}
-  isComposedObject: 0
+  isComposedObject: 1
   itens: []
   anim: {fileID: 0}
   abrir: {fileID: 0}
@@ -141,7 +141,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185861606110045664}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.21, y: 0.25, z: 0.13}
@@ -220,6 +220,68 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4773189142307198747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2786810497044909395}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7455265948352852593}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7455265948352852593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4745335507642367778, guid: 5442c8dbd8c4ec0fc8ae8c98262cee10,
+    type: 3}
+  m_PrefabInstance: {fileID: 2786810497044909395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773189142307198747}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8372026327599074013}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6170972262514714294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2786810497044909395}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8372026327599074013}
+  m_Layer: 0
+  m_Name: Particle System (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8372026327599074013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2786810497044909395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170972262514714294}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7455265948352852593}
+  m_Father: {fileID: 1185861606110045695}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6902440303065878112
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,9 +463,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5442c8dbd8c4ec0fc8ae8c98262cee10, type: 3}
---- !u!4 &7455265948352852593 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4745335507642367778, guid: 5442c8dbd8c4ec0fc8ae8c98262cee10,
-    type: 3}
-  m_PrefabInstance: {fileID: 2786810497044909395}
-  m_PrefabAsset: {fileID: 0}
