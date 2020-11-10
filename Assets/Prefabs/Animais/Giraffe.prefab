@@ -658,8 +658,13 @@ MonoBehaviour:
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
   animal: {fileID: 7901259816296430807}
-  itensDropaveis: []
-  drop: {fileID: 0}
+  itensDropaveis:
+  - {fileID: 11400000, guid: 219655e652a4d82488a15d9e1799a3a2, type: 2}
+  - {fileID: 11400000, guid: dde572cca0d32b94b8bdc9b4f47d9656, type: 2}
+  - {fileID: 11400000, guid: 6f983ec2bba33eb4caf15a3d44899257, type: 2}
+  - {fileID: 11400000, guid: 6f983ec2bba33eb4caf15a3d44899257, type: 2}
+  - {fileID: 11400000, guid: 219655e652a4d82488a15d9e1799a3a2, type: 2}
+  drop: {fileID: 4501771150669755731, guid: 86901b452bd0d7f48bbb8654eefc0748, type: 3}
   respawnGirafa: []
   deitar: {fileID: 0}
   comer: {fileID: 8300000, guid: 3ee1fa4c8c33f0f40a9c63159615c97e, type: 3}

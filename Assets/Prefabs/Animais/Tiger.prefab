@@ -257,8 +257,12 @@ MonoBehaviour:
   anim: {fileID: 5849420642600876650}
   CBTprefab: {fileID: 5335105434827641414, guid: 883e5c66a4a68f3499f7be27b45a9e2d,
     type: 3}
-  itensDropaveis: []
-  drop: {fileID: 0}
+  itensDropaveis:
+  - {fileID: 11400000, guid: dde572cca0d32b94b8bdc9b4f47d9656, type: 2}
+  - {fileID: 11400000, guid: 6f983ec2bba33eb4caf15a3d44899257, type: 2}
+  - {fileID: 11400000, guid: ebc27cda0ddbf7f4e8840ad18240dde5, type: 2}
+  - {fileID: 11400000, guid: ebc27cda0ddbf7f4e8840ad18240dde5, type: 2}
+  drop: {fileID: 4501771150669755731, guid: 86901b452bd0d7f48bbb8654eefc0748, type: 3}
   garrada: {fileID: 8300000, guid: fb287a0926c0b53eea8155521ca800a8, type: 3}
   mordida: {fileID: 8300000, guid: 33ab88ac02a9cfc3b81bc28a72cbe547, type: 3}
   ataquePulo: {fileID: 8300000, guid: 3a5e052de485eea1a9ae2f542e0739a6, type: 3}
