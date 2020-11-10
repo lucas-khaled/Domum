@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InteracaoController : MonoBehaviour
 {
+    [HideInInspector]
+    public GameObject[] areasInteragiveis;
     [SerializeField]
     private float raioInteracao = 3f;
 
@@ -19,6 +21,10 @@ public class InteracaoController : MonoBehaviour
     }
     #endregion
 
+    private void Start()
+    {
+        areasInteragiveis = GameObject.FindGameObjectsWithTag("AreaInteragiveis");
+    }
     public void Interact()
     {
         if(interagivelAtual != null && (Player.player.estadoPlayer == EstadoPlayer.COMBATE || Player.player.estadoPlayer == EstadoPlayer.NORMAL))
