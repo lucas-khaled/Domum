@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Coletaveis : Interagivel
 {
@@ -38,9 +39,12 @@ public class Coletaveis : Interagivel
         {
             Player.player.status.QntColetavel++;
             Destroy(this.gameObject);
+            
+            InteracaoController referencia = InteracaoController.instance;
+            GameObject novoPosicao = referencia.areasInteragiveis[Random.Range(0, referencia.areasInteragiveis.Length)];
+            novoPosicao.GetComponent<RespawnColetaveis>().RespawnColetavel();
         }
     }
-
     private void Update()
     {
         if(objetoAtivo!=null)
