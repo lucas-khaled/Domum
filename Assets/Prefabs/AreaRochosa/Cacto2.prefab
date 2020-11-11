@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1570967956317186354}
   - component: {fileID: 6970595047732699830}
+  - component: {fileID: 6185336285906667341}
   m_Layer: 0
   m_Name: Cacto2
   m_TagString: Untagged
@@ -47,6 +48,29 @@ CapsuleCollider:
   m_Height: 3.8567848
   m_Direction: 1
   m_Center: {x: -0.03456211, y: 1.4283924, z: 0.05850029}
+--- !u!205 &6185336285906667341
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2564354481606646561}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.034956545, y: 2.05319, z: 0.15636677}
+  m_Size: 4.0812964
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.3328697
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4763639716270586207}
+  - screenRelativeHeight: 0.06829795
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6278725809138479806}
+  m_Enabled: 1
 --- !u!1 &6980737069256018224
 GameObject:
   m_ObjectHideFlags: 0

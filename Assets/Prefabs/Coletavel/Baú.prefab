@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldCanvas: {fileID: 4006560453561274520}
+  isComposedObject: 0
   itens:
   - {fileID: 11400000, guid: 6f13f957c1caa7b4c862909266e5beb9, type: 2}
   - {fileID: 11400000, guid: d1135a47b29ed364995effe9b7c0cdeb, type: 2}
@@ -272,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4006560453561274517
 RectTransform:
   m_ObjectHideFlags: 0

@@ -120,7 +120,14 @@ public class GetLODEditor : EditorWindow
             lod1.GetComponent<MeshCombiner>().CombineMeshes(true);
             lod2.GetComponent<MeshCombiner>().CombineMeshes(true);
 
-            
+            obj.GetComponent<LODGroup>().SetLODs(
+                new LOD[]
+                {
+                    new LOD(0.6f, new Renderer[] { lod0.GetComponent<MeshRenderer>() }),
+                    new LOD(0.3f, new Renderer[] { lod1.GetComponent<MeshRenderer>() }),
+                    new LOD(0.1f, new Renderer[] { lod2.GetComponent<MeshRenderer>() })
+                }
+            );
         }
     }
 

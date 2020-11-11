@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 3289834369970046812}
   - component: {fileID: 895090884680858007}
   m_Layer: 0
-  m_Name: LOD_3
+  m_Name: LOD_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,21 +370,24 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5710929887811249577}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
-  m_Size: 1
+  m_LocalReferencePoint: {x: 0.008052364, y: -0.001878541, z: 0.032208815}
+  m_Size: 0.13084047
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
   - screenRelativeHeight: 0.6
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: 3372351405527320535}
   - screenRelativeHeight: 0.3
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: 4320541327947746358}
   - screenRelativeHeight: 0.1
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: 895090884680858007}
   m_Enabled: 1
 --- !u!64 &6768822202474389576
 MeshCollider:

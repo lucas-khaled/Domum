@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6538490802999195830}
-  - component: {fileID: 618139269611085234}
+  - component: {fileID: 8359301141410307920}
   m_Layer: 0
   m_Name: Lixeira-1
   m_TagString: Untagged
@@ -188,20 +188,75 @@ Transform:
   m_Children:
   - {fileID: 7290712372777257405}
   - {fileID: 839420084858886260}
+  - {fileID: 7298350378251354195}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &618139269611085234
-MeshCollider:
+--- !u!205 &8359301141410307920
+LODGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7847024713241594533}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0.0000000018626451, z: 0.021254372}
+  m_Size: 0.041605316
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.409533
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 967016778735708379}
+  - screenRelativeHeight: 0.094853796
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1752694571498005306}
+  m_Enabled: 1
+--- !u!1 &8274363834485630730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7298350378251354195}
+  - component: {fileID: 7391982832558209711}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7298350378251354195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274363834485630730}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0248}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_Children: []
+  m_Father: {fileID: 6538490802999195830}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7391982832558209711
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274363834485630730}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 628346945070926638, guid: 754e0aeafd54b274cb09c01704b142ee, type: 3}
+  m_Radius: 0.28
+  m_Height: 1.09
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}

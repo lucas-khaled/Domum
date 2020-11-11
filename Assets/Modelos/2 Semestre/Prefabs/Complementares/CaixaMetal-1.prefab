@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2909850870138291346}
   - component: {fileID: 3042364438737771692}
+  - component: {fileID: 6032376534276476813}
   m_Layer: 0
   m_Name: CaixaMetal-1
   m_TagString: Untagged
@@ -46,6 +47,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2510986, y: 0.7281151, z: 2.7159271}
   m_Center: {x: 0, y: 0.34508705, z: -0.0209198}
+--- !u!205 &6032376534276476813
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178198693904299649}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.033395648, y: 0.47913426, z: 0}
+  m_Size: 2.6819406
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.41378722
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 9202885859642889471}
+  - screenRelativeHeight: 0.102164336
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7678194399422734110}
+  m_Enabled: 1
 --- !u!1 &4617356764047767364
 GameObject:
   m_ObjectHideFlags: 0
