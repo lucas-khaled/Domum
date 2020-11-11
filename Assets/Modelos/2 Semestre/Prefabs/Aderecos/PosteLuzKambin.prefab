@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2574670259700982839}
   - component: {fileID: 5788562960961019402}
-  - component: {fileID: 5196959642930978704}
   m_Layer: 0
   m_Name: PosteLuzKambin
   m_TagString: Untagged
@@ -33,6 +32,7 @@ Transform:
   - {fileID: 8259683446797239541}
   - {fileID: 6508066098076189728}
   - {fileID: 3201545974264203569}
+  - {fileID: 8421586052247729144}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -63,20 +63,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3107746598455674472}
   m_Enabled: 1
---- !u!64 &5196959642930978704
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576340327951472164}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2278659127392574855, guid: ea0a5d240c57e684785120a34c363695, type: 3}
 --- !u!1 &2664519266690982776
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +143,51 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &4887109825302309256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8421586052247729144}
+  - component: {fileID: 3843875614091162610}
+  m_Layer: 0
+  m_Name: Colisor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8421586052247729144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887109825302309256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2574670259700982839}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &3843875614091162610
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887109825302309256}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2278659127392574855, guid: 4203d050ce7f76540b359ccc53c32b4f, type: 3}
 --- !u!1 &5462559058636134369
 GameObject:
   m_ObjectHideFlags: 0

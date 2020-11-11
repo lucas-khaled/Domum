@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &149145811869421177
+--- !u!1 &1706967972362809545
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,74 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 485952859710281348}
-  - component: {fileID: 2558123449440368074}
-  - component: {fileID: 7925299285492511}
+  - component: {fileID: 3310991733654321502}
+  - component: {fileID: 1731518230050531343}
   m_Layer: 0
-  m_Name: Arvre
+  m_Name: Colisor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &485952859710281348
+--- !u!4 &3310991733654321502
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149145811869421177}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1706967972362809545}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_Children:
-  - {fileID: 5427644768962295549}
-  - {fileID: 7179828379026142760}
-  - {fileID: 948068770321508321}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 6412111694396958268}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &2558123449440368074
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149145811869421177}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.00070110336, y: 0.0035194196, z: 0.046770763}
-  m_Size: 0.094750725
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.6
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 7308901718193522311}
-  - screenRelativeHeight: 0.3
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 8094997873485958502}
-  - screenRelativeHeight: 0.094853796
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 4189326885856490677}
-  m_Enabled: 1
---- !u!64 &7925299285492511
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!64 &1731518230050531343
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149145811869421177}
+  m_GameObject: {fileID: 1706967972362809545}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -9042820132775719052, guid: 6e45de6e9c5fb824c9eec6f5efe420f8, type: 3}
+  m_Mesh: {fileID: 9087736826937400132, guid: 5ce947f826a895f4682b2adc4433203d, type: 3}
 --- !u!1 &3656467483929542034
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +76,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 6412111694396958268}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2317141129538715252
 MeshFilter:
@@ -184,10 +153,10 @@ Transform:
   m_LocalRotation: {x: 0.000000119209275, y: -0.000000075497915, z: 7.1054265e-15,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
-  m_Father: {fileID: 485952859710281348}
-  m_RootOrder: 0
+  m_Father: {fileID: 6412111694396958268}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &532083219574927985
 MeshFilter:
@@ -264,9 +233,9 @@ Transform:
   m_LocalRotation: {x: 0.000000119209275, y: -0.000000075497915, z: 7.1054265e-15,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
-  m_Father: {fileID: 485952859710281348}
+  m_Father: {fileID: 6412111694396958268}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2550418145233647900
@@ -344,10 +313,10 @@ Transform:
   m_LocalRotation: {x: 0.000000119209275, y: -0.000000075497915, z: 7.1054265e-15,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
-  m_Father: {fileID: 485952859710281348}
-  m_RootOrder: 2
+  m_Father: {fileID: 6412111694396958268}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5213830638351197914
 MeshFilter:
@@ -405,6 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6412111694396958268}
+  - component: {fileID: 6825682742107971337}
   m_Layer: 0
   m_Name: Arvore3
   m_TagString: Untagged
@@ -423,8 +393,38 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
-  - {fileID: 485952859710281348}
+  - {fileID: 948068770321508321}
+  - {fileID: 7179828379026142760}
+  - {fileID: 5427644768962295549}
   - {fileID: 7303478799432499023}
+  - {fileID: 3310991733654321502}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!205 &6825682742107971337
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973407928361047087}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.07011032, y: 0.35194206, z: 4.677076}
+  m_Size: 9.475072
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7308901718193522311}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 8094997873485958502}
+  - screenRelativeHeight: 0.094853796
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4189326885856490677}
+  m_Enabled: 1

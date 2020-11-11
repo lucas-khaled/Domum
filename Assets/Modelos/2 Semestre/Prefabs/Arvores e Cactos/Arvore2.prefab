@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2143653226515870878}
   - component: {fileID: 46754847040765439}
-  - component: {fileID: -4015484042880149617}
   m_Layer: 0
   m_Name: Arvore2
   m_TagString: Untagged
@@ -111,6 +110,7 @@ Transform:
   - {fileID: 2463323555108668821}
   - {fileID: 5522701633489884252}
   - {fileID: 7229845407746774153}
+  - {fileID: 2238021301804947484}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -141,20 +141,51 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1523402658801866433}
   m_Enabled: 1
---- !u!64 &-4015484042880149617
+--- !u!1 &3364024981214900454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2238021301804947484}
+  - component: {fileID: 4065147702882780484}
+  m_Layer: 0
+  m_Name: Colisor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2238021301804947484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364024981214900454}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.009999997, z: 0.009999997}
+  m_Children: []
+  m_Father: {fileID: 2143653226515870878}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &4065147702882780484
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162811822702053005}
+  m_GameObject: {fileID: 3364024981214900454}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -9042820132775719052, guid: 1c094bb152cd14a4ea01b7a0146b5857, type: 3}
+  m_Mesh: {fileID: -8283593368207821316, guid: 5ea2e3cd77e568b438e278ce7c4ade8f, type: 3}
 --- !u!1 &7535213949503902876
 GameObject:
   m_ObjectHideFlags: 0

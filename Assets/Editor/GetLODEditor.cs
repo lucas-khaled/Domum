@@ -116,6 +116,10 @@ public class GetLODEditor : EditorWindow
             AdicionarAOrigem(lod1.transform, selecionado.GetChild(i), 1);
             AdicionarAOrigem(lod2.transform, selecionado.GetChild(i), 2);
 
+            lod0.GetComponent<MeshCombiner>().CreateMultiMaterialMesh = true;
+            lod1.GetComponent<MeshCombiner>().CreateMultiMaterialMesh = true;
+            lod2.GetComponent<MeshCombiner>().CreateMultiMaterialMesh = true;
+
             lod0.GetComponent<MeshCombiner>().CombineMeshes(true);
             lod1.GetComponent<MeshCombiner>().CombineMeshes(true);
             lod2.GetComponent<MeshCombiner>().CombineMeshes(true);
