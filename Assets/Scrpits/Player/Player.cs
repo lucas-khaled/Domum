@@ -328,7 +328,7 @@ public class Player : MonoBehaviour, IVulnerable
         float playerAngle = transform.eulerAngles.y;
         float difference = camAngle - playerAngle;
 
-        if(difference > 10 || difference < -10)
+        if(difference > 5 || difference < -5)
         {
             return true;
         }
