@@ -28,7 +28,7 @@ public class QuestGiver : Interagivel
     public void AddQuestToBeNext(Quest quest)
     {
         quests.Insert(questsAceitas, quest);
-        icone.SetActive(true);
+
     }
 
     private void Awake()
@@ -175,6 +175,13 @@ public class QuestGiver : Interagivel
         }
 
     }
+    private void OnDestroy()
+    {
+        EventsController.onDialogoTerminado -= DarQuest;
+        EventsController.onLinhaTerminada -= OnLinhaTerminada;
+        EventsController.onQuestLogChange -= OnQuestLogChanged;
+    }
+
 
     void DarQuest(Dialogo dialogo)
     {
