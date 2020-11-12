@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3032324147498841588}
   - component: {fileID: 3451993497461942313}
-  - component: {fileID: 4079187725102433628}
   m_Layer: 0
   m_Name: Edificio12
   m_TagString: Untagged
@@ -32,6 +31,7 @@ Transform:
   - {fileID: 1550443643020641535}
   - {fileID: 8867482248723207478}
   - {fileID: 6052452968280921571}
+  - {fileID: 184280885999504027}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -62,20 +62,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2490215003338938283}
   m_Enabled: 1
---- !u!64 &4079187725102433628
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040028822892906471}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -9042820132775719052, guid: eef64a4f1022d0a4ba22b15a3c8f750d, type: 3}
 --- !u!1 &3266706689431204539
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +220,51 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &6731989522276039975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184280885999504027}
+  - component: {fileID: 7387676682404677451}
+  m_Layer: 0
+  m_Name: Colisor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &184280885999504027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731989522276039975}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 3032324147498841588}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!64 &7387676682404677451
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731989522276039975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7304341954665390302, guid: b614ac2ad03c8884eb04a5f01367e547, type: 3}
 --- !u!1 &6861593393976792566
 GameObject:
   m_ObjectHideFlags: 0

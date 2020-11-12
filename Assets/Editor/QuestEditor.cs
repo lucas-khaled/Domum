@@ -156,7 +156,7 @@ public class QuestEditor : Editor
                     propertyToDraw = p;
 
                 if (numOfButtons == 1)
-                    GUILayout.BeginHorizontal("Buttons " + i+1%3);
+                    GUILayout.BeginHorizontal();
 
                 GUIContent content = new GUIContent((i + 1).ToString());
                 content.tooltip = p.FindPropertyRelative("descricao").stringValue;

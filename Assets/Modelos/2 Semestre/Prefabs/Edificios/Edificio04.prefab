@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2376535245674636824}
   - component: {fileID: 9085106460195978479}
-  - component: {fileID: 9052332796793066986}
   m_Layer: 0
   m_Name: Edificio04
   m_TagString: Untagged
@@ -32,6 +31,7 @@ Transform:
   - {fileID: 2264066853248833299}
   - {fileID: 8205695506401887962}
   - {fileID: 6418048802347058703}
+  - {fileID: 7582215228087657992}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -62,20 +62,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2909564863795528775}
   m_Enabled: 1
---- !u!64 &9052332796793066986
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630443725374559243}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -9042820132775719052, guid: 260e53596ef6b474c9637e4351aa7082, type: 3}
 --- !u!1 &2862724641155211607
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +141,51 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &3163246297677433774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7582215228087657992}
+  - component: {fileID: 4765632724194110855}
+  m_Layer: 0
+  m_Name: Colisor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7582215228087657992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163246297677433774}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 2376535245674636824}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!64 &4765632724194110855
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163246297677433774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6901121404452585218, guid: aa35136e75d53794a9fe140df6ed7402, type: 3}
 --- !u!1 &5228360612723414478
 GameObject:
   m_ObjectHideFlags: 0

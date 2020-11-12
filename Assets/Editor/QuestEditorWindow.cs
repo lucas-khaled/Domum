@@ -98,7 +98,7 @@ public class QuestEditorWindow : EditorWindow
     private void OnGUI()
     {
         GUILayout.BeginVertical();
-        GUILayout.BeginHorizontal("Quests");
+        GUILayout.BeginHorizontal();
 
         DrawQuestSelection();
 
@@ -116,7 +116,7 @@ public class QuestEditorWindow : EditorWindow
 
     void DrawOptionsButtons()
     {
-        GUILayout.BeginHorizontal("Options");
+        GUILayout.BeginHorizontal();
 
         if(GUILayout.Button("Criar Quest"))
         {
