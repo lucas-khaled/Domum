@@ -129,7 +129,13 @@ MonoBehaviour:
   - tipoCondicao: 1
     local: {x: 0, y: 0, z: 0}
     descricao: Converse com o lider mestico
-    objsToInstantiate: []
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 5712094464404053106, guid: 947d0b27446edf0d99c940ac73d1b4f7,
+        type: 3}
+      local: {x: 272.7, y: 20.098122, z: 445.59}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: Multidao
+      qualPlayer: 2
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines:
