@@ -1,0 +1,279 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8a7d78738d51a4693bb4467bd947a9, type: 3}
+  m_Name: Pelo futuro, por Domum!
+  m_EditorClassIdentifier: 
+  nome: Pelo futuro, por Domum!
+  principal: 1
+  isQuestAdditioner: 0
+  questToAdd: {fileID: 0}
+  questGiverName: 
+  reward:
+    item: {fileID: 0}
+    qntDinheiro: 10000
+    XP: 1000
+    fama: 50000
+  dialogo:
+    dialogueLines:
+    - "L\xC3\xADder Mesti\xC3\xA7o: #Tyva|Iovelik#, est\xC3\xA1 tudo bem? Onde est\xC3\xA1
+      #Iovelik|Tyva#? N\xC3\xA3o me diga que... "
+    - "#Tyva|Iovelik#: Est\xC3\xA1... est\xC3\xA1 #morto|morta#. N\xC3\xA3o cheguei
+      a tempo...os filhos da putas #o|a# mataram. "
+    - "L\xC3\xADder Mesti\xC3\xA7o: O que?? MERDA!! BOSTA! N\xC3\xA3o devia ter mandado
+      #ele|ela# naquela miss\xC3\xA3o. A culpa \xC3\xA9 minha. Me desculpe #Tyva|Iovelik#. "
+    - "#Tyva|Iovelik#: N\xC3\xA3o, L\xC3\xADder. A culpa \xC3\xA9 minha, #n\xC3\xA3o
+      devia t\xC3\xAA-lo irritado tanto e seguido mais seus conselhos|jamais deveria
+      ter deixado ela se alistar. Devia ter cuidado dela mais #. "
+    - "#Ele|Ela# era tudo o que eu tinha. Minha \xC3\xBAnica fam\xC3\xADlia. E agora
+      #o|a# perdi. "
+    - "L\xC3\xADder Mesti\xC3\xA7o: N\xC3\xA3o se culpe, soldado. O \xC3\xBAltimo
+      que pode ser culpado desta morte \xC3\xA9 voc\xC3\xAA. Fez tudo o que podia. "
+    - "Culpe os humanos. Eles foram os respons\xC3\xA1veis por isso. "
+    - '#Tyva|Iovelik#: Eu me vingarei deles. '
+    - "L\xC3\xADder Mesti\xC3\xA7o: Sim, voc\xC3\xAA ir\xC3\xA1. E esta vingan\xC3\xA7a
+      ser\xC3\xA1 hoje. Atacaremos Criviek e tomaremos nosso planeta de volta. "
+    - "#Tyva|Iovelik#: \xC3\x93timo. Acabarei com todos os seres humanos neste planeta. "
+    - "L\xC3\xADder Mesti\xC3\xA7o: \xC3\x89 o que mais desejo, soldado. Mas antes,
+      acho que deveria conversar com o Anci\xC3\xA3o. Ele gostaria de lhe falar algo. "
+    - '#Tyva|Iovelik#: Irei imediatamente.'
+  condicoes:
+  - tipoCondicao: 1
+    local: {x: 0, y: 0, z: 0}
+    descricao: Fale com Anciao
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "Anci\xE3o: #Minha|Meu# jovem, soube do que aconteceu... Uma fatalidade terr\xEDvel
+        com #um jovem t\xE3o corajoso|uma jovem t\xE3o determinada#. "
+      - "Minhas sinceras condol\xEAncias "
+      - "#Tyva|Iovelik#: Obrigado, Anci\xE3o. "
+      - "Anci\xE3o: Sei que a dor que o acompanha \xE9 excruciante. Mas n\xE3o deixe
+        que ela cegue seus olhos. "
+      - "#Tyva|Iovelik#: O que quer dizer com isso? N\xE3o devo buscar vingan\xE7a
+        contra aqueles que tiraram tudo o que eu tinha? "
+      - "Anci\xE3o: N\xE3o \xE9 isso. Voc\xEA buscar\xE1 vingan\xE7a sim, pois \xE9
+        seu objetivo desde o come\xE7o. "
+      - "Mas n\xE3o pense que isso anestesiar\xE1 sua dor. S\xF3 aumentar\xE1 o vazio
+        de seu cora\xE7\xE3o. "
+      - "#Tyva|Iovelik#: Com todo respeito, Anci\xE3o, o que um velho pode saber
+        sobre isso?  "
+      - "Pela minha perspectiva, me encherei de alegria ao matar os respons\xE1veis
+        pela morte de #meu irm\xE3o|minha irm\xE3#. "
+      - "Anci\xE3o: N\xE3o me ofenderei por respeito a sua dor, jovem insolente.
+        Um velho pode saber mais do que pensa. "
+      - "Eu n\xE3o tive irm\xE3os, mas j\xE1 tive filhos e esposa. Todos mortos por
+        m\xE3os humanas.  "
+      - "Deixei a raiva me cegar quando os perdi e ent\xE3o liderei todo meu pelot\xE3o
+        para uma armadilha. Fui o \xFAnico a sobreviver. "
+      - "#Tyva|Iovelik#: O senhor n\xE3o foi o respons\xE1vel pelas mortes deles.
+        Os humanos sim. "
+      - "Anci\xE3o: Voc\xEA tem raz\xE3o. Por muito tempo convivi com a culpa. Por
+        muitas vezes pensei at\xE9 em suic\xEDdio. "
+      - "Mas aprendi algo valioso, que queria que aprendesse tamb\xE9m, jovem. "
+      - '#Tyva|Iovelik#: O que seria? '
+      - "Anci\xE3o: Como lhe disse antes meu jovem, o passado nos d\xE1 poder. O
+        que aprendi nessa \xE9poca \xE9 que ele s\xF3 o faz quando visamos o futuro. "
+      - "Caso o contr\xE1rio, ele nos prende e nos enfraquece. "
+      - "Minha mente estava presa aos meus entes que se foram. Meu desejo de revolu\xE7\xE3o
+        se misturava com a vingan\xE7a. "
+      - "Eu n\xE3o queria revolu\xE7\xE3o para que os jovens pudessem desfrutar de
+        um mundo melhor. "
+      - 'Mas sim porque queria minha esposa e filhos de volta. E isso nunca aconteceria. '
+      - "Isso me cegou e s\xF3 causou mais mortes. A resposta que encontrei \xE9
+        que uma revolu\xE7\xE3o n\xE3o se faz por vingan\xE7a. Se faz por um legado.
+        Se faz por mudan\xE7a. "
+      - "#Tyva|Iovelik#: N\xE3o sei o que dizer, senhor, apenas que n\xE3o \xE9 f\xE1cil
+        esquecer #o Iovleik| a Tyva#. "
+      - "Anci\xE3o: N\xE3o, n\xE3o #o|a# esque\xE7a jamais. Carregue-#o|a# consigo
+        sempre e lembre de seu sacrif\xEDcio. Lembre-se que foi pelo futuro. "
+      - "#Tyva|Iovelik#: N\xE3o deixarei que seja em v\xE3o. "
+      - "Anci\xE3o: Sei que n\xE3o deixar\xE1, #minha|meu# jovem. Sei que n\xE3o
+        deixar\xE1."
+    isOnScene: 1
+    nameOnScene: anciao
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 0
+    local: {x: 274.35138, y: 21.22, z: 446.77975}
+    descricao: Va ate Criviek
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 3196543133818625777, guid: 0d23957f7a331fd4c8a75faca54375b0,
+        type: 3}
+      local: {x: 270.19, y: 24.84, z: 443.46}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: Lider Mestico
+      qualPlayer: 2
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 15
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 0, y: 0, z: 0}
+    descricao: Converse com o lider mestico
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "L\xEDder Mesti\xE7o: Bom que chegou, #Tyva|Iovelik#. Tomaremos a cidade
+        hoje. "
+      - "#Tyva|Iovelik#: Sim, L\xEDder. Faremos uma Domum diferente. "
+      - "L\xEDder Mesti\xE7o: Sim, faremos. OUVIRAM ISSO SOLDADOS? "
+      - 'HOJE EXPULSAREMOS OS HUMANOS USURPADORES QUE OCUPAM NOSSA MAIOR E MAIS IMPORTANTE
+        CIDADE. '
+      - "ELES DESTRUIRAM TODAS AS DEMAIS COM SUAS BOMBAS AT\xD4MICAS E DEVASTARAM
+        NOSSO PLANETA. "
+      - "SE N\xC3O OS EXPULSARMOS DAQUI, CONTINUAR\xC3O A EXPLORAR NOSSA DOMUM, AT\xC9
+        QUE A TORNE INABIT\xC1VEL, ASSIM COMO FIZERAM COM SEU PLANETA NATAL. "
+      - "\xC9 ISSO QUE QUEREM?? QUEREM MORRER SUFOCADOS POR DOMUM QUE SE CANSOU E
+        SE VIROU CONTRA N\xD3S? "
+      - "(Multid\xE3o): N\xC3AAAOOO!! "
+      - "L\xEDder Mesti\xE7o: ENT\xC3O VAMOS INVADIR ESTA CIDADE E TOMAR DE VOLTA
+        NOSSO PLANETA. "
+      - 'CHEGA DE SER SUBJULGADO. CHEGA DE MACHUCAR DOMUM. '
+      - 'HOJE LUTAREMOS PELO NOSSO FUTURO! HOJE LUTAREMOS POR DOMUM!! '
+      - "(Multid\xE3o): Pelo futuro!! Por Domum!!"
+    isOnScene: 1
+    nameOnScene: Lider Mestico
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 2
+    local: {x: 279.7, y: 21.2, z: 486.8}
+    descricao: Derrote os inimigos
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: -927199367670048503, guid: 90ec6cd55f0dbef4d881389c7c6ea5bd, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    raioDeSpawn: 10
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 2
+    local: {x: 281.7, y: 21.1, z: 541.2}
+    descricao: Acabe com os reforcos inimigos
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    raioDeSpawn: 15
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 0, y: 0, z: 0}
+    descricao: Reporte para o lider mestico
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines:
+      - "#Tyva|Iovelik#: L\xEDder, quase n\xE3o estamos aguentando! Eles est\xE3o
+        mais fortes que pens\xE1vamos! "
+      - "L\xEDder Mesti\xE7o: Aguente firme, #Tyva|Iovelik#. N\xF3s estamos quase.
+        Mais \xE0 frente deve ser a \xFAltima onda de inimigos."
+    isOnScene: 1
+    nameOnScene: Lider Mestico
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 2
+    local: {x: 282.6, y: 20.7, z: 491.4}
+    descricao: Lute, se liberte!
+    objsToInstantiate: []
+    objsToDestroy: []
+    dialogoDaCondicao:
+      dialogueLines: []
+    isOnScene: 0
+    nameOnScene: 
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao:
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
+    - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
+    - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
+    raioDeSpawn: 15
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
+  - tipoCondicao: 1
+    local: {x: 0, y: 0, z: 0}
+    descricao: Comunique com o lider mestico
+    objsToInstantiate: []
+    objsToDestroy:
+    - Lider Mestico
+    dialogoDaCondicao:
+      dialogueLines:
+      - "L\xEDder Msti\xE7o: Os humanos... eles est\xE3o se retirando! Est\xE3o saindo
+        de Criviek! "
+      - "#Tyva|Iovelik#: Ent\xE3o \xE9 isso, n\xF3sconseguimos!! "
+      - "L\xEDder Mesti\xE7o: Conseguimos, soldado!! Tomamos Criviek. Fizemos a revolu\xE7\xE3o!! "
+      - "#Tyva|Iovelik#: O sacrif\xEDcio de #Iovelik|Tyva# n\xE3o foi em v\xE3o.
+        A partir de hoje faremos uma Domum melhor. "
+      - "L\xEDder Mesti\xE7o: Sim, n\xF3s faremos. Muito obrigado, #Tyva. Seu irm\xE3o
+        estaria orgulhoso|Iovelik. Sua irm\xE3 estaria orgulhosa#. "
+      - "#Tyva|Iovelik#: Espero que sim, L\xEDder. A partir de hoje, tudo ser\xE1
+        melhor. #Ela|Ele# adoraria."
+    isOnScene: 1
+    nameOnScene: Lider Mestico
+    itemDaCondicao: {fileID: 0}
+    inimigosDaCondicao: []
+    raioDeSpawn: 0
+    distanciaChegada: 0
+    interagivelPrefab: {fileID: 0}
