@@ -171,6 +171,8 @@ public class GetLODEditor : EditorWindow
 
                 foreach(Renderer r in lod.renderers)
                 {
+                    if (r == null)
+                        Debug.Log(paiLod.name);
                     r.enabled = true;
 
                     Vector3 originPosition = r.gameObject.transform.position;
