@@ -46,7 +46,19 @@ MonoBehaviour:
   - tipoCondicao: 2
     local: {x: 166.9, y: 23.8, z: 452.42145}
     descricao: Combata os inimigos a oeste da Periferia.
-    objsToInstantiate: []
+    objsToInstantiate:
+    - objetoPrefab: {fileID: 1207323989967802355, guid: 29f7921013d3966bebbdceca3eed6fb0,
+        type: 3}
+      local: {x: 177.45, y: 20.47, z: 469.4459}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: Lovelike
+      qualPlayer: 0
+    - objetoPrefab: {fileID: 281085460240037700, guid: 1c05a525c0e4fc797ad15746fd640c65,
+        type: 3}
+      local: {x: 177.45, y: 20.47, z: 469.4459}
+      rotacao: {x: -0, y: 0, z: 0}
+      nome: Tyva
+      qualPlayer: 1
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines: []
@@ -82,7 +94,7 @@ MonoBehaviour:
       - "Humanos malditos, desgra\xE7ados. Eu os farei pagar por isso. "
       - "Matarei at\xE9 o \xFAltimo humano neste planeta, eu juro. Juro que te vingarei,
         #Tyva|Iovelik# "
-    isOnScene: 0
+    isOnScene: 1
     nameOnScene: 
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao: []
