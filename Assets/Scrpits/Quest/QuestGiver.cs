@@ -28,7 +28,7 @@ public class QuestGiver : Interagivel
     public void AddQuestToBeNext(Quest quest)
     {
         quests.Insert(questsAceitas, quest);
-
+        icone.SetActive(true);
     }
 
     private void Awake()
@@ -112,11 +112,11 @@ public class QuestGiver : Interagivel
                 {
                     if (!quests[questsAceitas - 1].IsRealizada())
                     {
-                        if (Player.player.status.Fama < 30)
+                        if (Player.player.status.Fama < 500)
                         {
                             DialogueSystem.sistemaDialogo.IniciaDialogo(famaBaixa);
                         }
-                        else if (Player.player.status.Fama < 70)
+                        else if (Player.player.status.Fama < 1000)
                         {
                             DialogueSystem.sistemaDialogo.IniciaDialogo(famaMedia);
                         }

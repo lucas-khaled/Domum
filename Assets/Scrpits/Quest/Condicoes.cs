@@ -184,6 +184,7 @@ public class Condicoes
 
     private bool CheckDevolveItem()
     {
+        Debug.Log(interagiu);
         return interagiu;
     }
 

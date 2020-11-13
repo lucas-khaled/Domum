@@ -77,13 +77,13 @@ public class NPCBase : Interagivel
     {
         base.Interact();
 
-        if (!isPartOfDialogue && isQuestGiver)
+        if (!isPartOfDialogue && !isQuestGiver)
         {
-            if (fama < 30)
+            if (fama < 500)
             {
                 DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoFamaBaixa);
             }
-            else if (fama < 70) 
+            else if (fama < 1000) 
             {
                 DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoFamaMedia);
             }

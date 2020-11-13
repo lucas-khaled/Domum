@@ -939,12 +939,19 @@ MonoBehaviour:
   idleDuplo: 0
   dialogoFamaBaixa:
     dialogueLines:
-    - a
+    - "Kambin: Quem \xE9 voc\xEA, criatura?"
+    - "Kambin: N\xE3o, na verdade nem quero saber. S\xF3 vai embora"
   dialogoFamaMedia:
-    dialogueLines: []
+    dialogueLines:
+    - "Kambin: Tenho a esperan\xE7a de algum dia poderemos enfrentar os humanos,
+      cara a cara"
   dialogoFamaAlta:
     dialogueLines:
-    - b
+    - "Kambin: #J\xE1 lhe mostrei meu bast\xE3o de guerra?|Queria poder lutar na
+      guerra, infelizmente n\xE3o posso#"
+    - "#Tyva: Nunca. O usar\xE1 na rebeli\xE3o?|Iovelik: Por que? Levou uma flechada
+      no joelho?#"
+    - "\xC9, mais ou menos isso"
 --- !u!114 &3590062590329953515
 MonoBehaviour:
   m_ObjectHideFlags: 0
