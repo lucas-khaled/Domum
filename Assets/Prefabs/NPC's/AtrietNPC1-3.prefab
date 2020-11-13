@@ -324,7 +324,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5657d4b77158e1548a8801db75147939, type: 3}
   m_Controller: {fileID: 9100000, guid: 00aa25b1ee37e6841a7ec7c8976da70c, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldCanvas: {fileID: 6700849432393232881}
+  isComposedObject: 0
   anim: {fileID: 5381987510608975941}
   idleDuplo: 1
   dialogoFamaBaixa:

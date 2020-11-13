@@ -1061,7 +1061,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5fb8aa2930521634c9c651c731c0997c, type: 3}
   m_Controller: {fileID: 9100000, guid: 7d63c0f05b6b64e43bf2a5da6f08b8eb, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -4063,15 +4063,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa4a001d791114e4d813a558c162db20, type: 3}
---- !u!4 &7506308785936715236 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4836395642114373763, guid: aa4a001d791114e4d813a558c162db20,
-    type: 3}
-  m_PrefabInstance: {fileID: 3113553202920797543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &7980377505560351706 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5010939767776274109, guid: aa4a001d791114e4d813a558c162db20,
+    type: 3}
+  m_PrefabInstance: {fileID: 3113553202920797543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7506308785936715236 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4836395642114373763, guid: aa4a001d791114e4d813a558c162db20,
     type: 3}
   m_PrefabInstance: {fileID: 3113553202920797543}
   m_PrefabAsset: {fileID: 0}
