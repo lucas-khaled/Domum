@@ -83,7 +83,6 @@ public class Tigre : MonoBehaviour
         StartCoroutine(Escolher());
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
-        anim.SetFloat("Vida", maxVida);
     }
 
     private void Update()
@@ -227,7 +226,6 @@ public class Tigre : MonoBehaviour
         anim.SetBool("Idle", false);
         yield return new WaitForSeconds(6f);
         anim.SetBool("Idle", true);
-        StartCoroutine(Escolher());
     }
     public Vector3 RandomNavMeshGenerator(float raioCaminhada)
     {

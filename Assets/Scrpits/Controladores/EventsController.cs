@@ -116,6 +116,8 @@ public static class EventsController
                 onPausedGame -= (OnPausedGame)d;
             }
         }
+
+        Debug.Log("EventsCleared");
     }
 }
 

@@ -56,6 +56,11 @@ public class GameController : MonoBehaviour
         return qualPlayer;
     }
 
+    public AsyncOperation LoadPrincipalScene()
+    {
+        return SceneManager.LoadSceneAsync("Fase_PrincipalBLOQUING");
+    }
+
     public void ChangeScene(string cena, bool clearDelegates = false)
     {
         if(clearDelegates)

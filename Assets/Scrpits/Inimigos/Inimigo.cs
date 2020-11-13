@@ -206,8 +206,6 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         int numeroItens = Random.Range(0, 4);
 
-        Debug.Log(numeroItens);
-
         Bau dropzera = Instantiate(drop.gameObject, transform.position, transform.rotation).GetComponent<Bau>();
         Destroy(dropzera, 30);
 

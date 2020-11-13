@@ -14,7 +14,7 @@ public class Loading : MonoBehaviour
     private IEnumerator Carregamento()
     {
         yield return new WaitForSeconds(1f);
-        AsyncOperation level = SceneManager.LoadSceneAsync("Fase_PrincipalBLOQUING");
+        AsyncOperation level = GameController.gameController.LoadPrincipalScene();
         while (level.progress < 1)
         {
             yield return new WaitForEndOfFrame();
