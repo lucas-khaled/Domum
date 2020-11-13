@@ -283,7 +283,7 @@ public class Player : MonoBehaviour, IVulnerable
         {
             status.Dinheiro += 1000;
             status.Fama += 1000;
-            status.Level += 2;
+            status.Level += 1;
             Debug.Log("Seu cheatero");
         }
     }
