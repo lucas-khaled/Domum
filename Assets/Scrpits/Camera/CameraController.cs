@@ -64,6 +64,11 @@ public class CameraController : MonoBehaviour
     {
         obstrucao = Target;
         camCollision = GetComponent<CameraCollision>();
+
+        camCollision.enabled = false;
+        Target.position = Player.player.transform.position;
+        camCollision.enabled = true;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

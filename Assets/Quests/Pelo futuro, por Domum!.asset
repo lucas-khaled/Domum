@@ -47,7 +47,7 @@ MonoBehaviour:
     - '#Tyva|Iovelik#: Irei imediatamente.'
   condicoes:
   - tipoCondicao: 1
-    local: {x: 262.00174, y: 30.500002, z: 105.69225}
+    local: {x: 262.002, y: 30.500002, z: 105.69403}
     descricao: Fale com Anciao
     objsToInstantiate: []
     objsToDestroy:
@@ -119,7 +119,7 @@ MonoBehaviour:
       qualPlayer: 2
     - objetoPrefab: {fileID: 5712094464404053106, guid: 947d0b27446edf0d99c940ac73d1b4f7,
         type: 3}
-      local: {x: 272.7, y: 20.09812, z: 445.59}
+      local: {x: 272.7, y: 24.841629, z: 445.59}
       rotacao: {x: -0, y: 0, z: 0}
       nome: Multidao
       qualPlayer: 2
@@ -176,7 +176,7 @@ MonoBehaviour:
     nameOnScene: 
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao:
-    - {fileID: -927199367670048503, guid: 90ec6cd55f0dbef4d881389c7c6ea5bd, type: 3}
+    - {fileID: 1220379760553793819, guid: 1c89acade4caa0d45b45103a6ccbccdd, type: 3}
     - {fileID: 2899249941039648320, guid: e77be8f7697e4bf47bf84be7f9c7b056, type: 3}
     - {fileID: 2474648388022321753, guid: 5636177fe4bb142489c27d6b3d41f60d, type: 3}
     - {fileID: 11868605152789711, guid: 6a65567fc07afb845880aa9da1907601, type: 3}
@@ -203,7 +203,7 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 270.19, y: 20.1928, z: 443.46}
     descricao: Reporte para o lider mestico
     objsToInstantiate: []
     objsToDestroy: []
@@ -241,7 +241,7 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 0, y: 0, z: 0}
+    local: {x: 270.19, y: 20.1928, z: 443.46}
     descricao: Comunique com o lider mestico
     objsToInstantiate: []
     objsToDestroy:
