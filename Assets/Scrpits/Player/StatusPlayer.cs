@@ -162,7 +162,7 @@ public class StatusPlayer : MonoBehaviour
 
             maxVida += 10 + 5 * level;
 
-            if(level%8 == 0)
+            if(level%2 == 0)
             {
                 ArvoreDeHabilidades.IncrementaPerk();
             }

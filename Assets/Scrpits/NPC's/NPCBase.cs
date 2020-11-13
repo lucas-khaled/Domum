@@ -71,7 +71,7 @@ public class NPCBase : Interagivel
         this.statusPl = Player.player.status;
         if (idleDuplo)
             StartCoroutine(Escolher());
-        //this.navMesh = this.GetComponent<NavMeshAgent>();
+        this.navMesh = this.GetComponent<NavMeshAgent>();
     }
     public override void Interact()
     {

@@ -63,7 +63,14 @@ public class InteracaoController : MonoBehaviour
 
             foreach(Collider colisor in hit)
             {
-                if (colisor.GetComponent<Interagivel>().isComposedObject)
+                Interagivel interact = colisor.GetComponent<Interagivel>();
+                if (interact == null)
+                {
+                    numIndex++;
+                    continue;
+                }
+
+                if (interact.isComposedObject)
                 {
                     break;
                 }

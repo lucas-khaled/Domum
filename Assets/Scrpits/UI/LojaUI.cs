@@ -52,7 +52,7 @@ public class LojaUI : MonoBehaviour
     public bool ativo; 
 
     List<GameObject> listaVendedor = new List<GameObject>(), listaPlayer = new List<GameObject>();
-    Holder_Item holderAtual;
+    Holder_Item holderAtual, lastSelected;
     Loja lojaAtual;
 
     public static LojaUI lojaUi;
@@ -203,12 +203,6 @@ public class LojaUI : MonoBehaviour
             itemFama.text = arminha.famaMinima.ToString();
         }
 
-        StartCoroutine(WaitForSetButtonSelection(holder));
-    }
-
-    IEnumerator WaitForSetButtonSelection(Holder_Item holder)
-    {
-        yield return new WaitForSecondsRealtime(0.1f);
         painelInfoItem.SetActive(true);
         if (holder.transform.parent == contentPlayer.transform)
         {
@@ -232,29 +226,43 @@ public class LojaUI : MonoBehaviour
             btnVender.gameObject.GetComponent<Image>().color = btnVender.colors.disabledColor;
         }
 
+        lastSelected = holderAtual;
         holderAtual = holder;
+
+        //StartCoroutine(WaitForSetButtonSelection(holder));
     }
 
-    public void DeselectItem()
+    IEnumerator WaitForSetButtonSelection(Holder_Item holder)
     {
-        StartCoroutine(DeselectItemWait());
+        yield return new WaitForSecondsRealtime(0.2f);
+        
     }
 
-    IEnumerator DeselectItemWait()
+    public void DeselectItem(Holder_Item holder)
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        
+        StartCoroutine(DeselectItemWait(holder));
+    }
 
-        painelInfoItem.SetActive(false);
+    IEnumerator DeselectItemWait(Holder_Item holder)
+    {
+        
+        yield return new WaitForSecondsRealtime(0.1f);
 
-        btnComprar.interactable = false;
-        btnComprar.enabled = false;
-        btnComprar.gameObject.GetComponent<Image>().color = btnComprar.colors.disabledColor;
+        if (lastSelected == holder && holder == holderAtual)
+        {
+            painelInfoItem.SetActive(false);
 
-        btnVender.interactable = false;
-        btnVender.enabled = false;
-        btnVender.gameObject.GetComponent<Image>().color = btnVender.colors.disabledColor;
+            btnComprar.interactable = false;
+            btnComprar.enabled = false;
+            btnComprar.gameObject.GetComponent<Image>().color = btnComprar.colors.disabledColor;
 
-        holderAtual = null;
+            btnVender.interactable = false;
+            btnVender.enabled = false;
+            btnVender.gameObject.GetComponent<Image>().color = btnVender.colors.disabledColor;
+
+            holderAtual = null;
+        }
     }
 
     public void VenderItem()

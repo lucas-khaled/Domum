@@ -42,6 +42,7 @@ public class Holder_Item : Button, ISelectHandler
             {
                 InventarioUI.inventarioUI.ApareceUsar();
             }
+
         }
 
         else
@@ -85,6 +86,7 @@ public class Holder_Item : Button, ISelectHandler
     public override void OnDeselect(BaseEventData eventData)
     {
         base.OnDeselect(eventData);
+        
 
         if (GameController.gameController.QualOrigemInput() == OrigemInput.MOUSE)
         {
@@ -95,7 +97,7 @@ public class Holder_Item : Button, ISelectHandler
 
             else
             {
-                LojaUI.lojaUi.DeselectItem();
+                LojaUI.lojaUi.DeselectItem(this);
             }
         }
     }

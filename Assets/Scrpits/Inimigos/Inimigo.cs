@@ -183,6 +183,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         Destroy(this.gameObject, 10);
         anim.SetBool("Morreu", true);
+        CancelInvoke("CheckIfHitLifeMustBeActive");
 
         Destroy(GetComponent<NavMeshAgent>());
         Destroy(GetComponent<SphereCollider>());
@@ -206,13 +207,13 @@ public class Inimigo : MonoBehaviour, IVulnerable
     {
         int numeroItens = Random.Range(0, 4);
 
-        Bau dropzera = Instantiate(drop.gameObject, transform.position, transform.rotation).GetComponent<Bau>();
+        GameObject dropzera = Instantiate(drop.gameObject, transform.position, transform.rotation);
         Destroy(dropzera, 30);
 
         for (int i = 0; i <= numeroItens; i++)
         {
             int itemEsc = Random.Range(0, itensDropaveis.Length);
-            dropzera.itens.Add(itensDropaveis[itemEsc]);
+            dropzera.GetComponent<Bau>().itens.Add(itensDropaveis[itemEsc]);
         }        
     }
 

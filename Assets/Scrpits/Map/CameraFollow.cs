@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private void Start()
-    {
-        
-    }
-
+    [SerializeField]
+    private bool followPlayerRotation = true;
     private void LateUpdate()
     {
-        Vector3 newPosition = Player.player.transform.position;
+        Vector3 newPosition =  Player.player.transform.position;
         newPosition.y = transform.position.y;
         transform.position = newPosition;
 
-        Vector3 euler = Player.player.transform.eulerAngles;
+        Vector3 euler = (followPlayerRotation) ? Player.player.transform.eulerAngles : CameraController.cameraInstance.GetTarget().eulerAngles;
         euler.x = 90;
 
         transform.rotation = Quaternion.Euler(euler);

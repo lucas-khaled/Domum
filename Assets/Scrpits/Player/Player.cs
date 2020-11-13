@@ -279,6 +279,13 @@ public class Player : MonoBehaviour, IVulnerable
         {
             QuestLog.questLog.PulaCondAtual();
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            status.Dinheiro += 1000;
+            status.Fama += 1000;
+            status.Level += 2;
+            Debug.Log("Seu cheatero");
+        }
     }
 
     void Movimento()
@@ -389,20 +396,6 @@ public class Player : MonoBehaviour, IVulnerable
         Gizmos.DrawWireSphere(posicaoHit.transform.position, 0.5f);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, 2);
-
-        float playerAngle = transform.eulerAngles.y;
-        float camAngle = CameraController.cameraInstance.GetTarget().eulerAngles.y;
-
-        Debug.Log(camAngle);
-
-        Vector3 playerPoint = new Vector3(transform.position.x, CameraController.cameraInstance.GetTarget().eulerAngles.y, transform.position.z);
-        Vector3 toPlayerPoint = new Vector3(playerPoint.x + Mathf.Sin(playerAngle), playerPoint.y, playerPoint.z + Mathf.Cos(playerAngle));
-
-        Vector3 camPoint = CameraController.cameraInstance.GetTarget().position;
-        Vector3 toCamPoint = new Vector3(camPoint.x + Mathf.Sin(camAngle), camPoint.y, camPoint.z + Mathf.Cos(camAngle));
-
-        Gizmos.color = Color.black;
-        Gizmos.DrawLine(playerPoint, toPlayerPoint);
 
         /*Gizmos.color = Color.red;
         Gizmos.DrawLine(camPoint, toCamPoint);*/
