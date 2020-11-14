@@ -24,12 +24,12 @@ public class Kambim : MonoBehaviour
     [SerializeField]
     private Dialogo dialogoAcordado;
 
-    Vector3 finalPosition;
+    /*Vector3 finalPosition;
     Collider maisPerto;
     Vector3 destino;
-    NavMeshHit hit;
+    NavMeshHit hit;*/
 
-    private void Update()
+    /*private void Update()
     {
         if (anim.GetBool("Andando"))
         {
@@ -45,7 +45,7 @@ public class Kambim : MonoBehaviour
             anim.SetBool("Andando", false);
             vendedor.isStopped = true;
         }
-    }
+    }*/
     private void Start()
     {
         if (Random.Range(0, 2) == 0)
@@ -58,7 +58,7 @@ public class Kambim : MonoBehaviour
         }
         StartCoroutine(Escolha());
     }
-    private void Andar(Vector3 destino, bool move = true)
+    /*private void Andar(Vector3 destino, bool move = true)
     {
         anim.SetBool("Andando", true);
         if (!move)
@@ -70,7 +70,7 @@ public class Kambim : MonoBehaviour
         vendedor.isStopped = false;
         this.destino = destino;
         vendedor.SetDestination(destino);
-    }
+    }*/
     private IEnumerator Escolha()
     {
         int random = Random.Range(0, 100);
@@ -80,10 +80,10 @@ public class Kambim : MonoBehaviour
             anim.SetBool("Dormindo", true);
 
         }
-        else if (random > 70 && !playerPerto && !anim.GetBool("Dormindo"))
+        /*else if (random > 70 && !playerPerto && !anim.GetBool("Dormindo"))
         {
             Andar(RandomNavMeshGenerator(4f));
-        }
+        }*/
         else if (random > 30)
         {
             anim.SetBool("Idle2", false);
@@ -127,7 +127,7 @@ public class Kambim : MonoBehaviour
         }
     }
 
-    public Vector3 RandomNavMeshGenerator(float raioCaminhada)
+    /*public Vector3 RandomNavMeshGenerator(float raioCaminhada)
     {
         Vector3 randomDirection = Random.insideUnitSphere * raioCaminhada;
         randomDirection += this.gameObject.transform.position;
@@ -139,7 +139,7 @@ public class Kambim : MonoBehaviour
         }
 
         return finalPosition;
-    }
+    }*/
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")

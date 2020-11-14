@@ -1900,8 +1900,6 @@ GameObject:
   - component: {fileID: 6048461772215868045}
   - component: {fileID: 1862210399457404200}
   - component: {fileID: 8680194412655135515}
-  - component: {fileID: 1136480150321236320}
-  - component: {fileID: 7403206992116276575}
   - component: {fileID: 5572369147276113554}
   m_Layer: 10
   m_Name: Seller-Kambim 1
@@ -1993,7 +1991,6 @@ MonoBehaviour:
   venda: {fileID: 8300000, guid: aef3c3731a72ec14ab0b6b1ee79ea54c, type: 3}
   audioSource: {fileID: 5572369147276113554}
   anim: {fileID: 8680194412655135515}
-  vendedor: {fileID: 1136480150321236320}
   contVenderComprar: 0
   dialogoDormindo:
     dialogueLines:
@@ -2021,44 +2018,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!195 &1136480150321236320
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8600281319107914252}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 1
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!54 &7403206992116276575
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8600281319107914252}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!82 &5572369147276113554
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2402,15 +2361,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab7270489676aa14da017e9fc9234de0, type: 3}
---- !u!224 &8146142608182764281 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5402933830822475837, guid: ab7270489676aa14da017e9fc9234de0,
-    type: 3}
-  m_PrefabInstance: {fileID: 4321197501772552900}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8146142608182764280 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5402933830822475836, guid: ab7270489676aa14da017e9fc9234de0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4321197501772552900}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &8146142608182764281 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5402933830822475837, guid: ab7270489676aa14da017e9fc9234de0,
     type: 3}
   m_PrefabInstance: {fileID: 4321197501772552900}
   m_PrefabAsset: {fileID: 0}

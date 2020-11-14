@@ -22,12 +22,12 @@ public class Atriet : MonoBehaviour
 
     public int contVenderComprar;
 
-    Vector3 finalPosition;
+    /*Vector3 finalPosition;
     Collider maisPerto;
     Vector3 destino;
-    NavMeshHit hit;
+    NavMeshHit hit;*/
 
-    private void Update()
+    /*private void Update()
     {
         if (!anim.GetBool("Idle"))
         {
@@ -44,12 +44,12 @@ public class Atriet : MonoBehaviour
             anim.SetBool("Idle", true);
             vendedor.isStopped = true;
         }
-    }
+    }*/
     private void Start()
     {
         StartCoroutine(Escolha());
     }
-    private void Andar(Vector3 destino, bool move = true)
+    /*private void Andar(Vector3 destino, bool move = true)
     {
         anim.SetBool("Idle", false);
         if (!move)
@@ -62,13 +62,14 @@ public class Atriet : MonoBehaviour
         this.destino = destino;
         vendedor.SetDestination(destino);
 
-    }
+    }*/
     private IEnumerator Escolha()
     {
         int random = Random.Range(0, 100);
         if (random > 75 && !playerPerto)
         {
-            Andar(RandomNavMeshGenerator(4f));
+            yield return new WaitForSeconds(5f);
+            StartCoroutine(Escolha());
         }
         else if (random > 50 && !playerPerto)
         {
@@ -79,11 +80,6 @@ public class Atriet : MonoBehaviour
         else if (random > 30 && !playerPerto)
         {
             anim.SetTrigger("Alongar");
-            yield return new WaitForSeconds(5f);
-            StartCoroutine(Escolha());
-        }
-        else
-        {
             yield return new WaitForSeconds(5f);
             StartCoroutine(Escolha());
         }
@@ -113,7 +109,7 @@ public class Atriet : MonoBehaviour
          DialogueSystem.sistemaDialogo.IniciaDialogo(dialogoInteracao);
     }
 
-    public Vector3 RandomNavMeshGenerator(float raioCaminhada)
+    /*public Vector3 RandomNavMeshGenerator(float raioCaminhada)
     {
         Vector3 randomDirection = Random.insideUnitSphere * raioCaminhada;
         randomDirection += this.gameObject.transform.position;
@@ -125,7 +121,7 @@ public class Atriet : MonoBehaviour
         }
 
         return finalPosition;
-    }
+    }*/
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
