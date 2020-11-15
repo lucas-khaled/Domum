@@ -205,6 +205,7 @@ public class Girafa : MonoBehaviour
             Correr();
             else
             {
+                GetComponent<NavMeshAgent>().speed = 0.5f;
                 anim.SetBool("Caminhando", true);
                 correndo = true;
                 corrida = UnityEngine.Random.Range(2, 6);
