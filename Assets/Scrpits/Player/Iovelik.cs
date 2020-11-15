@@ -9,6 +9,8 @@ public class Iovelik : Player
     [SerializeField]
     private AudioClip martelada;
     [SerializeField]
+    private AudioClip marteladaDesbloqueio;
+    [SerializeField]
     private AudioClip escudoSom;
 
     [Header("Valores Iovelik")]
@@ -146,7 +148,11 @@ public class Iovelik : Player
 
     private void danoArea()
     {
-        audioSource.PlayOneShot(martelada);
+        if (ataqueEspecialNome == "Especial")
+            audioSource.PlayOneShot(martelada);
+        else
+            audioSource.PlayOneShot(marteladaDesbloqueio);
+
         estadoPlayer = EstadoPlayer.ATACANDO;
         animator.SetTrigger(ataqueEspecialNome);
         canAttack = false;
