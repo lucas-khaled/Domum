@@ -131,7 +131,8 @@ public class Iovelik : Player
 
     private void AtivarEscudo(bool ativo)
     {
-        audioSource.PlayOneShot(escudoSom);
+        audioSource.clip = escudoSom;
+        audioSource.Play();
         animator.SetBool("Escudo", ativo);
         escudoAtivo = ativo;
 
@@ -141,6 +142,7 @@ public class Iovelik : Player
         {
             escudo.transform.GetChild(0).GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
             escudo.GetComponent<ParticleSystem>().Stop();
+            audioSource.Stop();
         }
 
         estadoPlayer = ativo ? EstadoPlayer.RECARREGAVEL : EstadoPlayer.COMBATE;
