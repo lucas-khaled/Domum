@@ -65,11 +65,11 @@ public class LojaUI : MonoBehaviour
 
         painelLoja.SetActive(false);
 
-        if (lojaAtual.gameObject.GetComponent<Kambim>())
+        if (lojaAtual.gameObject.GetComponent<Kambim>() != null)
         {
             lojaAtual.gameObject.GetComponent<Kambim>().FimInteracao();
         }
-        else if (lojaAtual.gameObject.GetComponent<Atriet>())
+        else if (lojaAtual.gameObject.GetComponent<Atriet>() != null)
         {
             lojaAtual.gameObject.GetComponent<Atriet>().FimInteracao();
         }

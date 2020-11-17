@@ -260,6 +260,7 @@ public class Tyva : Player
 
     private void Faca()
     {
+        estadoPlayer = EstadoPlayer.ATACANDO;
         if (contadorFaca < timeFaca || status.QntColetavel <= 0)
             return;
 

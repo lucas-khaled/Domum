@@ -159,7 +159,6 @@ public class Iovelik : Player
         animator.SetTrigger(ataqueEspecialNome);
         canAttack = false;
         status.QntColetavel--;
-        estadoPlayer = EstadoPlayer.COMBATE;
 
     }
 

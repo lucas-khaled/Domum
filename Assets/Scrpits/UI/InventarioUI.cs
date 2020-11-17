@@ -117,6 +117,7 @@ public class InventarioUI : MonoBehaviour
             Inventario.inventario.EquipArma((Arma)selecionado);
             excluirButton.SetActive(false);
             equiparButton.SetActive(false);
+            ClearOpcoes();
         }
         else
             UIController.uiController.BlockMessage("Esse Personagem não usa esta arma!");
@@ -129,7 +130,7 @@ public class InventarioUI : MonoBehaviour
 
         Inventario.inventario.RemoverItem(selecionado);
         selecionado = null;
-        ClearBotoes();
+        ClearOpcoes();
     }
 
     public void PegaValores()
@@ -190,6 +191,7 @@ public class InventarioUI : MonoBehaviour
         tituloText.text = string.Empty;
         pesoText.text = string.Empty;
         valor_vendaText.text = string.Empty;
+        famaText.text = string.Empty;
     }
 
     IEnumerator ClearBotoes()
