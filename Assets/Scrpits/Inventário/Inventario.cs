@@ -69,7 +69,7 @@ public class Inventario : MonoBehaviour
     public bool AddItem(Item item)
     {
         bool inseriu = false;
-        if (pesoInventario <= pesoMaximo)
+        if (pesoInventario + item.peso <= pesoMaximo)
         {
             itens.Add(item);
             pesoInventario += item.peso;
@@ -84,6 +84,10 @@ public class Inventario : MonoBehaviour
             {
                 EventsController.onInventarioChange.Invoke(item, true);
             }
+        }
+        else
+        {
+            UIController.uiController.BlockMessage("Inventário Cheio");
         }
 
         return inseriu;
@@ -102,13 +106,20 @@ public class Inventario : MonoBehaviour
     #region ARMA
     public void EquipArma(Arma arma)
     {
-        if(Player.player.status.Level >= arma.nivelMinimo)
+        if (Player.player.status.Level >= arma.nivelMinimo)
         {
-            UnequipArma();
-            armaEquipada = arma;
-            RemoverItem(arma);
-            armaMesh.sharedMesh = arma.armaMesh;
+            if(Player.player.status.Fama >= arma.famaMinima)
+            {
+                UnequipArma();
+                armaEquipada = arma;
+                RemoverItem(arma);
+                armaMesh.sharedMesh = arma.armaMesh;
+            }
+            else
+                UIController.uiController.BlockMessage("Fama Insuficiente");
         }
+        else
+            UIController.uiController.BlockMessage("Level Insuficiente");
     }
     
     public void UnequipArma()

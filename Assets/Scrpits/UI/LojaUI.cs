@@ -18,8 +18,6 @@ public class LojaUI : MonoBehaviour
     private Text playerFama;
     [SerializeField]
     private Text inventarioPeso;
-    [SerializeField]
-    private Animator Dinherio_insu;
 
     [Header("InfoItem")]
     [SerializeField]
@@ -290,7 +288,7 @@ public class LojaUI : MonoBehaviour
     {
         if(Player.player.status.Dinheiro < holderAtual.item.custoMoeda)
         {
-            Dinherio_insu.SetTrigger("Dinheiro_insu");
+            UIController.uiController.BlockMessage("Dinheiro Insuficiente");
             return;
         }
         else
