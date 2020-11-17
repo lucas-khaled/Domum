@@ -50,6 +50,8 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject RenderIovelik;
 
+    [SerializeField]
+    private Animator blockMessage;
     //public Transform Inicio;
 
     private GameObject[] Bases;
@@ -300,6 +302,12 @@ public class UIController : MonoBehaviour
             Time.timeScale = 0;
             
         }
+    }
+
+    public void BlockMessage(string message)
+    {
+        blockMessage.transform.GetChild(0).GetComponent<Text>().text = message;
+        blockMessage.SetTrigger("Dinheiro_insu");
     }
 
     public void PauseOff()

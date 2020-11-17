@@ -45,8 +45,7 @@ public class InventarioUI : MonoBehaviour
     private Text pesoEquipadaText;
     [SerializeField]
     private Text nomeEquipadaText;
-    [SerializeField]
-    private Animator Dinherio_insu;
+    
 
 
     [Header("Images")]
@@ -107,24 +106,20 @@ public class InventarioUI : MonoBehaviour
 
     }
 
+    
+
     public void Equipar()
     {
         Arma selection = (Arma)selecionado;
 
         if (selection.armaPlayer == GameController.gameController.GetPersonagemEscolhido())
         {
-            if(selection.famaMinima <= Player.player.status.Fama){
-
-                Inventario.inventario.EquipArma((Arma)selecionado);
-                excluirButton.SetActive(false);
-                equiparButton.SetActive(false);
-            }
-            else{
-
-                Dinherio_insu.SetTrigger("Dinheiro_insu");
-                return;
-            }
+            Inventario.inventario.EquipArma((Arma)selecionado);
+            excluirButton.SetActive(false);
+            equiparButton.SetActive(false);
         }
+        else
+            UIController.uiController.BlockMessage("Esse Personagem não usa esta arma!");
     }
 
     public void Usar()
@@ -168,7 +163,7 @@ public class InventarioUI : MonoBehaviour
 
     IEnumerator ApareceEquiparWait()
     {
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.3f);
         equiparButton.SetActive(true);
     }
 
@@ -184,7 +179,7 @@ public class InventarioUI : MonoBehaviour
 
     IEnumerator ApareceUsarWait()
     {
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.3f);
         usarButton.SetActive(true);
     }
 
@@ -199,7 +194,7 @@ public class InventarioUI : MonoBehaviour
 
     IEnumerator ClearBotoes()
     {
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(0.2f);
         excluirButton.SetActive(false);
         equiparButton.SetActive(false);
         usarButton.SetActive(false);

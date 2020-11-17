@@ -8,7 +8,7 @@ public class Holder_Item : Button, ISelectHandler
 {
 
     public Item item;
-    public Image Spritu_item;
+    public Image sprite_item;
 
     public bool isLoja = false;
 
@@ -17,7 +17,8 @@ public class Holder_Item : Button, ISelectHandler
         base.Start();
         if (item.icone != null)
         {
-            Spritu_item.sprite = item.icone;
+            sprite_item.sprite = item.icone;
+            sprite_item.preserveAspect = true;
         }
     }
 
@@ -42,7 +43,6 @@ public class Holder_Item : Button, ISelectHandler
             {
                 InventarioUI.inventarioUI.ApareceUsar();
             }
-
         }
 
         else

@@ -14,6 +14,7 @@ public class Holder_ItemBau : Button, ISelectHandler
     {
         base.Start();
         spriteItem.sprite = item.icone;
+        spriteItem.preserveAspect = true;
     }
 
 
