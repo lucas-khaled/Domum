@@ -193,6 +193,7 @@ public class LojaUI : MonoBehaviour
         itemMoedas.text = holder.item.custoMoeda.ToString();
         itemPeso.text = holder.item.peso.ToString();
         spriteItem.sprite = holder.item.icone;
+        spriteItem.preserveAspect = true;
 
         if(holder.item.GetType() == typeof(Arma))
         {

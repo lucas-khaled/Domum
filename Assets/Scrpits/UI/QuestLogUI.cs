@@ -78,11 +78,6 @@ public class QuestLogUI : MonoBehaviour
         EventsController.onCondicaoTerminada += TerminaCondicao;
         questLogUI = this;
         miniMapCam = GameObject.Find("Mini_map").GetComponent<Camera>();
-
-        if (miniMapCam == null)
-            Debug.Log("Vai se fuder");
-        else
-            Debug.Log("Não vai se fuder "+miniMapCam.name);
     }
 
    private void Start()

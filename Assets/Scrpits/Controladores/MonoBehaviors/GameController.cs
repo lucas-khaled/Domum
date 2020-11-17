@@ -40,7 +40,6 @@ public class GameController : MonoBehaviour
 
     public void EscolherPersonagem(string personagem)
     {
-
         if (personagem == "Iovelik")
         {
             qualPlayer = TipoPlayer.IOVELIK;

@@ -8,12 +8,13 @@ public class Loading : MonoBehaviour
 
     public void Carregar()
     {
+        
         StartCoroutine(Carregamento());
     }
 
     private IEnumerator Carregamento()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         AsyncOperation level = GameController.gameController.LoadPrincipalScene();
         while (level.progress < 1)
         {

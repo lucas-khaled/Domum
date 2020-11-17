@@ -42,7 +42,6 @@ public class AtaqueDebugTyva : StateMachineBehaviour
         if (auxSom <= 0 && auxSom != -999)
         {
             auxSom = -999;
-            Debug.Log(auxSom);
             animator.gameObject.GetComponent<Player>().audioSource.PlayOneShot(Player.player.ataque);
         }
     }
