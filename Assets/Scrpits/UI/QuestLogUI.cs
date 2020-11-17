@@ -99,14 +99,14 @@ public class QuestLogUI : MonoBehaviour
         go.transform.localScale = Vector3.one * 3f;
    }
 
-    void AtualizarQuestLog(Quest quest, bool endQuest = false) {
+    void AtualizarQuestLog(Quest quest, bool endQuest = false, bool isLoaded = false) {
 
         if (!endQuest)
         {
             audioSource.PlayOneShot(iniciaQuest);
             StartCoroutine(QuestAnimationAceitar(quest));
         }
-        else
+        else if(!isLoaded)
         {
             StartCoroutine(QuestAnimationFinalizar(quest));
             audioSource.PlayOneShot(finalizaQuest);
@@ -114,16 +114,29 @@ public class QuestLogUI : MonoBehaviour
 
         if (endQuest)
         {
-            GameObject goExists = slotQuests.Find(x => x.GetComponent<Holder_Quest>().referenciaQuest == quest);
-            if (goExists != null)
+            if (!isLoaded)
             {
-                goExists.transform.SetParent(contentFeitas);
-                goExists.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
-                goExists.transform.GetChild(1).gameObject.SetActive(false);
-                questSelecionada = null;
-
-                return;
+                GameObject goExists = slotQuests.Find(x => x.GetComponent<Holder_Quest>().referenciaQuest == quest);
+                if (goExists != null)
+                {
+                    goExists.transform.SetParent(contentFeitas);
+                    goExists.transform.GetChild(0).GetComponent<Text>().color = Color.gray;
+                    goExists.transform.GetChild(1).gameObject.SetActive(false);
+                    questSelecionada = null;
+                }
             }
+            else
+            {
+                GameObject objEnded = slot;
+                objEnded.GetComponent<Holder_Quest>().referenciaQuest = quest;
+
+                GameObject questInstanciadaEnded = (GameObject)Instantiate(objEnded);
+                slotQuests.Add(questInstanciadaEnded);
+
+                questInstanciadaEnded.transform.SetParent(contentFeitas);
+                questInstanciadaEnded.transform.localScale = Vector3.one;
+            }
+            return;
         }
 
         GameObject obj = slot;
@@ -329,7 +342,7 @@ public class QuestLogUI : MonoBehaviour
     private IEnumerator QuestAnimationFinalizar(Quest quest)
     {
         var animacaoQuest = Instantiate(UIController.uiController.questAceitaTerminada, UIController.uiController.posicao.transform);
-        animacaoQuest.gameObject.transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = "Quest Terminada: " + tituloQuest.text;
+        animacaoQuest.gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Quest Terminada: " + tituloQuest.text;
         animacaoQuest.transform.localScale = Vector3.one;
 
         StartCoroutine(AnimacaoDinheiroFamaXP(quest));

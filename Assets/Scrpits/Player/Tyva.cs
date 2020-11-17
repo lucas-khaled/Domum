@@ -96,10 +96,6 @@ public class Tyva : Player
         globalVolume = GameObject.FindObjectOfType<Volume>();
     }
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
     #endregion
 
     protected override void Update()

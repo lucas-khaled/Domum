@@ -48,7 +48,7 @@ public class QuestLog : MonoBehaviour
         {
             qf.TerminaMissao(true);
             questsFinalizadas.Add(qf);
-            EventsController.onQuestLogChange.Invoke(qf, true);
+            EventsController.onQuestLogChange.Invoke(qf, true, true);
         }
     }
 

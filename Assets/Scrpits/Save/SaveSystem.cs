@@ -50,6 +50,7 @@ public static class SaveSystem
 
             string json = (string)formatter.Deserialize(stream);
             json = Descriptografa(json);
+            Debug.Log("Loading Quest data: \n" + json);
             JsonUtility.FromJsonOverwrite(json, data.questData);
             stream.Close();
         }
@@ -99,7 +100,9 @@ public static class SaveSystem
             json = Descriptografa(json);
             data = JsonUtility.FromJson<SaveData>(json);
             stream.Close();
+            
             LoadQuestData();
+            Debug.Log("Loading data: \n" + JsonUtility.ToJson(data));
             return data;
         }
         else

@@ -160,6 +160,7 @@ public class Player : MonoBehaviour, IVulnerable
 
     private void Morrer()
     {
+        Debug.Log("Mori");
         estadoPlayer = EstadoPlayer.MORTO;
     }
 
@@ -177,6 +178,7 @@ public class Player : MonoBehaviour, IVulnerable
 
         if (status.Vida <= 0)
         {
+            Debug.Log("Morri");
             nomeAnim = "Morte";
         }
 
@@ -196,6 +198,7 @@ public class Player : MonoBehaviour, IVulnerable
 
         if (animationName == "Morte")
         {
+            Debug.Log("Vai morer");
             Morrer();
         }
         else

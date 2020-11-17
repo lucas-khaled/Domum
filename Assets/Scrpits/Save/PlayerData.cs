@@ -28,6 +28,8 @@ public class PlayerData
         vida = status.Vida;
         qntColetavel = status.QntColetavel;
         XPRequisito = status.XPRequisito;
+        experiencia = status.Experiencia;
+        level = status.Level;
         qualPlayer = (int)GameController.gameController.GetPersonagemEscolhido();
     }
 }
