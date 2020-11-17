@@ -75,6 +75,7 @@ public class InventarioUI : MonoBehaviour
     public void AttUI(Item item, bool mudanca)
     {
         armaEquipadaImage.sprite = Inventario.inventario.armaEquipada.icone;
+        armaEquipadaImage.preserveAspect = true;
         PegaValores();
         if (mudanca)
         {
@@ -198,7 +199,7 @@ public class InventarioUI : MonoBehaviour
 
     IEnumerator ClearBotoes()
     {
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.3f);
         excluirButton.SetActive(false);
         equiparButton.SetActive(false);
         usarButton.SetActive(false);

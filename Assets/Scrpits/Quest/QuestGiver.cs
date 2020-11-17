@@ -20,7 +20,12 @@ public class QuestGiver : Interagivel
 
     int questsAceitas = 0;
 
-    public int GetQuestAceitas()
+    public Quest[] GetQuestOnGiver()
+    {
+        return quests.ToArray();
+    }
+
+    public int GetQntQuestAceitas()
     {
         return questsAceitas;
     }
@@ -50,10 +55,10 @@ public class QuestGiver : Interagivel
         DeAcceptQuests();
         icone = FindChildByLayer("Icones");
 
-        if (questsAceitas > 0)
+        /*if (questsAceitas > 0)
         {
             OnQuestLogChanged(quests[questsAceitas - 1], true);
-        }
+        }*/
 
         if(questsAceitas >= quests.Count)
         {
@@ -77,13 +82,16 @@ public class QuestGiver : Interagivel
 
     void FindMeOnLoad()
     {
-        string[] qgNames = SaveSystem.data.questData.giversNames;
+        QuestData.QuestGiverSave[] qg = SaveSystem.data.questData.questGiversSave;
 
-        for(int i = 0; i < qgNames.Length; i++)
+        for(int i = 0; i < qg.Length; i++)
         {
-            if (qgNames[i] == this.name)
+            if (qg[i].giverName == this.name)
             {
-                questsAceitas = SaveSystem.data.questData.giversQntAceitas[i];
+                quests.Clear();
+                questsAceitas = qg[i].giverQntAceitas;
+                quests.AddRange(qg[i].questsOnGiver);
+                Debug.Log("Carreguei: " + name + " - " + questsAceitas + " - " + quests.Count);
                 break;
             }
         }
@@ -142,7 +150,7 @@ public class QuestGiver : Interagivel
         }
     }
 
-    private void OnQuestLogChanged(Quest quest, bool endQuest = false)
+    private void OnQuestLogChanged(Quest quest, bool endQuest = false, bool isLoaded = false)
     {       
         if (questsAceitas >= quests.Count)
         {

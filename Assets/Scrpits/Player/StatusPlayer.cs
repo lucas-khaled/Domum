@@ -192,13 +192,18 @@ public class StatusPlayer : MonoBehaviour
         PlayerData playerData = SaveSystem.data.playerData;
         maxColetavel = playerData.maxColetavel;
         numAtaque = playerData.numAtaque;
-        TempoEscudo = playerData.tempoEscudo;
-        tempoDashTotal = playerData.tempoDashTotal;
         maxVida = playerData.maxVida;
         dinheiro = playerData.dinheiro;
         fama = playerData.fama;
         vida = playerData.vida;
         qntColetavel = playerData.qntColetavel;
         XPRequisito = playerData.XPRequisito;
+        experiencia = playerData.experiencia;
+        level = playerData.level;
+
+        if(GameController.gameController.GetPersonagemEscolhido() == TipoPlayer.IOVELIK)
+            TempoEscudo = playerData.tempoEscudo;
+        else
+            tempoDashTotal = playerData.tempoDashTotal;
     }
 }

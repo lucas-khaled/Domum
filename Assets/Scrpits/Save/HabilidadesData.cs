@@ -6,13 +6,17 @@ using UnityEngine;
 public class HabilidadesData
 {
     public int[] indiceAtivas;
+    public int qntPerk;
 
     public HabilidadesData()
     {
         indiceAtivas = null;
         ArvoreDeHabilidades ar = GameObject.FindObjectOfType<ArvoreDeHabilidades>();
 
-        if(ar!=null)
+        if (ar != null)
+        {
             indiceAtivas = ar.GetActualSkillsActivityIndexes();
+            qntPerk = ar.GetQntPerk();
+        }
     }
 }
