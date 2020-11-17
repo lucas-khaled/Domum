@@ -251,6 +251,10 @@ public class ItemManagerWindow : EditorWindow
 
                 GUILayout.Label("Mesh");
                 armaAtual.armaMesh = (Mesh)EditorGUILayout.ObjectField(armaAtual.armaMesh, typeof(Mesh));
+                GUILayout.Space(3);
+
+                GUILayout.Label("Material");
+                armaAtual.armaMaterial = (Material)EditorGUILayout.ObjectField(armaAtual.armaMaterial, typeof(Material));
             }
             #endregion
 

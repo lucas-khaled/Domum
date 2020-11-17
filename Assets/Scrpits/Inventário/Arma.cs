@@ -12,4 +12,5 @@ public class Arma : Item
     public int nivelMinimo;
     public int famaMinima;
     public Mesh armaMesh;
+    public Material armaMaterial;
 }

@@ -179,6 +179,9 @@ public class ArvoreDeHabilidades : MonoBehaviour
                 SetHabilidadesAtivas();
                 DecrementaPerk();
             }
+            else
+                UIController.uiController.BlockMessage("Não tem Perk Suficiente");
+            
         }
     }
 
@@ -193,6 +196,8 @@ public class ArvoreDeHabilidades : MonoBehaviour
                 SetHabilidadesAtivas();
                 DecrementaPerk();
             }
+            else
+                UIController.uiController.BlockMessage("Não tem Perk Suficiente");
         }
     }
 

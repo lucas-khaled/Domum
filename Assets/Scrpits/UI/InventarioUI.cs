@@ -68,7 +68,7 @@ public class InventarioUI : MonoBehaviour
     void Start()
     {
         PegaValores();
-          
+        armaEquipadaImage.preserveAspect = true;
     }
 
     public void AttUI(Item item, bool mudanca)
@@ -153,7 +153,7 @@ public class InventarioUI : MonoBehaviour
 
     IEnumerator ApareceExcluirWait()
     {
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.3f);
         excluirButton.SetActive(true);
     }
 

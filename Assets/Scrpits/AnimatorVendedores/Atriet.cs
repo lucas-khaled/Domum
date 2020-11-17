@@ -143,15 +143,4 @@ public class Atriet : MonoBehaviour
             playerPerto = false;
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            GetComponent<Rigidbody>().isKinematic = true;
-        }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        GetComponent<Rigidbody>().isKinematic = false;
-    }
 }

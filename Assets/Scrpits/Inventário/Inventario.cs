@@ -33,6 +33,7 @@ public class Inventario : MonoBehaviour
     {
         armaEquipada = SaveSystem.data.inventarioData.armaEquipada;
         armaMesh.sharedMesh = armaEquipada.armaMesh;
+        armaMesh.sharedMaterial = armaEquipada.armaMaterial;
 
         foreach(Item item in SaveSystem.data.inventarioData.itens)
         {
@@ -114,6 +115,7 @@ public class Inventario : MonoBehaviour
                 armaEquipada = arma;
                 RemoverItem(arma);
                 armaMesh.sharedMesh = arma.armaMesh;
+                armaMesh.sharedMaterial = arma.armaMaterial;
             }
             else
                 UIController.uiController.BlockMessage("Fama Insuficiente");
