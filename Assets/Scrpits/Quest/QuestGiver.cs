@@ -115,40 +115,29 @@ public class QuestGiver : Interagivel
 
         if (!isPartOfDialogue)
         {
-            if (questsAceitas != 0)
+            if (quests.Count == 0)
             {
-                if (questsAceitas < quests.Count - 1 && !quests[questsAceitas - 1].IsRealizada())
-                {
-                    if (!quests[questsAceitas - 1].IsRealizada())
-                    {
-                        if (Player.player.status.Fama < 500)
-                        {
-                            DialogueSystem.sistemaDialogo.IniciaDialogo(famaBaixa);
-                        }
-                        else if (Player.player.status.Fama < 1000)
-                        {
-                            DialogueSystem.sistemaDialogo.IniciaDialogo(famaMedia);
-                        }
-                        else
-                        {
-                            DialogueSystem.sistemaDialogo.IniciaDialogo(famaAlta);
-                        }
-                    }
-                    return;
-                }
-
-                else if(questsAceitas >= quests.Count)
-                {
-                    DialogueSystem.sistemaDialogo.IniciaDialogo(semQuest);
-                }
+                if (Player.player.status.Fama < 500)
+                    DialogueSystem.sistemaDialogo.IniciaDialogo(famaBaixa);
+                else if (Player.player.status.Fama < 1000)
+                    DialogueSystem.sistemaDialogo.IniciaDialogo(famaMedia);
+                else
+                    DialogueSystem.sistemaDialogo.IniciaDialogo(famaAlta);
             }
-
-            if (!quests[questsAceitas].IsAceita())
+            else if (questsAceitas >= quests.Count)
+                DialogueSystem.sistemaDialogo.IniciaDialogo(semQuest);
+            else
             {
-                quests[questsAceitas].dialogo.whosDialog = this.name;
-                DialogueSystem.sistemaDialogo.IniciaDialogo(quests[questsAceitas].dialogo);
+                if (!quests[questsAceitas].IsAceita())
+                {
+                    quests[questsAceitas].dialogo.whosDialog = this.name;
+                    DialogueSystem.sistemaDialogo.IniciaDialogo(quests[questsAceitas].dialogo);
+                }
+                else
+                    DialogueSystem.sistemaDialogo.IniciaDialogo(semQuest);
             }
         }
+        
     }
 
     private void OnQuestLogChanged(Quest quest, bool endQuest = false, bool isLoaded = false)
