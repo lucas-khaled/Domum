@@ -68,10 +68,16 @@ public class Bau : Interagivel
     }
     private IEnumerator Some()
     {
-        yield return new WaitForSeconds(0.01f);
+        int time = 0;
+        while (time <= 60)
+        {
+        yield return new WaitForSeconds(1f);
         if (itens.Count == 0)
         {
             Destroy(this.gameObject);
         }
+            time++;
+        }
+        Destroy(this.gameObject);
     }
 }
