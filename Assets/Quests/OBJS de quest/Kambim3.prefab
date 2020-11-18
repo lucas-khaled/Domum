@@ -510,6 +510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4875102617311050331}
   - component: {fileID: 2050315046484259436}
+  - component: {fileID: 4121796636656621573}
   m_Layer: 0
   m_Name: Kambin
   m_TagString: Untagged
@@ -549,7 +550,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d8e5c1d266ac5134d8eed2aba0d230b9, type: 2}
+  - {fileID: 2100000, guid: ad83b35f8e7d5cd4f8102b88f336a759, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -574,7 +575,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -5408083040672295871, guid: 99a0e96f79245a549b9c21af467185e9, type: 3}
+  m_Mesh: {fileID: 6753217937871559561, guid: 2af5309553f3e134c9f0899a404df587, type: 3}
   m_Bones:
   - {fileID: 3739938754004058559}
   - {fileID: 393152054683783420}
@@ -623,6 +624,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000320971, y: 0.006424385, z: -0.028686684}
     m_Extent: {x: 0.011054115, y: 0.014682942, z: 0.031127986}
   m_DirtyAABB: 0
+--- !u!64 &4121796636656621573
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171940583863013798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6753217937871559561, guid: 2af5309553f3e134c9f0899a404df587, type: 3}
 --- !u!1 &2353828877380913524
 GameObject:
   m_ObjectHideFlags: 0
