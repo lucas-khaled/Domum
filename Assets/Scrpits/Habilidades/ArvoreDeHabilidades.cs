@@ -180,7 +180,7 @@ public class ArvoreDeHabilidades : MonoBehaviour
                 DecrementaPerk();
             }
             else
-                UIController.uiController.BlockMessage("Não tem Perk Suficiente");
+                UIController.uiController.BlockMessage("Perk Insuficiente");
             
         }
     }
