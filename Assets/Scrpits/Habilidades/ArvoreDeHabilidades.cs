@@ -178,6 +178,7 @@ public class ArvoreDeHabilidades : MonoBehaviour
                 qntAtivas++;
                 SetHabilidadesAtivas();
                 DecrementaPerk();
+                ativarHabilidade.gameObject.SetActive(false);
             }
             else
                 UIController.uiController.BlockMessage("Perk Insuficiente");
@@ -195,6 +196,7 @@ public class ArvoreDeHabilidades : MonoBehaviour
                 qntAtivas++;
                 SetHabilidadesAtivas();
                 DecrementaPerk();
+                ativarHabilidade.gameObject.SetActive(false);
             }
             else
                 UIController.uiController.BlockMessage("Não tem Perk Suficiente");
