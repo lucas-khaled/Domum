@@ -51,7 +51,8 @@ public class Bau : Interagivel
     {
         base.Interact();
 
-        audioSource.PlayOneShot(abrir);
+        if(audioSource != null && abrir != null)
+            audioSource.PlayOneShot(abrir);
 
         if (anim != null)
         {
