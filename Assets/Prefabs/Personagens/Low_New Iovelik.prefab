@@ -1108,7 +1108,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 2259280183635092104, guid: 92e90ac75d29ba840923349aa28421db, type: 3}
+  m_Mesh: {fileID: 1581390632299497376, guid: 0c1d92d01d26164569f80c9a66113e08, type: 3}
   m_Bones:
   - {fileID: 5377459550582211937}
   - {fileID: 7038258004757917634}
@@ -1401,7 +1401,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 6407691551927462561, guid: 92e90ac75d29ba840923349aa28421db, type: 3}
+  m_Mesh: {fileID: -363667631346532885, guid: 0c1d92d01d26164569f80c9a66113e08, type: 3}
   m_Bones:
   - {fileID: 5377459550582211937}
   - {fileID: 7038258004757917634}
@@ -3320,15 +3320,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa4a001d791114e4d813a558c162db20, type: 3}
---- !u!4 &4733902495221781821 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4836395642114373763, guid: aa4a001d791114e4d813a558c162db20,
-    type: 3}
-  m_PrefabInstance: {fileID: 192642179477204414}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &5126794167213624067 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5010939767776274109, guid: aa4a001d791114e4d813a558c162db20,
+    type: 3}
+  m_PrefabInstance: {fileID: 192642179477204414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4733902495221781821 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4836395642114373763, guid: aa4a001d791114e4d813a558c162db20,
     type: 3}
   m_PrefabInstance: {fileID: 192642179477204414}
   m_PrefabAsset: {fileID: 0}
