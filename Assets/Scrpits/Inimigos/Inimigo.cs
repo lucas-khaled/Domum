@@ -179,7 +179,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
         
     }
    
-    protected virtual void Morrer()
+    public virtual void Morrer()
     {
         Destroy(this.gameObject, 10);
         anim.SetBool("Morreu", true);

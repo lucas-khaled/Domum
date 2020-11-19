@@ -248,6 +248,7 @@ public class Tigre : MonoBehaviour
         Debug.Log(numeroItens);
 
         Bau dropzera = Instantiate(drop.gameObject, transform.position, transform.rotation).GetComponent<Bau>();
+        Destroy(dropzera, 30);
 
         for (int i = 0; i <= numeroItens; i++)
         {

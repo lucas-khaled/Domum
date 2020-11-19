@@ -82,7 +82,7 @@ public class Girafa : MonoBehaviour
     {
         int numeroItens = UnityEngine.Random.Range(0, 4);
         Bau dropzera = Instantiate(drop.gameObject, transform.position, transform.rotation).GetComponent<Bau>();
-
+        Destroy(dropzera, 30);
         for (int i = 0; i <= numeroItens; i++)
         {
             int itemEsc = UnityEngine.Random.Range(0, itensDropaveis.Length);
