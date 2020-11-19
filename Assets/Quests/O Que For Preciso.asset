@@ -73,7 +73,7 @@ MonoBehaviour:
       da Vila e o convencerei a se aliar a n\xF3s. "
   condicoes:
   - tipoCondicao: 1
-    local: {x: 114.899994, y: 23.346252, z: 123.66}
+    local: {x: 115.10811, y: 23.229752, z: 124.05835}
     descricao: "V\xE1 at\xE9 a Vila Atriet e converse com o L\xEDder."
     objsToInstantiate: []
     objsToDestroy: []
@@ -148,7 +148,7 @@ MonoBehaviour:
     local: {x: 68.7, y: 35.5, z: 296.5}
     descricao: Derrote todos os inimigos no acampamento.
     objsToInstantiate:
-    - objetoPrefab: {fileID: 4639351646610769055, guid: 54fb6c430b066a1b1bf836341c699b88,
+    - objetoPrefab: {fileID: 1087033954398472590, guid: 803a79832af99994b815f6464fde874f,
         type: 3}
       local: {x: 58.50612, y: 34.32595, z: 298.021}
       rotacao: {x: 0, y: 77.29601, z: 0}
@@ -168,7 +168,7 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 57.80172, y: 34.652767, z: 298.0105}
+    local: {x: 58.50612, y: 34.32595, z: 298.021}
     descricao: Converse com o Curandeiro libertado.
     objsToInstantiate: []
     objsToDestroy: []
@@ -187,7 +187,7 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 114.899994, y: 23.346252, z: 123.66}
+    local: {x: 115.10811, y: 23.229752, z: 124.05835}
     descricao: "Retorne \xE0 Vila Atriet e converse com o L\xEDder."
     objsToInstantiate: []
     objsToDestroy:
