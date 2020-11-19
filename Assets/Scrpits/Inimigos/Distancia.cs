@@ -99,7 +99,7 @@ public class Distancia : Inimigo
         }
     }
 
-    protected override void Morrer()
+    public override void Morrer()
     {
         base.Morrer();
 
