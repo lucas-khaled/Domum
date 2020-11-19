@@ -386,6 +386,7 @@ public class Player : MonoBehaviour, IVulnerable
     public void LevelUp()
     {
         particulaLevelUp.Play();
+        GameController.gameController.SaveGame();
     }
 
     private void OnDrawGizmosSelected()

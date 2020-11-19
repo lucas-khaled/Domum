@@ -340,11 +340,13 @@ public class UIController : MonoBehaviour
     }
 
     public void Reiniciar()
-    {   
+    {
+        SceneManager.LoadScene("Menu_Principal");
+        /*
         if (GameController.gameController.IsLoadedGame())
             GameController.gameController.LoadGame();
         else          
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);*/
     }
 
     public void MudarCena(string cena)
