@@ -84,6 +84,7 @@ public class Quest : ScriptableObject
         if(!isLoaded)
             reward.DarRecompensa();
 
+        GameController.gameController.SaveGame();
         condicaoAtual = null;
         realizada = true;
 

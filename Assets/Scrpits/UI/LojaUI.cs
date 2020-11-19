@@ -249,7 +249,7 @@ public class LojaUI : MonoBehaviour
         
         yield return new WaitForSecondsRealtime(0.1f);
 
-        if (lastSelected == holder && holder == holderAtual)
+        if (holder == holderAtual)
         {
             painelInfoItem.SetActive(false);
 
@@ -295,21 +295,23 @@ public class LojaUI : MonoBehaviour
         }
         else
         {
-            contCompraVenda++;
-
             Item vendido = holderAtual.item;
-            lojaAtual.itensAVenda.Remove(vendido);
-            Inventario.inventario.AddItem(vendido);
+            if (Inventario.inventario.AddItem(vendido))
+            {
+                contCompraVenda++;           
+                lojaAtual.itensAVenda.Remove(vendido);          
 
-            GameObject go = listaVendedor.Find(x => x.GetComponent<Holder_Item>() == holderAtual);
-            listaVendedor.Remove(go);
+                GameObject go = listaVendedor.Find(x => x.GetComponent<Holder_Item>() == holderAtual);
+                listaVendedor.Remove(go);
 
-            listaPlayer.Add(go);
-            go.transform.SetParent(contentPlayer);
-            go.transform.localScale = Vector3.one;
+                listaPlayer.Add(go);
+                go.transform.SetParent(contentPlayer);
+                go.transform.localScale = Vector3.one;
 
-            Player.player.status.Dinheiro -= vendido.custoMoeda;
-            CarregaInfoPlayer();
+                Player.player.status.Dinheiro -= vendido.custoMoeda;
+                CarregaInfoPlayer();
+                DeselectItem(holderAtual);
+            }
         }
     }
 

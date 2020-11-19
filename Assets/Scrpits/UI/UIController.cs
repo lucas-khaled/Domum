@@ -52,6 +52,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField]
     private Animator blockMessage;
+    [SerializeField]
+    private Animator levelUpMessage;
     //public Transform Inicio;
 
     private GameObject[] Bases;
@@ -304,6 +306,12 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void LevelUpMessage(string message)
+    {
+        levelUpMessage.transform.GetChild(0).GetComponent<Text>().text = message;
+        levelUpMessage.SetTrigger("Dinheiro_insu");
+    }
+
     public void BlockMessage(string message)
     {
         blockMessage.transform.GetChild(0).GetComponent<Text>().text = message;
@@ -332,11 +340,13 @@ public class UIController : MonoBehaviour
     }
 
     public void Reiniciar()
-    {   
+    {
+        SceneManager.LoadScene("Menu_Principal");
+        /*
         if (GameController.gameController.IsLoadedGame())
             GameController.gameController.LoadGame();
         else          
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);*/
     }
 
     public void MudarCena(string cena)
