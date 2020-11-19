@@ -698,7 +698,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &6565642853361571655
 BoxCollider:
@@ -1372,6 +1372,7 @@ GameObject:
   - component: {fileID: 5408194531628031970}
   - component: {fileID: 5408194531628031997}
   - component: {fileID: 5408194531628031996}
+  - component: {fileID: 7303753931448693566}
   m_Layer: 9
   m_Name: Hit_life
   m_TagString: Untagged
@@ -1459,6 +1460,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7303753931448693566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5408194531628031998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb2cd4da0d1dc2498b93e82b5b9a759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5622150958053709787
 GameObject:
   m_ObjectHideFlags: 0

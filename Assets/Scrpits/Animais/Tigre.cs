@@ -329,7 +329,8 @@ public class Tigre : MonoBehaviour
         if (!collision.gameObject.CompareTag("Chao") && !collision.gameObject.CompareTag("Player") || !playerperto)
         {
             destino = RandomNavMeshGenerator(20f);
-            animal.SetDestination(destino);
+            if(animal != null)
+                animal.SetDestination(destino);
         }
     }
    /* private void OnCollisionExit(Collision collision)
