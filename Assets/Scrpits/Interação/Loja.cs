@@ -43,7 +43,7 @@ public class Loja : Interagivel
 
     IEnumerator RenovacaoLoja()
     {
-        yield return new WaitForSecondsRealtime(3600);
+        yield return new WaitForSecondsRealtime(300);
         RenovaItens();
         StartCoroutine(RenovacaoLoja());
     }

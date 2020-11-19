@@ -68,6 +68,12 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(cena);
     }
 
+    public void SaveGame()
+    {
+        isLoadedGame = true;
+        SaveSystem.Save();
+    }
+
     public void LoadGame()
     {
         SaveData data = SaveSystem.Load();

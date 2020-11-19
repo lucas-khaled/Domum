@@ -62,7 +62,8 @@ public class LojaUI : MonoBehaviour
     public void FecharLoja()
     {
         UIController.uiController.PauseOff();
-
+        DeselectItem(holderAtual);
+        lastSelected = null;
         painelLoja.SetActive(false);
 
         if (lojaAtual.gameObject.GetComponent<Kambim>() != null)

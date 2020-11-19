@@ -159,7 +159,7 @@ public class UIController : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.Save();
+        GameController.gameController.SaveGame();
     }
 
     public void LifeBar(float value)
@@ -328,11 +328,15 @@ public class UIController : MonoBehaviour
         painelMorte.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        CameraController.cameraInstance.Trava = true;
     }
 
     public void Reiniciar()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    {   
+        if (GameController.gameController.IsLoadedGame())
+            GameController.gameController.LoadGame();
+        else          
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void MudarCena(string cena)
