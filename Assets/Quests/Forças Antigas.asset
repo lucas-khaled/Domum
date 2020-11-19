@@ -93,15 +93,16 @@ MonoBehaviour:
     raioDeSpawn: 0
     distanciaChegada: 15
     interagivelPrefab: {fileID: 0}
-  - tipoCondicao: 2
-    local: {x: 491.0753, y: 16.51, z: 443.77158}
-    descricao: Mate as criauras que surgiram
+  - tipoCondicao: 3
+    local: {x: 503, y: 7, z: 443}
+    descricao: Desenterre as armas
     objsToInstantiate: []
-    objsToDestroy: []
+    objsToDestroy:
+    - Terra
     dialogoDaCondicao:
       dialogueLines: []
-    isOnScene: 0
-    nameOnScene: 
+    isOnScene: 1
+    nameOnScene: Terra
     itemDaCondicao: {fileID: 0}
     inimigosDaCondicao:
     - {fileID: 6197382673327485328, guid: f672d526e0be12d4c87e7c5d62fb1991, type: 3}
@@ -111,35 +112,20 @@ MonoBehaviour:
     raioDeSpawn: 15
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
-  - tipoCondicao: 3
-    local: {x: 503, y: 7, z: 443}
-    descricao: Desenterre as Armas
-    objsToInstantiate: []
-    objsToDestroy:
-    - Terra
-    dialogoDaCondicao:
-      dialogueLines: []
-    isOnScene: 1
-    nameOnScene: Terra
-    itemDaCondicao: {fileID: 0}
-    inimigosDaCondicao: []
-    raioDeSpawn: 0
-    distanciaChegada: 0
-    interagivelPrefab: {fileID: 0}
   - tipoCondicao: 4
-    local: {x: 503, y: 8, z: 443}
-    descricao: Pegue a Arma para voce
+    local: {x: 503, y: 7, z: 443}
+    descricao: Pegue a arma para voce
     objsToInstantiate:
     - objetoPrefab: {fileID: 5880176942598957585, guid: 0fcfa3a672f2081498d5472b07dc3dfb,
         type: 3}
-      local: {x: 490.6472, y: 8.358346, z: 431.10495}
-      rotacao: {x: 270, y: 0, z: 0}
+      local: {x: 503, y: 7, z: 443}
+      rotacao: {x: 0, y: 0, z: 0}
       nome: Arma
       qualPlayer: 1
-    - objetoPrefab: {fileID: 3034701820078992033, guid: aaa82760109a85e408326c6387785862,
+    - objetoPrefab: {fileID: 919132149155446097, guid: 6fd091bdb2eb1c696aca0bf0c11a7a99,
         type: 3}
-      local: {x: 490.6472, y: 8.358346, z: 431.10495}
-      rotacao: {x: 270, y: 0, z: 0}
+      local: {x: 503, y: 7, z: 443}
+      rotacao: {x: 0, y: 0, z: 0}
       nome: Arma
       qualPlayer: 0
     objsToDestroy: []
@@ -153,20 +139,20 @@ MonoBehaviour:
     distanciaChegada: 0
     interagivelPrefab: {fileID: 0}
   - tipoCondicao: 1
-    local: {x: 142.3085, y: 20.890343, z: 131.03203}
-    descricao: Informe ao Anciao de seu sucesso
+    local: {x: 503, y: 8, z: 443}
+    descricao: Informe ao Anciao seu sucesso
     objsToInstantiate: []
     objsToDestroy: []
     dialogoDaCondicao:
       dialogueLines:
       - "Anci\xE3o: Vejo que encontrou as armas. "
-      - "Player: Sim, as encontrei. Encontrei essa em espec\xEDfico. N\xE3o parece
-        que era dos humanos, mas \xE9 poderosa. "
+      - "#Tyva|Iovelik#: Sim, as encontrei. Encontrei essa em espec\xEDfico. N\xE3o
+        parece que era dos humanos, mas \xE9 poderosa. "
       - "Anci\xE3o: De fato nunca vi os humanos usarem nenhuma dessas. \xC9 magnifica,
         sim. Fique com ela, meu jovem. \xC9 merecido pelo bom trabalho que fez at\xE9
         aqui1 "
-      - "Player: Obrigado, grande anci\xE3o. Creio que o passado tenha me fortalecido
-        de fato."
+      - "#Tyva|Iovelik#: Obrigado, grande anci\xE3o. Creio que o passado tenha me
+        fortalecido de fato."
     isOnScene: 1
     nameOnScene: Anciao
     itemDaCondicao: {fileID: 0}
