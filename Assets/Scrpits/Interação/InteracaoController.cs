@@ -10,6 +10,7 @@ public class InteracaoController : MonoBehaviour
     private float raioInteracao = 3f;
 
     private Interagivel interagivelAtual = null;
+    bool canInvoke = true;
 
     #region SINGLETON
     public static InteracaoController instance;
@@ -37,14 +38,16 @@ public class InteracaoController : MonoBehaviour
     {
         if (estadoPlayer == EstadoPlayer.NORMAL || estadoPlayer == EstadoPlayer.COMBATE)
         {
-            if (this != null)
+            if (canInvoke)
+            {
                 InvokeRepeating("InteragivelMaisProximo", 1f, 0.1f);
-            else
-                Debug.Log("vai tomar no cu");
+                canInvoke = false;
+            }
         }
         else
         {
             CancelInvoke("InteragivelMaisProximo");
+            canInvoke = true;
             if (interagivelAtual != null)
             {
                 interagivelAtual.SwitchImagemInteracao(false);
