@@ -24,9 +24,13 @@ public class Player : MonoBehaviour, IVulnerable
     public AudioSource audioSource;
     public string audioNovo;
 
-    [Header("Referências")]
+    [Header("Particulas")]
     [SerializeField]
     private ParticleSystem[] particulaArma;
+    [SerializeField]
+    private ParticleSystem particulaLevelUp;
+
+    [Header("Referências")]
     public Transform posicaoHit;
     public GameObject CBTprefab;
     [SerializeField]
@@ -43,7 +47,6 @@ public class Player : MonoBehaviour, IVulnerable
     private float raioAtaque = 2f;
     [SerializeField]
     private float espera;
-
 
 
     protected Rigidbody rb;
@@ -378,6 +381,11 @@ public class Player : MonoBehaviour, IVulnerable
     void OnGamePaused()
     {
         animator.SetInteger("Ataque", 0);
+    }
+
+    public void LevelUp()
+    {
+        particulaLevelUp.Play();
     }
 
     private void OnDrawGizmosSelected()

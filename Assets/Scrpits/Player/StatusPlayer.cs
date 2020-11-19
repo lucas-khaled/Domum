@@ -161,11 +161,16 @@ public class StatusPlayer : MonoBehaviour
             DanoMedio += Mathf.CeilToInt(1*(level%2));
             maxVida += 10 + 5 * level;
             Vida = maxVida;
+            Player.player.LevelUp();
 
-            if(level%2 == 0)
+            string message = "Level up!";
+            if (level%2 == 0)
             {
+                message += " Perk Disponível";
                 ArvoreDeHabilidades.IncrementaPerk();
             }
+
+            UIController.uiController.LevelUpMessage(message);
         }
     }
 

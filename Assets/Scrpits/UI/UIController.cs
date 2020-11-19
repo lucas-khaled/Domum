@@ -52,6 +52,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField]
     private Animator blockMessage;
+    [SerializeField]
+    private Animator levelUpMessage;
     //public Transform Inicio;
 
     private GameObject[] Bases;
@@ -302,6 +304,12 @@ public class UIController : MonoBehaviour
             Time.timeScale = 0;
             
         }
+    }
+
+    public void LevelUpMessage(string message)
+    {
+        levelUpMessage.transform.GetChild(0).GetComponent<Text>().text = message;
+        levelUpMessage.SetTrigger("Dinheiro_insu");
     }
 
     public void BlockMessage(string message)
