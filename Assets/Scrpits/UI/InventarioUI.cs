@@ -40,6 +40,8 @@ public class InventarioUI : MonoBehaviour
     [SerializeField]
     private Text famaText;
     [SerializeField]
+    private Text levelText;
+    [SerializeField]
     private Text danoEquipadaText;
     [SerializeField]
     private Text pesoEquipadaText;
@@ -223,9 +225,12 @@ public class InventarioUI : MonoBehaviour
             Arma arma = (Arma)item;
             famaText.text = arma.famaMinima.ToString();
             danoText.text = arma.dano.ToString();
+            levelText.text = arma.nivelMinimo.ToString();
         }
         else {
             danoText.text = "---";
+            famaText.text = "---";
+            levelText.text = "---";
         }
 
         selecionado = item;

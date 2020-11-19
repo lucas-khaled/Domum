@@ -21,6 +21,7 @@ public class Holder_ItemBau : Button, ISelectHandler
     public override void OnSelect(BaseEventData eventData)
     {
         base.OnSelect(eventData);
+        BauUI.bauUI.SelectHolder(this);
         if(GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
         {
             dentro = true;
@@ -32,6 +33,7 @@ public class Holder_ItemBau : Button, ISelectHandler
     {
         base.OnDeselect(eventData);
 
+        BauUI.bauUI.DeselectHolder(this);
         if (GameController.gameController.QualOrigemInput() == OrigemInput.JOYSTICK)
         {
             dentro = false;
@@ -48,7 +50,6 @@ public class Holder_ItemBau : Button, ISelectHandler
             BauUI.bauUI.AddItemInventario(item);
             BauUI.bauUI.CloseDescricao();
         }
-
     }
 
     public override void OnPointerExit(PointerEventData eventData)

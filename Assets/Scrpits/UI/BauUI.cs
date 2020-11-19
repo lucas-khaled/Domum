@@ -8,7 +8,7 @@ public class BauUI : MonoBehaviour
     [SerializeField]
     private GameObject fecharBau;
 
-    public bool bauAberto = false;
+    public bool bauAberto { get; private set; }
     public static BauUI bauUI;
     private void Awake()
     {
@@ -25,10 +25,24 @@ public class BauUI : MonoBehaviour
     [SerializeField]
     private Transform content;
 
+    [Header("Texts")]
     [SerializeField]
-    private Text moedaText, descricaoText, tituloText, pesoTexto, danoTexto; 
+    private Text moedaText;   
+    [SerializeField]
+    private Text descricaoText;
+    [SerializeField]
+    private Text tituloText;
+    [SerializeField]
+    private Text pesoTexto;
+    [SerializeField]
+    private Text danoTexto;
+
+    [Header("Buttons")]
+    [SerializeField]
+    private Button pegaItemButton;
 
     private List<GameObject> instancias = new List<GameObject>();
+    private Holder_ItemBau selectedHolder;
 
     public void SetBau(Bau bau)
     {
@@ -36,6 +50,27 @@ public class BauUI : MonoBehaviour
         bauAtual = bau;
         panelBau.gameObject.SetActive(true);
         AtualizaBau();
+    }
+
+    public void SelectHolder(Holder_ItemBau holder)
+    {
+        selectedHolder = holder;
+        pegaItemButton.gameObject.SetActive(true);
+    }
+
+    public void DeselectHolder(Holder_ItemBau holder)
+    {
+        StartCoroutine(HolderDeselection(holder));
+    }
+
+    private IEnumerator HolderDeselection(Holder_ItemBau holder)
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        if (selectedHolder == holder)
+        {
+            selectedHolder = null;
+            pegaItemButton.gameObject.SetActive(false);
+        }
     }
 
     private void ClearInstancias()
@@ -80,10 +115,16 @@ public class BauUI : MonoBehaviour
         }
     }
 
+    public void AddItemOnSelectedHolder()
+    {
+        AddItemInventario(selectedHolder.item);
+    }
+
     public void AddItemInventario(Item item)
     {
         if (Inventario.inventario.AddItem(item))
         {
+            pegaItemButton.gameObject.SetActive(false);
             bauAtual.itens.Remove(item);
             AtualizaBau();
         }
@@ -91,7 +132,9 @@ public class BauUI : MonoBehaviour
 
     public void CloseBau()
     {
-        panelBau.gameObject.SetActive(false);
+        pegaItemButton.gameObject.SetActive(false);
+        panelBau.gameObject.SetActive(false);        
+        selectedHolder = null;
         bauAtual = null;
         UIController.uiController.PauseOff();
     }
@@ -128,6 +171,11 @@ public class BauUI : MonoBehaviour
         pesoTexto.text = string.Empty;
 
         CancelInvoke("SetDescriptionInMousePlace");
+    }
+
+    private void Start()
+    {
+        bauAberto = false;
     }
 
 }
