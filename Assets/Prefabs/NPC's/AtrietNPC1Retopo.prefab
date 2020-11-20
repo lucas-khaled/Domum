@@ -679,7 +679,6 @@ GameObject:
   - component: {fileID: 5371891276430701132}
   - component: {fileID: 5275004687956167820}
   - component: {fileID: 2594609177821524885}
-  - component: {fileID: 4526608237058665162}
   - component: {fileID: 2224570135327955081}
   m_Layer: 0
   m_Name: AtrietNPC1Retopo
@@ -776,20 +775,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3.5
   m_Center: {x: 0, y: 1.7, z: 0}
---- !u!114 &4526608237058665162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2276990900254800474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 303aafae5c9b2494ea7b87cff4f61fb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldCanvas: {fileID: 843554111623236753}
-  isComposedObject: 0
 --- !u!114 &2224570135327955081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,8 +793,8 @@ MonoBehaviour:
   idleDuplo: 1
   dialogoFamaBaixa:
     dialogueLines:
-    - "Sai da minha frente mesti\xE7o."
-    - "O que voc\xEA ta fazendo aqui ainda?"
+    - "Atriet: Sai da minha frente mesti\xE7o."
+    - "Atriet: O que voc\xEA ta fazendo aqui ainda?"
   dialogoFamaMedia:
     dialogueLines:
     - "Atriet: Ent\xE3o voc\xEA \xE9 #aquela|aquele# da resist\xEAncia?"

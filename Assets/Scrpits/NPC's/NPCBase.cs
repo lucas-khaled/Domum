@@ -195,7 +195,8 @@ public class NPCBase : Interagivel
         if (other.gameObject.tag == "Player")
         {
             playerPerto = false;
-            navMesh.isStopped = false;
+            if(navMesh != null)
+                navMesh.isStopped = false;
         }
     }
 }

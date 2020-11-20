@@ -727,7 +727,6 @@ GameObject:
   - component: {fileID: 2457432002517923409}
   - component: {fileID: 16201793324990060}
   - component: {fileID: 97896567990042988}
-  - component: {fileID: 2542451186488962233}
   - component: {fileID: 7680430613161193324}
   m_Layer: 0
   m_Name: AtrietNPC2retopo
@@ -820,20 +819,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7182213, y: 3.2389224, z: 0.5014686}
   m_Center: {x: -0.032512903, y: 1.5963174, z: 0.010837585}
---- !u!114 &2542451186488962233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4639351646610769055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 303aafae5c9b2494ea7b87cff4f61fb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldCanvas: {fileID: 9209202850032577115}
-  isComposedObject: 0
 --- !u!114 &7680430613161193324
 MonoBehaviour:
   m_ObjectHideFlags: 0
