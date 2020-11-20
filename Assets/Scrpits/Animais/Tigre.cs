@@ -322,10 +322,9 @@ public class Tigre : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        /*if (collision.gameObject.CompareTag("Player"))
-        {
+        if (collision.gameObject.CompareTag("Player"))
             GetComponent<Rigidbody>().isKinematic = true;
-        }*/
+
         if (!collision.gameObject.CompareTag("Chao") && !collision.gameObject.CompareTag("Player") || !playerperto)
         {
             destino = RandomNavMeshGenerator(20f);
@@ -333,10 +332,12 @@ public class Tigre : MonoBehaviour
                 animal.SetDestination(destino);
         }
     }
-   /* private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
-        GetComponent<Rigidbody>().isKinematic = false;
-    }*/
+        if (collision.gameObject.CompareTag("Player"))
+            GetComponent<Rigidbody>().isKinematic = false;
+        
+    }
 
     private void OnDrawGizmosSelected()
     {
