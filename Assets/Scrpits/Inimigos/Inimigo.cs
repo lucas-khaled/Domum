@@ -102,7 +102,7 @@ public class Inimigo : MonoBehaviour, IVulnerable
         {
             if (hostil)
             {
-                if (Vector3.Distance(Player.player.transform.position, transform.position) > 17)
+                if (Vector3.Distance(Player.player.transform.position, transform.position) > 7)
                 {
                     hitCanvas.gameObject.SetActive(false);
                 }

@@ -194,8 +194,6 @@ public class InventarioUI : MonoBehaviour
         pesoText.text = string.Empty;
         valor_vendaText.text = string.Empty;
         famaText.text = string.Empty;
-        levelText.text = string.Empty;
-        danoText.text = string.Empty;
     }
 
     IEnumerator ClearBotoes()
