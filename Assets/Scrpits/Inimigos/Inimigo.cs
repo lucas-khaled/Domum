@@ -6,6 +6,9 @@ using UnityEngine.AI;
 
 public class Inimigo : MonoBehaviour, IVulnerable
 {
+    [Header("Partículas")]
+    [SerializeField]
+    private ParticleSystem hitInimigo;
 
     [Header("Referências")]
     public Image lifeBar;
@@ -146,7 +149,13 @@ public class Inimigo : MonoBehaviour, IVulnerable
         Collider[] hit = Physics.OverlapSphere(hitPoint.position, 0.7f, LayerMask.GetMask("Player"));
         if (hit.Length > 0)
         {
-            Debug.Log(hit[0].name);
+            if(hitInimigo != null)
+            {
+                ParticleSystem particula = Instantiate(hitInimigo.gameObject, hit[0].transform.position, hitInimigo.transform.rotation).GetComponent<ParticleSystem>();
+                particula.Play();
+                Destroy(particula.gameObject, 5);
+            }
+                
             hit[0].gameObject.GetComponent<Player>().ReceberDano(danoMedio, this);
         }
     }

@@ -12,6 +12,9 @@ public class Bala : MonoBehaviour
 
     public bool canBeLetal = false;
 
+    [SerializeField]
+    private ParticleSystem particleHit;
+
     Collider casterCollider;
     Rigidbody rb;
 
@@ -56,6 +59,13 @@ public class Bala : MonoBehaviour
             else
                 other.GetComponent<IVulnerable>().ReceberDano(danoBala);
             
+            if(particleHit != null)
+            {
+                ParticleSystem particula = Instantiate(particleHit.gameObject, transform.position, particleHit.transform.rotation).GetComponent<ParticleSystem>();
+                particula.Play();
+                Destroy(particula.gameObject, 5);
+            }
+
         }
 
         Destroy(this.gameObject);

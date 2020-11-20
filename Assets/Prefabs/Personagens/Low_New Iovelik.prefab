@@ -505,6 +505,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dano: 20
   mesh: {fileID: 3085675895977756270}
+  particleHit: {fileID: 5309996445013212281, guid: 80ca459fa1a03f24e813d001675ed3f7,
+    type: 3}
 --- !u!1 &2042112395880696477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3320,15 +3322,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa4a001d791114e4d813a558c162db20, type: 3}
---- !u!198 &5126794167213624067 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5010939767776274109, guid: aa4a001d791114e4d813a558c162db20,
-    type: 3}
-  m_PrefabInstance: {fileID: 192642179477204414}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4733902495221781821 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4836395642114373763, guid: aa4a001d791114e4d813a558c162db20,
+    type: 3}
+  m_PrefabInstance: {fileID: 192642179477204414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5126794167213624067 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5010939767776274109, guid: aa4a001d791114e4d813a558c162db20,
     type: 3}
   m_PrefabInstance: {fileID: 192642179477204414}
   m_PrefabAsset: {fileID: 0}

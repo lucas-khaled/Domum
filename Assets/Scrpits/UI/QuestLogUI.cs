@@ -97,14 +97,16 @@ public class QuestLogUI : MonoBehaviour
     void AtualizarQuestLog(Quest quest, bool endQuest = false, bool isLoaded = false) {
 
         if (!endQuest)
-        {
-            audioSource.PlayOneShot(iniciaQuest);
+        {    
             StartCoroutine(QuestAnimationAceitar(quest));
+            if(iniciaQuest != null)
+                audioSource.PlayOneShot(iniciaQuest);
         }
         else if(!isLoaded)
         {
             StartCoroutine(QuestAnimationFinalizar(quest));
-            audioSource.PlayOneShot(finalizaQuest);
+            if(finalizaQuest != null)
+                audioSource.PlayOneShot(finalizaQuest);
         }
 
         if (endQuest)
