@@ -74,7 +74,7 @@ public class Kambim : MonoBehaviour
     private IEnumerator Escolha()
     {
         int random = Random.Range(0, 100);
-        if (random > 60 && !playerPerto && !anim.GetBool("Dormindo"))
+        if (random > 90 && !playerPerto && !anim.GetBool("Dormindo"))
         {
             anim.SetTrigger("Dormir");
             anim.SetBool("Dormindo", true);
