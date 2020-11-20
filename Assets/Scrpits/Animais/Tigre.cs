@@ -53,8 +53,6 @@ public class Tigre : MonoBehaviour
     private bool morto;
     private bool aux;
     private bool playerperto;
-
-    private GameObject[] respawnTigre;
     private Transform hitCanvas;
 
     bool canAttack = true;
@@ -78,7 +76,6 @@ public class Tigre : MonoBehaviour
     private void Start()
     {
         animal = this.GetComponent<NavMeshAgent>();
-        respawnTigre = GameObject.FindGameObjectsWithTag("RespawnTigre");
         anim.SetBool("Idle", true);
         StartCoroutine(Escolher());
         Vida = maxVida;
@@ -274,8 +271,6 @@ public class Tigre : MonoBehaviour
         morto = true;
         DroparLoot();
         StopAllCoroutines();
-
-        respawnTigre[Random.Range(0, respawnTigre.Length)].GetComponent<Respawn>().numeroAnimais--;
     }
     public void ReceberDano(int danoRecebido)
     {

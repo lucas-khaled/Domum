@@ -14,7 +14,7 @@ public class Respawn : MonoBehaviour
     [SerializeField]
     private Transform parentescoHierarquia;
     
-    public short numeroAnimais;
+    public int numeroAnimais;
     Vector3 finalPosition;
     NavMeshHit hit;
 
@@ -29,6 +29,10 @@ public class Respawn : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(2f);
+
+            numeroAnimais = this.transform.childCount;
+
             while (numeroAnimais < numeroMaximo)
             {
                 Vector3 novoSpawn = RandomNavMeshGenerator();
@@ -39,7 +43,7 @@ public class Respawn : MonoBehaviour
                     numeroAnimais++;
                 }
             }
-            yield return new WaitForSeconds(120f);
+            yield return new WaitForSeconds(118f);
         }
     }
 

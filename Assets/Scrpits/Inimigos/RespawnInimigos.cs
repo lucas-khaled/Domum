@@ -14,7 +14,7 @@ public class RespawnInimigos : MonoBehaviour
     [SerializeField]
     private Transform parentescoHierarquia;
 
-    public short numeroInimigos;
+    public int numeroInimigos;
     Vector3 finalPosition;
     NavMeshHit hit;
 
@@ -29,6 +29,10 @@ public class RespawnInimigos : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(2f);
+
+            numeroInimigos = this.transform.childCount;
+
             if (Vector3.Distance(Player.player.gameObject.transform.position, this.transform.position) < raioSpawn + 5f)
                 yield return new WaitForSeconds(30f);
             else
@@ -43,7 +47,7 @@ public class RespawnInimigos : MonoBehaviour
                         numeroInimigos++;
                     }
                 }
-                yield return new WaitForSeconds(120f);
+                yield return new WaitForSeconds(118f);
             }
             
         }

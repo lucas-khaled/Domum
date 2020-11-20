@@ -19,8 +19,6 @@ public class Girafa : MonoBehaviour
     NavMeshHit hit;
     public Item[] itensDropaveis;
     public Bau drop;
-    [SerializeField]
-    private GameObject[] respawnGirafa;
 
     [Header("Audios")]
     [SerializeField]
@@ -112,7 +110,6 @@ public class Girafa : MonoBehaviour
     }
     private void Start()
     {
-        respawnGirafa = GameObject.FindGameObjectsWithTag("RespawnGirafa");
         StartCoroutine(Escolher());
         Vida = maxVida;
         hitCanvas = transform.Find("Hit_life");
@@ -177,7 +174,6 @@ public class Girafa : MonoBehaviour
 
         animal.isStopped = true;
         DroparLoot();
-        respawnGirafa[UnityEngine.Random.Range(0, respawnGirafa.Length)].GetComponent<Respawn>().numeroAnimais--;
         StopAllCoroutines();
     }
     public void ReceberDano(int danoRecebido)
